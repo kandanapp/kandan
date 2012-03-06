@@ -22,7 +22,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'ember-rails'
 gem 'jquery-rails'
 
 gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
