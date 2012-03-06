@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'devise'
 gem 'devise_bushido_authenticatable'
 gem 'bushido'
+gem 'thin'
+gem 'faye'
 
 # Gems used only for assets and not required
 # in production environments by default.

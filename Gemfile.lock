@@ -47,6 +47,7 @@ GEM
     activesupport (3.2.2)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.2.7)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
@@ -71,6 +72,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
+    cookiejar (0.3.0)
+    daemons (1.1.8)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -79,7 +82,16 @@ GEM
       devise (= 1.5.3)
       rubycas-client (>= 2.2.1)
     diff-lcs (1.1.3)
+    em-http-request (1.0.1)
+      addressable (>= 2.2.3)
+      cookiejar
+      em-socksify
+      eventmachine (>= 1.0.0.beta.4)
+      http_parser.rb (>= 0.5.3)
+    em-socksify (0.1.0)
+      eventmachine
     erubis (2.7.0)
+    eventmachine (1.0.0.beta.4)
     execjs (1.3.0)
       multi_json (~> 1.0)
     factory_girl (2.6.1)
@@ -87,9 +99,19 @@ GEM
     factory_girl_rails (1.7.0)
       factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
+    faye (0.8.0)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.4.0)
+      rack (>= 1.0.0)
+      yajl-ruby (>= 1.0.0)
+    faye-websocket (0.4.1)
+      eventmachine (>= 0.12.0)
     ffi (1.0.11)
     highline (1.6.11)
     hike (1.2.1)
+    http_parser.rb (0.5.3)
     i18n (0.6.0)
     jasmine-core (1.2.0.rc1)
     journey (1.0.3)
@@ -168,6 +190,10 @@ GEM
     sqlite3 (1.3.5)
     therubyracer (0.9.10)
       libv8 (~> 3.3.10)
+    thin (1.3.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -181,6 +207,7 @@ GEM
       rack (>= 1.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -193,6 +220,7 @@ DEPENDENCIES
   devise_bushido_authenticatable
   ember-rails!
   factory_girl_rails
+  faye
   jasmine!
   jquery-rails
   rails (= 3.2.2)
@@ -201,4 +229,5 @@ DEPENDENCIES
   shoulda-matchers
   sqlite3
   therubyracer
+  thin
   uglifier (>= 1.0.3)
