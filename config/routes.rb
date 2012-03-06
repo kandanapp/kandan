@@ -1,5 +1,6 @@
 Kandan::Application.routes.draw do
-  get "main/index"
+
+  root :to => "main#index"
 
   #devise_for :users
 
