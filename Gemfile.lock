@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/emberjs/ember-rails.git
+  revision: 1614e7dac6dcd83a68b4f5ea479d2fec7094d781
+  specs:
+    ember-rails (0.2.4)
+      execjs (>= 1.2)
+      railties (>= 3.0)
+
+GIT
   remote: https://github.com/pivotal/jasmine-gem.git
   revision: 5a7524ae9eaea4fe106a7aaa90ccfb1bc137abe7
   branch: 1.2.rc1
@@ -183,6 +191,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   devise_bushido_authenticatable
+  ember-rails!
   factory_girl_rails
   jasmine!
   jquery-rails

@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ember-dev
+//= require ember
+//= require ember/kandan
 //= require_tree .
