@@ -2,9 +2,14 @@
 <html>
 <head>
   <title>Kandan</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag  "application", :media => "all" %>
+
+  <%- Kandan::Config.broadcaster.assets.each do |asset| %>
+    <%= javascript_include_tag asset %>
+  <%- end %>
+
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "#{ENV['FAYEJS']}.js" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>

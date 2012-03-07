@@ -1,0 +1,9 @@
+########################
+# Kandan settings file
+########################
+
+
+# What should be used for broadcasting messages to browser?
+# valid options: Faye
+:broadcaster:
+  :name: "Faye"

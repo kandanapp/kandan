@@ -1,1 +1,0 @@
-ENV['FAYEJS'] ||= "/remote/faye"
