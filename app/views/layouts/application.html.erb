@@ -9,6 +9,17 @@
   <%- end %>
 
   <%= javascript_include_tag "application" %>
+  <%= javascript_tag do %>
+    <%- if user_signed_in? %>
+      <%- current_user_data = {
+            :id   => current_user.id,
+            :name => "#{current_user.first_name} #{current_user.last_name}",
+            :auth_token => current_user.authentication_token
+          }
+          %>
+      $.data(document, 'current_user', <%= current_user_data.to_json.html_safe %>);
+    <%- end %>
+  <%- end %>
 
   <%= csrf_meta_tags %>
 </head>

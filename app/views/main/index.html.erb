@@ -1,2 +1,13 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<div class="container">
+
+  <script type="text/x-handlebars">
+    {{ view Kandan.ListChannelsView }}
+  </script>
+
+  <%= javascript_tag do %>
+    $(function() {
+      Kandan.ChannelsController.loadAll(<%= @channels.to_json.html_safe %>);
+    });
+  <%- end %>
+  
+</div>
