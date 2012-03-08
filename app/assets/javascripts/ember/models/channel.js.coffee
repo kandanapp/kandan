@@ -1,2 +1,3 @@
-class Kandan.Channel extends Ember.Resource
+Kandan.Channel = Ember.Resource.extend
   resourceUrl: '/channels'
+  resourceName: 'channel'

@@ -4,9 +4,19 @@
     {{ view Kandan.ListChannelsView }}
   </script>
 
+
+  <script type="text/x-handlebars">
+    {{ view Kandan.ListActivitiesView }}
+  </script>
+
   <%= javascript_tag do %>
     $(function() {
-      Kandan.ChannelsController.loadAll(<%= @channels.to_json.html_safe %>);
+      var channels_json = <%= @channels.to_json(
+                            :include => {
+                              :activities => {
+                                :include=>:user
+                              }}).html_safe %>
+      Kandan.ChannelsController.loadAll(channels_json);
     });
   <%- end %>
   
