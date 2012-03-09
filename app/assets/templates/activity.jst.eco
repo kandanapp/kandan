@@ -1,0 +1,1 @@
+<%= @activity.get('user').first_name %>: <%= @activity.get('content') %>

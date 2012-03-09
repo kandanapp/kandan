@@ -1,14 +1,5 @@
 <div class="container">
 
-  <script type="text/x-handlebars">
-    {{ view Kandan.ListChannelsView }}
-  </script>
-
-
-  <script type="text/x-handlebars">
-    {{ view Kandan.ListActivitiesView }}
-  </script>
-
   <%= javascript_tag do %>
     $(function()
     {
@@ -18,7 +9,6 @@
                                     :include=>:user
                                   }
                                 }).html_safe %>
-      Kandan.ChannelsController.loadAll(channels_json);
     });
   <%- end %>
   

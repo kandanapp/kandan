@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-//= require ember-dev
-//= require lib/ember-rest.js
-//= require ember/kandan
+//= require lib/underscore
+//= require lib/backbone
+//= require backbone/kandan
 //= require_tree .

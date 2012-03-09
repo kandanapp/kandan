@@ -1,0 +1,8 @@
+<ul>
+  <% for channel in @channels.models: %>
+    <li>
+      <a href="#<%= "channels-#{channel.get('id')}" %>"><%= channel.get('name') %></a>
+    </li>
+  <% end %>
+</ul>
+
