@@ -10,12 +10,14 @@
   </script>
 
   <%= javascript_tag do %>
-    $(function() {
+    $(function()
+    {
       var channels_json = <%= @channels.to_json(
-                            :include => {
-                              :activities => {
-                                :include=>:user
-                              }}).html_safe %>
+                                :include => {
+                                  :activities => {
+                                    :include=>:user
+                                  }
+                                }).html_safe %>
       Kandan.ChannelsController.loadAll(channels_json);
     });
   <%- end %>
