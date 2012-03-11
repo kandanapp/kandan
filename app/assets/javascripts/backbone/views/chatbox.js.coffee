@@ -11,13 +11,14 @@ class Kandan.Views.Chatbox extends Backbone.View
 
     if event.keyCode== 13
       $chatbox = $(".chatbox")
+
       activity = new Kandan.Models.Activity({
         'content':    $chatbox.val(),
         'action':     'message',
-        'channel_id': $chatbox.data('active_channel_id')
+        'channel_id': Kandan.Helpers.Channels.get_active_channel_id()
       })
 
-      activity.save({success: ()->
+      activity.save({},{success: ()->
         console.log "posted! enjoy your day"
       })
 

@@ -6,13 +6,13 @@
 #= require_tree ./routers
 
 window.Kandan =
-  Models:      {}
-  Collections: {}
-  Views:       {}
-  Routers:     {}
+  Models:       {}
+  Collections:  {}
+  Views:        {}
+  Routers:      {}
+  Helpers:      {}
   Broadcasters: {}
   init: ->
-    # Backbone.history.start({pushState: true})
     channels = new Kandan.Collections.Channels()
     channels.fetch({success: ()=>
 
@@ -21,16 +21,7 @@ window.Kandan =
 
       chatbox = new Kandan.Views.Chatbox()
       $('.container').append(chatbox.render().el)
-
-      # TODO move this to a helper
-      # can also be done by checking the active tab in the post event in the Chatbox view
-      $('#channels').tabs({
-        select: (event, ui)->
-          channel_id = $("#channels .ui-tabs-panel").eq("#{ui.index}").data('channel_id')
-          console.log "set channelID to", channel_id
-          # TODO move setting current channel ID to a seperate helper
-          $('.chatbox').data('active_channel_id', channel_id)
-      })
+      $('#channels').tabs()
 
       # TODO move broadcast subscription to a helper
       # TODO change this to use the broadcaster from the settings
@@ -39,9 +30,6 @@ window.Kandan =
       for channel in channels.models
         window.broadcaster.subscribe "/channels/#{channel.get('id')}"
 
-      # TODO move this to a helper
-      $('.chatbox').data('active_channel_id',
-        $("#channels .ui-tabs-panel").eq($('#channels').tabs('option', 'selected')).data('channel_id'))
     })
 
 
