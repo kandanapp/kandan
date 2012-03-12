@@ -15,4 +15,6 @@ class Kandan.Broadcasters.FayeBroadcaster
   subscribe: (channel)->
     console.log "Subscribing to #{channel}"
     @faye_client.subscribe channel, (data)=>
+      console.log data.user
+      Kandan.Helpers.Channels.add_activity(data)
       console.log data.user.first_name, "says", data.content

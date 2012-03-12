@@ -4,6 +4,7 @@
 #= require_tree ./collections
 #= require_tree ./views
 #= require_tree ./routers
+#= require_tree ./helpers
 
 window.Kandan =
   Models:       {}
@@ -29,7 +30,6 @@ window.Kandan =
       window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
       for channel in channels.models
         window.broadcaster.subscribe "/channels/#{channel.get('id')}"
-
     })
 
 

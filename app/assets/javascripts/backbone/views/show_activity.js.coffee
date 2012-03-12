@@ -1,4 +1,4 @@
-class Kandan.Views.Activity extends Backbone.View
+class Kandan.Views.ShowActivity extends Backbone.View
   template: JST['activity']
 
   tagName: 'p'
