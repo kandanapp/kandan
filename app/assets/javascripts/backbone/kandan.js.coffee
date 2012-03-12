@@ -13,6 +13,8 @@ window.Kandan =
   Routers:      {}
   Helpers:      {}
   Broadcasters: {}
+  Data:         {}
+
   init: ->
     channels = new Kandan.Collections.Channels()
     channels.fetch({success: ()=>

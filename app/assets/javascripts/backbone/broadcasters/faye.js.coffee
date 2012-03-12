@@ -12,6 +12,12 @@ class Kandan.Broadcasters.FayeBroadcaster
         callback(message)
     }
     @faye_client.addExtension(auth_extension)
+    @faye_client.subscribe "/app/activities", (data)=>
+      console.log "activities", data.data.user
+      Kandan.Helpers.Channels.add_activity({
+        user: data,
+        action: data.event.split("#")[1]
+      })
 
 
   subscribe: (channel)->
