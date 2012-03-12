@@ -21,7 +21,6 @@ class Kandan.Helpers.Channels
     else
       $channel_elements = $("#channels .ui-tabs-panel")
       for el in $channel_elements
-        console.log "appending to", $(el).attr('id')
         activity = new Kandan.Models.Activity(activity_attributes)
         activity_view  = new Kandan.Views.ShowActivity({activity: activity})
         $(el).append(activity_view.render().el)
