@@ -13,14 +13,16 @@ class Kandan.Broadcasters.FayeBroadcaster
     }
     @faye_client.addExtension(auth_extension)
     @faye_client.subscribe "/app/activities", (data)=>
-      console.log "activities", data.data.user
+      console.log "activities", data
       Kandan.Helpers.Channels.add_activity({
-        user: data,
+        user: data.data.user,
         action: data.event.split("#")[1]
       })
 
 
   subscribe: (channel)->
     console.log "Subscribing to #{channel}"
-    @faye_client.subscribe channel, (data)=>
+    subscription = @faye_client.subscribe channel, (data)=>
       Kandan.Helpers.Channels.add_activity(data)
+    subscription.errback ()->
+      console.log "Oops! could not connect to the server"

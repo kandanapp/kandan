@@ -11,8 +11,17 @@ class Kandan.Helpers.Channels
       .eq(@selected_tab())
       .data('channel_id')
 
+  # TODO refactor this
   @add_activity: (activity_attributes)->
     activity = new Kandan.Models.Activity(activity_attributes)
     activity_view  = new Kandan.Views.ShowActivity({activity: activity})
-    @channel_el(activity.get('channel_id'))
-      .append(activity_view.render().el)
+    if activity.get('channel_id')
+      @channel_el(activity.get('channel_id'))
+        .append(activity_view.render().el)
+    else
+      $channel_elements = $("#channels .ui-tabs-panel")
+      for el in $channel_elements
+        console.log "appending to", $(el).attr('id')
+        activity = new Kandan.Models.Activity(activity_attributes)
+        activity_view  = new Kandan.Views.ShowActivity({activity: activity})
+        $(el).append(activity_view.render().el)

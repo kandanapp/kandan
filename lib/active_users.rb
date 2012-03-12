@@ -6,18 +6,20 @@ class ActiveUsers
   class << self
 
     def add(client_id, user)
-      publish_message "connected", user if not find_by_user_id(user.id)
-      @@users[client_id] = user
+      if not find_by_user_id(user.id)
+        @@users[client_id] = user
+        publish_message "connected", user
+      end
     end
 
     def remove_by_client_id(client_id)
       disconnected_user = @@users.delete(client_id)
-      publish_message "disconnected", disconnected_user if not find_by_user_id(disconnected_user.id)
+      publish_message "disconnected", disconnected_user if disconnected_user
     end
 
     def remove_by_user_id(user_id)
       client_id = find_by_user_id(user_id)
-      if not client_id
+      if client_id
         remove_by_client_id(client_id)
         return true
       end
