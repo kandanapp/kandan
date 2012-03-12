@@ -8,7 +8,7 @@
   <%- Kandan::Config.broadcaster.assets.each do |asset| %>
     <%= javascript_include_tag asset %>
   <%- end %>
-
+  
   <%= javascript_include_tag "application" %>
   <%= javascript_tag do %>
     <%- if user_signed_in? %>
@@ -20,6 +20,18 @@
           %>
       $.data(document, 'current_user', <%= current_user_data.to_json.html_safe %>);
     <%- end %>
+  <%- end %>
+
+  <%= javascript_tag do %>
+    
+  <%- end %>
+  
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+      $.each(Kandan.Plugins.all(), function(index, plugin){
+        eval(plugin).init()
+      })
+    })
   <%- end %>
 
   <%= csrf_meta_tags %>

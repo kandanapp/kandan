@@ -14,6 +14,7 @@ window.Kandan =
   Helpers:      {}
   Broadcasters: {}
   Data:         {}
+  Plugins:      {}
 
   init: ->
     channels = new Kandan.Collections.Channels()
@@ -29,9 +30,12 @@ window.Kandan =
       # TODO move broadcast subscription to a helper
       # TODO change this to use the broadcaster from the settings
       # TODO set as global to debug. remove later.
+      # TODO use wildcard channel names
       window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
       for channel in channels.models
         window.broadcaster.subscribe "/channels/#{channel.get('id')}"
+
+      console.log "plugins", Kandan.Plugins.all()
     })
 
 
