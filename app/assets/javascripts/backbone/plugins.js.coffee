@@ -6,3 +6,6 @@ class Kandan.Plugins
 
   @all: ()->
     @plugins
+
+  @init_all: ()->
+    eval(plugin).init() for plugin in @all()

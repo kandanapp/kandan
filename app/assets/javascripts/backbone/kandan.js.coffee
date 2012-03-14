@@ -35,7 +35,20 @@ window.Kandan =
       for channel in channels.models
         window.broadcaster.subscribe "/channels/#{channel.get('id')}"
 
-      console.log "plugins", Kandan.Plugins.all()
+      $(document).bind 'changeData', (element, name, value)->
+        if(name=="active_users")
+          callback() for callback in Kandan.Data.ActiveUsers.callbacks.change
+
+      active_users = new Kandan.Collections.ActiveUsers()
+      active_users.fetch({
+        success: ()->
+          # TODO fix because the current user doesnt get the first event
+          active_users.add([$(document).data('current_user')])
+          $(document).data("active_users", active_users.toJSON())
+          Kandan.Plugins.init_all()
+          Kandan.Widgets.init_all()
+      })
+
     })
 
 

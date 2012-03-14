@@ -1,4 +1,4 @@
 class Kandan.Helpers.ActiveUsers
 
-  @all: ()->
-    # TODO return the active users list
+  @all: (options)->
+    $(document).data("active_users")

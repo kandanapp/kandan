@@ -1,21 +1,19 @@
 class Kandan.Plugins.UserList
-  @active_users: ()->
-    console.log "active users", $(document).data("active_users")
-    $(document).data("active_users") || []
 
+  @widget_name: "user_list"
 
-  @render: ()->
-    users = []
-    for user in @active_users()
-      users.push user.first_name
-    $(".user_list").html(users.join ", ")
+  @render: ($el)->
+    console.log "rendering user list"
+    $users = $("<ul></ul>")
+
+    for user in Kandan.Data.ActiveUsers.all()
+      $users.append "<li>#{user.first_name} #{user.last_name}</li>"
+    $el.html($users)
 
   @init: ()->
-    console.log "user list plugin started"
-    $('body').prepend($("<div class='user_list'></div>"))
-    @render()
-    $(document).bind 'changeData', (event, name, value)=>
-      @render() if name == "active_users"
-
+    console.log "init user plugin"
+    Kandan.Widgets.register(@widget_name, "Kandan.Plugins.UserList")
+    Kandan.Data.ActiveUsers.register_callback "change", ()=>
+      Kandan.Widgets.render(@widget_name)
 
 Kandan.Plugins.register "Kandan.Plugins.UserList"

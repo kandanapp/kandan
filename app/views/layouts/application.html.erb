@@ -14,7 +14,8 @@
     <%- if user_signed_in? %>
       <%- current_user_data = {
             :id   => current_user.id,
-            :name => "#{current_user.first_name} #{current_user.last_name}",
+            :first_name => current_user.first_name,
+            :last_name  => current_user.last_name,
             :auth_token => current_user.authentication_token
           }
           %>
@@ -23,17 +24,9 @@
   <%- end %>
 
   <%= javascript_tag do %>
-    
+    $(document).data('active_users', [])
   <%- end %>
   
-  <%= javascript_tag do %>
-    $(document).ready(function(){
-      $.each(Kandan.Plugins.all(), function(index, plugin){
-        eval(plugin).init()
-      })
-    })
-  <%- end %>
-
   <%= csrf_meta_tags %>
 </head>
 <body>
