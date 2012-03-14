@@ -1,1 +1,1 @@
-<%= @activity.get('user').first_name %> <%= @activity.get('action') %>
+<%= @activity.user.first_name %> <%= @activity.action %>
