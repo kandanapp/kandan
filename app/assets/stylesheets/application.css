@@ -11,3 +11,6 @@
  *= require_self
  *= require_tree .
 */
+
+.container {width: 80%; float: left}
+.sidebar {width: 20%; float: right}

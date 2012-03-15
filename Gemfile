@@ -26,8 +26,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-# TODO remove git dependency after development
-gem 'ember-rails', :git => "https://github.com/emberjs/ember-rails.git"
 gem 'jquery-rails'
 
 gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
