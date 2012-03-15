@@ -21,11 +21,7 @@ window.Kandan =
     channels.fetch({success: ()=>
 
       chat_area = new Kandan.Views.ChatArea({channels: channels})
-      $('.container').html(chat_area.render().el)
 
-      chatbox = new Kandan.Views.Chatbox()
-      $('.container').append(chatbox.render().el)
-      $('#channels').tabs()
 
       # TODO move broadcast subscription to a helper
       # TODO change this to use the broadcaster from the settings
@@ -41,13 +37,24 @@ window.Kandan =
 
       active_users = new Kandan.Collections.ActiveUsers()
       active_users.fetch({
-        success: ()->
-          # TODO fix because the current user doesnt get the first event
+        success: ()=>
+          # NOTE fix because the current user doesn't get the first event
           active_users.add([$(document).data('current_user')])
           $(document).data("active_users", active_users.toJSON())
+
+          # NOTE init plugins so that modifiers are registered
           Kandan.Plugins.init_all()
+
+          $(".container").html(chat_area.render().el)
+          chatbox = new Kandan.Views.Chatbox()
+          $(".container").append(chatbox.render().el)
+          $('#channels').tabs()
+
+          # NOTE render widgets only after the chat area is rendered
           Kandan.Widgets.init_all()
       })
+
+
 
     })
 

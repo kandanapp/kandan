@@ -1,12 +1,11 @@
 class Kandan.Plugins.LinkEmbed
 
-  @regex: /http:\S*/g
-  @link_template: _.template('<a target="_blank" href="<%- url %>"><%- url %></a>')
+  @link_regex: /(http:\S*)/g
 
   @init: ()->
-    Kandan.Modifiers.register @regex, (message, state)=>
-      message.content = message.content
-        .replace(@regex, @link_template({ url: "$1" }))
-      return Kandan.Helpers.Activities.build_from_message_template(message)
+    # Kandan.Modifiers.register @regex, (message, state)=>
+    #   message.content = message.content
+    #     .replace(@regex, '<a target="_blank" href="$1">$1</a>')
+    #   return Kandan.Helpers.Activities.build_from_message_template(message)
 
-Kandan.Plugins.register "Kandan.Plugins.LinkEmbed"
+# Kandan.Plugins.register "Kandan.Plugins.LinkEmbed"
