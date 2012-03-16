@@ -1,6 +1,7 @@
 class Kandan.Plugins.UserList
 
-  @widget_name: "user_list"
+  @widget_title: "Users"
+  @widget_name: "users"
 
   @render: ($el)->
     $users = $("<ul></ul>")

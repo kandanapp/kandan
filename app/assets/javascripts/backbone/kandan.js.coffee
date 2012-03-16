@@ -48,7 +48,9 @@ window.Kandan =
           $(".container").html(chat_area.render().el)
           chatbox = new Kandan.Views.Chatbox()
           $(".container").append(chatbox.render().el)
-          $('#channels').tabs()
+          $('#channels').tabs({select: ()->
+            Kandan.Data.Channels.run_callbacks('change')
+          })
 
           # NOTE render widgets only after the chat area is rendered
           Kandan.Widgets.init_all()

@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(:version => 20120306163143) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "attachments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "channel_id"
+    t.integer  "message_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "channels", :force => true do |t|
     t.text     "name"
     t.datetime "created_at", :null => false

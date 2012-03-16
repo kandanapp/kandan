@@ -17,7 +17,8 @@ class Kandan.Widgets
     @init(widget_name) for widget_name in @widget_names()
 
   @init: (widget_name)->
-    $(".sidebar").append("<div class='#{widget_name}'></div>")
+    # TODO use the widget_name property on the plugin module to get the title
+    $(".sidebar").append("<h3>#{widget_name}</h3><div class='#{widget_name}'></div>")
     @render(widget_name)
 
   @render: (widget_name)->

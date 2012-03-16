@@ -1,15 +1,16 @@
 class Channel < ActiveRecord::Base
   has_many :activities
+  has_many :attachments
 
   class << self
-    def user_connected(user)
+    def user_connect(user)
       Channel.all.each do |channel|
         activity = channel.activities.build(:user_id => user.id, :action => "connect")
         activity.save
       end
     end
 
-    def user_disconnected(user)
+    def user_disconnect(user)
       Channel.all.each do |channel|
         activity = channel.activities.build(:user_id => user.id, :action => "disconnect")
         activity.save
