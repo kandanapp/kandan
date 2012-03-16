@@ -1,6 +1,7 @@
 class Kandan.Plugins.Attachments
 
   @widget_title: "Attachments"
+  @widget_name: "attachments"
   @plugin_namespace: "Kandan.Plugins.Attachments"
 
   @template: _.template('''
@@ -18,26 +19,40 @@ class Kandan.Plugins.Attachments
   @csrf_param: ->
     $('meta[name=csrf-param]').attr('content')
 
-
   @csrf_token: ->
     $('meta[name=csrf-token]').attr('content')
 
+  @file_item_template: _.template('''
+      <li><a href="<%= url %>"><%= file_name %></a></li>
+    ''')
 
+  # TODO this part is very bad for APIs! shoudnt be exposing a backbone collection in a plugin.
   @render: ($widget_el)->
+    console.log "current channel", @channel_id()
     $upload_form = @template({
       channel_id: @channel_id(),
       csrf_param: @csrf_param(),
       csrf_token: @csrf_token()
     })
-    $widget_el.append($upload_form)
-    # $widget_el.append($file_list)
+    $widget_el.html($upload_form)
+
+    $file_list = $("<ul></ul>")
+    attachments = new Kandan.Collections.Attachments([], {channel_id: @channel_id()})
+    attachments.fetch({success: (collection)=>
+      for model in collection.models
+        $file_list.append(@file_item_template({
+          file_name: model.get('file_file_name'),
+          url: model.get('url')
+        }))
+      $widget_el.append($file_list)
+    })
 
 
   @init: ()->
-    Kandan.Widgets.register "attachments", @plugin_namespace
+    Kandan.Widgets.register @widget_name, @plugin_namespace
     Kandan.Data.Channels.register_callback "change", ()=>
       console.log "channel changed"
-      #Kandan.Widgets.render(@widget_name)
+      Kandan.Widgets.render(@widget_name)
 
 
 Kandan.Plugins.register "Kandan.Plugins.Attachments"

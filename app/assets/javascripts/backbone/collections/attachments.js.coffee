@@ -1,3 +1,6 @@
 class Kandan.Collections.Attachments extends Backbone.Collection
   url: ()->
-    "/channels/#{@options.channel_id}/attachments"
+    "/channels/#{@channel_id}/attachments"
+
+  initialize: (models, options)->
+    @channel_id = options.channel_id
