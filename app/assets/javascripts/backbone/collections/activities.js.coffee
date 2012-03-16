@@ -1,7 +1,11 @@
 class Kandan.Collections.Activities extends Backbone.Collection
 
-  urlRoot: ()->
+  url: ()->
     "channels/#{@channel_id}/activities"
 
-  initialize: (options)->
-    @channel_id = @get('channel_id')
+  initialize: (models, options)->
+    @channel_id = options.channel_id
+
+  parse: (response)->
+    @more_activities = response.more_activities
+    response.activities

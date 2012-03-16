@@ -15,6 +15,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
       else
         @compiled_template = Kandan.Helpers.Activities.build_from_message_template $.extend(activity, {content: _.escape(activity.content)})
 
-
+    $(@el).data('activity_id', activity.id)
+    $(@el).attr('id', "activity-#{activity.id}")
     $(@el).html(@compiled_template)
     @

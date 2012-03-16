@@ -1,5 +1,5 @@
 class Kandan.Models.Activity extends Backbone.Model
-  urlRoot: ()->
+  url: ()->
     "channels/#{@get('channel_id')}/activities"
 
   initialize: (options)->

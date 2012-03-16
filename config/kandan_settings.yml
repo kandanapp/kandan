@@ -7,3 +7,5 @@
 # valid options: Faye
 :broadcaster:
   :name: "Faye"
+
+:per_page: 5

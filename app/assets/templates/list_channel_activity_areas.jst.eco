@@ -1,0 +1,3 @@
+<div class="pagination"><%= pagination_text %></div>
+<div class="channel-activities">
+</div>

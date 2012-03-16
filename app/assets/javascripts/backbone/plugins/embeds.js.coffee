@@ -22,7 +22,6 @@ class Kandan.Plugins.Embeds
   @register_image_modifier: ()->
     Kandan.Modifiers.register @image_regex, (message, state)=>
       message.content = @image_template({ image_url: message.content })
-      console.log message.content
       return Kandan.Helpers.Activities.build_from_message_template(message)
 
 

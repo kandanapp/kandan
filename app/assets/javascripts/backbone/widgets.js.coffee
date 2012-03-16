@@ -14,7 +14,6 @@ class Kandan.Widgets
     widget_names
 
   @init_all: ()->
-    console.log "widget_names", @widget_names()
     @init(widget_name) for widget_name in @widget_names()
 
   @init: (widget_name)->

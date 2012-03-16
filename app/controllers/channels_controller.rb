@@ -2,10 +2,24 @@ class ChannelsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @channels = Channel.includes(:activities => :user).all
+    # NOTE Eager loading doesn't respect limit
+    @channels = Channel.find(:all)
+    nested_channel_data = []
+
+    # TODO this can be shortened
+    @channels.each do |channel|
+      activities = []
+      more_activities = (channel.activities.count > Kandan::Config.options[:per_page])
+      channel.activities.order('id DESC').includes(:user).page.each do |activity|
+        activities.push activity.attributes.merge({:user => activity.user.attributes})
+      end
+
+      nested_channel_data.push channel.attributes.merge({:activities => activities.reverse, :more_activities => more_activities})
+    end
+    
     respond_to do |format|
       format.json do
-        render :json => @channels, :include => {:activities => {:include=>:user}}
+        render :text => nested_channel_data.to_json
       end
     end
   end
