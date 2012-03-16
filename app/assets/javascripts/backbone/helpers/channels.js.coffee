@@ -9,7 +9,6 @@ class Kandan.Helpers.Channels
   @selected_tab: ()->
     $('#channels').tabs('option', 'selected')
 
-
   @get_active_channel_id: ()->
     $("#channels .ui-tabs-panel")
       .eq(@selected_tab())
