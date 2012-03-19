@@ -3,7 +3,6 @@ require 'paperclip'
 class Attachment < ActiveRecord::Base
   belongs_to :channel
   belongs_to :user
-  belongs_to :message
 
   has_attached_file :file,
                     :storage         => :s3,
