@@ -41,6 +41,9 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find params[:id]
     respond_to do |format|
+      format.html do
+        render :inline => "<pre><%= @activity.content %></pre>", :content_type => 'text/html'
+      end
       format.json { render :json => @activity }
     end
   end
