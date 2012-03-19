@@ -6,13 +6,21 @@ class Kandan.Helpers.Channels
   @channel_pagination_el: (channel_id)->
     $("#channels-#{channel_id} .pagination")
 
+  @get_channel_id_from_tab_index: (tab_index)->
+    $("#channels .ui-tabs-panel")
+      .eq(tab_index)
+      .data('channel_id')
+
   @selected_tab: ()->
-    $('#channels').tabs('option', 'selected')
+      $('#channels').tabs('option', 'selected')
 
   @get_active_channel_id: ()->
-    $("#channels .ui-tabs-panel")
-      .eq(@selected_tab())
-      .data('channel_id')
+    if $(document).data('active_channel_id') == undefined
+      return $("#channels .ui-tabs-panel")
+        .eq(@selected_tab())
+        .data('channel_id')
+    else
+      return $(document).data('active_channel_id')
 
 
   @new_activity_view: (activity_attributes)->

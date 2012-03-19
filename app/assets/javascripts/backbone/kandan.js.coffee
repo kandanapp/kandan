@@ -49,6 +49,8 @@ window.Kandan =
           chatbox = new Kandan.Views.Chatbox()
           $(".container").append(chatbox.render().el)
           $('#channels').tabs({select: (event, ui)->
+            $(document).data('active_channel_id',
+              Kandan.Helpers.Channels.get_channel_id_from_tab_index(ui.index))
             console.log "channel changed to index", ui.index
             Kandan.Data.Channels.run_callbacks('change')
           })
