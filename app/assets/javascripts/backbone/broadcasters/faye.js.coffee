@@ -11,6 +11,12 @@ class Kandan.Broadcasters.FayeBroadcaster
           }
         callback(message)
     }
+    @faye_client.bind "transport:down", ()->
+      console.log "Comm link to Cybertron is down!"
+
+    @faye_client.bind "transport:up", ()->
+      console.log "Comm link is up!"
+
     @faye_client.addExtension(auth_extension)
     @faye_client.subscribe "/app/activities", (data)=>
       $(document).data('active_users', data.data.active_users)
@@ -21,7 +27,6 @@ class Kandan.Broadcasters.FayeBroadcaster
 
 
   subscribe: (channel)->
-    console.log "Subscribing to #{channel}"
     subscription = @faye_client.subscribe channel, (data)=>
       Kandan.Helpers.Channels.add_activity(data)
     subscription.errback(()->

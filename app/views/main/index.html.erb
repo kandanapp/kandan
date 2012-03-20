@@ -1,17 +1,8 @@
-<div class="container">
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    Kandan.init()
+  })
+<%- end %>
 
-  <%= javascript_tag do %>
-    $(function()
-    {
-      var channels_json = <%= @channels.to_json(
-                                :include => {
-                                  :activities => {
-                                    :include=>:user
-                                  }
-                                }).html_safe %>
-    });
-  <%- end %>
-  
-</div>
-<div class="sidebar">
-</div>
+<div class="container"></div>
+<div class="sidebar"></div>

@@ -33,7 +33,7 @@ window.Kandan =
 
       $(document).bind 'changeData', (element, name, value)->
         if(name=="active_users")
-          callback() for callback in Kandan.Data.ActiveUsers.callbacks.change
+          Kandan.Data.ActiveUsers.run_callbacks('change')
 
       active_users = new Kandan.Collections.ActiveUsers()
       active_users.fetch({
@@ -55,14 +55,6 @@ window.Kandan =
             Kandan.Data.Channels.run_callbacks('change')
           })
 
-          # NOTE render widgets only after the chat area is rendered
           Kandan.Widgets.init_all()
       })
-
-
-
     })
-
-
-$(document).ready ->
-  Kandan.init()

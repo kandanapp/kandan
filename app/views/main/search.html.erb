@@ -1,0 +1,18 @@
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    Kandan.Plugins.init_all()
+    activities = <%= @activities.to_json(:include => :user).html_safe %>;
+    
+    $.each(activities, function(index, activity_attributes) {
+      activity = new Kandan.Models.Activity(activity_attributes)
+      activity_view = new Kandan.Views.ShowActivity({activity: activity});
+      $('.activities').html(activity_view.render().el);
+    })
+  })
+
+<%- end %>
+
+<div class='activities'>
+</div>
+
+

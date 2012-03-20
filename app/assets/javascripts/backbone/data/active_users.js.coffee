@@ -7,6 +7,9 @@ class Kandan.Data.ActiveUsers
   @register_callback: (event, callback)->
     @callbacks[event].push(callback)
 
+  @run_callbacks: (event)->
+    callback() for callback in @callbacks[event]
+
   @unregister_callback: (event, callback)->
     delete @callbacks[@callbacks.indexOf(callback)]
     @callbacks.filter (element, index, array)->
