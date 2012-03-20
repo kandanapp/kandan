@@ -12,7 +12,7 @@ class Kandan.Helpers.Channels
       .data('channel_id')
 
   @selected_tab: ()->
-      $('#channels').tabs('option', 'selected')
+    $('#channels').tabs('option', 'selected')
 
   @get_active_channel_id: ()->
     if $(document).data('active_channel_id') == undefined
@@ -23,6 +23,18 @@ class Kandan.Helpers.Channels
       return $(document).data('active_channel_id')
 
 
+  @channel_not_exists: (channel_id)->
+    $("#channels-#{channel_id}").length == 0
+
+  @create_channel_area: (channel)->
+    console.log channel
+    channel_area = "#channels-#{channel.id}"
+    $("#channels").tabs('add', channel_area, channel.name)
+    channel = new Kandan.Models.Channel(channel)
+    view = new Kandan.Views.ListActivities({channel: channel})
+    $(channel_area).html $(view.render().el).html()
+
+
   @new_activity_view: (activity_attributes)->
     activity = new Kandan.Models.Activity(activity_attributes)
     activity_view  = new Kandan.Views.ShowActivity({activity: activity})
@@ -30,6 +42,9 @@ class Kandan.Helpers.Channels
 
 
   @add_activity: (activity_attributes, state)->
+    if activity_attributes.channel!=undefined && @channel_not_exists(activity_attributes.channel_id)
+      @create_channel_area(activity_attributes.channel)
+
     if activity_attributes.channel_id
       @add_message(activity_attributes, state)
     else
@@ -44,6 +59,7 @@ class Kandan.Helpers.Channels
 
   @add_notification: (activity_attributes)->
     $channel_elements = $(".channel-activities")
+    activity_attributes["created_at"] = new Date()
     for el in $channel_elements
       $(el).append(@new_activity_view(activity_attributes).render().el)
 
@@ -51,15 +67,12 @@ class Kandan.Helpers.Channels
   @set_pagination_state: (channel_id, more_activities, oldest)->
     @channel_pagination_el(channel_id).data('oldest', oldest)
     if more_activities == true
-      console.log "show pagination"
       @channel_pagination_el(channel_id).show()
     else
-      console.log "hide pagination"
       @channel_pagination_el(channel_id).hide()
 
 
   @set_pagination_data: (channel_id)->
     $oldest_activity = @channel_activities_el(channel_id).find(".activity").first()
     if $oldest_activity.length != 0
-      console.log "oldest activity id", $oldest_activity.data('activity_id')
       @channel_pagination_el(channel_id).data('oldest', $oldest_activity.data('activity_id'))

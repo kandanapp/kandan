@@ -11,6 +11,7 @@ class Kandan.Views.Chatbox extends Backbone.View
 
     if event.keyCode== 13
       $chatbox = $(".chatbox")
+      console.log "post channel", Kandan.Helpers.Channels.get_active_channel_id()
 
       activity = new Kandan.Models.Activity({
         'content':    $chatbox.val(),
@@ -21,7 +22,6 @@ class Kandan.Views.Chatbox extends Backbone.View
       activity.save({},{success: ()->
         console.log "posted! enjoy your day"
       })
-
 
   render: ()->
     $(@el).html(@template())

@@ -3,9 +3,9 @@ class Kandan.Views.ShowActivity extends Backbone.View
   tagName: 'p'
   className: 'activity'
 
-
   render: ()->
     activity = @options.activity.toJSON()
+    activity.created_at = Kandan.Helpers.Utils.time_to_string(new Date(activity.created_at))
     if activity.action != "message"
       @compiled_template = JST['user_notification']({activity: activity})
     else

@@ -21,15 +21,15 @@ window.Kandan =
     channels.fetch({success: ()=>
 
       chat_area = new Kandan.Views.ChatArea({channels: channels})
-
+      create_channel = new Kandan.Views.CreateChannel()
+      $(".create_channel").html create_channel.render().el
 
       # TODO move broadcast subscription to a helper
       # TODO change this to use the broadcaster from the settings
       # TODO set as global to debug. remove later.
       # TODO use wildcard channel names
       window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
-      for channel in channels.models
-        window.broadcaster.subscribe "/channels/#{channel.get('id')}"
+      window.broadcaster.subscribe "/channels/*" ##{channel.get('id')}
 
       $(document).bind 'changeData', (element, name, value)->
         if(name=="active_users")
@@ -44,6 +44,7 @@ window.Kandan =
 
           # NOTE init plugins so that modifiers are registered
           Kandan.Plugins.init_all()
+
 
           $(".container").html(chat_area.render().el)
           chatbox = new Kandan.Views.Chatbox()

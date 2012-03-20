@@ -9,17 +9,20 @@ class Kandan.Views.ListActivities extends Backbone.View
   render: ()->
     @channel = @options.channel
     $activities_list = $("<div class='channel-activities'></div>").attr('id', "channel-activities-#{@channel.get('id')}")
-    for activity in @channel.activities.models
-      activity_view = new Kandan.Views.ShowActivity({activity: activity, state: Kandan.Helpers.Activities.HISTORY_STATE})
-      $activities_list.append(activity_view.render().el)
+    oldest = 0
+
+    if @channel.activities
+      console.log "channel has activities"
+      for activity in @channel.activities.models
+        activity_view = new Kandan.Views.ShowActivity({activity: activity, state: Kandan.Helpers.Activities.HISTORY_STATE})
+        $activities_list.append(activity_view.render().el)
+      oldest = @channel.activities.toJSON()[0].id if @channel.activities.toJSON()[0]
 
     $pagination = $("<div class='pagination'>previous messages</div>")
-    oldest = 0
-    oldest = @channel.activities.toJSON()[0].id if @channel.activities.toJSON()[0]
 
     $pagination.data('oldest', oldest)
     $(@el).append($pagination)
-    $(@el).find(".pagination").hide() if @channel.more_activities == false
+    $(@el).find(".pagination").hide() if @channel.more_activities != true
     $(@el).append($activities_list)
     $(@el).attr('id', "channels-#{@channel.get('id')}")
     $(@el).data('channel_id', @channel.get('id'))

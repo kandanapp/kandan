@@ -1,1 +1,1 @@
-<%= @activity.user.first_name %> <%= @activity.action %>ed <%= @activity.content %>
+<%= @activity.created_at %>: <%= @activity.user.first_name %> <%= @activity.action %>ed <%= @activity.content %>

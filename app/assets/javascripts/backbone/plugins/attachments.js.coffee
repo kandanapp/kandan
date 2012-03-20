@@ -28,7 +28,6 @@ class Kandan.Plugins.Attachments
 
   # TODO this part is very bad for APIs! shoudnt be exposing a backbone collection in a plugin.
   @render: ($widget_el)->
-    console.log "current channel", @channel_id()
     $upload_form = @template({
       channel_id: @channel_id(),
       csrf_param: @csrf_param(),
@@ -51,7 +50,6 @@ class Kandan.Plugins.Attachments
   @init: ()->
     Kandan.Widgets.register @widget_name, @plugin_namespace
     Kandan.Data.Channels.register_callback "change", ()=>
-      console.log "channel changed"
       Kandan.Widgets.render(@widget_name)
 
 
