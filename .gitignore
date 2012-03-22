@@ -10,6 +10,9 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
+# sass-cache
+/app/assets/stylesheets/.sass-cache
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
