@@ -45,6 +45,7 @@ body {
   float: left;
 }
 
+
 .sidebar {
   @include full-height;
   background: $sidebar-bg;
@@ -54,12 +55,13 @@ body {
   right: 0px;
 
   .header {
+    @include background-image(linear-gradient($header-bg-1, $header-bg-2));
+    border-left: 1px solid #616D70;
     padding-top: 3px;
     padding-bottom: 3px;
     width: 100%;
     float: left;
     height: $header-height;
-    @include background-image(linear-gradient($header-bg-1, $header-bg-2));
 
     .search {
       width: 50%;
@@ -67,14 +69,14 @@ body {
       text-align: right;
 
       input {
+        @include border-radius(20px);
         width: 100%;
         background: $search-bg;
         border: 2px solid darken($search-bg, 10%);
         // @include box-shadow(inset -5px -5px -5px #505A5D);
-        @include border-radius(20px);
       }
-
     }
+
     .logo {
       text-align: right;
       float: left;
@@ -83,6 +85,7 @@ body {
   }
 
   .widgets {
+    border-left: 1px solid #F2F4F6;
     float: left;
     width: 100%;
     padding-left: 15px;
@@ -153,7 +156,8 @@ body {
 }
 
 #channels {
-  
+  border-right: 1px solid #CDD1D4;
+  margin-top: 0px;
 }
 
 .ui-widget-header {
@@ -165,8 +169,13 @@ body {
 
 .ui-tabs {
   padding: 0px;
+  margin-top: 0px;
   @include border-radius(0px);
   border: none;
+
+  .ui-tabs-nav {
+    border-right: 1px solid #404A4D;
+  }
 
   .ui-tabs-panel {
     @include border-top-radius(4px);
