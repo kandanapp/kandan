@@ -91,13 +91,16 @@ body {
     .widget {
       margin-top: 20px;
       border: 1px solid #D0D5D8;
-      @include border-radius(4px);
+      @include border-top-radius(4px);
+      @include border-bottom-radius(7px);
       background: #F3F8F9;
+      @include box-shadow(0px 2px #d1d6d9);
 
       .title {
         @include background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2));
         @include border-top-left-radius(4px);
         @include border-top-right-radius(4px);
+        border-bottom: 1px solid #DBDFE0;
 
         padding-left: 10px;
         padding-top: 5px;
