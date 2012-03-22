@@ -1,7 +1,6 @@
 class Kandan.Plugins.Attachments
 
-  @widget_title: "Attachments"
-  @widget_name: "attachments"
+  @widget_title: "Media"
   @plugin_namespace: "Kandan.Plugins.Attachments"
 
   @template: _.template('''
@@ -48,9 +47,9 @@ class Kandan.Plugins.Attachments
 
 
   @init: ()->
-    Kandan.Widgets.register @widget_name, @plugin_namespace
+    Kandan.Widgets.register @plugin_namespace
     Kandan.Data.Channels.register_callback "change", ()=>
-      Kandan.Widgets.render(@widget_name)
+      Kandan.Widgets.render @plugin_namespace
 
 
 Kandan.Plugins.register "Kandan.Plugins.Attachments"

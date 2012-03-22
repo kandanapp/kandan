@@ -1,0 +1,206 @@
+@import "lib/normalize";
+@import "bourbon";
+
+$main-area-width: 80%;
+$page-bg: #E6EBEE;
+$panel-bg: $page-bg;
+
+$sidebar-width: 20%;
+$sidebar-bg: #E6EBEE;
+
+$header-height: 30px;
+$header-bg-1: #566569;
+$header-bg-2: #3F494B;
+$search-bg: #5D676B;
+
+$widget-title-color: #7F8587;
+$widget-title-bg-1: #F3F8F9;
+$widget-title-bg-2: #DBDFE0;
+
+
+
+@mixin full-height {
+  min-height: 100%;
+  height: 100%;
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+html {
+  @include full-height;
+}
+
+body {
+  background: $page-bg;
+  height: 90%;
+  min-height: 90%;
+}
+
+
+.main-area {
+  @include full-height;
+  width: $main-area-width;
+  float: left;
+}
+
+.sidebar {
+  @include full-height;
+  background: $sidebar-bg;
+  width: $sidebar-width;
+  float: left;
+  position: fixed;
+  right: 0px;
+
+  .header {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    float: left;
+    height: $header-height;
+    @include background-image(linear-gradient($header-bg-1, $header-bg-2));
+
+    .search {
+      width: 50%;
+      float: left;
+      text-align: right;
+
+      input {
+        width: 100%;
+        background: $search-bg;
+        border: 2px solid darken($search-bg, 10%);
+        // @include box-shadow(inset -5px -5px -5px #505A5D);
+        @include border-radius(20px);
+      }
+
+    }
+    .logo {
+      text-align: right;
+      float: left;
+      width: 50%;
+    }
+  }
+
+  .widgets {
+    float: left;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .widget {
+      margin-top: 20px;
+      border: 1px solid #D0D5D8;
+      @include border-radius(4px);
+      background: #F3F8F9;
+
+      .title {
+        @include background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2));
+        @include border-top-left-radius(4px);
+        @include border-top-right-radius(4px);
+
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        font-size: 13px;
+        text-transform: uppercase;
+        color: $widget-title-color;
+      }
+
+      .content {
+        background: #F3F8F9;
+      }
+    }
+  }
+}
+
+.chatbox-area {
+  @include background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2));
+  margin-top: 0px 10px 0px 10px;
+  padding: 10px 20px 15px 20px;
+  position: fixed;
+  bottom: 20px;
+  width: $main-area-width;
+
+  textarea {
+    @include border-top-left-radius(4px);
+    @include border-bottom-left-radius(4px);
+    border: 1px solid #AEB9BD;
+    width: 92.75%;
+    padding: 0px;
+    margin: 0px;
+    resize: none;
+    height: 40px;
+  }
+
+  button {
+    position: relative;
+    left: -10px;
+    @include background-image(linear-gradient(#C8ECF6, #9FDFF4));
+    @include border-top-right-radius(4px);
+    @include border-bottom-right-radius(4px);
+    border: 1px solid #AEB9BD;
+    color: #59808B;
+    width: 7%;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+  }
+}
+
+#channels {
+  
+}
+
+.ui-widget-header {
+  @include background-image(linear-gradient($header-bg-1, $header-bg-2));
+  @include border-radius(0px);
+  height: $header-height;
+  border: none;
+}
+
+.ui-tabs {
+  padding: 0px;
+  @include border-radius(0px);
+  border: none;
+
+  .ui-tabs-panel {
+    @include border-top-radius(4px);
+    margin-top: $header-height + 10;
+    margin-right: 20px;
+    margin-left: 20px;
+    background: #FFF;
+  }
+
+  .ui-widget-content {
+    height: 90%;
+    min-height: 90%;
+    margin-bottom: 200px;
+    overflow-y: scroll;
+  }
+
+  .ui-tabs-nav
+  {
+    position: fixed;
+    width: 80%;
+    top: 0px;
+    li a {
+      padding: 3px;
+    }
+  }
+}
+
+.ui-corner-all .ui-corner-bottom, .ui-corner-bottom, .ui-corner-left, .ui-corner-right, .ui-corner-bl, .ui-corner-br {
+  @include border-radius(none);
+}
+
+.ui-state-default {
+  font-size: 14px;
+}
+
+
+.ui-widget-content {
+  @include full-height;
+  background: $panel-bg;
+}

@@ -2,7 +2,7 @@ class Kandan.Plugins.MusicPlayer
 
   @plugin_namespace: "Kandan.Plugins.MusicPlayer"
   @plugin_id: ""
-  @widget_name: "music_player"
+  @widget_title: "Player"
   @play_regex: /^\/play .+/
   @stop_regex: /^\/stop/
   @local_song_data: false
@@ -49,7 +49,7 @@ class Kandan.Plugins.MusicPlayer
 
 
   @register_widget: ()->
-    Kandan.Widgets.register @widget_name, @plugin_namespace
+    Kandan.Widgets.register @plugin_namespace
 
 
   @register_modifier: ()->
@@ -72,7 +72,7 @@ class Kandan.Plugins.MusicPlayer
         Kandan.Store.set @plugin_id, {
           success: (data)->
             @local_song_data = data
-            Kandan.Widgets.render_widget @widget_name
+            Kandan.Widgets.render_widget @plugin_namespace
         }
     })
 

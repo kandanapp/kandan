@@ -22,7 +22,7 @@ window.Kandan =
 
       chat_area = new Kandan.Views.ChatArea({channels: channels})
       create_channel = new Kandan.Views.CreateChannel()
-      $(".create_channel").html create_channel.render().el
+      # $(".create_channel").html create_channel.render().el
 
       # TODO move broadcast subscription to a helper
       # TODO change this to use the broadcaster from the settings
@@ -46,9 +46,9 @@ window.Kandan =
           Kandan.Plugins.init_all()
 
 
-          $(".container").html(chat_area.render().el)
+          $(".main-area").html(chat_area.render().el)
           chatbox = new Kandan.Views.Chatbox()
-          $(".container").append(chatbox.render().el)
+          $(".main-area").append(chatbox.render().el)
           $('#channels').tabs({select: (event, ui)->
             $(document).data('active_channel_id',
               Kandan.Helpers.Channels.get_channel_id_from_tab_index(ui.index))

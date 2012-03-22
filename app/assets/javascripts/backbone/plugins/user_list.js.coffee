@@ -1,7 +1,8 @@
 class Kandan.Plugins.UserList
 
-  @widget_title: "Users"
+  @widget_title: "People"
   @widget_name: "users"
+  @plugin_namespace: "Kandan.Plugins.UserList"
 
   @render: ($el)->
     $users = $("<ul></ul>")
@@ -12,8 +13,8 @@ class Kandan.Plugins.UserList
 
 
   @init: ()->
-    Kandan.Widgets.register(@widget_name, "Kandan.Plugins.UserList")
+    Kandan.Widgets.register @plugin_namespace
     Kandan.Data.ActiveUsers.register_callback "change", ()=>
-      Kandan.Widgets.render(@widget_name)
+      Kandan.Widgets.render @plugin_namespace
 
 Kandan.Plugins.register "Kandan.Plugins.UserList"

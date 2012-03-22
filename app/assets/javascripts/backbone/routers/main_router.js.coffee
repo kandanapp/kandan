@@ -5,5 +5,5 @@ class Kandan.Routers.Main extends Backbone.Router
 
   index: ()->
     view = new Kandan.Views.ChatArea()
-    $('.container').html(view.render().el)
+    $('.main-area').html(view.render().el)
     $('.channels').tabs()

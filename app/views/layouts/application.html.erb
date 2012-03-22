@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Kandan</title>
-  <%= stylesheet_link_tag  "application", :media => "all" %>
   <%= stylesheet_link_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" %>
+  <%= stylesheet_link_tag  "application", :media => "all" %>
 
   <%- Kandan::Config.broadcaster.assets.each do |asset| %>
     <%= javascript_include_tag asset %>
