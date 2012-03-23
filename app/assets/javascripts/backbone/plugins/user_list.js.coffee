@@ -4,11 +4,22 @@ class Kandan.Plugins.UserList
   @widget_name: "users"
   @plugin_namespace: "Kandan.Plugins.UserList"
 
+  @template: _.template '''
+    <div class="user">
+      <div class="avatar"><img src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25"/></div>
+      <div class="name"><%= name %></div>
+    </div>
+  '''
+
   @render: ($el)->
-    $users = $("<ul></ul>")
+    $users = $("<div class='user_list'></div>")
 
     for user in Kandan.Data.ActiveUsers.all()
-      $users.append "<li>#{user.first_name} #{user.last_name}</li>"
+      console.log "hash", user.gravatar_hash
+      $users.append @template({
+        name: "#{user.first_name} #{user.last_name}",
+        gravatar_hash: user.gravatar_hash
+      })
     $el.html($users)
 
 
@@ -16,5 +27,3 @@ class Kandan.Plugins.UserList
     Kandan.Widgets.register @plugin_namespace
     Kandan.Data.ActiveUsers.register_callback "change", ()=>
       Kandan.Widgets.render @plugin_namespace
-
-Kandan.Plugins.register "Kandan.Plugins.UserList"

@@ -52,4 +52,4 @@ class Kandan.Plugins.Attachments
       Kandan.Widgets.render @plugin_namespace
 
 
-Kandan.Plugins.register "Kandan.Plugins.Attachments"
+# Kandan.Plugins.register "Kandan.Plugins.Attachments"

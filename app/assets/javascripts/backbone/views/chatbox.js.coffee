@@ -4,24 +4,27 @@ class Kandan.Views.Chatbox extends Backbone.View
   tagName: 'div'
   className: 'chatbox-area'
 
+
   events:
-    "keypress .chatbox": 'postMessage'
+    "keypress    .chatbox": 'post_message_on_enter'
+    "click   .post-button": 'post_message'
 
-  postMessage: (event)->
 
-    if event.keyCode== 13
-      $chatbox = $(".chatbox")
-      console.log "post channel", Kandan.Helpers.Channels.get_active_channel_id()
+  post_message_on_enter: (event)->
+    @post_message() if event.keyCode== 13
 
-      activity = new Kandan.Models.Activity({
-        'content':    $chatbox.val(),
-        'action':     'message',
-        'channel_id': Kandan.Helpers.Channels.get_active_channel_id()
-      })
 
-      activity.save({},{success: ()->
-        console.log "posted! enjoy your day"
-      })
+  post_message: (event)->
+    $chatbox = $(".chatbox")
+    activity = new Kandan.Models.Activity({
+      'content':    $chatbox.val(),
+      'action':     'message',
+      'channel_id': Kandan.Helpers.Channels.get_active_channel_id()
+    })
+
+    activity.save({},{success: ()->
+      $(".chatbox").val("")
+    })
 
   render: ()->
     $(@el).html(@template())

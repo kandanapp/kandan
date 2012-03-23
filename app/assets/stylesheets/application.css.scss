@@ -97,6 +97,8 @@ body {
       @include border-top-radius(4px);
       @include border-bottom-radius(7px);
       background: #F3F8F9;
+      float: left;
+      width: 100%;
       @include box-shadow(0px 2px #d1d6d9);
 
       .title {
@@ -104,6 +106,9 @@ body {
         @include border-top-left-radius(4px);
         @include border-top-right-radius(4px);
         border-bottom: 1px solid #DBDFE0;
+        
+        float: left;
+        width: 100%;
 
         padding-left: 10px;
         padding-top: 5px;
@@ -115,25 +120,32 @@ body {
       }
 
       .content {
+        @include border-bottom-radius(7px);
+        float: left;
+        width: 100%;
         background: #F3F8F9;
+        padding-left: 10px;
       }
     }
   }
 }
 
 .chatbox-area {
+  @include border-bottom-radius(4px);
   @include background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2));
-  margin-top: 0px 10px 0px 10px;
-  padding: 10px 20px 15px 20px;
+  @include box-shadow(5px 0px 5px -3px #CCC, -5px 0px 5px -3px #CCC, 0px 5px 5px 0px #CCC);
+  border-top: 1px solid #EBEFF1;
+  margin: 0px 20px 0px 20px;
+  padding: 10px 0px 10px 10px;
   position: fixed;
   bottom: 20px;
-  width: $main-area-width;
+  width: $main-area-width - 3.2%;
 
   textarea {
     @include border-top-left-radius(4px);
     @include border-bottom-left-radius(4px);
     border: 1px solid #AEB9BD;
-    width: 92.75%;
+    width: 92%;
     padding: 0px;
     margin: 0px;
     resize: none;
@@ -141,11 +153,11 @@ body {
   }
 
   button {
-    position: relative;
-    left: -10px;
     @include background-image(linear-gradient(#C8ECF6, #9FDFF4));
     @include border-top-right-radius(4px);
     @include border-bottom-right-radius(4px);
+    position: relative;
+    left: -5px;
     border: 1px solid #AEB9BD;
     color: #59808B;
     width: 7%;
@@ -178,6 +190,7 @@ body {
   }
 
   .ui-tabs-panel {
+    @include box-shadow(5px 0px 5px -3px #CCC, -5px 0px 5px -3px #CCC);
     @include border-top-radius(4px);
     margin-top: $header-height + 10;
     margin-right: 20px;
@@ -186,8 +199,8 @@ body {
   }
 
   .ui-widget-content {
-    height: 90%;
-    min-height: 90%;
+    height: 93%;
+    min-height: 93%;
     margin-bottom: 200px;
     overflow-y: scroll;
   }
@@ -215,4 +228,101 @@ body {
 .ui-widget-content {
   @include full-height;
   background: $panel-bg;
+  font-size: 13px;
+}
+
+.pagination {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+//
+// Activity
+//
+
+.activity {
+  float: left;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DEE6E8;
+
+  .avatar {
+    float: left;
+    width: 5%;
+  }
+  
+  .readable {
+    float: left;
+    width: 95%;
+
+    .user {
+      color: #AEB9BD;
+      font-weight: bold;
+      float: left;
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    .content {
+      float: left;
+      width: 85.5%;
+      color: #797D7F;
+
+      .image-preview, .youtube-preview {
+        a { width: 100%; }
+        @include border-radius(4px);
+        @include box-shadow(0px 1px 5px 0px #CCC);
+        padding: 10px;
+        background: #F3F8F9;
+        float: left;
+        .name {
+          color: #878D8F;
+          font-weight: bold;
+          margin-top: 5px;
+        }
+      }
+
+    }
+
+    .posted_at {
+      float: left;
+      width: 14.5%;
+      span {
+        @include border-radius(4px);
+        padding: 4px;
+        background: #F3F8F9;
+        color: #BDC6CA;
+      }
+    }
+  }
+}
+
+
+//
+// UserList plugin
+//
+
+.user_list {
+  font-size: 13px;
+  padding-bottom: 10px;
+  float: left;
+  
+  .user {
+    float: left;
+    display: block;
+    margin-top: 10px;
+
+    .avatar {
+      padding-right: 10px;
+      float: left;
+    }
+    .name {
+      float:left;
+      margin-top: 5px;
+      font-weight: bold;
+      color: #585D5F;
+    }
+  }
 }

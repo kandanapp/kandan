@@ -1,1 +1,17 @@
-<%= @activity.created_at %>: <%= @activity.user.first_name %> <%= @activity.action %>ed <%= @activity.content %>
+<div class="avatar">
+  <img src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30"/>
+</div>
+
+<div class="readable">
+  <div class="user">
+    Kandan bot
+  </div>
+
+  <div class="content">
+    <%= @activity.user.first_name %> <%= @activity.action %>ed
+  </div>
+
+  <div class="posted_at">
+    <span><%= @activity.created_at %></span>
+  </div>
+</div>

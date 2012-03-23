@@ -1,5 +1,20 @@
 class Kandan.Helpers.Utils
 
+  @months: [
+    "January"
+    ,"February"
+    ,"March"
+    ,"April"
+    ,"May"
+    ,"June"
+    ,"July"
+    ,"August"
+    ,"September"
+    ,"October"
+    ,"November"
+    ,"December"
+  ]
+
   @time_to_string: (time) ->
     return time if (typeof time != "object")
     am = time.getHours() < 12
@@ -10,4 +25,4 @@ class Kandan.Helpers.Utils
       hours = hours - 12 if hours != 12
     minutes = time.getMinutes().toString()
     minutes = "0#{minutes}" if minutes.length == 1
-    return "#{ time.getFullYear() }-#{ time.getMonth() + 1 }-#{ time.getDate() } #{ hours }:#{ minutes }#{ ampm }"
+    return "#{ time.getDate() }-#{ @months[time.getMonth()].slice(0,3).toUpperCase() }-#{ time.getFullYear().toString().slice(2,4) } #{ hours }:#{ minutes } #{ ampm }"

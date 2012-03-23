@@ -81,4 +81,4 @@ class Kandan.Plugins.MusicPlayer
     Kandan.Store.get @plugin_id, callbacks
 
 
-Kandan.Plugins.register "Kandan.Plugins.MusicPlayer"
+# Kandan.Plugins.register "Kandan.Plugins.MusicPlayer"

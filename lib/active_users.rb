@@ -1,44 +1,55 @@
 class ActiveUsers
 
   # TODO has to account for users signed on from multiple devices
+  # key: user_id
+  # value: {:user => user_object, :client_ids: [] }
+  
   @@users = {}
   
   class << self
 
     def add(client_id, user)
       if not find_by_user_id(user.id)
-        @@users[client_id] = user
+        @@users[user.id] = {:user => user, :client_ids => [client_id]}
         publish_message "connect", user
+      else
+        @@users[user.id][:client_ids].push client_id
       end
     end
 
     def remove_by_client_id(client_id)
-      disconnected_user = @@users.delete(client_id)
-      publish_message "disconnect", disconnected_user if disconnected_user
+      user_id = find_by_client_id(client_id)
+      if user_id
+        @@users[user_id][:client_ids].delete client_id
+        if @@users[user_id][:client_ids].empty?
+          publish_message "disconnect", @@users[user_id][:user]
+          @@users.delete(user_id)
+        end
+      end
     end
 
     def remove_by_user_id(user_id)
-      client_id = find_by_user_id(user_id)
-      if client_id
-        remove_by_client_id(client_id)
-        return true
+      @@users.delete(user_id)
+    end
+
+    def find_by_client_id(client_id)
+      @@users.each do |user_id, detail|
+        return user_id if detail[:client_ids].include?(client_id)
       end
       false
     end
 
-    def find_by_client_id(client_id)
-      @@users[client_id]
-    end
-
     def find_by_user_id(user_id)
-      @@users.each_pair do |client_id, user|
-        return client_id if user.id == user_id
-      end
+      return @@users[user_id][:client_ids] if @@users.keys.include?(user_id)
       false
     end
 
     def all
-      @@users.values
+      users = []
+      @@users.values.each do |detail|
+        users.push detail[:user]
+      end
+      return users
     end
 
     def publish_message(event, user)

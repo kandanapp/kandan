@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   devise :bushido_authenticatable, :token_authenticatable, :trackable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :ido_id, :first_name, :last_name, :locale
+  attr_accessible :id, :email, :password, :password_confirmation, :remember_me, :ido_id, :first_name, :last_name, :locale, :gravatar_hash
 
   def bushido_extra_attributes(extra_attributes)
     self.first_name = extra_attributes["first_name"].to_s

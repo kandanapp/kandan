@@ -1,6 +1,6 @@
 class Kandan.Views.ShowActivity extends Backbone.View
 
-  tagName: 'p'
+  tagName: 'div'
   className: 'activity'
 
   render: ()->

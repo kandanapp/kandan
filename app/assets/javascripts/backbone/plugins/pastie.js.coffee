@@ -18,4 +18,4 @@ class Kandan.Plugins.Pastie
       console.log "pastie man!"
       return Kandan.Helpers.Activities.build_from_message_template(message)
 
-Kandan.Plugins.register "Kandan.Plugins.Pastie"
+# Kandan.Plugins.register "Kandan.Plugins.Pastie"

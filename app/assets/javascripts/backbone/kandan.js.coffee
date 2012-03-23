@@ -16,6 +16,22 @@ window.Kandan =
   Data:         {}
   Plugins:      {}
 
+  # TODO this is a helper method to register plugins
+  # in the order required until we come up with plugin management
+  register_plugins: ->
+    plugins = [
+      "UserList"
+      ,"YouTubeEmbed"
+      ,"ImageEmbed"
+      ,"LinkEmbed"
+      ,"Pastie"
+      ,"Attachments"
+      ,"MeAnnounce"
+    ]
+
+    for plugin in plugins
+      Kandan.Plugins.register "Kandan.Plugins.#{plugin}"
+
   init: ->
     channels = new Kandan.Collections.Channels()
     channels.fetch({success: ()=>
@@ -37,12 +53,17 @@ window.Kandan =
 
       active_users = new Kandan.Collections.ActiveUsers()
       active_users.fetch({
-        success: ()=>
-          # NOTE fix because the current user doesn't get the first event
-          active_users.add([$(document).data('current_user')])
-          $(document).data("active_users", active_users.toJSON())
+        success: (collection)->
+          # NOTE fix because the current user doesn't get the connect event for self
+          current_user = $(document).data('current_user')
+          current_user_present = false
+          for active_user in collection.models
+            current_user_present = true if active_user.get('id') == current_user.id
+          collection.add([$(document).data('current_user')]) if current_user_present == false
+          $(document).data("active_users", collection.toJSON())
 
           # NOTE init plugins so that modifiers are registered
+          Kandan.register_plugins()
           Kandan.Plugins.init_all()
 
 
