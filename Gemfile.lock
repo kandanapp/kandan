@@ -1,14 +1,3 @@
-GIT
-  remote: https://github.com/pivotal/jasmine-gem.git
-  revision: 5a7524ae9eaea4fe106a7aaa90ccfb1bc137abe7
-  branch: 1.2.rc1
-  specs:
-    jasmine (1.2.0.rc1)
-      jasmine-core (>= 1.2.0.rc1)
-      rack (>= 1.1)
-      rspec (>= 1.3.1)
-      selenium-webdriver (>= 0.1.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -117,7 +106,6 @@ GEM
       multi_json
       multi_xml
     i18n (0.6.0)
-    jasmine-core (1.2.0.rc1)
     journey (1.0.3)
     jquery-rails (2.0.1)
       railties (>= 3.2.0, < 5.0)
@@ -240,7 +228,6 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   faye
-  jasmine!
   jquery-rails
   kaminari
   paperclip

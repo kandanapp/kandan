@@ -33,7 +33,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
+# gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
 
 group :test do
   gem 'rspec-rails'
