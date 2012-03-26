@@ -27,7 +27,5 @@ class Kandan.Views.ChatArea extends Backbone.View
       console.log "create channel: #{channelName}"
 
   deleteChannel: (event)->
-    console.log "deleting channel"
     channelIndex = $(event.target).parent().prev().length
-    if channelIndex != 0
-      Kandan.Helpers.Channels.deleteChannel channelIndex
+    Kandan.Helpers.Channels.deleteChannel channelIndex if channelIndex != 0

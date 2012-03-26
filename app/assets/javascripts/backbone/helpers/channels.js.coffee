@@ -43,11 +43,18 @@ class Kandan.Helpers.Channels
     else
       return $(document).data('active_channel_id')
 
+  @confirmDeletion: ()->
+    confirmDeletion = confirm("Really delete the channel?")
+    return false if confirmDeletion == false
+    confirmAgain = confirm("Are you damn sure?")
+    return confirmAgain
+
+
   @deleteChannel: (channelIndex)->
     channelID = @get_channel_id_from_tab_index(channelIndex)
-    console.log "deleting channel ID #{channelID}"
-    channel = Kandan.Models.Channel({id: channelID})
-    console.log "could create channel"
+    channel = new Kandan.Models.Channel({id: channelID})
+    return false if @confirmDeletion() == false
+
     channel.destroy({success: ()=>
       $("#channels").tabs("remove", channelIndex)
     })
