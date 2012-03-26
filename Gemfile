@@ -34,9 +34,9 @@ group :assets do
 end
 
 # Test gems, obviously
-group :test do
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
+# group :test do
+#  gem 'rspec-rails'
+#  gem 'shoulda-matchers'
+#  gem 'factory_girl_rails'
   # gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
-end
+# end
