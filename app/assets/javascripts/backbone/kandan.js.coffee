@@ -78,6 +78,12 @@ window.Kandan =
               Kandan.Data.Channels.run_callbacks('change')
           })
 
+          $("#channels").tabs 'option', 'tabTemplate', '''
+            <li>
+              <a href="#{href}">#{label}</a>
+              <span class="ui-icon ui-icon-close">x</span>
+            </li>
+          '''
 
           Kandan.Widgets.init_all()
       })
