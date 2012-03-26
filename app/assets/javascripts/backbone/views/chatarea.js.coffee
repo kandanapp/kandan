@@ -4,8 +4,8 @@ class Kandan.Views.ChatArea extends Backbone.View
   # className: 'channels'
 
   events:
-    "click .delete_channel": "deleteChannel"
-    "click .create_channel"   : "createChannel"
+    "click .ui-icon-close" : "deleteChannel"
+    "click .create_channel": "createChannel"
 
   render: ->
     $(@el).html(@template({channels: @options.channels}))

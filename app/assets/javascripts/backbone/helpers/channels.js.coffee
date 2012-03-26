@@ -3,11 +3,6 @@ class Kandan.Helpers.Channels
   @options:
     autoScrollThreshold: 0.90
 
-  @templates:
-    addChannelButton: _.template '''
-        <span class="delete_channel">[x]</span>
-      '''
-
   @replaceCreateButton: ()->
     $tabNav = $(".create_channel").parent().parent()
     $createButton = $(".create_channel").parent().html()
@@ -65,7 +60,7 @@ class Kandan.Helpers.Channels
     channel_area = "#channels-#{channel.get('id')}"
     totalTabs = $("#channels").tabs("length")
 
-    $("#channels").tabs('add', channel_area, "#{channel.get("name")}#{@templates.addChannelButton()}", totalTabs)
+    $("#channels").tabs('add', channel_area, "#{channel.get("name")}", totalTabs)
     Kandan.Helpers.Channels.replaceCreateButton()
     view = new Kandan.Views.ListActivities({channel: channel})
     $(channel_area).html $(view.render().el).html()
