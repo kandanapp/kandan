@@ -207,8 +207,8 @@ body {
 
   .ui-tabs-nav
   {
-    position: fixed;
-    width: 80%;
+    position: relative;
+    width: 100%;
     top: 0px;
     li a {
       padding: 3px;
