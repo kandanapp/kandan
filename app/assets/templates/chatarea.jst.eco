@@ -1,8 +1,9 @@
 <ul>
   <% for channel in @channels.models: %>
     <li>
-      <a href="#<%= "channels-#{channel.get('id')}" %>"><%= channel.get('name') %></a>
+      <a href="#<%= "channels-#{channel.get('id')}" %>"><%= channel.get('name') %></a><span class="delete_channel">[x]</span>
     </li>
   <% end %>
+  <li><div class="create_channel">+</div></li>
 </ul>
 

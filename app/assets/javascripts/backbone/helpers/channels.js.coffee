@@ -1,5 +1,31 @@
 class Kandan.Helpers.Channels
 
+  @options:
+    autoScrollThreshold: 0.90
+
+  @templates:
+    addChannelButton: _.template '''
+        <span class="delete_channel">[x]</span>
+      '''
+
+  @replaceCreateButton: ()->
+    $tabNav = $(".create_channel").parent().parent()
+    $createButton = $(".create_channel").parent().html()
+    $tabNav.find(".create_channel").parent().remove()
+    $tabNav.append("<li>"+$createButton+"</li>")
+
+  @pastAutoScrollThreshold: (channel_id)->
+    currentPosition     = @currentScrollPosition channel_id
+    totalHeight         = $(document).height() - $(window).height()
+    scrollPercentage    = (currentPosition) / (totalHeight)
+    scrollPercentage > @options.autoScrollThreshold
+
+  @scrollToLatestMessage: (channel_id)->
+    $("#channels-#{channel_id}").scrollTop(100000)
+
+  @currentScrollPosition: (channel_id)->
+    $("#channels-#{channel_id}").scrollTop()
+
   @channel_activities_el: (channel_id)->
     $("#channel-activities-#{channel_id}")
 
@@ -22,17 +48,28 @@ class Kandan.Helpers.Channels
     else
       return $(document).data('active_channel_id')
 
+  @deleteChannel: (channelIndex)->
+    channelID = @get_channel_id_from_tab_index(channelIndex)
+    console.log "deleting channel ID #{channelID}"
+    channel = Kandan.Models.Channel({id: channelID})
+    console.log "could create channel"
+    channel.destroy({success: ()=>
+      $("#channels").tabs("remove", channelIndex)
+    })
 
   @channel_not_exists: (channel_id)->
     $("#channels-#{channel_id}").length == 0
 
+
   @create_channel_area: (channel)->
-    console.log channel
-    channel_area = "#channels-#{channel.id}"
-    $("#channels").tabs('add', channel_area, channel.name)
-    channel = new Kandan.Models.Channel(channel)
+    channel_area = "#channels-#{channel.get('id')}"
+    totalTabs = $("#channels").tabs("length")
+
+    $("#channels").tabs('add', channel_area, "#{channel.get("name")}#{@templates.addChannelButton()}", totalTabs)
+    Kandan.Helpers.Channels.replaceCreateButton()
     view = new Kandan.Views.ListActivities({channel: channel})
     $(channel_area).html $(view.render().el).html()
+    $(channel_area).data('channel_id', channel.get('id'))
 
 
   @new_activity_view: (activity_attributes)->
@@ -43,13 +80,18 @@ class Kandan.Helpers.Channels
 
   @add_activity: (activity_attributes, state)->
     if activity_attributes.channel!=undefined && @channel_not_exists(activity_attributes.channel_id)
-      @create_channel_area(activity_attributes.channel)
+      @create_channel_area(new Kandan.Models.Channel(activity_attributes.channel))
 
     if activity_attributes.channel_id
       @add_message(activity_attributes, state)
     else
       @add_notification(activity_attributes)
 
+    if activity_attributes.channel_id
+      channel_id = activity_attributes.channel_id
+    else
+      channel_id = @get_active_channel_id()
+    @scrollToLatestMessage(channel_id) if @pastAutoScrollThreshold(channel_id)
 
   @add_message: (activity_attributes, state)->
     @channel_activities_el(activity_attributes.channel_id)
