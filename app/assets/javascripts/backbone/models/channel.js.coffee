@@ -1,7 +1,5 @@
 class Kandan.Models.Channel extends Backbone.Model
-  urlRoot: ()->
-    console.log "called urlRoot"
-    '/channels'
+  urlRoot: '/channels'
 
   # initialize: ()->
     # console.log @activities
