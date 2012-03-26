@@ -1,21 +1,24 @@
 source 'https://rubygems.org'
 
+# Core gems
 gem 'rails', '3.2.2'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
+
+# Auth/Bushido gems
 gem 'devise'
 gem 'devise_bushido_authenticatable'
 gem 'bushido'
+
+# Server/transport gems
 gem 'thin'
 gem 'faye'
+
+# Helper gems
 gem 'kaminari'
 gem 'aws-sdk'
 gem 'paperclip'
 gem 'remotipart'
-
+gem 'jquery-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,36 +26,15 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bourbon'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'execjs'
+  gem 'execjs'   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'eco'
-  gem 'therubyracer'
-
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
-# gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
-
+# Test gems, obviously
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'capybara'
+  # gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
