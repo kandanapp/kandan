@@ -4,13 +4,18 @@ class Kandan.Plugins.Attachments
   @plugin_namespace: "Kandan.Plugins.Attachments"
 
   @template: _.template('''
-    <form accept-charset="UTF-8" action="/channels/<%= channel_id %>/attachments.json" data-remote="true" html="{:multipart=&gt;true}" id="file_upload" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓">
-      <input name="<%=csrf_param %>" type="hidden" value="<%= csrf_token %>"></div>
-      <input id="channel_id_<%= channel_id %>" name="channel_id[<%= channel_id %>]" type="hidden">
-      <input id="file" name="file" type="file">
-      <input name="commit" type="submit" value="Upload">
+    <form accept-charset="UTF-8" action="/channels/<%= channel_id %>/attachments.json" data-remote="true" html="{:multipart=&gt;true}" id="file_upload" method="post">
+      <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓">
+        <input name="<%=csrf_param %>" type="hidden" value="<%= csrf_token %>"/>
+      </div>
+      <input id="channel_id_<%= channel_id %>" name="channel_id[<%= channel_id %>]" type="hidden"/>
+      <input id="file" name="file" type="file"/>
+      <input name="commit" type="submit" value="Upload"/>
    </form>
   ''')
+
+  @supports_drop_upload: ()->
+    !!(window.File && window.FileList && window.FileReader)
 
   @channel_id: ()->
     Kandan.Data.Channels.active_channel_id()
