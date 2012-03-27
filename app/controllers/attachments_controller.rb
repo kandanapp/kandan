@@ -20,7 +20,6 @@ class AttachmentsController < ApplicationController
     @channel    = Channel.find(params[:channel_id])
     @attachment = Attachment.new(params[:attachment])
 
-
     @attachment.user_id = current_user.id
     @attachment.channel_id = @channel.id
     @attachment.file = params[:file]

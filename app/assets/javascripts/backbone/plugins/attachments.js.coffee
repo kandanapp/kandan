@@ -11,6 +11,7 @@ class Kandan.Plugins.Attachments
       <input id="channel_id_<%= channel_id %>" name="channel_id[<%= channel_id %>]" type="hidden"/>
       <input id="file" name="file" type="file"/>
       <input name="commit" type="submit" value="Upload"/>
+      <div class="dropzone" style="height: 100px;background-color: #000;"></div>
    </form>
   ''')
 
@@ -38,7 +39,7 @@ class Kandan.Plugins.Attachments
       csrf_token: @csrf_token()
     })
     $widget_el.html($upload_form)
-
+    @init_dropzone @channel_id()
     $file_list = $("<ul></ul>")
     attachments = new Kandan.Collections.Attachments([], {channel_id: @channel_id()})
     attachments.fetch({success: (collection)=>
@@ -50,6 +51,17 @@ class Kandan.Plugins.Attachments
       $widget_el.append($file_list)
     })
 
+
+  @init_dropzone: (channel_id)->
+    $(".dropzone").filedrop({
+      fallback_id: "file",
+      url: "/channels/#{channel_id}/attachments.json",
+      paramname: 'file',
+      uploadFinished: (i, file, response, time)->
+        console.log "upload complete"
+      dragOver: ->
+        console.log "reached dropzone!"
+    })
 
   @init: ()->
     Kandan.Widgets.register @plugin_namespace

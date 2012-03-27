@@ -31,6 +31,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'tane', :path => "../tane", :group => :development
+
 # Test gems, obviously
 group :test do
   gem 'rspec-rails'

@@ -2,6 +2,7 @@ class Kandan.Helpers.Channels
 
   @options:
     autoScrollThreshold: 0.90
+    maxActivities: 10
 
   @replaceCreateButton: ()->
     $tabNav = $(".create_channel").parent().parent()
@@ -49,6 +50,12 @@ class Kandan.Helpers.Channels
     confirmAgain = confirm("Are you damn sure?")
     return confirmAgain
 
+  @flushActivities: (channelID)->
+    $channelActivities = $("#channel-activities-#{channelID}")
+    if $channelActivities.children().length > @options.maxActivities
+      oldest = $channelActivities.children().first().data("activity_id")
+      $channelActivities.children().first().remove()
+      $channelActivities.prev().data("oldest", oldest)
 
   @deleteChannel: (channelIndex)->
     channelID = @get_channel_id_from_tab_index(channelIndex)
@@ -99,6 +106,7 @@ class Kandan.Helpers.Channels
     @channel_activities_el(activity_attributes.channel_id)
       .append(@new_activity_view(activity_attributes).render().el)
     @set_pagination_data(activity_attributes.channel_id)
+    # @flushActivities($(el).parent().data("channel_id"))
 
 
   @add_notification: (activity_attributes)->
@@ -106,6 +114,7 @@ class Kandan.Helpers.Channels
     activity_attributes["created_at"] = new Date()
     for el in $channel_elements
       $(el).append(@new_activity_view(activity_attributes).render().el)
+      @flushActivities($(el).parent().data("channel_id"))
 
 
   @set_pagination_state: (channel_id, more_activities, oldest)->
