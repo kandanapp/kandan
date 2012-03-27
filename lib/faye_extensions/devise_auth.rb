@@ -11,7 +11,7 @@ class DeviseAuth
         message['error'] = "Invalid auth token"
       end
     end
-    # puts "Message: #{message.inspect}"
+    puts "Message: #{message.inspect}"
     callback.call(message)
   end
 
