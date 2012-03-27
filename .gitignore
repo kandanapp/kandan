@@ -13,6 +13,8 @@
 # sass-cache
 /app/assets/stylesheets/.sass-cache
 
+.bushido
+
 /public/assets
 
 # Ignore all logfiles and tempfiles.
