@@ -10,6 +10,10 @@ class Kandan.Broadcasters.FayeBroadcaster
             auth_token: Kandan.Helpers.Users.current_user().auth_token
           }
         callback(message)
+
+      incoming: (message, callback)->
+        console.log "incoming", message
+        callback(message)
     }
     @faye_client.bind "transport:down", ()->
       console.log "Comm link to Cybertron is down!"
