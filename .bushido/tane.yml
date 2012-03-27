@@ -1,0 +1,35 @@
+---
+APP_TLD: bushi.do
+BUNDLE_WITHOUT: 
+BUSHIDO_APP: valiant-owl-8011
+BUSHIDO_APP_KEY: fbb73e00-5a56-012f-9dcd-123139107c37
+BUSHIDO_DOMAIN: valiant-owl-8011.bushi.do
+BUSHIDO_EVENTS: 
+BUSHIDO_HOST: bushi.do
+BUSHIDO_NAME: valiant-owl-8011
+BUSHIDO_PROJECT_NAME: tane
+BUSHIDO_SALT: rynda2tY8gKF3v9d60Gn5aXnVm8DFESk7QZb2t2HQ0rkW0cp6ajm5kWsfsmPeOVU
+BUSHIDO_SUBDOMAIN: valiant-owl-8011
+B_SQL_DB: valiant_owl_8011
+B_SQL_PASS: d3b97d563adcbe204e2694cf68cffbe26106f84a
+B_SQL_USER: valiant_owl_8011
+DATABASE_URL: 
+HOSTING_PLATFORM: bushido
+LANG: 
+PUBLIC_URL: http://valiant-owl-8011.gobushido.com
+RACK_ENV: 
+RAILS_ENV: development
+S3_ACCESS_KEY_ID: 
+S3_ARN: 
+S3_BUCKET: 
+SHARED_DATABASE_URL: 
+S3_PREFIX: valiant-owl-8011
+S3_SECRET_ACCESS_KEY: 
+STS_SESSION_TOKEN: 
+SMTP_AUTHENTICATION: plain
+SMTP_DOMAIN: valiant-owl-8011.gobushido.com
+SMTP_PASSWORD: rynda2tY8gKF3v9d60Gn5aXnVm8DFESk
+SMTP_PORT: '25'
+SMTP_SERVER: smtp.mailgun.org
+SMTP_TLS: 'true'
+SMTP_USER: postmaster@valiant-owl-8011.gobushido.com

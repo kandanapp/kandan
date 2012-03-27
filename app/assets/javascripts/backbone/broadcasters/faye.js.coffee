@@ -28,6 +28,7 @@ class Kandan.Broadcasters.FayeBroadcaster
 
   subscribe: (channel)->
     subscription = @faye_client.subscribe channel, (data)=>
+      console.log "faye", data
       Kandan.Helpers.Channels.add_activity(data)
     subscription.errback(()->
       alert "Oops! could not connect to the server"
