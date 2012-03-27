@@ -13,7 +13,7 @@
 # sass-cache
 /app/assets/stylesheets/.sass-cache
 
-.bushido/*
+.bushido
 
 /public/assets
 
