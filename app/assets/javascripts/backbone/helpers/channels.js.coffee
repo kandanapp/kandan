@@ -28,7 +28,10 @@ class Kandan.Helpers.Channels
   @channel_pagination_el: (channelId)->
     $("#channels-#{channelId} .pagination")
 
-  @getChannelIdFromTabIndex: (tabIndex)->
+  @getTabIndexByChannelId: (channelId)->
+    $("#channels-#{channelId}").prev("div").length
+
+  @getChannelIdByTabIndex: (tabIndex)->
     $("#channels .ui-tabs-panel")
       .eq(tabIndex)
       .data('channel_id')
@@ -50,24 +53,34 @@ class Kandan.Helpers.Channels
     confirmAgain = confirm("Are you damn sure?")
     return confirmAgain
 
-  @flushActivities: (channelID)->
-    $channelActivities = $("#channel-activities-#{channelID}")
+  @flushActivities: (channelId)->
+    $channelActivities = $("#channel-activities-#{channelId}")
     if $channelActivities.children().length > @options.maxActivities
       oldest = $channelActivities.children().first().data("activity_id")
       $channelActivities.children().first().remove()
       $channelActivities.prev().data("oldest", oldest)
 
-  @deleteChannel: (channelIndex)->
-    channelId = @getChannelIdFromTabIndex(channelIndex)
-    channel = new Kandan.Models.Channel({id: channelId})
-    return false if @confirmDeletion() == false
+  @deleteChannelById: (channelId)->
+    if @channelExists(channelId)
+      tabIndex = @getTabIndexByChannelId(channelId)
+      @deleteChannelByTabIndex(tabIndex, true)
 
+  @confirmAndDeleteChannel: (channel, tabIndex)->
+    return false if @confirmDeletion() == false
     channel.destroy({success: ()=>
-      $("#channels").tabs("remove", channelIndex)
+      $("#channels").tabs("remove", tabIndex)
     })
 
-  @channel_not_exists: (channelId)->
-    $("#channels-#{channelId}").length == 0
+  @deleteChannelByTabIndex: (tabIndex, deleted)->
+    deleted = deleted || false
+    channelId = @getChannelIdByTabIndex(tabIndex)
+    channel = new Kandan.Models.Channel({id: channelId})
+    return @confirmAndDeleteChannel(channel, tabIndex) if not deleted
+    $("#channels").tabs("remove", tabIndex)
+
+  @channelExists: (channelId)->
+    return true if $("#channels-#{channelId}").length > 0
+    false
 
 
   @create_channel_area: (channel)->
@@ -88,7 +101,7 @@ class Kandan.Helpers.Channels
 
 
   @add_activity: (activity_attributes, state)->
-    if activity_attributes.channel!=undefined && @channel_not_exists(activity_attributes.channel_id)
+    if activity_attributes.channel!=undefined && (not @channelExists(activity_attributes.channel_id))
       @create_channel_area(new Kandan.Models.Channel(activity_attributes.channel))
 
     if activity_attributes.channel_id

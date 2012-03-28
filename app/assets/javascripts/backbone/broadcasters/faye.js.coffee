@@ -10,10 +10,6 @@ class Kandan.Broadcasters.FayeBroadcaster
             auth_token: Kandan.Helpers.Users.current_user().auth_token
           }
         callback(message)
-
-      incoming: (message, callback)->
-        console.log "incoming", message
-        callback(message)
     }
     @faye_client.addExtension(auth_extension)
 
@@ -23,7 +19,6 @@ class Kandan.Broadcasters.FayeBroadcaster
     @faye_client.bind "transport:up", ()->
       console.log "Comm link is up!"
 
-
     @faye_client.subscribe "/app/user_activities", (data)=>
       $(document).data('active_users', data.data.active_users)
       Kandan.Helpers.Channels.add_activity({
@@ -32,11 +27,9 @@ class Kandan.Broadcasters.FayeBroadcaster
       })
 
     @faye_client.subscribe "/app/channel_activities", (data)=>
-      $(document).data('active_users', data.data.active_users)
-      Kandan.Helpers.Channels.add_activity({
-        user: data.data.user,
-        action: data.event.split("#")[1]
-      })
+      # TODO action makes way for channel rename to be added later
+      console.log data
+      Kandan.Helpers.Channels.deleteChannelById(data.channel.id) if data.action == "delete"
 
 
   subscribe: (channel)->

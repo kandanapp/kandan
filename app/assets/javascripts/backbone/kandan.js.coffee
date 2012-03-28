@@ -73,7 +73,7 @@ window.Kandan =
           $('#channels').tabs({
             select: (event, ui)->
               $(document).data('active_channel_id',
-                Kandan.Helpers.Channels.getChannelIdFromTabIndex(ui.index))
+                Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
               console.log "channel changed to index", ui.index
               Kandan.Data.Channels.runCallbacks('change')
           })

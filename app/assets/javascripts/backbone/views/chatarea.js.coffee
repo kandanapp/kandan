@@ -28,4 +28,4 @@ class Kandan.Views.ChatArea extends Backbone.View
 
   deleteChannel: (event)->
     channelIndex = $(event.target).parent().prev().length
-    Kandan.Helpers.Channels.deleteChannel channelIndex if channelIndex != 0
+    Kandan.Helpers.Channels.deleteChannelByTabIndex channelIndex if channelIndex != 0
