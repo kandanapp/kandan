@@ -83,15 +83,15 @@ class Kandan.Helpers.Channels
     false
 
 
-  @create_channel_area: (channel)->
-    channel_area = "#channels-#{channel.get('id')}"
+  @createChannelArea: (channel)->
+    channelArea = "#channels-#{channel.get('id')}"
     totalTabs = $("#channels").tabs("length")
 
-    $("#channels").tabs('add', channel_area, "#{channel.get("name")}", totalTabs)
+    $("#channels").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
     Kandan.Helpers.Channels.replaceCreateButton()
     view = new Kandan.Views.ListActivities({channel: channel})
-    $(channel_area).html $(view.render().el).html()
-    $(channel_area).data('channel_id', channel.get('id'))
+    $(channelArea).html $(view.render().el).html()
+    $(channelArea).data('channel_id', channel.get('id'))
 
 
   @new_activity_view: (activityAttributes)->
@@ -102,7 +102,7 @@ class Kandan.Helpers.Channels
 
   @add_activity: (activity_attributes, state)->
     if activity_attributes.channel!=undefined && (not @channelExists(activity_attributes.channel_id))
-      @create_channel_area(new Kandan.Models.Channel(activity_attributes.channel))
+      @createChannelArea(new Kandan.Models.Channel(activity_attributes.channel))
 
     if activity_attributes.channel_id
       @add_message(activity_attributes, state)

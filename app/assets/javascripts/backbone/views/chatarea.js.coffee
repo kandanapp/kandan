@@ -22,7 +22,7 @@ class Kandan.Views.ChatArea extends Backbone.View
       channel = new Kandan.Models.Channel({name: channelName})
       channel.save({}, {
         success: (model)->
-          Kandan.Helpers.Channels.create_channel_area(model)
+          Kandan.Helpers.Channels.createChannelArea(model)
       })
       console.log "create channel: #{channelName}"
 
