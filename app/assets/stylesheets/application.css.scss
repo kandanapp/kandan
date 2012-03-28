@@ -12,6 +12,7 @@ $header-height: 30px;
 $header-bg-1: #566569;
 $header-bg-2: #3F494B;
 $search-bg: #5D676B;
+$search-color: #CCC;
 
 $widget-title-color: #7F8587;
 $widget-title-bg-1: #F3F8F9;
@@ -73,6 +74,7 @@ body {
         @include border-radius(20px);
         width: 100%;
         background: $search-bg;
+        color: $search-color;
         border: 2px solid darken($search-bg, 10%);
         // @include box-shadow(inset -5px -5px -5px #505A5D);
       }
