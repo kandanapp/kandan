@@ -1,5 +1,5 @@
 <div class="avatar">
-  <img src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30"/>
+  <img src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30&d=https://bushi.do/images/profile.png"/>
 </div>
 
 <div class="readable">

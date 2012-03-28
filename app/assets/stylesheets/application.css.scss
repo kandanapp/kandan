@@ -317,6 +317,10 @@ body {
     .avatar {
       padding-right: 10px;
       float: left;
+      img {
+        width: 25px;
+        height: 25px;
+      }
     }
     .name {
       float:left;
