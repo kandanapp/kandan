@@ -251,6 +251,10 @@ body {
   .avatar {
     float: left;
     width: 5%;
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
   
   .readable {
@@ -267,7 +271,7 @@ body {
 
     .content {
       float: left;
-      width: 85.5%;
+      width: 80%;
       color: #797D7F;
 
       .image-preview, .youtube-preview {
@@ -288,7 +292,7 @@ body {
 
     .posted_at {
       float: left;
-      width: 14.5%;
+      width: 20%;
       span {
         @include border-radius(4px);
         padding: 4px;
@@ -313,6 +317,7 @@ body {
     float: left;
     display: block;
     margin-top: 10px;
+    clear: left;
 
     .avatar {
       padding-right: 10px;
