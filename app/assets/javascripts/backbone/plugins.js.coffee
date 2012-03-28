@@ -7,5 +7,5 @@ class Kandan.Plugins
   @all: ()->
     @plugins
 
-  @init_all: ()->
+  @initAll: ()->
     eval(plugin).init() for plugin in @all()

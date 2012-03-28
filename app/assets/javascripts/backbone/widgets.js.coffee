@@ -7,7 +7,7 @@ class Kandan.Widgets
   @all: ()->
     @widgets
 
-  @init_all: ()->
+  @initAll: ()->
     $.each @widgets, (widget_namespace, el_name)=>
       @init(widget_namespace)
 

@@ -18,7 +18,7 @@ window.Kandan =
 
   # TODO this is a helper method to register plugins
   # in the order required until we come up with plugin management
-  register_plugins: ->
+  registerPlugins: ->
     plugins = [
       "UserList"
       ,"YouTubeEmbed"
@@ -34,7 +34,7 @@ window.Kandan =
 
   initBroadcasterAndSubscribe: ()->
     window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
-    window.broadcaster.subscribe "/channels/*" ##{channel.get('id')}
+    window.broadcaster.subscribe "/channels/*"
 
 
   initChatbox: ()->
@@ -65,25 +65,25 @@ window.Kandan =
     $(document).bind 'changeData', (element, name, value)->
       Kandan.Data.ActiveUsers.runCallbacks('change') if name=="active_users"
 
+  onFetchActiveUsers: (channels)=>
+    return (activeUsers)=>
+      if not Kandan.Helpers.ActiveUsers.collectionHasCurrentUser(activeUsers)
+        activeUsers.add([Kandan.Helpers.Users.currentUser()])
+
+      Kandan.Helpers.ActiveUsers.setFromCollection(activeUsers)
+      Kandan.registerPlugins()
+      Kandan.Plugins.initAll()
+      Kandan.initChatArea(channels)
+      Kandan.initChatbox()
+      Kandan.initTabs()
+      Kandan.Widgets.initAll()
+
+
   init: ->
     channels = new Kandan.Collections.Channels()
     channels.fetch({success: (channelsCollection)=>
       @initBroadcasterAndSubscribe()
       @bindEventCallbacks()
-
-      active_users = new Kandan.Collections.ActiveUsers()
-      active_users.fetch({
-        success: (activeUsersCollection)=>
-
-          if not Kandan.Helpers.ActiveUsers.collectionHasCurrentUser(activeUsersCollection)
-            activeUsersCollection.add([Kandan.Helpers.Users.currentUser()])
-
-          Kandan.Helpers.ActiveUsers.setFromCollection(activeUsersCollection)
-          Kandan.register_plugins()
-          Kandan.Plugins.init_all()
-          @initChatArea(channelsCollection)
-          @initChatbox()
-          @initTabs()
-          Kandan.Widgets.init_all()
-      })
+      activeUsers = new Kandan.Collections.ActiveUsers()
+      activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
     })
