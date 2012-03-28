@@ -32,20 +32,16 @@ window.Kandan =
     for plugin in plugins
       Kandan.Plugins.register "Kandan.Plugins.#{plugin}"
 
+  initBroadcasterAndSubscribe: ()->
+    window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
+    window.broadcaster.subscribe "/channels/*" ##{channel.get('id')}
+
   init: ->
     channels = new Kandan.Collections.Channels()
     channels.fetch({success: ()=>
-
       chat_area = new Kandan.Views.ChatArea({channels: channels})
-      create_channel = new Kandan.Views.CreateChannel()
-      # $(".create_channel").html create_channel.render().el
 
-      # TODO move broadcast subscription to a helper
-      # TODO change this to use the broadcaster from the settings
-      # TODO set as global to debug. remove later.
-      # TODO use wildcard channel names
-      window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
-      window.broadcaster.subscribe "/channels/*" ##{channel.get('id')}
+      @initBroadcasterAndSubscribe()
 
       $(document).bind 'changeData', (element, name, value)->
         if(name=="active_users")
@@ -54,13 +50,9 @@ window.Kandan =
       active_users = new Kandan.Collections.ActiveUsers()
       active_users.fetch({
         success: (collection)->
-          # NOTE fix because the current user doesn't get the connect event for self
-          current_user = $(document).data('current_user')
-          current_user_present = false
-          for active_user in collection.models
-            current_user_present = true if active_user.get('id') == current_user.id
-          collection.add([$(document).data('current_user')]) if current_user_present == false
-          $(document).data("active_users", collection.toJSON())
+          collection.add([$(document).data('current_user')]) if not Kandan.Helpers.ActiveUsers.collectionHasCurrentUser(collection)
+
+          Kandan.Helpers.ActiveUsers.setFromCollection(collection)
 
           # NOTE init plugins so that modifiers are registered
           Kandan.register_plugins()

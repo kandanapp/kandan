@@ -3,15 +3,15 @@ class Kandan.Broadcasters.FayeBroadcaster
   constructor: ()->
     @faye_client = new Faye.Client("/remote/faye")
     @faye_client.disable('websocket')
-    auth_extension = {
+    authExtension = {
       outgoing: (message, callback)->
         if message.channel == "/meta/subscribe"
           message['ext'] = {
-            auth_token: Kandan.Helpers.Users.current_user().auth_token
+            auth_token: Kandan.Helpers.Users.currentUser().auth_token
           }
         callback(message)
     }
-    @faye_client.addExtension(auth_extension)
+    @faye_client.addExtension(authExtension)
 
     @faye_client.bind "transport:down", ()->
       console.log "Comm link to Cybertron is down!"
