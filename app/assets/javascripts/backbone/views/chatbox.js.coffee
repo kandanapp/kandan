@@ -19,7 +19,7 @@ class Kandan.Views.Chatbox extends Backbone.View
     activity = new Kandan.Models.Activity({
       'content':    $chatbox.val(),
       'action':     'message',
-      'channel_id': Kandan.Helpers.Channels.get_active_channel_id()
+      'channel_id': Kandan.Helpers.Channels.getActiveChannelId()
     })
 
     activity.save({},{success: ()->

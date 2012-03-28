@@ -1,7 +1,6 @@
 class DeviseAuth
   def incoming(message, callback)
     if message['channel'] == "/meta/subscribe"
-      puts "MESSAGE: #{message.inspect}"
       auth_token = message['ext']['auth_token']
       user = User.find_by_authentication_token(auth_token)
       if user

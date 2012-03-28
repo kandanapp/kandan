@@ -19,7 +19,7 @@ class Kandan.Plugins.Attachments
     !!(window.File && window.FileList && window.FileReader)
 
   @channel_id: ()->
-    Kandan.Data.Channels.active_channel_id()
+    Kandan.Data.Channels.activeChannelId()
 
   @csrf_param: ->
     $('meta[name=csrf-param]').attr('content')
