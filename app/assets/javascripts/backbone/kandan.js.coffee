@@ -36,47 +36,54 @@ window.Kandan =
     window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
     window.broadcaster.subscribe "/channels/*" ##{channel.get('id')}
 
+
+  initChatbox: ()->
+    chatbox = new Kandan.Views.Chatbox()
+    $(".main-area").append(chatbox.render().el)
+
+
+  initTabs: ()->
+    $('#channels').tabs({
+      select: (event, ui)->
+        $(document).data('active_channel_id',
+          Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
+        Kandan.Data.Channels.runCallbacks('change')
+    })
+
+    $("#channels").tabs 'option', 'tabTemplate', '''
+      <li>
+        <a href="#{href}">#{label}</a>
+        <span class="ui-icon ui-icon-close">x</span>
+      </li>
+    '''
+
+  initChatArea: (channels)->
+    chatArea = new Kandan.Views.ChatArea({channels: channels})
+    $(".main-area").html(chatArea.render().el)
+
+  bindEventCallbacks: ()->
+    $(document).bind 'changeData', (element, name, value)->
+      Kandan.Data.ActiveUsers.runCallbacks('change') if name=="active_users"
+
   init: ->
     channels = new Kandan.Collections.Channels()
-    channels.fetch({success: ()=>
-      chat_area = new Kandan.Views.ChatArea({channels: channels})
-
+    channels.fetch({success: (channelsCollection)=>
       @initBroadcasterAndSubscribe()
-
-      $(document).bind 'changeData', (element, name, value)->
-        if(name=="active_users")
-          Kandan.Data.ActiveUsers.runCallbacks('change')
+      @bindEventCallbacks()
 
       active_users = new Kandan.Collections.ActiveUsers()
       active_users.fetch({
-        success: (collection)->
-          collection.add([$(document).data('current_user')]) if not Kandan.Helpers.ActiveUsers.collectionHasCurrentUser(collection)
+        success: (activeUsersCollection)=>
 
-          Kandan.Helpers.ActiveUsers.setFromCollection(collection)
+          if not Kandan.Helpers.ActiveUsers.collectionHasCurrentUser(activeUsersCollection)
+            activeUsersCollection.add([Kandan.Helpers.Users.currentUser()])
 
-          # NOTE init plugins so that modifiers are registered
+          Kandan.Helpers.ActiveUsers.setFromCollection(activeUsersCollection)
           Kandan.register_plugins()
           Kandan.Plugins.init_all()
-
-
-          $(".main-area").html(chat_area.render().el)
-          chatbox = new Kandan.Views.Chatbox()
-          $(".main-area").append(chatbox.render().el)
-          $('#channels').tabs({
-            select: (event, ui)->
-              $(document).data('active_channel_id',
-                Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
-              console.log "channel changed to index", ui.index
-              Kandan.Data.Channels.runCallbacks('change')
-          })
-
-          $("#channels").tabs 'option', 'tabTemplate', '''
-            <li>
-              <a href="#{href}">#{label}</a>
-              <span class="ui-icon ui-icon-close">x</span>
-            </li>
-          '''
-
+          @initChatArea(channelsCollection)
+          @initChatbox()
+          @initTabs()
           Kandan.Widgets.init_all()
       })
     })
