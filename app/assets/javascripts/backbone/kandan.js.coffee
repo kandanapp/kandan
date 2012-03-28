@@ -49,7 +49,7 @@ window.Kandan =
 
       $(document).bind 'changeData', (element, name, value)->
         if(name=="active_users")
-          Kandan.Data.ActiveUsers.run_callbacks('change')
+          Kandan.Data.ActiveUsers.runCallbacks('change')
 
       active_users = new Kandan.Collections.ActiveUsers()
       active_users.fetch({
@@ -73,9 +73,9 @@ window.Kandan =
           $('#channels').tabs({
             select: (event, ui)->
               $(document).data('active_channel_id',
-                Kandan.Helpers.Channels.get_channel_id_from_tab_index(ui.index))
+                Kandan.Helpers.Channels.getChannelIdFromTabIndex(ui.index))
               console.log "channel changed to index", ui.index
-              Kandan.Data.Channels.run_callbacks('change')
+              Kandan.Data.Channels.runCallbacks('change')
           })
 
           $("#channels").tabs 'option', 'tabTemplate', '''

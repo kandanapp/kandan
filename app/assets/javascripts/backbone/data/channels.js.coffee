@@ -1,15 +1,15 @@
 class Kandan.Data.Channels
   @callbacks: {"change": [] }
 
-  @active_channel_id: ()->
-    Kandan.Helpers.Channels.get_active_channel_id()
+  @activeChannelId: ()->
+    Kandan.Helpers.Channels.getActiveChannelId()
 
   @all: (callbacks)->
     attachments = new Kandan.Collections.Attachments([], {
-      channel_id: @active_channel_id()
+      channel_id: @activeChannelId()
     })
 
-  @run_callbacks: (event)->
+  @runCallbacks: (event)->
     callback() for callback in @callbacks[event]
 
   @register_callback: (event, callback)->

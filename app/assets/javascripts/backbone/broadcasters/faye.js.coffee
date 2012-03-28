@@ -15,14 +15,23 @@ class Kandan.Broadcasters.FayeBroadcaster
         console.log "incoming", message
         callback(message)
     }
+    @faye_client.addExtension(auth_extension)
+
     @faye_client.bind "transport:down", ()->
       console.log "Comm link to Cybertron is down!"
 
     @faye_client.bind "transport:up", ()->
       console.log "Comm link is up!"
 
-    @faye_client.addExtension(auth_extension)
-    @faye_client.subscribe "/app/activities", (data)=>
+
+    @faye_client.subscribe "/app/user_activities", (data)=>
+      $(document).data('active_users', data.data.active_users)
+      Kandan.Helpers.Channels.add_activity({
+        user: data.data.user,
+        action: data.event.split("#")[1]
+      })
+
+    @faye_client.subscribe "/app/channel_activities", (data)=>
       $(document).data('active_users', data.data.active_users)
       Kandan.Helpers.Channels.add_activity({
         user: data.data.user,
