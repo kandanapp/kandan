@@ -44,6 +44,13 @@ GEM
       json (>= 1.4.6)
       orm_adapter (~> 0.0.3)
       rest-client (>= 1.6.1)
+    bushido-faye (0.8.1)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.4.0)
+      rack (>= 1.0.0)
+      yajl-ruby (>= 1.0.0)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -81,13 +88,6 @@ GEM
     factory_girl_rails (1.7.0)
       factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
-    faye (0.8.1)
-      cookiejar (>= 0.3.0)
-      em-http-request (>= 0.3.0)
-      eventmachine (>= 0.12.0)
-      faye-websocket (>= 0.4.0)
-      rack (>= 1.0.0)
-      yajl-ruby (>= 1.0.0)
     faye-websocket (0.4.4)
       eventmachine (>= 0.12.0)
     highline (1.6.11)
@@ -199,13 +199,13 @@ DEPENDENCIES
   aws-sdk
   bourbon
   bushido
+  bushido-faye
   coffee-rails (~> 3.2.1)
   devise
   devise_bushido_authenticatable
   eco
   execjs
   factory_girl_rails
-  faye
   jquery-rails
   kaminari
   paperclip

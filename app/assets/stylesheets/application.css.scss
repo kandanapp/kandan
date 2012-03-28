@@ -12,6 +12,7 @@ $header-height: 30px;
 $header-bg-1: #566569;
 $header-bg-2: #3F494B;
 $search-bg: #5D676B;
+$search-color: #CCC;
 
 $widget-title-color: #7F8587;
 $widget-title-bg-1: #F3F8F9;
@@ -37,6 +38,7 @@ body {
   height: 90%;
   min-height: 90%;
   font-size: 13px;
+  font-family: 'PT Sans', sans-serif;
 }
 
 
@@ -73,6 +75,7 @@ body {
         @include border-radius(20px);
         width: 100%;
         background: $search-bg;
+        color: $search-color;
         border: 2px solid darken($search-bg, 10%);
         // @include box-shadow(inset -5px -5px -5px #505A5D);
       }
@@ -126,6 +129,7 @@ body {
         clear: both;
         background: #F3F8F9;
         padding-left: 10px;
+        font-size: 13px;
       }
 
       .action_bar {
@@ -151,11 +155,11 @@ body {
   @include background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2));
   @include box-shadow(5px 0px 5px -3px #CCC, -5px 0px 5px -3px #CCC, 0px 5px 5px 0px #CCC);
   border-top: 1px solid #EBEFF1;
-  margin: 0px 20px 0px 20px;
   padding: 10px 0px 10px 10px;
-  position: fixed;
+  position: relative;
   bottom: 20px;
-  width: $main-area-width - 3.2%;
+  margin-left: 20px;
+  margin-right: 21px;
 
   textarea {
     @include border-top-left-radius(4px);
@@ -203,6 +207,8 @@ body {
 
   .ui-tabs-nav {
     border-right: 1px solid #404A4D;
+    position: fixed;
+    width: 100%
   }
 
   .ui-tabs-panel {
@@ -215,10 +221,10 @@ body {
   }
 
   .ui-widget-content {
-    height: 93%;
-    min-height: 93%;
-    margin-bottom: 200px;
+    // position: relative;
     overflow-y: scroll;
+    margin-top: 20px;
+    bottom: 80px;
   }
 
   .ui-tabs-nav
@@ -328,7 +334,6 @@ body {
 //
 
 .user_list {
-  font-size: 13px;
   padding-bottom: 10px;
   float: left;
   
@@ -375,7 +380,6 @@ body {
     line-height: 25px;
     color: #585D5F;
     a {
-      font-size: 12px;
       text-decoration: none;
       font-weight: bold;
       color: #585D5F;
