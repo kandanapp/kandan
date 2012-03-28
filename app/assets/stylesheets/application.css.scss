@@ -36,6 +36,7 @@ body {
   background: $page-bg;
   height: 90%;
   min-height: 90%;
+  font-size: 13px;
 }
 
 
@@ -349,6 +350,7 @@ body {
       margin-top: 5px;
       font-weight: bold;
       color: #585D5F;
+      font-size: 12px;
     }
   }
 }
@@ -359,6 +361,25 @@ body {
 
 #file {
   display: none;
+}
+
+.file_list {
+  float: left;
+  clear: both;
+  width: 100%;
+
+  .file_item {
+    clear: both;
+    float: left;
+    line-height: 25px;
+    color: #585D5F;
+    a {
+      font-size: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #585D5F;
+    }
+  }
 }
 
 .action_bar {
@@ -379,4 +400,3 @@ body {
     }
   }
 }
-
