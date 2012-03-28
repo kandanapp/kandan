@@ -10,8 +10,7 @@ class Kandan.Plugins.Attachments
       </div>
       <input id="channel_id_<%= channel_id %>" name="channel_id[<%= channel_id %>]" type="hidden"/>
       <input id="file" name="file" type="file"/>
-      <input name="commit" type="submit" value="Upload"/>
-      <div class="dropzone" style="height: 100px;background-color: #000;"></div>
+      <div class="dropzone">Drop files here to upload</div>
    </form>
   ''')
 
@@ -27,9 +26,9 @@ class Kandan.Plugins.Attachments
   @csrf_token: ->
     $('meta[name=csrf-token]').attr('content')
 
-  @file_item_template: _.template('''
-      <li><a href="<%= url %>"><%= file_name %></a></li>
-    ''')
+  @file_item_template: _.template '''
+    <li><a href="<%= url %>"><%= file_name %></a></li>
+  '''
 
   # TODO this part is very bad for APIs! shoudnt be exposing a backbone collection in a plugin.
   @render: ($widget_el)->
@@ -38,8 +37,11 @@ class Kandan.Plugins.Attachments
       csrf_param: @csrf_param(),
       csrf_token: @csrf_token()
     })
-    $widget_el.html($upload_form)
+
+    $widget_el.next().html($upload_form)
     @init_dropzone @channel_id()
+    console.log $widget_el.next()
+    $widget_el.next(".action_block").html($upload_form)
     $file_list = $("<ul></ul>")
     attachments = new Kandan.Collections.Attachments([], {channel_id: @channel_id()})
     attachments.fetch({success: (collection)=>
@@ -48,17 +50,23 @@ class Kandan.Plugins.Attachments
           file_name: model.get('file_file_name'),
           url: model.get('url')
         }))
-      $widget_el.append($file_list)
+      $widget_el.html($file_list)
     })
 
 
   @init_dropzone: (channel_id)->
     $(".dropzone").filedrop({
-      fallback_id: "file",
-      url: "/channels/#{channel_id}/attachments.json",
-      paramname: 'file',
+      fallback_id: "file"
+      url        : "/channels/#{channel_id}/attachments.json",
+      paramname  : "file"
+
+      uploadStarted: =>
+        $(".dropzone").text("Uploading...")
+
       uploadFinished: (i, file, response, time)->
-        console.log "upload complete"
+        $(".dropzone").text("Drop files here to upload")
+        Kandan.Widgets.render "Kandan.Plugins.Attachments"
+
       dragOver: ->
         console.log "reached dropzone!"
     })

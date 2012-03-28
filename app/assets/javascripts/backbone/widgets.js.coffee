@@ -15,6 +15,7 @@ class Kandan.Widgets
     <div class="widget" id="widget_<%= element_id %>">
       <div class="title"><%= title %></div>
       <div class="content" id="<%= element_id %>"></div>
+      <div class="action_bar"></div>
     </div>
   '''
 
