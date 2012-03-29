@@ -1,2 +1,2 @@
-<textarea class="chatbox"></textarea>
-<button class="post-button">Post</button>
+<textarea></textarea>
+<button>Post</button>

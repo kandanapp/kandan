@@ -2,30 +2,31 @@ class Kandan.Views.Chatbox extends Backbone.View
 
   template: JST['chatbox']
   tagName: 'div'
-  className: 'chatbox-area'
+  className: 'chatbox'
 
 
   events:
-    "keypress    .chatbox": 'post_message_on_enter'
-    "click   .post-button": 'post_message'
+    "keypress textarea": 'postMessageOnEnter'
+    "click    button"  : 'postMessage'
 
 
-  post_message_on_enter: (event)->
-    @post_message() if event.keyCode== 13
+  postMessageOnEnter: (event)->
+    @postMessage() if event.keyCode== 13
 
 
-  post_message: (event)->
-    $chatbox = $(".chatbox")
+  postMessage: (event)->
+    $chatbox = $(@el).find('textarea')
     activity = new Kandan.Models.Activity({
       'content':    $chatbox.val(),
       'action':     'message',
-      'channel_id': Kandan.Helpers.Channels.getActiveChannelId()
+      'channel_id': @channel.get('id')
     })
 
     activity.save({},{success: ()->
-      $(".chatbox").val("")
+      $chatbox = $(@el).find('textarea')
     })
 
   render: ()->
+    @channel = @options.channel
     $(@el).html(@template())
     @

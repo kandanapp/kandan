@@ -1,3 +1,6 @@
+
+
+
 #channels {
   border-right: 1px solid #CDD1D4;
   margin-top: 0px;
@@ -69,9 +72,9 @@
   cursor: pointer;
 }
 
-.chatbox-area {
+.chatbox {
   @include border-bottom-radius(4px);
-  @include background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2));
+  @include background-image(linear-gradient($chatbox-bg-1, $chatbox-bg-2));
   @include box-shadow(5px 0px 5px -3px #CCC, -5px 0px 5px -3px #CCC, 0px 5px 5px 0px #CCC);
   border-top: 1px solid #EBEFF1;
   padding: 10px 0px 10px 10px;

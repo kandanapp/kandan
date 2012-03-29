@@ -1,5 +1,6 @@
 .sidebar {
-  @include full-height;
+  min-height: 100%;
+  height: 100%;
   background: $sidebar-bg;
   width: $sidebar-width;
   float: left;
