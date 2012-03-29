@@ -1,7 +1,7 @@
 class Kandan.Views.PaginatedActivities extends Backbone.View
   
   tagName: 'div'
-  className: 'paginated_activities'
+  className: 'paginated-activities'
   template: JST['paginated_activities']
 
   events:
