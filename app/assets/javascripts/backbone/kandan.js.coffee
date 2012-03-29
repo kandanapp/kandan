@@ -36,12 +36,6 @@ window.Kandan =
     window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
     window.broadcaster.subscribe "/channels/*"
 
-
-  initChatbox: ()->
-    chatbox = new Kandan.Views.Chatbox()
-    $(".main-area").append(chatbox.render().el)
-
-
   initTabs: ()->
     $('#channels').tabs({
       select: (event, ui)->
@@ -74,7 +68,6 @@ window.Kandan =
       Kandan.registerPlugins()
       Kandan.Plugins.initAll()
       Kandan.initChatArea(channels)
-      Kandan.initChatbox()
       Kandan.initTabs()
       Kandan.Widgets.initAll()
 
