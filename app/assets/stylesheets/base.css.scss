@@ -1,0 +1,45 @@
+$main-area-width: 80%;
+$page-bg: #E6EBEE;
+$panel-bg: $page-bg;
+
+$sidebar-width: 20%;
+$sidebar-bg: #E6EBEE;
+
+$header-height: 30px;
+$header-bg-1: #566569;
+$header-bg-2: #3F494B;
+$search-bg: #5D676B;
+$search-color: #CCC;
+
+$widget-title-color: #7F8587;
+$widget-title-bg-1: #F3F8F9;
+$widget-title-bg-2: #DBDFE0;
+
+
+@mixin full-height {
+  min-height: 100%;
+  height: 100%;
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+html {
+  @include full-height;
+}
+
+body {
+  background: $page-bg;
+  height: 90%;
+  min-height: 90%;
+  font-size: 13px;
+  font-family: 'PT Sans', sans-serif;
+}
+
+
+.main-area {
+  @include full-height;
+  width: $main-area-width;
+  float: left;
+}

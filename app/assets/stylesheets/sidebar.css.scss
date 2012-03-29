@@ -1,0 +1,100 @@
+.sidebar {
+  @include full-height;
+  background: $sidebar-bg;
+  width: $sidebar-width;
+  float: left;
+  position: fixed;
+  right: 0px;
+
+  .header {
+    @include background-image(linear-gradient($header-bg-1, $header-bg-2));
+    border-left: 1px solid #616D70;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    float: left;
+    height: $header-height;
+
+    .search {
+      width: 50%;
+      float: left;
+      text-align: right;
+
+      input {
+        @include border-radius(20px);
+        width: 100%;
+        background: $search-bg;
+        color: $search-color;
+        border: 2px solid darken($search-bg, 10%);
+        // @include box-shadow(inset -5px -5px -5px #505A5D);
+      }
+    }
+
+    .logo {
+      text-align: right;
+      float: left;
+      width: 50%;
+    }
+  }
+
+  .widgets {
+    border-left: 1px solid #F2F4F6;
+    float: left;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .widget {
+      margin-top: 20px;
+      border: 1px solid #D0D5D8;
+      @include border-top-radius(4px);
+      @include border-bottom-radius(7px);
+      background: #F3F8F9;
+      float: left;
+      width: 100%;
+      @include box-shadow(0px 2px #d1d6d9);
+
+      .title {
+        @include background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2));
+        @include border-top-left-radius(4px);
+        @include border-top-right-radius(4px);
+        border-bottom: 1px solid #DBDFE0;
+        
+        float: left;
+        width: 100%;
+
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        font-size: 13px;
+        text-transform: uppercase;
+        color: $widget-title-color;
+      }
+
+      .content {
+        float: left;
+        width: 100%;
+        clear: both;
+        background: #F3F8F9;
+        padding-left: 10px;
+        font-size: 13px;
+      }
+
+      .action_bar {
+        @include border-bottom-radius(7px);
+        font-size: 13px;
+        text-align: center;
+        line-height: 20px;
+        color: #808789;
+        float: left;
+        width: 100%;
+        clear: both;
+        height: 40px;
+        min-height: 40px;
+        border-top: 2px solid #D2D8D8;
+        background: #E9EFF0;
+      }
+    }
+  }
+}

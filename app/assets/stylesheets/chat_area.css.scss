@@ -1,0 +1,109 @@
+#channels {
+  border-right: 1px solid #CDD1D4;
+  margin-top: 0px;
+}
+
+.ui-widget-header {
+  @include background-image(linear-gradient($header-bg-1, $header-bg-2));
+  @include border-radius(0px);
+  height: $header-height;
+  border: none;
+}
+
+.ui-tabs {
+  padding: 0px;
+  margin-top: 0px;
+  @include border-radius(0px);
+  border: none;
+
+  .ui-tabs-nav {
+    border-right: 1px solid #404A4D;
+    position: fixed;
+    width: 100%
+  }
+
+  .ui-tabs-panel {
+    @include box-shadow(5px 0px 5px -3px #CCC, -5px 0px 5px -3px #CCC);
+    @include border-top-radius(4px);
+    margin-top: $header-height + 10;
+    margin-right: 20px;
+    margin-left: 20px;
+    background: #FFF;
+  }
+
+  .ui-widget-content {
+    // position: relative;
+    overflow-y: scroll;
+    margin-top: 20px;
+    bottom: 80px;
+  }
+
+  .ui-tabs-nav
+  {
+    position: relative;
+    width: 100%;
+    top: 0px;
+    li a {
+      padding: 3px;
+    }
+  }
+}
+
+.ui-corner-all .ui-corner-bottom, .ui-corner-bottom, .ui-corner-left, .ui-corner-right, .ui-corner-bl, .ui-corner-br {
+  @include border-radius(none);
+}
+
+.ui-state-default {
+  font-size: 14px;
+}
+
+
+.ui-widget-content {
+  @include full-height;
+  background: $panel-bg;
+  font-size: 13px;
+}
+
+.pagination {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.chatbox-area {
+  @include border-bottom-radius(4px);
+  @include background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2));
+  @include box-shadow(5px 0px 5px -3px #CCC, -5px 0px 5px -3px #CCC, 0px 5px 5px 0px #CCC);
+  border-top: 1px solid #EBEFF1;
+  padding: 10px 0px 10px 10px;
+  position: relative;
+  bottom: 20px;
+  margin-left: 20px;
+  margin-right: 21px;
+
+  textarea {
+    @include border-top-left-radius(4px);
+    @include border-bottom-left-radius(4px);
+    border: 1px solid #AEB9BD;
+    width: 92%;
+    padding: 0px;
+    margin: 0px;
+    resize: none;
+    height: 40px;
+  }
+
+  button {
+    @include background-image(linear-gradient(#C8ECF6, #9FDFF4));
+    @include border-top-right-radius(4px);
+    @include border-bottom-right-radius(4px);
+    position: relative;
+    left: -5px;
+    border: 1px solid #AEB9BD;
+    color: #59808B;
+    width: 7%;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+  }
+}
+
+
