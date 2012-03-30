@@ -10,8 +10,14 @@
   .file_item {
     clear: both;
     float: left;
-    line-height: 25px;
+    line-height: 30px;
     color: #585D5F;
+    
+    img {
+      width: 14px;
+      margin-right: 10px;
+    }
+
     a {
       text-decoration: none;
       font-weight: bold;

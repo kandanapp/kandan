@@ -3,6 +3,8 @@ class Kandan.Plugins.Attachments
   @widget_title: "Media"
   @plugin_namespace: "Kandan.Plugins.Attachments"
 
+  @options:
+    maxFileNameLength: 20
 
   @templates:
     no_files: _.template '''
@@ -34,8 +36,19 @@ class Kandan.Plugins.Attachments
   @csrf_token: ->
     $('meta[name=csrf-token]').attr('content')
 
+  @truncateName: (fileName)->
+    return "#{fileName.substring(0, @options.maxFileNameLength)}..." if fileName.length > @options.maxFileNameLength
+    fileName
+
+  @fileIcon: (fileName)->
+    fileExtension = fileName.split(".").pop()
+    return "/assets/img_icon.png"   if fileExtension.match(/(png|jpeg|gif)/i)
+    return "/assets/video_icon.png" if fileExtension.match(/(mp3|wav)/i)
+    return "/assets/audio_icon.png" if fileExtension.match(/(mov|mpg|mpeg|mp4)/i)
+    return "/assets/file_icon.png"
+
   @file_item_template: _.template '''
-    <div class="file_item"><a href="<%= url %>"><%= file_name %></a></div>
+    <div class="file_item"><img src="<%= iconUrl %>"><a href="<%= url %>"><%= fileName %></a></div>
   '''
 
   # TODO this part is very bad for APIs! shoudnt be exposing a backbone collection in a plugin.
@@ -58,8 +71,9 @@ class Kandan.Plugins.Attachments
           $file_list = $("<div class='file_list'></div>")
           for model in collection.models
             $file_list.append(@file_item_template({
-              file_name: model.get('file_file_name'),
+              fileName: @truncateName(model.get('file_file_name')),
               url: model.get('url')
+              iconUrl: @fileIcon(model.get('file_file_name'))
             }))
         else
           $file_list = @templates.no_files()
