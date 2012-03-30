@@ -12,6 +12,7 @@
   top: 0px;
   left: 0px;
   z-index: 1;
+  margin: 5px;
 }
 
 html {
@@ -20,6 +21,7 @@ html {
 
 body {
   background: $page-bg;
+  background-image: url("/assets/page_bg.png");
   height: 100%;
   min-height: 100%;
   font-size: 13px;
