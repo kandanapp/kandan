@@ -11,7 +11,7 @@ gem 'bushido'
 
 # Server/transport gems
 gem 'thin'
-gem 'bushido-faye'
+gem '_bushido-faye'
 
 # Helper gems
 gem 'kaminari'

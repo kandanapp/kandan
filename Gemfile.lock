@@ -1,6 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    _bushido-faye (0.8.1)
+      cookiejar (>= 0.3.0)
+      em-http-request (>= 0.3.0)
+      eventmachine (>= 0.12.0)
+      faye-websocket (>= 0.4.0)
+      rack (>= 1.0.0)
+      yajl-ruby (>= 1.0.0)
     actionmailer (3.2.2)
       actionpack (= 3.2.2)
       mail (~> 2.4.0)
@@ -44,13 +51,6 @@ GEM
       json (>= 1.4.6)
       orm_adapter (~> 0.0.3)
       rest-client (>= 1.6.1)
-    bushido-faye (0.8.1)
-      cookiejar (>= 0.3.0)
-      em-http-request (>= 0.3.0)
-      eventmachine (>= 0.12.0)
-      faye-websocket (>= 0.4.0)
-      rack (>= 1.0.0)
-      yajl-ruby (>= 1.0.0)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -196,10 +196,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  _bushido-faye
   aws-sdk
   bourbon
   bushido
-  bushido-faye
   coffee-rails (~> 3.2.1)
   devise
   devise_bushido_authenticatable
