@@ -19,9 +19,9 @@
 
 
 .ui-tabs {
+  @include border-radius(0px);
   padding: 0px;
   margin-top: 0px;
-  @include border-radius(0px);
   border: none;
 
   .ui-tabs-nav {
@@ -32,7 +32,11 @@
     top: 0px;
 
     li:first-child {
-      margin-left: 50px;
+      margin-left: 90px;
+    }
+
+    li a {
+      font-size: 14px;
     }
 
     .ui-tab-selected {
@@ -129,5 +133,6 @@
     padding: 0px;
     margin: 0px;
     height: 40px;
+    font-size: 16px;
   }
 }

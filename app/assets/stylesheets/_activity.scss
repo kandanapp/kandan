@@ -25,12 +25,14 @@
       float: left;
       width: 100%;
       margin-bottom: 4px;
+      font-size: 14px;
     }
 
     .content {
       float: left;
       width: 80%;
       color: #797D7F;
+      font-size: 14px;
 
       .image-preview, .youtube-preview {
         a { width: 100%; }
@@ -52,6 +54,7 @@
       float: left;
       width: 20%;
       text-align: right;
+      font-size: 11px;
 
       span {
         @include border-radius(4px);
