@@ -1,15 +1,21 @@
 class Kandan.Views.ChannelPane extends Backbone.View
   tagName: 'div'
 
-  render: ()->
-    @channel = @options.channel
-
-    paginatedActivitiesView = new Kandan.Views.PaginatedActivities({channel: @channel})
-    $(@el).html paginatedActivitiesView.render().el
-
-    chatbox = new Kandan.Views.Chatbox({channel: @channel})
-    $(@el).append chatbox.render().el
-
-    $(@el).attr "id", "channels-#{@channel.get("id")}"
-    $(@el).data "channel_id", @channel.get('id')
+  render: (container)->
+    container = container || $(@el)
+    $(container).html @paginatedActivitiesView()
+    $(container).append @chatboxView()
+    @setIdAndData(container)
     @
+    
+  setIdAndData: (container)->
+    $(container).attr "id", "channels-#{@options.channel.get("id")}"
+    $(container).data "channel_id", @options.channel.get('id')
+  
+  paginatedActivitiesView: ()->
+    view = new Kandan.Views.PaginatedActivities({channel: @options.channel})
+    view.render().el
+    
+  chatboxView: ()->
+    view = new Kandan.Views.Chatbox({channel: @options.channel})
+    view.render().el

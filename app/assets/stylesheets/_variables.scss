@@ -1,3 +1,6 @@
+$page-bg: #E6EBEE;
+$main-area-width: 80%;
+
 $panel-bg: #E6EBEE;
 $chatbox-bg-1: #F3F8F9;
 $chatbox-bg-2: #DBDFE0;
@@ -16,6 +19,8 @@ $sidebar-bg: #E6EBEE;
 $search-bg: #5D676B;
 $search-color: #CCC;
 
-$page-bg: #E6EBEE;
-$main-area-width: 80%;
+$inactive-tab-color: #54595B;
+$inactive-tab-bg: #99A2A5;
 
+$active-tab-color: #82898B;
+$active-tab-bg: $page-bg;

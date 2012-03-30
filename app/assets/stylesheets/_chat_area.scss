@@ -1,14 +1,22 @@
 #channels {
-  border-right: 1px solid #CDD1D4;
   margin-top: 0px;
 }
 
 .ui-widget-header {
   @include background-image(linear-gradient($header-bg-1, $header-bg-2));
   @include border-radius(0px);
-  height: $header-height;
   border: none;
+
+  .ui-state-active {
+    background: $active-tab-bg;
+    border: none;
+    
+    a {
+      color: $active-tab-color;        
+    }
+  }
 }
+
 
 .ui-tabs {
   padding: 0px;
@@ -19,30 +27,36 @@
   .ui-tabs-nav {
     border-right: 1px solid #404A4D;
     position: fixed;
-    width: 100%
-  }
-
-  .ui-tabs-panel {
-    margin-top: $header-height + 10;
-    margin-right: 20px;
-    margin-left: 20px;
-    padding: 0px;
-  }
-
-  .ui-widget-content {
-    margin-top: 20px;
-    bottom: 80px;
-    height: 100%;
-  }
-
-  .ui-tabs-nav
-  {
-    position: relative;
     width: 100%;
+    padding-top: 6px;
     top: 0px;
+
+    li:first-child {
+      margin-left: 50px;
+    }
+
+    .ui-tab-selected {
+      background: $active-tab-bg;
+      border: none;
+      
+      a {
+        color: $active-tab-color;        
+      }
+    }
+
     li a {
       padding: 3px;
     }
+  }
+
+  .ui-tabs-panel {
+    padding-right: 20px;
+    padding-left: 20px;
+    border-right: 1px solid #CDD1D4;
+  }
+
+  .ui-widget-content {
+    height: 95%;
   }
 }
 
@@ -71,6 +85,7 @@
   height: 88%;
   background: #FFF;
   padding: 10px;
+  margin-top: 37px;
   
   .pagination {
     text-decoration: underline;
@@ -116,5 +131,3 @@
     height: 40px;
   }
 }
-
-

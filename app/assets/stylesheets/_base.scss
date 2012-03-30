@@ -7,14 +7,21 @@
   @include box-sizing(border-box);
 }
 
+.logo {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+
 html {
   @include full-height;
 }
 
 body {
   background: $page-bg;
-  height: 90%;
-  min-height: 90%;
+  height: 100%;
+  min-height: 100%;
   font-size: 13px;
   font-family: 'PT Sans', sans-serif;
 }

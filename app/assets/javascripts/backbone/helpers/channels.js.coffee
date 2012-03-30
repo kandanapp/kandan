@@ -2,7 +2,7 @@ class Kandan.Helpers.Channels
 
   @options:
     autoScrollThreshold: 0.90
-    maxActivities: 10
+    maxActivities: 5
 
   @replaceCreateButton: ()->
     $tabNav = $(".create_channel").parent().parent()
@@ -17,24 +17,16 @@ class Kandan.Helpers.Channels
     scrollPercentage > @options.autoScrollThreshold
 
   @scrollToLatestMessage: (channelId)->
-    $("#channels-#{channelId}").scrollTop(100000)
+    @channel_activities_el(channelId).parent().scrollTop(100000)
 
   @currentScrollPosition: (channelId)->
-    $("#channels-#{channelId}").scrollTop()
+    @channel_activities_el(channelId).parent().scrollTop()
 
   @channel_activities_el: (channelId)->
     $("#channel-activities-#{channelId}")
 
   @channel_pagination_el: (channelId)->
     $("#channels-#{channelId} .pagination")
-
-  @getTabIndexByChannelId: (channelId)->
-    $("#channels-#{channelId}").prev("div").length
-
-  @getChannelIdByTabIndex: (tabIndex)->
-    $("#channels .ui-tabs-panel")
-      .eq(tabIndex)
-      .data('channel_id')
 
   @selected_tab: ()->
     $('#channels').tabs('option', 'selected')
@@ -47,23 +39,19 @@ class Kandan.Helpers.Channels
     else
       return $(document).data('active_channel_id')
 
+
   @confirmDeletion: ()->
-    confirmDeletion = confirm("Really delete the channel?")
-    return false if confirmDeletion == false
-    confirmAgain = confirm("Are you damn sure?")
-    return confirmAgain
+    reply = confirm("Really delete the channel?")
+    return reply
+
 
   @flushActivities: (channelId)->
     $channelActivities = $("#channel-activities-#{channelId}")
-    if $channelActivities.children().length > @options.maxActivities
+    if $channelActivities.children().length == @options.maxActivities + 1
       oldest = $channelActivities.children().first().data("activity_id")
       $channelActivities.children().first().remove()
       $channelActivities.prev().data("oldest", oldest)
 
-  @deleteChannelById: (channelId)->
-    if @channelExists(channelId)
-      tabIndex = @getTabIndexByChannelId(channelId)
-      @deleteChannelByTabIndex(tabIndex, true)
 
   @confirmAndDeleteChannel: (channel, tabIndex)->
     return false if @confirmDeletion() == false
@@ -71,12 +59,30 @@ class Kandan.Helpers.Channels
       $("#channels").tabs("remove", tabIndex)
     })
 
+
+  @getChannelIdByTabIndex: (tabIndex)->
+    $("#channels .ui-tabs-panel")
+      .eq(tabIndex)
+      .data('channel_id')
+
+  @getTabIndexByChannelId: (channelId)->
+    $("#channels-#{channelId}").prevAll("div").length
+
+  @deleteChannelById: (channelId)->
+    if @channelExists(channelId)
+      tabIndex = @getTabIndexByChannelId(channelId)
+      @deleteChannelByTabIndex(tabIndex, true)
+
   @deleteChannelByTabIndex: (tabIndex, deleted)->
     deleted = deleted || false
+    console.log "try deleting #{tabIndex}"
     channelId = @getChannelIdByTabIndex(tabIndex)
+    console.log "d ", channelId
     channel = new Kandan.Models.Channel({id: channelId})
     return @confirmAndDeleteChannel(channel, tabIndex) if not deleted
+    console.log "TAB INDEX", tabIndex
     $("#channels").tabs("remove", tabIndex)
+
 
   @channelExists: (channelId)->
     return true if $("#channels-#{channelId}").length > 0
@@ -89,8 +95,8 @@ class Kandan.Helpers.Channels
 
     $("#channels").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
     Kandan.Helpers.Channels.replaceCreateButton()
-    view = new Kandan.Views.ListActivities({channel: channel})
-    $(channelArea).html $(view.render().el).html()
+    view = new Kandan.Views.ChannelPane({channel: channel})
+    view.render $(channelArea)
     $(channelArea).data('channel_id', channel.get('id'))
 
 
@@ -99,20 +105,20 @@ class Kandan.Helpers.Channels
     activityView  = new Kandan.Views.ShowActivity({activity: activity})
     return activityView
 
+  @createChannelIfNotExists: (activityAttributes)->
+    if activityAttributes.channel && (not @channelExists(activityAttributes.channel_id))
+      @createChannelArea(new Kandan.Models.Channel(activityAttributes.channel))
 
-  @add_activity: (activity_attributes, state)->
-    if activity_attributes.channel!=undefined && (not @channelExists(activity_attributes.channel_id))
-      @createChannelArea(new Kandan.Models.Channel(activity_attributes.channel))
 
-    if activity_attributes.channel_id
-      @add_message(activity_attributes, state)
+  @add_activity: (activityAttributes, state)->
+    @createChannelIfNotExists(activityAttributes)
+
+    if activityAttributes.channel_id
+      @add_message(activityAttributes, state)
     else
-      @add_notification(activity_attributes)
+      @add_notification(activityAttributes)
 
-    if activity_attributes.channel_id
-      channelId = activity_attributes.channel_id
-    else
-      channelId = @getActiveChannelId()
+    channelId = activityAttributes.channel_id || @getActiveChannelId()
     @scrollToLatestMessage(channelId) if @pastAutoScrollThreshold(channelId)
 
 
@@ -120,7 +126,7 @@ class Kandan.Helpers.Channels
     @channel_activities_el(activityAttributes.channel_id)
       .append(@new_activity_view(activityAttributes).render().el)
     @set_pagination_data(activityAttributes.channel_id)
-    # @flushActivities($(el).parent().data("channel_id"))
+    @flushActivities(activityAttributes.channel_id)
 
 
   @add_notification: (activityAttributes)->
@@ -129,6 +135,7 @@ class Kandan.Helpers.Channels
     for el in $channelElements
       $(el).append(@new_activity_view(activityAttributes).render().el)
       @flushActivities($(el).parent().data("channel_id"))
+
 
   @set_pagination_state: (channelId, moreActivities, oldest)->
     @channel_pagination_el(channelId).data('oldest', oldest)

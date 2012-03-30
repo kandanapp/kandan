@@ -28,13 +28,11 @@ class Kandan.Broadcasters.FayeBroadcaster
 
     @faye_client.subscribe "/app/channel_activities", (data)=>
       # TODO action makes way for channel rename to be added later
-      console.log data
       Kandan.Helpers.Channels.deleteChannelById(data.channel.id) if data.action == "delete"
 
 
   subscribe: (channel)->
     subscription = @faye_client.subscribe channel, (data)=>
-      console.log "faye", data
       Kandan.Helpers.Channels.add_activity(data)
     subscription.errback(()->
       alert "Oops! could not connect to the server"
