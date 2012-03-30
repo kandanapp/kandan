@@ -13,6 +13,7 @@ class Kandan.Plugins.UserList
 
   @render: ($el)->
     $users = $("<div class='user_list'></div>")
+    $el.next().hide();
 
     for user in Kandan.Data.ActiveUsers.all()
       console.log "hash", user.gravatar_hash

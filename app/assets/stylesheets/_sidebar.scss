@@ -27,14 +27,7 @@
         background: $search-bg;
         color: $search-color;
         border: 2px solid darken($search-bg, 10%);
-        // @include box-shadow(inset -5px -5px -5px #505A5D);
       }
-    }
-
-    .logo {
-      text-align: right;
-      float: left;
-      width: 50%;
     }
   }
 
@@ -74,6 +67,7 @@
       }
 
       .content {
+        @include border-bottom-radius(7px);
         float: left;
         width: 100%;
         clear: both;

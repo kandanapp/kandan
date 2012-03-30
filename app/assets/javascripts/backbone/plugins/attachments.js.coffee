@@ -48,7 +48,6 @@ class Kandan.Plugins.Attachments
 
     $widget_el.next().html($upload_form)
     @init_dropzone @channel_id()
-    console.log $widget_el.next()
     $widget_el.next(".action_block").html($upload_form)
 
     attachments = new Kandan.Collections.Attachments([], {channel_id: @channel_id()})
