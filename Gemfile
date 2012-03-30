@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Core gems
 gem 'rails', '3.2.2'
-gem 'sqlite3'
+gem 'pg'
 
 # Auth/Bushido gems
 gem 'devise'
@@ -31,7 +31,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-# gem 'tane', :path => "../tane", :group => :development
+gem 'tane', :path => "/remote/tane", :group => :development
 
 # Test gems, obviously
 group :test do

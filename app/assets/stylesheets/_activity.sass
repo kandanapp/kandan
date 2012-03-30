@@ -1,0 +1,51 @@
+.activity
+  float: left
+  width: 100%
+  padding-top: 10px
+  padding-bottom: 10px
+  border-bottom: 1px solid #DEE6E8
+  background: #FFF
+  .avatar
+    margin-right: 10px
+    display: block
+    float: left
+    width: 5%
+    width: 30px
+    height: 30px
+  .readable
+    float: left
+    width: 95%
+    .user
+      color: #AEB9BD
+      font-weight: bold
+      float: left
+      width: 100%
+      margin-bottom: 4px
+      font-size: 14px
+    .content
+      float: left
+      width: 80%
+      color: #797D7F
+      font-size: 14px
+      .image-preview, .youtube-preview
+        a
+          width: 100%
+        +border-radius(4px)
+        +box-shadow(0px 1px 5px 0px #cccccc)
+        padding: 10px
+        background: #F3F8F9
+        float: left
+        .name
+          color: #878D8F
+          font-weight: bold
+          margin-top: 5px
+    .posted_at
+      float: left
+      width: 20%
+      text-align: right
+      font-size: 11px
+      span
+        +border-radius(4px)
+        padding: 4px
+        background: #F3F8F9
+        color: #BDC6CA

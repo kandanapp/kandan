@@ -1,6 +1,4 @@
-<div class="avatar">
-  <img src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30&d=https://bushi.do/images/profile.png"/>
-</div>
+<img class="avatar" src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30&d=https://bushi.do/images/profile.png"/>
 
 <div class="readable">
   <div class="content">
