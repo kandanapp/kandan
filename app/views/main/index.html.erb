@@ -6,17 +6,23 @@
 
 
 
-<%= image_tag "logo.png", :class=>"logo" %>
 
-<div class="main-area"></div>
-<div class="sidebar">
-  <div class="header">
-    <div class="search">
-      <form method="get" action="/search" target="_blank">
-        <input type="text" class="query" name="query"/>
-      </form>
-    </div>
-    <div class="user"></div>
+<div class="header">
+  <%= image_tag "logo.png", :class=>"logo" %>
+
+  <div class="search">
+    <form method="get" action="/search" target="_blank">
+      <input type="text" class="query" name="query"/>
+    </form>
   </div>
-  <div class="widgets"></div>
+  <div class="user"></div>
 </div>
+
+<div id="app_body">
+  <div class="main-area"></div>
+
+  <div class="sidebar">
+    <div class="widgets"></div>
+  </div>
+</div>
+

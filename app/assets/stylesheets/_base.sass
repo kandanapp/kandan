@@ -5,12 +5,20 @@
 *
   +box-sizing(border-box)
 
-.logo
+.header
+  display: block
+  height: $header-height
+  width: 100%
   position: fixed
-  top: 0px
-  left: 0px
-  z-index: 1
-  margin: 5px
+  top: 0
+  background-color: $header-bg-1
+  +background-image(linear-gradient($header-bg-1, $header-bg-2))
+  z-index: 10
+  padding: 5px
+
+#app_body
+  height: 100%
+  padding-top: $header-height
 
 html
   +full-height
@@ -27,3 +35,8 @@ body
   +full-height
   width: $main-area-width
   float: left
+  border-right: 1px solid #CDD1D4
+
+
+.main-area, .sidebar
+  padding-top: 15px

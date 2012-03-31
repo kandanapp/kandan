@@ -5,9 +5,9 @@ class Kandan.Plugins.UserList
   @plugin_namespace: "Kandan.Plugins.UserList"
 
   @template: _.template '''
-    <div class="user">
-      <div class="avatar"><img src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=https://bushi.do/images/profile.png"/></div>
-      <div class="name"><%= name %></div>
+    <div class="user clearfix">
+      <img class="avatar" src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=https://bushi.do/images/profile.png"/>
+      <span class="name"><%= name %></span>
     </div>
   '''
 

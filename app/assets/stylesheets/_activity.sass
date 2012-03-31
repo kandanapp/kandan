@@ -2,19 +2,13 @@
   float: left
   width: 100%
   padding-top: 10px
-  padding-bottom: 10px
+  pandding-bottom: 10px
   border-bottom: 1px solid #DEE6E8
   background: #FFF
-  .avatar
-    margin-right: 10px
-    display: block
-    float: left
-    width: 5%
-    width: 30px
-    height: 30px
+  position: relative
   .readable
     float: left
-    width: 95%
+    width: 85%
     .user
       color: #AEB9BD
       font-weight: bold
@@ -24,9 +18,9 @@
       font-size: 14px
     .content
       float: left
-      width: 80%
       color: #797D7F
       font-size: 14px
+      padding-bottom: 15px
       .image-preview, .youtube-preview
         a
           width: 100%
@@ -39,13 +33,25 @@
           color: #878D8F
           font-weight: bold
           margin-top: 5px
-    .posted_at
-      float: left
-      width: 20%
-      text-align: right
-      font-size: 11px
-      span
-        +border-radius(4px)
-        padding: 4px
-        background: #F3F8F9
-        color: #BDC6CA
+
+.posted_at
+  float: right
+  text-align: right
+  font-size: 11px
+  position: absolute
+  right: 0px
+  +border-radius(4px)
+  padding: 4px
+  background: #F3F8F9
+  color: #BDC6CA
+
+
+.avatar
+  margin-right: 10px
+  display: block
+  float: left
+  width: 5%
+  width: 30px
+  height: 30px
+
+

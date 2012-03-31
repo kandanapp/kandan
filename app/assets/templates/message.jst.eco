@@ -1,17 +1,15 @@
-<div class="avatar">
-  <img src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30&d=https://bushi.do/images/profile.png"/>
-</div>
+<span class="posted_at"><%= @activity.created_at %></span>
+<img class="avatar" src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30&d=https://bushi.do/images/profile.png"/>
 
 <div class="readable">
-  <div class="user">
+  <span class="user">
     <%= @activity.user.first_name %>
-  </div>
+  </span>
 
-  <div class="content">
+  <span class="content">
     <%- @activity.content %>
-  </div>
+  </span>
 
-  <div class="posted_at">
-    <span><%= @activity.created_at %></span>
-  </div>
 </div>
+
+
