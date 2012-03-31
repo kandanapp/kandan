@@ -11,7 +11,7 @@ gem 'bushido'
 
 # Server/transport gems
 gem 'thin'
-gem 'bushido-faye'
+gem '_bushido-faye', '0.8.2'
 
 # Helper gems
 gem 'kaminari'
@@ -31,7 +31,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'tane', :path => "../tane", :group => :development
+# gem 'tane', :path => "../tane", :group => :development
 
 # Test gems, obviously
 group :test do
