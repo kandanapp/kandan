@@ -1,13 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    _bushido-faye (0.8.1)
+    _bushido-faye (0.8.2)
+      _bushido-faye-websocket (>= 0.4.0)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
       eventmachine (>= 0.12.0)
-      faye-websocket (>= 0.4.0)
       rack (>= 1.0.0)
       yajl-ruby (>= 1.0.0)
+    _bushido-faye-websocket (0.4.4)
+      eventmachine (>= 0.12.0)
     actionmailer (3.2.2)
       actionpack (= 3.2.2)
       mail (~> 2.4.0)
@@ -88,8 +90,6 @@ GEM
     factory_girl_rails (1.7.0)
       factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
-    faye-websocket (0.4.4)
-      eventmachine (>= 0.12.0)
     highline (1.6.11)
     hike (1.2.1)
     httparty (0.8.1)
@@ -196,7 +196,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  _bushido-faye
+  _bushido-faye (= 0.8.2)
   aws-sdk
   bourbon
   bushido
