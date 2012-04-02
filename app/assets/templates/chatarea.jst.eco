@@ -1,9 +1,12 @@
 <ul>
   <% for channel in @channels.models: %>
     <li>
-      <a href="#<%= "channels-#{channel.get('id')}" %>"><%= channel.get('name') %></a><span class="ui-icon ui-icon-close">x</span>
+      <a href="#<%= "channels-#{channel.get('id')}" %>"><%= channel.get('name') %></a>
+      <a href="#" class="ui-icon ui-icon-close">x</a>
     </li>
   <% end %>
-  <li><div class="create_channel">+</div></li>
+  <li>
+     <a href="#" class="create_channel">+</a>
+   </li>
 </ul>
 

@@ -9,7 +9,19 @@
     background: $active-tab-bg
     border: none
     a
-      color: $active-tab-color
+      color: $active-tab-color !important
+
+html body .ui-tabs .ui-tabs-nav li
+  top: 3px !important
+  margin-right: 5px
+
+a.ui-icon-close
+  margin-top: 4px
+  color: $header-bg-1
+  cursor: hover
+
+.create_channel
+  cursor: hover
 
 .ui-tabs
   +border-radius(0px)
@@ -18,7 +30,7 @@
   border: none
   .ui-tabs-nav
     position: fixed
-    top: 2px
+    top: 0px
     left: 90px
     z-index: 20
     li a

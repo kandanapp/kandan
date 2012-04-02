@@ -47,7 +47,7 @@ window.Kandan =
     $("#channels").tabs 'option', 'tabTemplate', '''
       <li>
         <a href="#{href}">#{label}</a>
-        <span class="ui-icon ui-icon-close">x</span>
+        <a href="#" class="ui-icon ui-icon-close">x</a>
       </li>
     '''
 
