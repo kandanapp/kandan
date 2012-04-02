@@ -56,12 +56,24 @@
 
 
 .search
-  width: 200px
+  min-width: 100px
   float: right
   text-align: right
   input
     +border-radius(20px)
+    background: $search-bg url(image_path('search_icon.png')) no-repeat
+    background-position: 95% center
     width: 100%
-    background: $search-bg 
     color: $search-color
     border: 2px solid darken($search-bg, 10%)
+    padding-right: 15%
+
+.header .user
+  float: right
+  color: #CCC
+  padding-left: 10px
+  padding-right: 10px
+  img
+    vertical-align: middle
+    width: 20px
+    height: 20px

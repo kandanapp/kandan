@@ -71,8 +71,18 @@ window.Kandan =
       Kandan.initTabs()
       Kandan.Widgets.initAll()
 
+  setCurrentUser: ()->
+    template = _.template '''
+      <img src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=http://bushi.do/images/profile.png"/> <%= name %>
+    '''
+    currentUser = Kandan.Helpers.Users.currentUser()
+    $(".header .user").html template({
+      gravatar_hash: currentUser.gravatar_hash,
+      name: "#{currentUser.first_name} #{currentUser.last_name}"
+    })
 
   init: ->
+    @setCurrentUser()
     channels = new Kandan.Collections.Channels()
     channels.fetch({success: (channelsCollection)=>
       @initBroadcasterAndSubscribe()

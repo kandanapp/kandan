@@ -4,7 +4,6 @@ describe ChannelsController do
 
   before :all do
     @channel = Factory :channel
-    # @sample_activity = @channel.activities.build :action => "message"
   end
 
   before :each do
@@ -12,12 +11,16 @@ describe ChannelsController do
     request.env['warden'].stub :authenticate! => @user
     controller.stub :current_user => @user
   end
-  
+
   describe "GET index" do
     it "should return list of channels in JSON" do
       get :index, :format => :json
-      JSON(response.body).should be_kind_of(Array)
-      JSON(response.body).first.should have_key("activities")
+      JSON(response.body) # parse to validate json
+    end
+        
+    it "should have an array for activities in the JSON response" do
+      get :index, :format => :json
+      puts JSON(response.body).first["activities"].should be_kind_of(Array)
     end
   end
 
