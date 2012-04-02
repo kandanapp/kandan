@@ -1,6 +1,7 @@
 class Kandan.Plugins.UserList
 
   @widget_title: "People"
+  @widget_icon_url: "/assets/people_icon.png"
   @widget_name: "users"
   @plugin_namespace: "Kandan.Plugins.UserList"
 
