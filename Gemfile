@@ -31,7 +31,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'tane', :path => "/remote/tane", :group => :development
+#gem 'tane' :path => "/remote/tane", :group => :development
 
 # Test gems, obviously
 group :test do
