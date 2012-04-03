@@ -10,7 +10,7 @@ class Kandan.Plugins.Attachments
   @templates:
     no_files: _.template '''
       <div style="text-align:center; text-transform: uppercase; font-size: 11px; color: #999; padding: 10px;">
-        Amigo, Why you no upload?
+        No media yet. Try uploading.
       </div>
     '''
 

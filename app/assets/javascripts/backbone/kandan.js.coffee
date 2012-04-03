@@ -39,7 +39,7 @@ window.Kandan =
   initTabs: ()->
     $('#channels').tabs({
       create: (event, ui)->
-        $('ul.ui-tabs-nave').css({top: $('.header').offset().top + "px"})
+        $('ul.ui-tabs-nav').css({top: $('.header').offset().top + "px"})
       select: (event, ui)->
         $(document).data('active_channel_id',
         Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
