@@ -17,7 +17,7 @@
   font-size: 12px
 
 html body .ui-tabs .ui-tabs-nav li
-  top: 3px !important
+  top: 2px !important
   margin-right: 5px
 
 .create_channel
@@ -27,6 +27,13 @@ body html ul.ui-tabs-nav
   display: block
   width: 1050px
   height: 32px
+
+
+/* html body #app_body .main-area #channels li.ui-state-active
+/*   backgroun-color: $active-tab-bg !important
+
+/* html body li.ui-state-default
+/*   background-color: #9da7aa !important
 
 .ui-tabs
   +border-radius(0px)
@@ -40,13 +47,21 @@ body html ul.ui-tabs-nav
     z-index: 20
     li a
       font-size: 14px
-    .ui-tab-selected
-      background: $active-tab-bg
+    .ui-state-default
+      background: #9da7aa
       border: none
+      border-top: 1px solid #bbc2c4
+      +box-shadow(inset 0px -6px 7px -5px #3a4547)	
+      color: #7f8587	
       a
         color: $active-tab-color
+    .ui-state-active
+      background: $active-tab-bg !important
+      +box-shadow(none)
+      border-top: 1px solid #FFF	
+      text-shadow: 0px 0px 2px #FFF
     li a
-      padding: 3px
+      padding: 3px 8px
   .ui-tabs-panel
     padding: 0px
     padding-right: 20px
