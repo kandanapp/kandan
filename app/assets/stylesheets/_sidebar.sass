@@ -78,12 +78,15 @@
   input
     +border-radius(20px)
     background: $search-bg url(image_path('search_icon.png')) no-repeat
+    +box-shadow(inset 0px 7px 6px -5px #3a4547, 2px 7px 7px -6px #7f8587)
     background-position: 95% center
     background-size: 15px
     width: 100%
     color: $search-color
     border: 2px solid darken($search-bg, 10%)
+    padding: 3px 0
     padding-right: 15%
+    
 
 .header .user
   float: right
