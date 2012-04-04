@@ -5,11 +5,15 @@
 *
   +box-sizing(border-box)
 
+#kandan
+  height: 100%
+  width: 100%
+
 .header
   display: block
-  height: $header-height
   width: 100%
   position: fixed
+  height: $header-height
   top: 0
   background-color: $header-bg-1
   +background-image(linear-gradient($header-bg-1, $header-bg-2))
@@ -53,6 +57,7 @@
 /* gotta bump stuff in the header
 .logo, .ui-tabs-nav
   padding-top: 7px !important
+  float: left
 .search form
   padding-top: 5px
 

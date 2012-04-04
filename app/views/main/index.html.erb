@@ -6,31 +6,32 @@
 
 
 
+<div id="kandan">
+  <div class="header">
+    <%= image_tag "logo.png", :class=>"logo" %>  
 
-<div class="header">
-  <%= image_tag "logo.png", :class=>"logo" %>  
+    <a href="#" class="user_menu_link">
+      <cite class="user_flag"></cite>
+      <div class="user"></div>
+    </a>
 
-  <a href="#" class="user_menu_link">
-    <cite class="user_flag"></cite>
-    <div class="user"></div>
-  </a>
+    <div class="user_menu">
+      <a href="<%= destroy_user_session_path %>">logout</a>
+    </div>
 
-  <div class="user_menu">
-    <a href="<%= destroy_user_session_path %>">logout</a>
+    <div class="search">
+      <form method="get" action="/search" target="_blank">
+	<input type="text" class="query" name="query"/>
+      </form>
+    </div>
   </div>
 
-  <div class="search">
-    <form method="get" action="/search" target="_blank">
-      <input type="text" class="query" name="query"/>
-    </form>
-  </div>
-</div>
+  <div id="app_body">
+    <div class="main-area"></div>
 
-<div id="app_body">
-  <div class="main-area"></div>
-
-  <div class="sidebar">
-    <div class="widgets"></div>
+    <div class="sidebar">
+      <div class="widgets"></div>
+    </div>
   </div>
 </div>
 
