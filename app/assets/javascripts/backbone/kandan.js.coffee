@@ -58,6 +58,8 @@ window.Kandan =
   initChatArea: (channels)->
     chatArea = new Kandan.Views.ChatArea({channels: channels})
     $(".main-area").html(chatArea.render().el)
+    $(document).scrollTop($(document).height()+9000)
+
 
   bindEventCallbacks: ()->
     $(document).bind 'changeData', (element, name, value)->
