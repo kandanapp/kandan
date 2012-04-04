@@ -37,16 +37,14 @@ window.Kandan =
     window.broadcaster.subscribe "/channels/*"
 
   initTabs: ()->
-    $('#channels').tabs({
-      create: (event, ui)->
-        $('ul.ui-tabs-nav').css({top: $('.header').offset().top + "px"})
+    $('#kandan').tabs({
       select: (event, ui)->
         $(document).data('active_channel_id',
         Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
         Kandan.Data.Channels.runCallbacks('change')
     })
 
-    $("#channels").tabs 'option', 'tabTemplate', '''
+    $("#kandan").tabs 'option', 'tabTemplate', '''
       <li>
         <span class="tab_right"></span>
         <span class="tab_left"></span>

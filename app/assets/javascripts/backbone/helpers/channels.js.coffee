@@ -17,10 +17,14 @@ class Kandan.Helpers.Channels
     scrollPercentage > @options.autoScrollThreshold
 
   @scrollToLatestMessage: (channelId)->
-    @channel_activities_el(channelId).parent().scrollTop(100000)
+    console.log("scrolling to last message");
+    $('document').scrollTop($('docoument').height())
+    #@channel_activities_el(channelId).parent().scrollTop(100000)
 
   @currentScrollPosition: (channelId)->
-    @channel_activities_el(channelId).parent().scrollTop()
+    console.log("current scroll position");
+    $('document').scrollTop()
+    #@channel_activities_el(channelId).parent().scrollTop()
 
   @channel_activities_el: (channelId)->
     $("#channel-activities-#{channelId}")
