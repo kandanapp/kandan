@@ -32,9 +32,17 @@ window.Kandan =
     for plugin in plugins
       Kandan.Plugins.register "Kandan.Plugins.#{plugin}"
 
+  registerAppEvents: ()->
+    Kandan.Data.ActiveUsers.registerCallback "change", (data)->
+      Kandan.Helpers.Channels.add_activity({
+        user: data.user,
+        action: data.event.split("#")[1]
+      })
+
   initBroadcasterAndSubscribe: ()->
-    window.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
-    window.broadcaster.subscribe "/channels/*"
+    Kandan.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
+    Kandan.broadcaster.subscribe "/channels/*"
+    @registerAppEvents()
 
   initTabs: ()->
     $('#channels').tabs({
@@ -60,10 +68,6 @@ window.Kandan =
   initChatArea: (channels)->
     chatArea = new Kandan.Views.ChatArea({channels: channels})
     $(".main-area").html(chatArea.render().el)
-
-  bindEventCallbacks: ()->
-    $(document).bind 'changeData', (element, name, value)->
-      Kandan.Data.ActiveUsers.runCallbacks('change') if name=="active_users"
 
   onFetchActiveUsers: (channels)=>
     return (activeUsers)=>
@@ -92,7 +96,6 @@ window.Kandan =
     channels = new Kandan.Collections.Channels()
     channels.fetch({success: (channelsCollection)=>
       @initBroadcasterAndSubscribe()
-      @bindEventCallbacks()
       activeUsers = new Kandan.Collections.ActiveUsers()
       activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
     })

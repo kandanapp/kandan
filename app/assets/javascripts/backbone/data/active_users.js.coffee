@@ -1,14 +1,14 @@
 class Kandan.Data.ActiveUsers
-  @callbacks: {"change": [] }
+  @callbacks: { "change": [] }
 
   @all: ()->
     Kandan.Helpers.ActiveUsers.all()
 
-  @register_callback: (event, callback)->
+  @registerCallback: (event, callback)->
     @callbacks[event].push(callback)
 
-  @runCallbacks: (event)->
-    callback() for callback in @callbacks[event]
+  @runCallbacks: (event, data)->
+    callback(data) for callback in @callbacks[event]
 
   @unregisterCallback: (event, callback)->
     delete @callbacks[@callbacks.indexOf(callback)]

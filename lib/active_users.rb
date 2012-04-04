@@ -44,6 +44,13 @@ class ActiveUsers
       false
     end
 
+    def update_user(user)
+      if find_by_user_id(user.id)
+        @@users[user.id][:user] = user
+        
+      end
+    end
+
     def all
       users = []
       @@users.values.each do |detail|
@@ -53,18 +60,12 @@ class ActiveUsers
     end
 
     def publish_message(event, user)
-      # TODO this is cheating.
-      # Have a common log (activities) with no channelID
-      # Or find some other way
-      
-      Channel.send("user_#{event}", user)
+      Channel.send("user_#{event}", user) if not event == "update"
       
       FAYE_CLIENT.publish("/app/activities", {
-          :event => "user##{event}",
-          :data  => {
-            :user => user,
-            :active_users => ActiveUsers.all
-          }
+          :event  => "user##{event}",
+          :entity => user,
+          :extra  => { :active_users => ActiveUsers.all }
         })
     end
   end

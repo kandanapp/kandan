@@ -19,16 +19,20 @@ class Kandan.Broadcasters.FayeBroadcaster
     @faye_client.bind "transport:up", ()->
       console.log "Comm link is up!"
 
-    @faye_client.subscribe "/app/user_activities", (data)=>
-      $(document).data('active_users', data.data.active_users)
-      Kandan.Helpers.Channels.add_activity({
-        user: data.data.user,
-        action: data.event.split("#")[1]
-      })
+    @faye_client.subscribe "/app/activities", (data)=>
+      [entityName, eventName] = data.event.split("#")
+      processEventsForUser(eventName, data) if entityName == "user"
+      processEventsForUser(eventName, data) if entityName == "channel"
 
-    @faye_client.subscribe "/app/channel_activities", (data)=>
-      # TODO action makes way for channel rename to be added later
-      Kandan.Helpers.Channels.deleteChannelById(data.channel.id) if data.action == "delete"
+
+  processEventsForUser: (eventName, data)->
+    $(document).data('active_users', data.extra.active_users)
+    Kandan.Data.ActiveUsers.runCallbacks("change", data)
+
+
+  processEventsForChannel: (eventName, data)->
+    Kandan.Helpers.Channels.deleteChannelById(data.entity.id) if eventName == "delete"
+    Kandan.Helpers.Channels.renameChannelById(data.entity.id, data.entity.name) if data.eventName == "update"
 
 
   subscribe: (channel)->

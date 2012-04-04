@@ -27,5 +27,5 @@ class Kandan.Plugins.UserList
 
   @init: ()->
     Kandan.Widgets.register @plugin_namespace
-    Kandan.Data.ActiveUsers.register_callback "change", ()=>
+    Kandan.Data.ActiveUsers.registerCallback "change", ()=>
       Kandan.Widgets.render @plugin_namespace
