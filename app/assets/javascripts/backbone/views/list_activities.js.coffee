@@ -8,11 +8,9 @@ class Kandan.Views.ListActivities extends Backbone.View
     oldest = 0
 
     if @channel.activities
-      console.log "channel has activities"
       for activity in @channel.activities.models
         activityView = new Kandan.Views.ShowActivity({activity: activity, state: Kandan.Helpers.Activities.HISTORY_STATE})
         $(@el).append(activityView.render().el)
 
     $(@el).prev().hide() if @channel.more_activities != true
     @
-

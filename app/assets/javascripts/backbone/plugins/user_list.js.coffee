@@ -17,7 +17,6 @@ class Kandan.Plugins.UserList
     $el.next().hide();
 
     for user in Kandan.Data.ActiveUsers.all()
-      console.log "hash", user.gravatar_hash
       $users.append @template({
         name: "#{user.first_name} #{user.last_name}",
         gravatar_hash: user.gravatar_hash

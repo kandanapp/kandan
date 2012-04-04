@@ -21,8 +21,8 @@ class Kandan.Broadcasters.FayeBroadcaster
 
     @faye_client.subscribe "/app/activities", (data)=>
       [entityName, eventName] = data.event.split("#")
-      processEventsForUser(eventName, data) if entityName == "user"
-      processEventsForUser(eventName, data) if entityName == "channel"
+      @processEventsForUser(eventName, data) if entityName == "user"
+      @processEventsForUser(eventName, data) if entityName == "channel"
 
 
   processEventsForUser: (eventName, data)->
@@ -38,6 +38,7 @@ class Kandan.Broadcasters.FayeBroadcaster
   subscribe: (channel)->
     subscription = @faye_client.subscribe channel, (data)=>
       Kandan.Helpers.Channels.add_activity(data)
-    subscription.errback(()->
+    subscription.errback((data)->
+      console.log "error", data
       alert "Oops! could not connect to the server"
     )
