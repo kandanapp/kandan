@@ -11,15 +11,7 @@ class Kandan.Widgets
     $.each @widgets, (widget_namespace, el_name)=>
       @init(widget_namespace)
 
-  @template: _.template '''
-    <div class="widget" id="widget_<%= element_id %>">
-      <div class="widget_header">
-        <h3 style="background-image:url(<%= icon_url %>);"><%= title %></h3>
-      </div>
-      <div class="widget_content" id="<%= element_id %>"></div>
-      <div class="widget_action_bar"></div>
-    </div>
-  '''
+  @template: JST['widget']
 
   @init: (widget_namespace)->
     widget = eval(widget_namespace)
