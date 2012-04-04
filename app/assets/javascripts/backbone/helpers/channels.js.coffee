@@ -6,9 +6,8 @@ class Kandan.Helpers.Channels
 
   @replaceCreateButton: ()->
     $tabNav = $(".create_channel").parent().parent()
-    $createButton = $(".create_channel").parent().html()
     $tabNav.find(".create_channel").parent().remove()
-    $tabNav.append("<li>"+$createButton+"</li>")
+    $tabNav.append JST['create_channel']()
 
   @pastAutoScrollThreshold: (channelId)->
     currentPosition     = @currentScrollPosition channelId
@@ -33,11 +32,11 @@ class Kandan.Helpers.Channels
     $("#channels-#{channelId} .pagination")
 
   @selected_tab: ()->
-    $('#channels').tabs('option', 'selected')
+    $('#kandan').tabs('option', 'selected')
 
   @getActiveChannelId: ()->
     if $(document).data('active_channel_id') == undefined
-      return $("#channels .ui-tabs-panel")
+      return $("#kandan .ui-tabs-panel")
         .eq(@selected_tab())
         .data('channel_id')
     else
@@ -60,12 +59,12 @@ class Kandan.Helpers.Channels
   @confirmAndDeleteChannel: (channel, tabIndex)->
     return false if @confirmDeletion() == false
     channel.destroy({success: ()=>
-      $("#channels").tabs("remove", tabIndex)
+      $("#kandan").tabs("remove", tabIndex)
     })
 
 
   @getChannelIdByTabIndex: (tabIndex)->
-    $("#channels .ui-tabs-panel")
+    $("#kandan .ui-tabs-panel")
       .eq(tabIndex)
       .data('channel_id')
 
@@ -85,7 +84,7 @@ class Kandan.Helpers.Channels
     channel = new Kandan.Models.Channel({id: channelId})
     return @confirmAndDeleteChannel(channel, tabIndex) if not deleted
     console.log "TAB INDEX", tabIndex
-    $("#channels").tabs("remove", tabIndex)
+    $("#kandan").tabs("remove", tabIndex)
 
 
   @channelExists: (channelId)->
@@ -95,9 +94,9 @@ class Kandan.Helpers.Channels
 
   @createChannelArea: (channel)->
     channelArea = "#channels-#{channel.get('id')}"
-    totalTabs = $("#channels").tabs("length")
+    totalTabs = $("#kandan").tabs("length")
 
-    $("#channels").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
+    $("#kandan").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
     Kandan.Helpers.Channels.replaceCreateButton()
     view = new Kandan.Views.ChannelPane({channel: channel})
     view.render $(channelArea)

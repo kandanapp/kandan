@@ -58,7 +58,7 @@ window.Kandan =
         <span class="tab_left"></span>
         <span class="tab_content">
           <a href="#{href}">#{label}</a>
-          <a href="#" class="ui-icon ui-icon-close">x</a>
+          <a href="#" class="close_channel">x</a>
         </span>
       </li>
     '''
