@@ -5,13 +5,9 @@ class BushidoUserHooks < Bushido::EventObserver
     puts "Setting username to: #{params['data'].try(:[], 'ido_id')}"
 
     user = User.new(:email => params['data'].try(:[], 'email'))
-    user.name = user.email.split('@').first
-    user.initials = user.email[0..1].upcase
+    user.first_name = user.email.split('@').first
     user.send("#{::Devise.cas_username_column}=".to_sym, params['data'].try(:[], 'ido_id'))
     user.save
-
-    # Add the new user to all existing projects
-    Project.all.each(&:add_all_users!)
   end
 
   def user_removed
@@ -20,10 +16,8 @@ class BushidoUserHooks < Bushido::EventObserver
 
     user = User.find_by_ido_id(params['data']['ido_id'])
 
-    user.try(:remove_all_projects!)
-
     # TODO: Disable the user instead of destroying them (to prevent data loss)
-    user.try(:destroy)
+    user.update_attribute(:active, false)
   end
 
   def user_updated
