@@ -8,9 +8,17 @@
 
 
 <div class="header">
-  <%= image_tag "logo.png", :class=>"logo" %>
+  <%= image_tag "logo.png", :class=>"logo" %>  
 
-  <div class="user"></div>
+  <a href="#" class="user_menu_link">
+    <cite class="user_flag"></cite>
+    <div class="user"></div>
+  </a>
+
+  <div class="user_menu">
+    <a href="<%= destroy_user_session_path %>">logout</a>
+  </div>
+
   <div class="search">
     <form method="get" action="/search" target="_blank">
       <input type="text" class="query" name="query"/>

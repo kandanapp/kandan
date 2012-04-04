@@ -19,3 +19,8 @@
 //= require backbone/kandan
 //= require_tree .
 
+$(function(){
+ $('.user_menu_link').click(function(){
+     $('.user_menu').toggle();
+ });
+});

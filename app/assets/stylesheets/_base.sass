@@ -18,6 +18,38 @@
   +box-shadow(inset 0px -7px 6px -5px #3a4547)
   border-bottom: 1px solid #FFF
 
+.user_menu_link
+  float: right
+  .user
+    float: right
+  .user_flag
+    float: right
+
+.user_flag
+  display: block
+  border-color: #a8aeb0 transparent transparent transparent
+  border-style: solid
+  border-width: 7px
+  float: right
+  width: 0
+  height: 0
+  margin-top: 11px
+
+.user_menu
+  background-color: $header-bg-1
+  +background-image(linear-gradient($header-bg-1, $header-bg-2))
+  +border-radius(4px)
+  position: absolute
+  right: 0px
+  z-index: 9000
+  height: auto
+  width: 100px
+  padding: 5px
+  display: none
+  a
+    color: #FFF
+  
+
 /* gotta bump stuff in the header
 .logo, .ui-tabs-nav
   padding-top: 7px !important
