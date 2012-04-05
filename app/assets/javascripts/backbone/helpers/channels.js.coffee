@@ -96,9 +96,11 @@ class Kandan.Helpers.Channels
 
   @createChannelArea: (channel)->
     channelArea = "#channels-#{channel.get('id')}"
-    totalTabs = $("#channels").tabs("length")
+    totalTabs = $("#kandan").tabs("length")
 
-    $("#channels").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
+    console.log('createChannelArea',channelArea, totalTabs);
+
+    $("#kandan").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
     Kandan.Helpers.Channels.replaceCreateButton()
     view = new Kandan.Views.ChannelPane({channel: channel})
     view.render $(channelArea)
