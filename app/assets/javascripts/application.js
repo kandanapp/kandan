@@ -20,7 +20,9 @@
 //= require_tree .
 
 $(function(){
- $('.user_menu_link').click(function(){
-     $('.user_menu').toggle();
+ $('.user_menu_link').click(function(e){
+    e.preventDefault();
+    $('.user_menu').toggle();
+    return false;
  });
 });
