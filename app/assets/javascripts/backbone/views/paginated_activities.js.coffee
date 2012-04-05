@@ -10,7 +10,7 @@ class Kandan.Views.PaginatedActivities extends Backbone.View
   setPagination: ()->
     oldestActivityId = 0
     if @channel.activities and @channel.activities.models.length > 0
-      oldestActivityId = _.last(@channel.activities.models).get('id')
+      oldestActivityId = _.first(@channel.activities.models).get('id')
 
     $(@el).find(".pagination").data('oldest', oldestActivityId)
 
@@ -19,12 +19,13 @@ class Kandan.Views.PaginatedActivities extends Backbone.View
     @channel = @options.channel
     $(@el).html @template()
     @setPagination()
-    
+
+    $(@el).find(".pagination").hide() if @channel.more_activities != true
     listActivitiesView = new Kandan.Views.ListActivities({channel: @channel})
     $(@el).append listActivitiesView.render().el
     @
 
-    
+
   load_more_activities: ()->
     oldest = $(@el).find(".pagination").data('oldest')
     activities = new Kandan.Collections.Activities([], {channel_id: @channel.get('id')})
@@ -41,4 +42,4 @@ class Kandan.Views.PaginatedActivities extends Backbone.View
           _.last(collection.models).get('id')
         )
     })
-  
+

@@ -2,7 +2,7 @@ class Kandan.Helpers.Channels
 
   @options:
     autoScrollThreshold: 0.90
-    maxActivities: 5
+    maxActivities: <%= Kandan::Config.options[:per_page] %>
 
   @pastAutoScrollThreshold: (channelId)->
     currentPosition     = @currentScrollPosition channelId
@@ -37,16 +37,16 @@ class Kandan.Helpers.Channels
 
 
   @confirmDeletion: ()->
-    reply = confirm("Really delete the channel?")
-    return reply
+    return confirm("Really delete the channel?")
 
 
   @flushActivities: (channelId)->
     $channelActivities = $("#channel-activities-#{channelId}")
     if $channelActivities.children().length == @options.maxActivities + 1
-      oldest = $channelActivities.children().first().data("activity_id")
       $channelActivities.children().first().remove()
+      oldest = $channelActivities.children().first().data("activity_id")
       $channelActivities.prev().data("oldest", oldest)
+      @channel_pagination_el(channelId).show()      
 
 
   @confirmAndDeleteChannel: (channel, tabIndex)->
@@ -124,8 +124,8 @@ class Kandan.Helpers.Channels
   @add_message: (activityAttributes, state)->
     @channel_activities_el(activityAttributes.channel_id)
       .append(@new_activity_view(activityAttributes).render().el)
-    @set_pagination_data(activityAttributes.channel_id)
     @flushActivities(activityAttributes.channel_id)
+    @set_pagination_data(activityAttributes.channel_id)
 
 
   @add_notification: (activityAttributes)->
@@ -133,11 +133,13 @@ class Kandan.Helpers.Channels
     activityAttributes["created_at"] = new Date()
     for el in $channelElements
       $(el).append(@new_activity_view(activityAttributes).render().el)
-      @flushActivities($(el).parent().data("channel_id"))
+      @flushActivities($(el).closest(".ui-widget-content").data("channel_id"))
+      @set_pagination_data(activityAttributes.channel_id)
 
 
   @set_pagination_state: (channelId, moreActivities, oldest)->
     @channel_pagination_el(channelId).data('oldest', oldest)
+    console.log "pagination element", moreActivities, @channel_pagination_el(channelId)
     if moreActivities == true
       @channel_pagination_el(channelId).show()
     else

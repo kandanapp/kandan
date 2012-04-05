@@ -3,7 +3,6 @@ module Kandan
     def self.enable_bushido!
       self.load_hooks!
       self.extend_user!
-      self.extend_project!
     end
 
     def self.extend_user!
@@ -20,7 +19,7 @@ module Kandan
           self.first_name = "#{extra_attributes['first_name']}"
           self.last_name  = "#{extra_attributes['last_name']}"
           self.locale     = extra_attributes['locale']
-          self.email      = extra_attributes["email"]
+          self.email      = extra_attributes['email']
         end
       end
     end

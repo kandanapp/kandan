@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :id, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :locale, :gravatar_hash
 
+
   def bushido_extra_attributes(extra_attributes)
     self.first_name = extra_attributes["first_name"].to_s
     self.last_name  = extra_attributes["last_name"].to_s
