@@ -9,6 +9,7 @@ class BushidoUserHooks < Bushido::EventObserver
     user.email  = data['email']
     user.locale = data['locale']
     user.first_name = user.email.split('@').first
+    user.active = true
     user.save
   end
 
