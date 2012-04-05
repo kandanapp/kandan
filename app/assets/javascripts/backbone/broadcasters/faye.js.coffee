@@ -26,6 +26,7 @@ class Kandan.Broadcasters.FayeBroadcaster
 
 
   processEventsForUser: (eventName, data)->
+    console.log "event:", eventName
     $(document).data('active_users', data.extra.active_users)
     Kandan.Data.ActiveUsers.runCallbacks("change", data)
 

@@ -47,7 +47,7 @@ class ActiveUsers
     def update_user(user)
       if find_by_user_id(user.id)
         @@users[user.id][:user] = user
-        
+        publish_message "update", user
       end
     end
 
@@ -61,7 +61,7 @@ class ActiveUsers
 
     def publish_message(event, user)
       Channel.send("user_#{event}", user) if not event == "update"
-      
+
       FAYE_CLIENT.publish("/app/activities", {
           :event  => "user##{event}",
           :entity => user,
