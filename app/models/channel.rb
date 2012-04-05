@@ -1,6 +1,6 @@
 class Channel < ActiveRecord::Base
-  has_many :activities
-  has_many :attachments
+  has_many :activities, :dependent => :destroy
+  has_many :attachments, :dependent => :destroy
 
   class << self
     def user_connect(user)
