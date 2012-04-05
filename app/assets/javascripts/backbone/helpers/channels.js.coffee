@@ -58,11 +58,15 @@ class Kandan.Helpers.Channels
   @confirmAndDeleteChannel: (channel, tabIndex)->
     return false if @confirmDeletion() == false
     channel.destroy({success: ()=>
-      $("#channels").tabs("remove", tabIndex)
+      $("#kandan").tabs("remove", tabIndex)
     })
 
 
   @getChannelIdByTabIndex: (tabIndex)->
+    console.log("getChannelIdByTabIndex", tabIndex)
+    console.log($("#channels .ui-tabs-panel"))
+    console.log($("#channels .ui-tabs-panel").eq(tabIndex))
+    console.log($("#channels .ui-tabs-panel").eq(tabIndex).data('channel_id'))
     $("#channels .ui-tabs-panel")
       .eq(tabIndex)
       .data('channel_id')
@@ -76,14 +80,18 @@ class Kandan.Helpers.Channels
       @deleteChannelByTabIndex(tabIndex, true)
 
   @deleteChannelByTabIndex: (tabIndex, deleted)->
+    # gotcha, 0 index being passed a natural index from the html views
+    #tabIndex = tabIndex-1
+    console.log("deleteChannelByTabIndex", tabIndex);
     deleted = deleted || false
-    console.log "try deleting #{tabIndex}"
     channelId = @getChannelIdByTabIndex(tabIndex)
-    console.log "d ", channelId
+    if channelId == 'undefined'
+      throw "NO CHANNEL ID";
+    console.log("deleteing channelId", channelId);
     channel = new Kandan.Models.Channel({id: channelId})
     return @confirmAndDeleteChannel(channel, tabIndex) if not deleted
     console.log "TAB INDEX", tabIndex
-    $("#channels").tabs("remove", tabIndex)
+    $("#kandan").tabs("remove", tabIndex)
 
 
   @channelExists: (channelId)->
