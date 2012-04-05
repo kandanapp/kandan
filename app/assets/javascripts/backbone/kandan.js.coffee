@@ -39,6 +39,16 @@ window.Kandan =
         action: data.event.split("#")[1]
       })
 
+    $(window).focus(->
+      Kandan.Helpers.Utils.browserTabFocused = true
+      $(document).attr('title', 'Kandan')
+    )
+
+    $(window).blur(->
+      Kandan.Helpers.Utils.browserTabFocused = false
+    )
+
+
   initBroadcasterAndSubscribe: ()->
     Kandan.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
     Kandan.broadcaster.subscribe "/channels/*"

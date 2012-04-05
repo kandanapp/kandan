@@ -121,10 +121,12 @@ class Kandan.Helpers.Channels
     @scrollToLatestMessage(channelId) if @pastAutoScrollThreshold(channelId)
 
 
+
   @add_message: (activityAttributes, state)->
     @channel_activities_el(activityAttributes.channel_id)
       .append(@new_activity_view(activityAttributes).render().el)
     @flushActivities(activityAttributes.channel_id)
+    Kandan.Helpers.Utils.notifyInTitleIfRequired()
     @set_pagination_data(activityAttributes.channel_id)
 
 

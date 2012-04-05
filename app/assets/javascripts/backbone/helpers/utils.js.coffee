@@ -1,5 +1,10 @@
 class Kandan.Helpers.Utils
 
+  @browserTabFocused: true
+
+  @notifyInTitleIfRequired: ->
+    $(document).attr('title', '(new) Kandan') if @browserTabFocused != true
+
   @months: [
     "January"
     ,"February"
