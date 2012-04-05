@@ -42,6 +42,9 @@ window.Kandan =
         $(document).data('active_channel_id',
         Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
         Kandan.Data.Channels.runCallbacks('change')
+      add: (event, ui) ->
+        $('.header .ui-tabs-panel:last').detach().appendTo('#channels')
+        $('#kandan').tabs('option', 'disabled', [])
     })
 
     $("#kandan").tabs 'option', 'tabTemplate', '''

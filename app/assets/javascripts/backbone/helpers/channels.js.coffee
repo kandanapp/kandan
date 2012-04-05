@@ -4,11 +4,11 @@ class Kandan.Helpers.Channels
     autoScrollThreshold: 0.90
     maxActivities: 5
 
-  @replaceCreateButton: ()->
-    $tabNav = $(".create_channel").parent().parent()
-    $createButton = $(".create_channel").parent().html()
-    $tabNav.find(".create_channel").parent().remove()
-    $tabNav.append("<li>"+$createButton+"</li>")
+  # @replaceCreateButton: ()->
+  #   $tabNav = $(".create_channel").parent().parent()
+  #   $createButton = $(".create_channel").parent().html()
+  #   $tabNav.find(".create_channel").parent().remove()
+  #   $tabNav.append("<li>"+$createButton+"</li>")
 
   @pastAutoScrollThreshold: (channelId)->
     currentPosition     = @currentScrollPosition channelId
@@ -63,10 +63,6 @@ class Kandan.Helpers.Channels
 
 
   @getChannelIdByTabIndex: (tabIndex)->
-    console.log("getChannelIdByTabIndex", tabIndex)
-    console.log($("#channels .ui-tabs-panel"))
-    console.log($("#channels .ui-tabs-panel").eq(tabIndex))
-    console.log($("#channels .ui-tabs-panel").eq(tabIndex).data('channel_id'))
     $("#channels .ui-tabs-panel")
       .eq(tabIndex)
       .data('channel_id')
@@ -98,10 +94,9 @@ class Kandan.Helpers.Channels
     channelArea = "#channels-#{channel.get('id')}"
     totalTabs = $("#kandan").tabs("length")
 
-    console.log('createChannelArea',channelArea, totalTabs);
-
+    $createTab = $(".create_channel").parents('li').detach()
     $("#kandan").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
-    Kandan.Helpers.Channels.replaceCreateButton()
+    $createTab.appendTo('ul.ui-tabs-nav')
     view = new Kandan.Views.ChannelPane({channel: channel})
     view.render $(channelArea)
     $(channelArea).data('channel_id', channel.get('id'))
