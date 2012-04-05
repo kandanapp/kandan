@@ -18,13 +18,11 @@ class Kandan.Helpers.Channels
 
   @scrollToLatestMessage: (channelId)->
     console.log("scrolling to last message");
-    $('document').scrollTop($('document').height()+900)
-    #@channel_activities_el(channelId).parent().scrollTop(100000)
+    $(document).scrollTop($(document).height()+9000)
 
   @currentScrollPosition: (channelId)->
     console.log("current scroll position");
-    $('document').scrollTop()
-    #@channel_activities_el(channelId).parent().scrollTop()
+    $(document).scrollTop()
 
   @channel_activities_el: (channelId)->
     $("#channel-activities-#{channelId}")
