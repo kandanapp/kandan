@@ -9,7 +9,7 @@ class Kandan.Views.ChatArea extends Backbone.View
 
   render: ->
     $('.header .logo').after(@template({channels: @options.channels}))
-    $('.close_channel').click(@deleteChannel);
+    $('.close_channel').live('click',@deleteChannel);
     $('.create_channel').click(@createChannel);
     for channel in @options.channels.models
       view = new Kandan.Views.ChannelPane({channel: channel})
@@ -18,7 +18,6 @@ class Kandan.Views.ChatArea extends Backbone.View
     @
 
   createChannel: (event)->
-    console.log("createChannel called", event);
     channelName = prompt("What's the channel name?", "New channel")
     channelName = channelName.replace(/^\s+|\s+$/g, '')
     if channelName
