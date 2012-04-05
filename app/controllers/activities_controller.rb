@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
         includes(:user).
         order('id DESC').
         limit(Kandan::Config.options[:per_page])
-    end  
+    end
 
     first_activity = Activity.order('id').where(:channel_id => params[:channel_id]).first
     first_activity_id = first_activity.id if not first_activity.nil?

@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
     self.first_name = extra_attributes["first_name"].to_s
     self.last_name  = extra_attributes["last_name"].to_s
     self.email      = extra_attributes["email"]
+    self.locale     = extra_attributes["locale"]
   end
 
   def ensure_gravatar_hash
