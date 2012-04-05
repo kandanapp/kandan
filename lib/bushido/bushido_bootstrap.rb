@@ -35,7 +35,7 @@ if Bushido::Platform.on_bushido?
   class BushidoRailtie < Rails::Railtie
     config.to_prepare do
       puts "Enabling Bushido"
-      Fulcrum::Bushido.enable_bushido!
+      Kandan::Bushido.enable_bushido!
       puts "Finished enabling Bushido"
     end
   end
