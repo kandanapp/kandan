@@ -3,12 +3,14 @@ class Kandan.Views.ChatArea extends Backbone.View
   template: JST['chatarea']
   # className: 'channels'
 
-  events:
-    "click .ui-icon-close" : "deleteChannel"
-    "click .create_channel": "createChannel"
+  # events:
+  #   "click .close_channel" : "deleteChannel"
+  #   "click .create_channel": "createChannel"
 
   render: ->
     $('.header .logo').after(@template({channels: @options.channels}))
+    $('.close_channel').click(@deleteChannel);
+    $('.create_channel').click(@createChannel);
     for channel in @options.channels.models
       view = new Kandan.Views.ChannelPane({channel: channel})
       $(@el).append(view.render().el)
@@ -16,6 +18,7 @@ class Kandan.Views.ChatArea extends Backbone.View
     @
 
   createChannel: (event)->
+    console.log("createChannel called", event);
     channelName = prompt("What's the channel name?", "New channel")
     channelName = channelName.replace(/^\s+|\s+$/g, '')
     if channelName
@@ -27,6 +30,7 @@ class Kandan.Views.ChatArea extends Backbone.View
       console.log "create channel: #{channelName}"
 
   deleteChannel: (event)->
+    console.log("delete channel called");
     channelIndex = $(event.target).parent().prevAll().length
     console.log "request for deletion", channelIndex
     Kandan.Helpers.Channels.deleteChannelByTabIndex(channelIndex) if channelIndex != 0
