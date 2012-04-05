@@ -1,5 +1,5 @@
 class Kandan.Views.ChannelTabs extends Backbone.View
-  template: JST['chatarea']
+  template: JST['channel_tabs']
   tagName: 'ul'
 
   events:
@@ -23,7 +23,5 @@ class Kandan.Views.ChannelTabs extends Backbone.View
       console.log "create channel: #{channelName}"
 
   deleteChannel: (event)->
-    console.log "deleteChannel"
-    channelIndex = $(event.target).parent().prevAll().length
-    console.log "request for deletion", channelIndex
+    channelIndex = $(event.target).closest('li').prevAll().length
     Kandan.Helpers.Channels.deleteChannelByTabIndex(channelIndex) if channelIndex != 0

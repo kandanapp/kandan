@@ -35,7 +35,7 @@ window.Kandan =
   registerAppEvents: ()->
     Kandan.Data.ActiveUsers.registerCallback "change", (data)->
       Kandan.Helpers.Channels.add_activity({
-        user: data.user,
+        user: data.entity,
         action: data.event.split("#")[1]
       })
 
@@ -50,6 +50,9 @@ window.Kandan =
         $(document).data('active_channel_id',
         Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
         Kandan.Data.Channels.runCallbacks('change')
+      add: (event, ui) ->
+        $('.header .ui-tabs-panel:last').detach().appendTo('#channels')
+        $('#kandan').tabs('option', 'disabled', [])
     })
 
     $("#kandan").tabs 'option', 'tabTemplate', '''
@@ -66,6 +69,8 @@ window.Kandan =
   initChatArea: (channels)->
     chatArea = new Kandan.Views.ChatArea({channels: channels})
     $(".main-area").html(chatArea.render().el)
+    $(document).scrollTop($(document).height()+9000)
+
 
   onFetchActiveUsers: (channels)=>
     return (activeUsers)=>

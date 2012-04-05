@@ -21,6 +21,7 @@
   padding: 0 5px
   +box-shadow(inset 0px -7px 6px -5px #3a4547)
   border-bottom: 1px solid #FFF
+  margin-top: -2px
 
 .user_menu_link
   float: right
@@ -43,13 +44,16 @@
   background-color: $header-bg-1
   +background-image(linear-gradient($header-bg-1, $header-bg-2))
   +border-radius(4px)
-  position: absolute
+  position: fixed
   right: 0px
+  top: 0px
   z-index: 9000
-  height: auto
+  height: 32px
   width: 100px
   padding: 5px
   display: none
+  bottom: -24px
+  margin-top: 31px
   a
     color: #FFF
   
@@ -68,20 +72,20 @@
 
 html
   +full-height
+  width: 100%
 
 body
   background: $page-bg url(image_path('page_bg.png')) repeat
   height: 100%
   min-height: 100%
+  width: 100%
   font-size: 13px
   font-family: 'PT Sans', sans-serif
 
 .main-area
-  +full-height
   width: $main-area-width
   float: left
   border-right: 1px solid #CDD1D4
+  padding-bottom: 70px
+  padding-top: 22px
 
-
-.main-area, .sidebar
-  padding-top: 15px

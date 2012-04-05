@@ -22,7 +22,7 @@ class Kandan.Broadcasters.FayeBroadcaster
     @faye_client.subscribe "/app/activities", (data)=>
       [entityName, eventName] = data.event.split("#")
       @processEventsForUser(eventName, data) if entityName == "user"
-      @processEventsForUser(eventName, data) if entityName == "channel"
+      @processEventsForChannel(eventName, data) if entityName == "channel"
 
 
   processEventsForUser: (eventName, data)->

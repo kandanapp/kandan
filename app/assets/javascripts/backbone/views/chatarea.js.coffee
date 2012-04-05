@@ -1,6 +1,6 @@
 class Kandan.Views.ChatArea extends Backbone.View
 
-  render: ()->
+  render: ->
     tabView = new Kandan.Views.ChannelTabs({channels: @options.channels})
     $('.header .logo').after(tabView.render().el)
 

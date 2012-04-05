@@ -4,11 +4,6 @@ class Kandan.Helpers.Channels
     autoScrollThreshold: 0.90
     maxActivities: 5
 
-  @replaceCreateButton: ()->
-    $tabNav = $(".create_channel").parent().parent()
-    $tabNav.find(".create_channel").parent().remove()
-    $tabNav.append JST['create_channel']()
-
   @pastAutoScrollThreshold: (channelId)->
     currentPosition     = @currentScrollPosition channelId
     totalHeight         = $(document).height() - $(window).height()
@@ -16,14 +11,12 @@ class Kandan.Helpers.Channels
     scrollPercentage > @options.autoScrollThreshold
 
   @scrollToLatestMessage: (channelId)->
-    console.log("scrolling to last message");
-    $('document').scrollTop($('docoument').height())
-    #@channel_activities_el(channelId).parent().scrollTop(100000)
+    console.log("scrolling to last message")
+    $(document).scrollTop($(document).height()+9000)
 
   @currentScrollPosition: (channelId)->
-    console.log("current scroll position");
-    $('document').scrollTop()
-    #@channel_activities_el(channelId).parent().scrollTop()
+    console.log("current scroll position")
+    $(document).scrollTop()
 
   @channel_activities_el: (channelId)->
     $("#channel-activities-#{channelId}")
@@ -77,12 +70,15 @@ class Kandan.Helpers.Channels
       @deleteChannelByTabIndex(tabIndex, true)
 
   @deleteChannelByTabIndex: (tabIndex, deleted)->
+    # NOTE gotcha, 0 index being passed a natural index from the html views
     deleted = deleted || false
-    console.log "try deleting #{tabIndex}"
     channelId = @getChannelIdByTabIndex(tabIndex)
-    console.log "d ", channelId
+    throw "NO CHANNEL ID" if channelId == 'undefined'
+
     channel = new Kandan.Models.Channel({id: channelId})
     return @confirmAndDeleteChannel(channel, tabIndex) if not deleted
+
+    # NOTE this is for participating users who do not require confirmation
     console.log "TAB INDEX", tabIndex
     $("#kandan").tabs("remove", tabIndex)
 
@@ -95,9 +91,9 @@ class Kandan.Helpers.Channels
   @createChannelArea: (channel)->
     channelArea = "#channels-#{channel.get('id')}"
     totalTabs = $("#kandan").tabs("length")
-
+    $createTab = $(".create_channel").parents('li').detach()
     $("#kandan").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
-    Kandan.Helpers.Channels.replaceCreateButton()
+    $createTab.appendTo('ul.ui-tabs-nav')
     view = new Kandan.Views.ChannelPane({channel: channel})
     view.render $(channelArea)
     $(channelArea).data('channel_id', channel.get('id'))
