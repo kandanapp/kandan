@@ -4,7 +4,7 @@ class Kandan.Views.ChannelTabs extends Backbone.View
 
   events:
     "click .close_channel" : "deleteChannel"
-    "click .create_channel": "createChannel"
+    "click #create_channel": "createChannel"
 
 
   render: ()->
@@ -21,7 +21,9 @@ class Kandan.Views.ChannelTabs extends Backbone.View
           Kandan.Helpers.Channels.createChannelArea(model)
       })
       console.log "create channel: #{channelName}"
+    return false
 
   deleteChannel: (event)->
-    channelIndex = $(event.target).closest('li').prevAll().length
+    channelIndex = $(event.target).parents('li').prevAll().length
     Kandan.Helpers.Channels.deleteChannelByTabIndex(channelIndex) if channelIndex != 0
+    return false

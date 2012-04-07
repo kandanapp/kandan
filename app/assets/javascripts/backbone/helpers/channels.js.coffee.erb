@@ -46,7 +46,7 @@ class Kandan.Helpers.Channels
       $channelActivities.children().first().remove()
       oldest = $channelActivities.children().first().data("activity_id")
       $channelActivities.prev().data("oldest", oldest)
-      @channel_pagination_el(channelId).show()      
+      @channel_pagination_el(channelId).show()
 
 
   @confirmAndDeleteChannel: (channel, tabIndex)->
@@ -74,13 +74,8 @@ class Kandan.Helpers.Channels
     deleted = deleted || false
     channelId = @getChannelIdByTabIndex(tabIndex)
     throw "NO CHANNEL ID" if channelId == 'undefined'
-
     channel = new Kandan.Models.Channel({id: channelId})
     return @confirmAndDeleteChannel(channel, tabIndex) if not deleted
-
-    # NOTE this is for participating users who do not require confirmation
-    console.log "TAB INDEX", tabIndex
-    $("#kandan").tabs("remove", tabIndex)
 
 
   @channelExists: (channelId)->
@@ -91,7 +86,7 @@ class Kandan.Helpers.Channels
   @createChannelArea: (channel)->
     channelArea = "#channels-#{channel.get('id')}"
     totalTabs = $("#kandan").tabs("length")
-    $createTab = $(".create_channel").parents('li').detach()
+    $createTab = $("#create_channel").parents('li').detach()
     $("#kandan").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
     $createTab.appendTo('ul.ui-tabs-nav')
     view = new Kandan.Views.ChannelPane({channel: channel})
