@@ -96,7 +96,7 @@ window.Kandan =
 
   setCurrentUser: ()->
     template = _.template '''
-      <img src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=http://bushi.do/images/profile.png"/> <%= name %>
+      <img src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=http://bushi.do/images/profile.png"/><span><%= name %></span>
     '''
     currentUser = Kandan.Helpers.Users.currentUser()
     $(".header .user").html template({
