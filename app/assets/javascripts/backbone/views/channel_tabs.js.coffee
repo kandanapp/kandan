@@ -2,11 +2,6 @@ class Kandan.Views.ChannelTabs extends Backbone.View
   template: JST['channel_tabs']
   tagName: 'ul'
 
-  events:
-    "click .close_channel" : "deleteChannel"
-    "click #create_channel": "createChannel"
-
-
   render: ()->
     $(@el).html @template({channels: @options.channels})
     @

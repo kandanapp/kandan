@@ -66,14 +66,16 @@ window.Kandan =
     })
 
     $("#kandan").tabs 'option', 'tabTemplate', '''
-      <li>
-        <span class="tab_right"></span>
-        <span class="tab_left"></span>
-        <span class="tab_content">
-          <a href="#{href}">#{label}</a>
-          <a href="#" class="close_channel">x</a>
-        </span>
-      </li>
+    <li>
+    <a href="#{href}" class="show_channel">
+      <span class="tab_right"></span>
+      <span class="tab_left"></span>
+      <span class="tab_content">
+        <cite>#{label}</cite>
+        <cite class="close_channel" title="close channel">x</cite>
+      </span>
+    </a>
+    </li>
     '''
 
   initChatArea: (channels)->

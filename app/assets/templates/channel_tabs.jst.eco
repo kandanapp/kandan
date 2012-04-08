@@ -1,11 +1,13 @@
 <% for channel in @channels.models: %>
   <li>
+  <a href="#<%= "channels-#{channel.get('id')}" %>">
     <span class="tab_right"></span>
     <span class="tab_left"></span>
     <span class="tab_content">	
-      <a href="#<%= "channels-#{channel.get('id')}" %>"><%= channel.get('name') %></a>
-      <a href="#" class="close_channel" title="close channel">x</a>
+      <cite><%= channel.get('name') %></cite>
+      <cite class="close_channel" title="close channel">x</cite>
     </span>
+  </a>	
   </li>
 <% end %>
 <%- JST['create_channel']() %>
