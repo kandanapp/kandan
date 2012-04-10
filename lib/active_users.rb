@@ -18,23 +18,23 @@ class ActiveUsers
     end
 
     def remove_by_client_id(client_id)
-      user_id = find_by_client_id(client_id)
+      user_id = find_by_client_id client_id
       if user_id
         @@users[user_id][:client_ids].delete client_id
         if @@users[user_id][:client_ids].empty?
-          publish_message "disconnect", @@users[user_id][:user]
-          @@users.delete(user_id)
+          deleted_user_info = @@users.delete user_id
+          publish_message "disconnect", deleted_user_info[:user]
         end
       end
     end
 
     def remove_by_user_id(user_id)
-      @@users.delete(user_id)
+      @@users.delete user_id
     end
 
     def find_by_client_id(client_id)
       @@users.each do |user_id, detail|
-        return user_id if detail[:client_ids].include?(client_id)
+        return user_id if detail[:client_ids].include? client_id
       end
       false
     end
