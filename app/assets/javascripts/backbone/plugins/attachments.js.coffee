@@ -84,14 +84,13 @@ class Kandan.Plugins.Attachments
 
 
   @initDropzone: ->
-    console.log "init dropzone"
     $(".dropzone").filedrop({
       fallback_id: "file"
       url        : ->
         "/channels/#{ Kandan.Data.Channels.activeChannelId() }/attachments.json"
 
       paramname  : "file"
-      maxfilesize: 100
+      maxfilesize: 1000
       queuefiles : 1
 
 
