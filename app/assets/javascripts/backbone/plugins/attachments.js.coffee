@@ -86,17 +86,18 @@ class Kandan.Plugins.Attachments
   @initDropzone: ->
     $(".dropzone").filedrop({
       fallback_id: "file"
-      url        : ->
-        "/channels/#{ Kandan.Data.Channels.activeChannelId() }/attachments.json"
-
       paramname  : "file"
       maxfilesize: 1000
       queuefiles : 1
 
+      url: ->
+        "/channels/#{ Kandan.Data.Channels.activeChannelId() }/attachments.json"
 
       uploadStarted: ->
         $(".dropzone").text("Uploading...")
 
+      uploadFinished: (i, file, response, time)->
+        console.log "Upload finished!"
 
       error: (err, file)->
         if err == "BrowserNotSupported"
@@ -105,10 +106,6 @@ class Kandan.Plugins.Attachments
           $(".dropzone").text("File too large")
         else
           $(".dropzone").text("Sorry bud! couldn't upload")
-
-
-      uploadFinished: (i, file, response, time)->
-        console.log "Upload finished!"
 
 
       progressUpdated: (i, file, progress)->
