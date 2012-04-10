@@ -1,7 +1,5 @@
 class Kandan.Data.Attachments
   @callbacks: { "change": [] }
-  @cache: []
-
 
   @all: (callback)->
     attachments = new Kandan.Collections.Attachments([], {

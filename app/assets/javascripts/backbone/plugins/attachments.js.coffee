@@ -57,7 +57,6 @@ class Kandan.Plugins.Attachments
 
   # TODO this part is very bad for APIs! shoudnt be exposing a backbone collection in a plugin.
   @render: ($widget_el)->
-    console.log "Render attachments!"
     $upload_form = @templates.dropzone({
       channel_id:   @channel_id(),
       csrf_param:   @csrf_param(),
@@ -69,7 +68,6 @@ class Kandan.Plugins.Attachments
     $widget_el.next(".action_block").html($upload_form)
 
     populate = (collection)=>
-      console.log "render", collection.models
       if collection.models.length > 0
         $file_list = $("<div class='file_list'></div>")
         for model in collection.models
@@ -83,7 +81,6 @@ class Kandan.Plugins.Attachments
       $widget_el.html($file_list)
 
     Kandan.Data.Attachments.all(populate)
-    console.log "render completes"
 
 
   @initDropzone: ->
