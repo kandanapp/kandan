@@ -47,8 +47,8 @@ class Kandan.Plugins.Attachments
   @fileIcon: (fileName)->
     fileExtension = fileName.split(".").pop()
     return "/assets/img_icon.png"   if fileExtension.match(/(png|jpeg|jpg|gif)/i)
-    return "/assets/video_icon.png" if fileExtension.match(/(mp3|wav)/i)
-    return "/assets/audio_icon.png" if fileExtension.match(/(mov|mpg|mpeg|mp4)/i)
+    return "/assets/audio_icon.png" if fileExtension.match(/(mp3|wav|m4a)/i)
+    return "/assets/video_icon.png" if fileExtension.match(/(mov|mpg|mpeg|mp4)/i)
     return "/assets/file_icon.png"
 
   @file_item_template: _.template '''
