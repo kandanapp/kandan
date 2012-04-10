@@ -52,7 +52,12 @@ class Kandan.Plugins.Attachments
     return "/assets/file_icon.png"
 
   @file_item_template: _.template '''
-    <div class="file_item"><a href="<%= url %>"><img src="<%= iconUrl %>"><span><%= fileName %></span></a></div>
+    <div class="file_item">
+      <a href="<%= url %>">
+        <img src="<%= iconUrl %>"/>
+        <span><%= fileName %></span>
+      </a>
+    </div>
   '''
 
   # TODO this part is very bad for APIs! shoudnt be exposing a backbone collection in a plugin.
