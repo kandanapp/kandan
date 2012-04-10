@@ -4,8 +4,11 @@ class Kandan.Plugins.Attachments
   @widget_icon_url: "/assets/media_icon.png"
   @plugin_namespace: "Kandan.Plugins.Attachments"
 
+  @dropzoneInit: false
+
   @options:
     maxFileNameLength: 20
+    defaultDropzoneText: "Drop file here to upload"
 
   @templates:
     no_files: _.template '''
@@ -21,7 +24,7 @@ class Kandan.Plugins.Attachments
           </div>
           <input id="channel_id_<%= channel_id %>" name="channel_id[<%= channel_id %>]" type="hidden"/>
           <input id="file" name="file" type="file"/>
-          <div class="dropzone">Drop files here to upload</div>
+          <div class="dropzone"><%= dropzoneText %></div>
       </form>
     '''
 
@@ -54,44 +57,50 @@ class Kandan.Plugins.Attachments
 
   # TODO this part is very bad for APIs! shoudnt be exposing a backbone collection in a plugin.
   @render: ($widget_el)->
+    console.log "Render attachments!"
     $upload_form = @templates.dropzone({
-      channel_id: @channel_id(),
-      csrf_param: @csrf_param(),
-      csrf_token: @csrf_token()
+      channel_id:   @channel_id(),
+      csrf_param:   @csrf_param(),
+      csrf_token:   @csrf_token(),
+      dropzoneText: @options.defaultDropzoneText
     })
 
     $widget_el.next().html($upload_form)
-    @init_dropzone @channel_id()
     $widget_el.next(".action_block").html($upload_form)
 
-    attachments = new Kandan.Collections.Attachments([], {channel_id: @channel_id()})
-    attachments.fetch({
-      success: (collection)=>
+    populate = (collection)=>
+      console.log "render", collection.models
+      if collection.models.length > 0
+        $file_list = $("<div class='file_list'></div>")
+        for model in collection.models
+          $file_list.append(@file_item_template({
+            fileName: @truncateName(model.get('file_file_name')),
+            url: model.get('url')
+            iconUrl: @fileIcon(model.get('file_file_name'))
+          }))
+      else
+        $file_list = @templates.no_files()
+      $widget_el.html($file_list)
 
-        if collection.models.length > 0
-          $file_list = $("<div class='file_list'></div>")
-          for model in collection.models
-            $file_list.append(@file_item_template({
-              fileName: @truncateName(model.get('file_file_name')),
-              url: model.get('url')
-              iconUrl: @fileIcon(model.get('file_file_name'))
-            }))
-        else
-          $file_list = @templates.no_files()
-        $widget_el.html($file_list)
-    })
+    Kandan.Data.Attachments.all(populate)
+    console.log "render completes"
 
 
-  @init_dropzone: (channel_id)->
+  @initDropzone: ->
+    console.log "init dropzone"
     $(".dropzone").filedrop({
       fallback_id: "file"
-      url        : "/channels/#{channel_id}/attachments.json",
+      url        : ->
+        "/channels/#{ Kandan.Data.Channels.activeChannelId() }/attachments.json"
+
       paramname  : "file"
       maxfilesize: 100
       queuefiles : 1
 
+
       uploadStarted: ->
         $(".dropzone").text("Uploading...")
+
 
       error: (err, file)->
         if err == "BrowserNotSupported"
@@ -103,20 +112,26 @@ class Kandan.Plugins.Attachments
 
 
       uploadFinished: (i, file, response, time)->
-        $(".dropzone").text("Drop files here to upload")
-        Kandan.Widgets.render "Kandan.Plugins.Attachments"
+        console.log "Upload finished!"
+
 
       progressUpdated: (i, file, progress)->
-        # TODO update dropzone text
+        $(".dropzone").text("#{progress}% Uploaded")
+        if progress == 100
+          console.log "100% done"
+          $(".dropzone").text("#{progress}% Uploaded")
+          Kandan.Widgets.render "Kandan.Plugins.Attachments"
 
       dragOver: ->
         console.log "reached dropzone!"
     })
 
   @init: ()->
+    @initDropzone()
     Kandan.Widgets.register @plugin_namespace
-    Kandan.Data.Channels.register_callback "change", ()=>
+
+    Kandan.Data.Attachments.registerCallback "change", ()=>
       Kandan.Widgets.render @plugin_namespace
 
-
-# Kandan.Plugins.register "Kandan.Plugins.Attachments"
+    Kandan.Data.Channels.registerCallback "change", ()=>
+      Kandan.Widgets.render @plugin_namespace
