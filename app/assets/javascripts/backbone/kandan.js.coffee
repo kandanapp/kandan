@@ -100,15 +100,16 @@ window.Kandan =
     template = JST['current_user']
     currentUser = Kandan.Helpers.Users.currentUser()
     $(".header .user").html template({
-      gravatar_hash: currentUser.gravatar_hash,
+      gravatarHash: currentUser.gravatar_hash,
       name: "#{currentUser.first_name} #{currentUser.last_name}"
     })
 
   init: ->
     @setCurrentUser()
     channels = new Kandan.Collections.Channels()
-    channels.fetch({success: (channelsCollection)=>
-      @initBroadcasterAndSubscribe()
-      activeUsers = new Kandan.Collections.ActiveUsers()
-      activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
+    channels.fetch({
+      success: (channelsCollection)=>
+        @initBroadcasterAndSubscribe()
+        activeUsers = new Kandan.Collections.ActiveUsers()
+        activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
     })

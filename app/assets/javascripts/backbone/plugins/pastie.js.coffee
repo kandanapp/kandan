@@ -16,14 +16,14 @@ class Kandan.Plugins.Pastie
     originalLength = content.length
     content = content.split("/n").slice(0, @options.maxPreviewLines) if content.split("\n") > @options.maxPreviewLines
     content = content.substring(0, @options.maxPreviewLength)        if content.length > @options.maxPreviewLines
-    return "#{content}..." if content.length == originalLength
+    return "#{content}..." if content.length != originalLength
     content
 
 
   @init: ->
     Kandan.Modifiers.register @options.regex, (message, state) =>
       url = "/channels/#{message.channel_id}/activities/#{message.id}"
-      message.content = @options.template({preview: (message.content), messageLink: url})
+      message.content = @options.template({preview: @truncate(message.content), messageLink: url})
       return Kandan.Helpers.Activities.build_from_message_template(message)
 
 # Kandan.Plugins.register "Kandan.Plugins.Pastie"
