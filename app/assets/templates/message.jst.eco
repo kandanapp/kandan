@@ -3,7 +3,7 @@
 
 <div class="readable">
   <span class="user">
-    <%= @activity.user.first_name != null ? @activity.user.first_name : @activity.user.email %>
+    <%= @activity.user.first_name || @activity.user.email %>
   </span>
 
   <span class="content">
