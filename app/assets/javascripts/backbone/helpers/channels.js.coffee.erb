@@ -31,7 +31,7 @@ class Kandan.Helpers.Channels
     if $(document).data('active-channel-id') == undefined
       return $("#kandan .ui-tabs-panel")
         .eq(@selectedTab())
-        .data("channel_id")
+        .data("channel-id")
     else
       return $(document).data("active-channel-id")
 
@@ -59,7 +59,7 @@ class Kandan.Helpers.Channels
   @getChannelIdByTabIndex: (tabIndex)->
     $("#kandan .ui-tabs-panel")
       .eq(tabIndex)
-      .data("channel_id")
+      .data("channel-id")
 
   @getTabIndexByChannelId: (channelId)->
     $("#channels-#{channelId}").prevAll("div").length
@@ -128,7 +128,7 @@ class Kandan.Helpers.Channels
     activityAttributes["created_at"] = new Date()
     for el in $channelElements
       $(el).append(@newActivityView(activityAttributes).render().el)
-      @flushActivities($(el).closest(".ui-widget-content").data("channel_id"))
+      @flushActivities($(el).closest(".ui-widget-content").data("channel-id"))
       @setPaginationData(activityAttributes.channel_id)
 
 

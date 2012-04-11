@@ -11,7 +11,7 @@ class Kandan.Views.ChannelPane extends Backbone.View
 
   setIdAndData: (container)->
     $(container).attr "id", "channels-#{@options.channel.get("id")}"
-    $(container).data "channel_id", @options.channel.get('id')
+    $(container).data "channel-id", @options.channel.get('id')
 
   paginatedActivitiesView: ()->
     view = new Kandan.Views.PaginatedActivities({channel: @options.channel})
