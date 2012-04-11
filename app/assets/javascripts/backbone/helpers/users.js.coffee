@@ -1,3 +1,3 @@
 class Kandan.Helpers.Users
   @currentUser: ()->
-    $.data(document, 'current_user')
+    $.data(document, 'current-user')

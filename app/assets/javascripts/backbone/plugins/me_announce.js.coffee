@@ -6,6 +6,6 @@ class Kandan.Plugins.MeAnnounce
   @init: ()->
     Kandan.Modifiers.register @options.regex, (message, state)=>
       message.content = message.content.replace @options.regex, "#{message.user.first_name} "
-      return Kandan.Helpers.Activities.build_from_base_template(message)
+      return Kandan.Helpers.Activities.buildFromBaseTemplate(message)
 
 # Kandan.Plugins.register "Kandan.Plugins.MeAnnounce"
