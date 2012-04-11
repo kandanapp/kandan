@@ -23,16 +23,21 @@ class Kandan.Broadcasters.FayeBroadcaster
       [entityName, eventName] = data.event.split("#")
       @processEventsForUser(eventName, data) if entityName == "user"
       @processEventsForChannel(eventName, data) if entityName == "channel"
+      @processEventsForAttachments(eventName, data) if entityName == "attachments"
 
+  processEventsForAttachments: (eventName, data)->
+    Kandan.Helpers.Channels.add_activity(data.entity, Kandan.Helpers.Activities.ACTIVE_STATE)
+    Kandan.Data.Attachments.runCallbacks("change", data)
 
   processEventsForUser: (eventName, data)->
-    console.log "event:", eventName
-    $(document).data('active_users', data.extra.active_users)
-    Kandan.Data.ActiveUsers.runCallbacks("change", data)
-
+    if eventName.match(/connect/)
+      $(document).data('active_users', data.extra.active_users)
+      Kandan.Data.ActiveUsers.runCallbacks("change", data)
 
   processEventsForChannel: (eventName, data)->
     Kandan.Helpers.Channels.deleteChannelById(data.entity.id) if eventName == "delete"
+
+    # TODO this has to be implemented
     Kandan.Helpers.Channels.renameChannelById(data.entity.id, data.entity.name) if data.eventName == "update"
 
 

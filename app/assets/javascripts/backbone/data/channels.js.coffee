@@ -12,10 +12,10 @@ class Kandan.Data.Channels
   @runCallbacks: (event)->
     callback() for callback in @callbacks[event]
 
-  @register_callback: (event, callback)->
+  @registerCallback: (event, callback)->
     @callbacks[event].push(callback)
 
-  @unregister_callback: (event, callback)->
+  @unregisterCallback: (event, callback)->
     delete @callbacks[@callbacks.indexOf(callback)]
     @callbacks.filter (element, index, array)->
       element!=undefined

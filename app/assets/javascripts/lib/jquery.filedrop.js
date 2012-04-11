@@ -64,8 +64,16 @@
   $.fn.filedrop = function(options) {
     var opts = $.extend({}, default_opts, options);
 
-    this.bind('drop', drop).bind('dragenter', dragEnter).bind('dragover', dragOver).bind('dragleave', dragLeave);
-    $(document).bind('drop', docDrop).bind('dragenter', docEnter).bind('dragover', docOver).bind('dragleave', docLeave);
+    this.live('drop', drop)
+        .live('dragenter', dragEnter)
+        .live('dragover', dragOver)
+        .live('dragleave', dragLeave);
+
+    $(document)
+        .bind('drop', docDrop)
+        .bind('dragenter', docEnter)
+        .bind('dragover', docOver)
+        .bind('dragleave', docLeave);
 
     $('#' + opts.fallback_id).change(function(e) {
       opts.drop(e);
@@ -283,7 +291,7 @@
           upload.startData = 0;
           upload.addEventListener("progress", progress, false);
 
-          xhr.open("POST", opts.url, true);
+          xhr.open("POST", opts.url(), true);
           xhr.setRequestHeader('content-type', 'multipart/form-data; boundary=' + boundary);
 
           // Add headers
