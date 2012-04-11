@@ -28,12 +28,12 @@ class Kandan.Helpers.Channels
     $("#kandan").tabs("option", "selected")
 
   @getActiveChannelId: ()->
-    if $(document).data('active_channel_id') == undefined
+    if $(document).data('active-channel-id') == undefined
       return $("#kandan .ui-tabs-panel")
         .eq(@selectedTab())
         .data("channel_id")
     else
-      return $(document).data("active_channel_id")
+      return $(document).data("active-channel-id")
 
 
   @confirmDeletion: ()->
@@ -44,7 +44,7 @@ class Kandan.Helpers.Channels
     $channelActivities = $("#channel-activities-#{channelId}")
     if $channelActivities.children().length == @options.maxActivities + 1
       $channelActivities.children().first().remove()
-      oldest = $channelActivities.children().first().data("activity_id")
+      oldest = $channelActivities.children().first().data("activity-id")
       $channelActivities.prev().data("oldest", oldest)
       @channelPaginationEl(channelId).show()
 
@@ -144,4 +144,4 @@ class Kandan.Helpers.Channels
   @setPaginationData: (channelId)->
     $oldestActivity = @channelActivitiesEl(channelId).find(".activity").first()
     if $oldestActivity.length != 0
-      @channelPaginationEl(channelId).data("oldest", $oldestActivity.data("activity_id"))
+      @channelPaginationEl(channelId).data("oldest", $oldestActivity.data("activity-id"))

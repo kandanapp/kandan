@@ -57,7 +57,7 @@ window.Kandan =
   initTabs: ()->
     $('#kandan').tabs({
       select: (event, ui)->
-        $(document).data('active_channel_id',
+        $(document).data('active-channel-id',
         Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
         Kandan.Data.Channels.runCallbacks('change')
       add: (event, ui) ->
