@@ -41,6 +41,7 @@ window.Kandan =
 
     $(window).focus(->
       Kandan.Helpers.Utils.browserTabFocused = true
+      Kandan.Helpers.Utils.resetUnreadActivities()
       $(document).attr('title', 'Kandan')
     )
 
