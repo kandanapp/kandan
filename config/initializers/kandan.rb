@@ -1,5 +1,3 @@
-require "#{Rails.root}/lib/kandan_config.rb"
-
 Dir["#{Rails.root}/lib/broadcasters/**/*.rb"].each do |file|
   require file
 end

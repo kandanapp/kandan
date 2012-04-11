@@ -15,6 +15,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+require "./lib/kandan_config.rb"
+
 module Kandan
   class Application < Rails::Application
     # Dealing with Heroku-specific eccentricities
