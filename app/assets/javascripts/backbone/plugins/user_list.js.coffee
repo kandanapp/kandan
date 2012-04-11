@@ -6,7 +6,7 @@ class Kandan.Plugins.UserList
 
   @template: _.template '''
     <div class="user clearfix">
-      <img class="avatar" src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=https://bushi.do/images/profile.png"/>
+      <img class="avatar" src="http://gravatar.com/avatar/<%= gravatarHash %>?s=25&d=https://bushi.do/images/profile.png"/>
       <span class="name"><%= name %></span>
     </div>
   '''
@@ -18,7 +18,7 @@ class Kandan.Plugins.UserList
     for user in Kandan.Data.ActiveUsers.all()
       $users.append @template({
         name: "#{user.first_name} #{user.last_name}",
-        gravatar_hash: user.gravatar_hash
+        gravatarHash: user.gravatar_hash
       })
     $el.html($users)
 

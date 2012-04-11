@@ -18,22 +18,22 @@ class Kandan.Helpers.Channels
     console.log("current scroll position")
     $(document).scrollTop()
 
-  @channel_activities_el: (channelId)->
+  @channelActivitiesEl: (channelId)->
     $("#channel-activities-#{channelId}")
 
-  @channel_pagination_el: (channelId)->
+  @channelPaginationEl: (channelId)->
     $("#channels-#{channelId} .pagination")
 
-  @selected_tab: ()->
-    $('#kandan').tabs('option', 'selected')
+  @selectedTab: ()->
+    $("#kandan").tabs("option", "selected")
 
   @getActiveChannelId: ()->
     if $(document).data('active_channel_id') == undefined
       return $("#kandan .ui-tabs-panel")
-        .eq(@selected_tab())
-        .data('channel_id')
+        .eq(@selectedTab())
+        .data("channel_id")
     else
-      return $(document).data('active_channel_id')
+      return $(document).data("active_channel_id")
 
 
   @confirmDeletion: ()->
@@ -46,7 +46,7 @@ class Kandan.Helpers.Channels
       $channelActivities.children().first().remove()
       oldest = $channelActivities.children().first().data("activity_id")
       $channelActivities.prev().data("oldest", oldest)
-      @channel_pagination_el(channelId).show()
+      @channelPaginationEl(channelId).show()
 
 
   @confirmAndDeleteChannel: (channel, tabIndex)->
@@ -59,7 +59,7 @@ class Kandan.Helpers.Channels
   @getChannelIdByTabIndex: (tabIndex)->
     $("#kandan .ui-tabs-panel")
       .eq(tabIndex)
-      .data('channel_id')
+      .data("channel_id")
 
   @getTabIndexByChannelId: (channelId)->
     $("#channels-#{channelId}").prevAll("div").length
@@ -73,7 +73,7 @@ class Kandan.Helpers.Channels
     # NOTE gotcha, 0 index being passed a natural index from the html views
     deleted = deleted || false
     channelId = @getChannelIdByTabIndex(tabIndex)
-    throw "NO CHANNEL ID" if channelId == 'undefined'
+    throw "NO CHANNEL ID" if channelId == undefined
     channel = new Kandan.Models.Channel({id: channelId})
     return @confirmAndDeleteChannel(channel, tabIndex) if not deleted
 
@@ -86,12 +86,12 @@ class Kandan.Helpers.Channels
   @createChannelArea: (channel)->
     channelArea = "#channels-#{channel.get('id')}"
     totalTabs = $("#kandan").tabs("length")
-    $createTab = $("#create_channel").parents('li').detach()
-    $("#kandan").tabs('add', channelArea, "#{channel.get("name")}", totalTabs)
-    $createTab.appendTo('ul.ui-tabs-nav')
+    $createTab = $("#create_channel").parents("li").detach()
+    $("#kandan").tabs("add", channelArea, "#{channel.get("name")}", totalTabs)
+    $createTab.appendTo("ul.ui-tabs-nav")
     view = new Kandan.Views.ChannelPane({channel: channel})
     view.render $(channelArea)
-    $(channelArea).data('channel_id', channel.get('id'))
+    $(channelArea).data("channel_id", channel.get("id"))
 
 
   @newActivityView: (activityAttributes)->
@@ -108,24 +108,22 @@ class Kandan.Helpers.Channels
     @createChannelIfNotExists(activityAttributes)
 
     if activityAttributes.channel_id
-      @add_message(activityAttributes, state)
+      @addMessage(activityAttributes, state)
     else
-      @add_notification(activityAttributes)
+      @addNotification(activityAttributes)
 
     channelId = activityAttributes.channel_id || @getActiveChannelId()
     @scrollToLatestMessage(channelId) if @pastAutoScrollThreshold(channelId)
 
-
-
-  @add_message: (activityAttributes, state)->
-    @channel_activities_el(activityAttributes.channel_id)
+  @addMessage: (activityAttributes, state)->
+    @channelActivitiesEl(activityAttributes.channel_id)
       .append(@newActivityView(activityAttributes).render().el)
     @flushActivities(activityAttributes.channel_id)
     Kandan.Helpers.Utils.notifyInTitleIfRequired()
     @setPaginationData(activityAttributes.channel_id)
 
 
-  @add_notification: (activityAttributes)->
+  @addNotification: (activityAttributes)->
     $channelElements = $(".channel-activities")
     activityAttributes["created_at"] = new Date()
     for el in $channelElements
@@ -135,15 +133,15 @@ class Kandan.Helpers.Channels
 
 
   @setPaginationState: (channelId, moreActivities, oldest)->
-    @channel_pagination_el(channelId).data('oldest', oldest)
-    console.log "pagination element", moreActivities, @channel_pagination_el(channelId)
+    @channelPaginationEl(channelId).data("oldest", oldest)
+    console.log "pagination element", moreActivities, @channelPaginationEl(channelId)
     if moreActivities == true
-      @channel_pagination_el(channelId).show()
+      @channelPaginationEl(channelId).show()
     else
-      @channel_pagination_el(channelId).hide()
+      @channelPaginationEl(channelId).hide()
 
 
-  @setPaginationData: (channel_id)->
-    $oldest_activity = @channel_activities_el(channel_id).find(".activity").first()
-    if $oldest_activity.length != 0
-      @channel_pagination_el(channel_id).data('oldest', $oldest_activity.data('activity_id'))
+  @setPaginationData: (channelId)->
+    $oldestActivity = @channelActivitiesEl(channelId).find(".activity").first()
+    if $oldestActivity.length != 0
+      @channelPaginationEl(channelId).data("oldest", $oldestActivity.data("activity_id"))
