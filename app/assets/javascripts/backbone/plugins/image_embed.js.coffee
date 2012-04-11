@@ -19,4 +19,4 @@ class Kandan.Plugins.ImageEmbed
         imageUrl: message.content,
         name: fileName
       })
-      return Kandan.Helpers.Activities.build_from_message_template(message)
+      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)

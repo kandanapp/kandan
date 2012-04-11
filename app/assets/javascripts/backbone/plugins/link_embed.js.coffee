@@ -6,4 +6,4 @@ class Kandan.Plugins.LinkEmbed
     Kandan.Modifiers.register @options.regex, (message, state)=>
       message.content = message.content
         .replace(@options.regex, '<a target="_blank" href="$1">$1</a>')
-      return Kandan.Helpers.Activities.build_from_message_template(message)
+      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)

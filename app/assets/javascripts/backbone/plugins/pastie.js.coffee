@@ -24,6 +24,6 @@ class Kandan.Plugins.Pastie
     Kandan.Modifiers.register @options.regex, (message, state) =>
       url = "/channels/#{message.channel_id}/activities/#{message.id}"
       message.content = @options.template({preview: @truncate(message.content), messageLink: url})
-      return Kandan.Helpers.Activities.build_from_message_template(message)
+      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
 
 # Kandan.Plugins.register "Kandan.Plugins.Pastie"

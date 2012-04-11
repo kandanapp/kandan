@@ -20,7 +20,7 @@ class Kandan.Helpers.Utils
     ,"December"
   ]
 
-  @time_to_string: (time) ->
+  @timeToString: (time) ->
     return time if (typeof time != "object")
     am = time.getHours() < 12
     hours = time.getHours()

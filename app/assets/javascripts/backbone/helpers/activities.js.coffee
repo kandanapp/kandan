@@ -4,8 +4,8 @@ class Kandan.Helpers.Activities
   @ACTIVE_STATE: "ACTIVE"
   @HISTORY_STATE: "HISTORY"
 
-  @build_from_base_template: (activity)->
+  @buildFromBaseTemplate: (activity)->
     JST['activity_base']({activity: activity})
 
-  @build_from_message_template: (activity)->
+  @buildFromMessageTemplate: (activity)->
     JST['message']({activity: activity})
