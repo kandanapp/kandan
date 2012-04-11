@@ -2,8 +2,7 @@ class Kandan.Plugins.UserList
 
   @widget_title: "People"
   @widget_icon_url: "/assets/people_icon.png"
-  @widget_name: "users"
-  @plugin_namespace: "Kandan.Plugins.UserList"
+  @pluginNamespace: "Kandan.Plugins.UserList"
 
   @template: _.template '''
     <div class="user clearfix">
@@ -25,6 +24,6 @@ class Kandan.Plugins.UserList
 
 
   @init: ()->
-    Kandan.Widgets.register @plugin_namespace
+    Kandan.Widgets.register @pluginNamespace
     Kandan.Data.ActiveUsers.registerCallback "change", ()=>
-      Kandan.Widgets.render @plugin_namespace
+      Kandan.Widgets.render @pluginNamespace

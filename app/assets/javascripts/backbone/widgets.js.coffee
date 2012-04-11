@@ -1,28 +1,29 @@
 class Kandan.Widgets
+  @template: JST['widget']
   @widgets: {}
 
-  @register: (widget_namespace)->
-    @widgets[widget_namespace] = "widget_#{Object.size(@widgets)}"
+  @register: (widgetNamespace)->
+    @widgets[widgetNamespace] = "widget_#{Object.size(@widgets)}"
 
   @all: ()->
     @widgets
 
   @initAll: ()->
-    $.each @widgets, (widget_namespace, el_name)=>
-      @init(widget_namespace)
-
-  @template: JST['widget']
-
-  @init: (widget_namespace)->
-    widget = eval(widget_namespace)
-    $(".sidebar .widgets").append(@template({
-      element_id: @widgets[widget_namespace],
-      title: widget.widget_title,
-      icon_url: widget.widget_icon_url
-    }))
-    @render(widget_namespace)
+    @init(widgetNamespace) for widgetNamespace of @widgets
 
 
-  @render: (widget_namespace)->
-    $widget_el = $("##{@widgets[widget_namespace]}")
-    eval(widget_namespace).render($widget_el) if $widget_el != []
+  @init: (widgetNamespace)->
+    widget = eval(widgetNamespace)
+    $(".sidebar .widgets").append(
+      @template({
+        element_id: @widgets[widgetNamespace],
+        title: widget.widget_title,
+        icon_url: widget.widget_icon_url
+      })
+    )
+    @render(widgetNamespace)
+
+
+  @render: (widgetNamespace)->
+    $widgetEl = $("##{@widgets[widgetNamespace]}")
+    eval(widgetNamespace).render($widgetEl) if $widgetEl != []

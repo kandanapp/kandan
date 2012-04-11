@@ -1,8 +1,8 @@
 class Kandan.Broadcasters.FayeBroadcaster
 
   constructor: ()->
-    @faye_client = new Faye.Client("/remote/faye")
-    @faye_client.disable('websocket')
+    @fayeClient = new Faye.Client("/remote/faye")
+    @fayeClient.disable('websocket')
     authExtension = {
       outgoing: (message, callback)->
         if message.channel == "/meta/subscribe"
@@ -11,27 +11,27 @@ class Kandan.Broadcasters.FayeBroadcaster
           }
         callback(message)
     }
-    @faye_client.addExtension(authExtension)
+    @fayeClient.addExtension(authExtension)
 
-    @faye_client.bind "transport:down", ()->
+    @fayeClient.bind "transport:down", ()->
       console.log "Comm link to Cybertron is down!"
 
-    @faye_client.bind "transport:up", ()->
+    @fayeClient.bind "transport:up", ()->
       console.log "Comm link is up!"
 
-    @faye_client.subscribe "/app/activities", (data)=>
+    @fayeClient.subscribe "/app/activities", (data)=>
       [entityName, eventName] = data.event.split("#")
-      @processEventsForUser(eventName, data) if entityName == "user"
-      @processEventsForChannel(eventName, data) if entityName == "channel"
+      @processEventsForUser(eventName, data)        if entityName == "user"
+      @processEventsForChannel(eventName, data)     if entityName == "channel"
       @processEventsForAttachments(eventName, data) if entityName == "attachments"
 
   processEventsForAttachments: (eventName, data)->
-    Kandan.Helpers.Channels.add_activity(data.entity, Kandan.Helpers.Activities.ACTIVE_STATE)
+    Kandan.Helpers.Channels.addActivity(data.entity, Kandan.Helpers.Activities.ACTIVE_STATE)
     Kandan.Data.Attachments.runCallbacks("change", data)
 
   processEventsForUser: (eventName, data)->
     if eventName.match(/connect/)
-      $(document).data('active_users', data.extra.active_users)
+      $(document).data('active-users', data.extra.active_users)
       Kandan.Data.ActiveUsers.runCallbacks("change", data)
 
   processEventsForChannel: (eventName, data)->
@@ -42,8 +42,8 @@ class Kandan.Broadcasters.FayeBroadcaster
 
 
   subscribe: (channel)->
-    subscription = @faye_client.subscribe channel, (data)=>
-      Kandan.Helpers.Channels.add_activity(data)
+    subscription = @fayeClient.subscribe channel, (data)=>
+      Kandan.Helpers.Channels.addActivity(data)
     subscription.errback((data)->
       console.log "error", data
       alert "Oops! could not connect to the server"

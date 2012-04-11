@@ -1,11 +1,11 @@
 class Kandan.Views.PaginatedActivities extends Backbone.View
-  
+
   tagName: 'div'
   className: 'paginated-activities'
   template: JST['paginated_activities']
 
   events:
-    "click .pagination": "load_more_activities"
+    "click .pagination": "loadMoreActivities"
 
   setPagination: ()->
     oldestActivityId = 0
@@ -26,7 +26,7 @@ class Kandan.Views.PaginatedActivities extends Backbone.View
     @
 
 
-  load_more_activities: ()->
+  loadMoreActivities: ()->
     oldest = $(@el).find(".pagination").data('oldest')
     activities = new Kandan.Collections.Activities([], {channel_id: @channel.get('id')})
     activities.fetch({
@@ -36,10 +36,9 @@ class Kandan.Views.PaginatedActivities extends Backbone.View
           activityView = new Kandan.Views.ShowActivity({activity: activity})
           $(@el).find(".channel-activities").prepend(activityView.render().el)
 
-        Kandan.Helpers.Channels.set_pagination_state(
+        Kandan.Helpers.Channels.setPaginationState(
           collection.channel_id,
           collection.more_activities,
           _.last(collection.models).get('id')
         )
     })
-

@@ -34,7 +34,7 @@ window.Kandan =
 
   registerAppEvents: ()->
     Kandan.Data.ActiveUsers.registerCallback "change", (data)->
-      Kandan.Helpers.Channels.add_activity({
+      Kandan.Helpers.Channels.addActivity({
         user: data.entity,
         action: data.event.split("#")[1]
       })
@@ -67,14 +67,14 @@ window.Kandan =
 
     $("#kandan").tabs 'option', 'tabTemplate', '''
     <li>
-    <a href="#{href}" class="show_channel">
-      <span class="tab_right"></span>
-      <span class="tab_left"></span>
-      <span class="tab_content">
-        <cite>#{label}</cite>
-        <cite class="close_channel" title="close channel">x</cite>
-      </span>
-    </a>
+      <a href="#{href}" class="show_channel">
+        <span class="tab_right"></span>
+        <span class="tab_left"></span>
+        <span class="tab_content">
+          <cite>#{label}</cite>
+          <cite class="close_channel" title="close channel">x</cite>
+        </span>
+      </a>
     </li>
     '''
 
@@ -97,9 +97,7 @@ window.Kandan =
       Kandan.Widgets.initAll()
 
   setCurrentUser: ()->
-    template = _.template '''
-      <img src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=http://bushi.do/images/profile.png"/><span><%= name %></span>
-    '''
+    template = JST['current_user']
     currentUser = Kandan.Helpers.Users.currentUser()
     $(".header .user").html template({
       gravatar_hash: currentUser.gravatar_hash,

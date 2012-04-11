@@ -94,7 +94,7 @@ class Kandan.Helpers.Channels
     $(channelArea).data('channel_id', channel.get('id'))
 
 
-  @new_activity_view: (activityAttributes)->
+  @newActivityView: (activityAttributes)->
     activity = new Kandan.Models.Activity(activityAttributes)
     activityView  = new Kandan.Views.ShowActivity({activity: activity})
     return activityView
@@ -104,7 +104,7 @@ class Kandan.Helpers.Channels
       @createChannelArea(new Kandan.Models.Channel(activityAttributes.channel))
 
 
-  @add_activity: (activityAttributes, state)->
+  @addActivity: (activityAttributes, state)->
     @createChannelIfNotExists(activityAttributes)
 
     if activityAttributes.channel_id
@@ -119,22 +119,22 @@ class Kandan.Helpers.Channels
 
   @add_message: (activityAttributes, state)->
     @channel_activities_el(activityAttributes.channel_id)
-      .append(@new_activity_view(activityAttributes).render().el)
+      .append(@newActivityView(activityAttributes).render().el)
     @flushActivities(activityAttributes.channel_id)
     Kandan.Helpers.Utils.notifyInTitleIfRequired()
-    @set_pagination_data(activityAttributes.channel_id)
+    @setPaginationData(activityAttributes.channel_id)
 
 
   @add_notification: (activityAttributes)->
     $channelElements = $(".channel-activities")
     activityAttributes["created_at"] = new Date()
     for el in $channelElements
-      $(el).append(@new_activity_view(activityAttributes).render().el)
+      $(el).append(@newActivityView(activityAttributes).render().el)
       @flushActivities($(el).closest(".ui-widget-content").data("channel_id"))
-      @set_pagination_data(activityAttributes.channel_id)
+      @setPaginationData(activityAttributes.channel_id)
 
 
-  @set_pagination_state: (channelId, moreActivities, oldest)->
+  @setPaginationState: (channelId, moreActivities, oldest)->
     @channel_pagination_el(channelId).data('oldest', oldest)
     console.log "pagination element", moreActivities, @channel_pagination_el(channelId)
     if moreActivities == true
@@ -143,7 +143,7 @@ class Kandan.Helpers.Channels
       @channel_pagination_el(channelId).hide()
 
 
-  @set_pagination_data: (channel_id)->
+  @setPaginationData: (channel_id)->
     $oldest_activity = @channel_activities_el(channel_id).find(".activity").first()
     if $oldest_activity.length != 0
       @channel_pagination_el(channel_id).data('oldest', $oldest_activity.data('activity_id'))
