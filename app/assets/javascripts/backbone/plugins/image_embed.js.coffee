@@ -20,7 +20,7 @@ class Kandan.Plugins.ImageEmbed
       subtitle ||= fileName
 
       message.content = @image_template({
-        image_url: message.content,
+        image_url: url,
         subtitle: subtitle
       })
 
