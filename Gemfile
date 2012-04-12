@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 # Core gems
 gem 'rails', '3.2.2'
+
+# Database adapters
 gem 'pg'
+gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Auth/Bushido gems
 gem 'devise'
@@ -31,12 +34,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-# gem 'tane', :path => "/remote/tane", :group => :development
-
 # Test gems, obviously
 # group :test do
 #  gem 'rspec-rails'
 #  gem 'shoulda-matchers'
 #  gem 'factory_girl_rails'
-# gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
+#  gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
 # end
