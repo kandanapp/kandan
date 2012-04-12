@@ -1,6 +1,6 @@
 class Kandan.Plugins.MeAnnounce
 
-  @regex: /^\/me /
+  @regex: /^&#x2F;me /
 
   @init: ()->
     Kandan.Modifiers.register @regex, (message, state)=>
