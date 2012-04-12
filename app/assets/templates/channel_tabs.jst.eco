@@ -1,6 +1,6 @@
 <% for channel in @channels.models: %>
   <li>
-  <a href="#<%= "channels-#{channel.get('id')}" %>">
+  <a href="#<%= "channels-#{channel.get('id')}" %>"  class="show_channel" >
     <span class="tab_right"></span>
     <span class="tab_left"></span>
     <span class="tab_content">	

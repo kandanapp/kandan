@@ -64,6 +64,7 @@ window.Kandan =
       add: (event, ui) ->
         $('.header .ui-tabs-panel:last').detach().appendTo('#channels')
         $('#kandan').tabs('option', 'disabled', [])
+        $('.header ul a').delegate('cite.close_channel', 'click', window.tabViewGlobal.deleteChannel)
     })
 
     $("#kandan").tabs 'option', 'tabTemplate', '''
