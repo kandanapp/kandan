@@ -43,6 +43,8 @@ You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed
     heroku create --stack cedar
     git push heroku master
     heroku run rake db:migrate kandan:bootstrap && heroku open
+    echo "Done, go forth and chat!"
+    # Not too bad
     
     
 Your app should be up and running now. The admin email by default is `admin@kandan.me` with password `kandanadmin`, or you can sign up as another user.
