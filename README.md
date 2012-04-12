@@ -2,7 +2,7 @@ Kandan
 =========
 The slickest chat app out there - as well as open source and well-supported to boot.
 
-![](http://github.com/Bushido/kandan/raw/master/preview.png)
+![](http://github.com/Bushido/kandan/raw/master/public/preview.png)
 
 Standard Features
 =================
