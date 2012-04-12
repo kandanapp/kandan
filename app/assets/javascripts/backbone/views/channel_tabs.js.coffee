@@ -7,7 +7,7 @@ class Kandan.Views.ChannelTabs extends Backbone.View
     @
 
   createChannel: (event)->
-    channelName = prompt("What's the channel name?", @randomChannelName())
+    channelName = prompt("What's the channel name?", Kandan.Views.ChannelTabs.randomChannelName())
     channelName = channelName.replace(/^\s+|\s+$/g, '')
     if channelName
       channel = new Kandan.Models.Channel({name: channelName})
