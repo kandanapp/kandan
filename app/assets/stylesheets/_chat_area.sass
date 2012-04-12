@@ -85,12 +85,10 @@ html body .ui-tabs .ui-tabs-nav li
             text-decoration: underline
     .ui-state-active
       text-shadow: 0px 0px 2px #FFF
-  .ui-tabs-panel
-    padding: 0px
-    padding-right: 20px
-    padding-left: 20px
-  .ui-widget-content
-    height: 100%
+
+
+.ui-widget-content
+  height: 100%
 
 .ui-corner-all .ui-corner-bottom, .ui-corner-bottom, .ui-corner-left, .ui-corner-right, .ui-corner-bl, .ui-corner-br
   +border-radius(none)
@@ -103,7 +101,7 @@ html body .ui-tabs .ui-tabs-nav li
   background: $panel-bg url(image_path('page_bg.png')) repeat
   font-size: 13px
 
-.paginated-activities
+.paginated-activities, #head-mask
   +box-shadow(5px 0px 5px -3px #cccccc, -5px 0px 5px -3px #cccccc, 5px 10px 5px -3px #cccccc, -5px 10px 5px -3px #cccccc)
   +border-top-radius(4px)
   float: left
@@ -117,6 +115,39 @@ html body .ui-tabs .ui-tabs-nav li
     cursor: pointer
   .channel-activities
     width: 100%
+
+.ui-tabs-panel, #mask_container
+  padding: 0px
+  padding-right: 20px
+  padding-left: 20px
+	
+#mask_container
+  position: fixed
+  top: 64px !important
+  background: #E6EBEE url("/assets/page_bg.png") repeat
+  z-index: 9002
+  padding-top: 25px
+  width: 80%
+
+.corner_cover
+  display: block
+  width: 15px
+  height: 15px
+  background: #FFF
+
+html body .ui-tabs .ui-tabs-panel, html body #app_body .main-area #mask_container
+  padding-left: 20px !important
+  padding-right: 20px !important
+
+
+html body #app_body .main-area #head-mask
+  min-height: 0 !important
+  padding-bottom: 0px !important
+  height: 20px
+  +box-shadow(0px 10px 5px -3px #FFFFFF, 0px 7px 4px -3px #FFFFFF, 6px 3px 3px -3px #cccccc, -5px 3px 5px -2px #cccccc)
+
+/* html body .ui-tabs .ui-tabs-panel
+/*   padding: 0px !important
 
 .chatbox
   +border-bottom-radius(4px)
