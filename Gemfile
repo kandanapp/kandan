@@ -5,7 +5,8 @@ gem 'rails', '3.2.2'
 
 # Database adapters
 gem 'pg'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+# Uncomment this is you want to use sqlite locally
+# gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Auth/Bushido gems
 gem 'devise'
