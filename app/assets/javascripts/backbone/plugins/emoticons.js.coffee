@@ -3,7 +3,7 @@ class Kandan.Plugins.Emoticons
   @options:
     regex: /\([a-zA-Z]+\)/g
     template: _.template '''
-      <img class="emoticon-embed" src="/assets/emoticons/<%= emoticon %>" height="20" width="20" />
+      <img class="emoticon-embed" src="/assets/emoticons/<%= emoticon %>" height="30" width="30" />
     '''
 
 
