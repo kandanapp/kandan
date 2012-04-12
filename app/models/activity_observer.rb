@@ -11,7 +11,7 @@ class ActivityObserver < ActiveRecord::Observer
   def message_broadcast_data(activity)
     faye_channel = "/channels/#{activity.channel.to_param}"
     broadcast_data = activity.attributes.merge({
-        :user => activity.user.attributes,
+        :user => activity.user.as_json(:only => [:id, :ido_id, :email, :first_name, :last_name, :gravatar_hash, :active, :locale]),
         :channel => activity.channel.attributes
       })
     [faye_channel, broadcast_data]
@@ -22,7 +22,7 @@ class ActivityObserver < ActiveRecord::Observer
     broadcast_data = {
       :event  => "attachment#upload",
       :entity => activity.attributes.merge({
-          :user    => activity.user.attributes,
+          :user => activity.user.as_json(:only => [:id, :ido_id, :email, :first_name, :last_name, :gravatar_hash, :active, :locale]),
           :channel => activity.channel.attributes
         }),
       :extra  => {
