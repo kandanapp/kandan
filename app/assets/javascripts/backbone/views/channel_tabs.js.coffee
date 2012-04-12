@@ -7,7 +7,7 @@ class Kandan.Views.ChannelTabs extends Backbone.View
     @
 
   createChannel: (event)->
-    channelName = prompt("What's the channel name?", "New channel")
+    channelName = prompt("What's the channel name?", @randomChannelName())
     channelName = channelName.replace(/^\s+|\s+$/g, '')
     if channelName
       channel = new Kandan.Models.Channel({name: channelName})
@@ -22,3 +22,18 @@ class Kandan.Views.ChannelTabs extends Backbone.View
     channelIndex = $(event.target).parents('li').prevAll().length
     Kandan.Helpers.Channels.deleteChannelByTabIndex(channelIndex) if channelIndex != 0
     return false
+
+  randomChannelName: () ->
+    names = [
+      "A Dark Place",
+      "Discotheque",
+      "Dungeon",
+      "Garden",
+      "Lobby",
+      "Office",
+      "Palace",
+      "Park",
+      "Studio",
+      "Temple",
+      "War Room",
+      "Zork"]
