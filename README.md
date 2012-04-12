@@ -1,6 +1,6 @@
-Kandan
-=========
-The slickest chat app out there - as well as open source and well-supported to boot.
+Kandan - Modern Open Source Chat
+================================
+The slickest chat app out there. Open-source and well-supported to boot.
 
 ![](http://github.com/Bushido/kandan/raw/master/public/preview.png)
 
@@ -27,15 +27,15 @@ In addition to the standard features above, Kandan can take advantage of CloudFu
 SHUT UP AND LET ME USE IT
 =========================
 
-=== CloudFuji
+## CloudFuji
 If you're part of the CloudFuji Beta you should already have access to Kandan with all the enhanced features from the app store.
 
 Just click launch on here https://bushi.do/apps/new?app=kandan; you and your team should be all setup.
 
-=== Cloud Foundry
+## Cloud Foundry
 Looking for community help here
 
-=== Heroku
+## Heroku
 The following should work reliably on Heroku:
 
     git clone https://github.com/Bushido/kandan.git
@@ -45,7 +45,7 @@ The following should work reliably on Heroku:
 
 Your app should be up and running now. The admin email by default is `admin@kandan.me` with password `kandanadmin`, or you can sign up as another user.
 
-=== dotCloud
+## dotCloud
 Looking for community help here.
 
 TODO
