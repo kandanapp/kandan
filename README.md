@@ -39,10 +39,13 @@ Looking for community help here
 The following should work reliably on Heroku:
 
     git clone https://github.com/Bushido/kandan.git
-    heroku create
+    cd kandan
+    heroku create --stack cedar
     git push heroku master
     heroku run rake db:migrate kandan:bootstrap
-
+    heroku open
+    
+    
 Your app should be up and running now. The admin email by default is `admin@kandan.me` with password `kandanadmin`, or you can sign up as another user.
 
 ## dotCloud
