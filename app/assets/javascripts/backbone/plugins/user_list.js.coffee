@@ -2,12 +2,11 @@ class Kandan.Plugins.UserList
 
   @widget_title: "People"
   @widget_icon_url: "/assets/people_icon.png"
-  @widget_name: "users"
-  @plugin_namespace: "Kandan.Plugins.UserList"
+  @pluginNamespace: "Kandan.Plugins.UserList"
 
   @template: _.template '''
     <div class="user clearfix">
-      <img class="avatar" src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=https://bushi.do/images/profile.png"/>
+      <img class="avatar" src="http://gravatar.com/avatar/<%= gravatarHash %>?s=25&d=https://bushi.do/images/profile.png"/>
       <span class="name"><%= name %></span>
     </div>
   '''
@@ -23,12 +22,12 @@ class Kandan.Plugins.UserList
 
       $users.append @template({
         name: displayName,
-        gravatar_hash: user.gravatar_hash
+        gravatarHash: user.gravatar_hash
       })
     $el.html($users)
 
 
   @init: ()->
-    Kandan.Widgets.register @plugin_namespace
+    Kandan.Widgets.register @pluginNamespace
     Kandan.Data.ActiveUsers.registerCallback "change", ()=>
-      Kandan.Widgets.render @plugin_namespace
+      Kandan.Widgets.render @pluginNamespace

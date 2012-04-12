@@ -16,6 +16,13 @@ window.Kandan =
   Data:         {}
   Plugins:      {}
 
+  options:
+    broadcaster: "<%= Kandan::Config.options[:broadcaster][:name] %>"
+    perPage    : <%= Kandan::Config.options[:per_page] %>
+    nowThreshold: 3000
+    timestampRefreshInterval: 2000
+
+
   # TODO this is a helper method to register plugins
   # in the order required until we come up with plugin management
   registerPlugins: ->
@@ -34,7 +41,7 @@ window.Kandan =
 
   registerAppEvents: ()->
     Kandan.Data.ActiveUsers.registerCallback "change", (data)->
-      Kandan.Helpers.Channels.add_activity({
+      Kandan.Helpers.Channels.addActivity({
         user: data.entity,
         action: data.event.split("#")[1]
       })
@@ -51,15 +58,15 @@ window.Kandan =
 
 
   initBroadcasterAndSubscribe: ()->
-    Kandan.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
+    Kandan.broadcaster = eval "new Kandan.Broadcasters.#{@options.broadcaster}Broadcaster()"
     Kandan.broadcaster.subscribe "/channels/*"
     @registerAppEvents()
 
   initTabs: ()->
     $('#kandan').tabs({
       select: (event, ui)->
-        $(document).data('active_channel_id',
-        Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
+        $(document).data('active-channel-id',
+          Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
         Kandan.Data.Channels.runCallbacks('change')
       add: (event, ui) ->
         $('.header .ui-tabs-panel:last').detach().appendTo('#channels')
@@ -68,16 +75,16 @@ window.Kandan =
     })
 
     $("#kandan").tabs 'option', 'tabTemplate', '''
-    <li>
-    <a href="#{href}" class="show_channel">
-      <span class="tab_right"></span>
-      <span class="tab_left"></span>
-      <span class="tab_content">
-        <cite>#{label}</cite>
-        <cite class="close_channel" title="close channel">x</cite>
-      </span>
-    </a>
-    </li>
+      <li>
+        <a href="#{href}" class="show_channel">
+          <span class="tab_right"></span>
+          <span class="tab_left"></span>
+          <span class="tab_content">
+            <cite>#{label}</cite>
+            <cite class="close_channel" title="close channel">x</cite>
+          </span>
+        </a>
+      </li>
     '''
 
   initChatArea: (channels)->
@@ -99,22 +106,33 @@ window.Kandan =
       Kandan.Widgets.initAll()
 
   setCurrentUser: ()->
-    template = _.template '''
-      <img src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=http://bushi.do/images/profile.png"/><span><%= name %></span>
-    '''
+    template = JST['current_user']
     currentUser = Kandan.Helpers.Users.currentUser()
     displayName =   "#{currentUser.first_name} #{currentUser.last_name}" if currentUser.first_name?
     displayName ||= currentUser.email
     $(".header .user").html template({
-      gravatar_hash: currentUser.gravatar_hash,
+      gravatarHash: currentUser.gravatar_hash,
       name: displayName
     })
+
+  registerUtilityEvents: ()->
+    window.setInterval(=>
+      for el in $(".posted_at")
+        $(el).text (new Date($(el).data("timestamp"))).toRelativeTime(@options.nowThreshold)
+    , @options.timestampRefreshInterval)
+
+    $(".user_menu_link").click (e)->
+      e.preventDefault()
+      $(".user_menu").toggle()
+      false
 
   init: ->
     @setCurrentUser()
     channels = new Kandan.Collections.Channels()
-    channels.fetch({success: (channelsCollection)=>
-      @initBroadcasterAndSubscribe()
-      activeUsers = new Kandan.Collections.ActiveUsers()
-      activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
+    channels.fetch({
+      success: (channelsCollection)=>
+        @initBroadcasterAndSubscribe()
+        activeUsers = new Kandan.Collections.ActiveUsers()
+        activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
     })
+    @registerUtilityEvents()

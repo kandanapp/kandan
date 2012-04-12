@@ -3,7 +3,7 @@ class Kandan.Data.Attachments
 
   @all: (callback)->
     attachments = new Kandan.Collections.Attachments([], {
-      channel_id: Kandan.Data.Channels.activeChannelId()
+      channelId: Kandan.Data.Channels.activeChannelId()
     })
     attachments.fetch({ success: callback })
 

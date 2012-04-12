@@ -1,27 +1,29 @@
 class Kandan.Plugins.ImageEmbed
-  @image_regex:   /http.*\.(jpg|jpeg|gif|png)/i
+  @options:
+    regex: /http.*\.(jpg|jpeg|gif|png)/i
 
-  @image_template: _.template '''
-    <div class="image-preview">
-      <a target="_blank" href="<%= image_url %>">
-        <img class="image-embed" src="<%= image_url %>" height="200" width="200" />
-      </a>
-      <div class="name"><%= subtitle %></div>
-    </div>
-   '''
+    template: _.template '''
+      <div class="image-preview">
+        <a target="_blank" href="<%= imageUrl %>">
+          <img class="image-embed" src="<%= imageUrl %>" height="200" width="200" />
+        </a>
+        <div class="name"><%= subtitle %></div>
+      </div>
+    '''
+
 
   @init: ()->
-    Kandan.Modifiers.register @image_regex, (message, state) =>
-      url        = message.content.match(@image_regex)[0]
+    Kandan.Modifiers.register @options.regex, (message, state) =>
+      url        = message.content.match(@options.regex)[0]
       fileName   = url.split("/").pop()
       comment    = $.trim(message.content.split(url).join(""))
       subtitle   = null
       subtitle   = comment if comment.length > 0
       subtitle ||= fileName
 
-      message.content = @image_template({
-        image_url: url,
+      message.content = @options.template({
+        imageUrl: url,
         subtitle: subtitle
       })
 
-      return Kandan.Helpers.Activities.build_from_message_template(message)
+      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)

@@ -22,14 +22,11 @@
             :gravatar_hash => current_user.gravatar_hash
           }
           %>
-      $.data(document, 'current_user', <%= current_user_data.to_json.html_safe %>);
+      $.data(document, "current-user", <%= current_user_data.to_json.html_safe %>);
     <%- end %>
+    $(document).data("active-users", [])
   <%- end %>
 
-  <%= javascript_tag do %>
-    $(document).data('active_users', [])
-  <%- end %>
-  
   <%= csrf_meta_tags %>
 </head>
 <body>

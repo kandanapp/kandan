@@ -5,20 +5,20 @@ class Kandan.Views.ShowActivity extends Backbone.View
 
   render: ()->
     activity = @options.activity.toJSON()
-    activity.created_at = Kandan.Helpers.Utils.time_to_string(new Date(activity.created_at))
-    console.log("Rendering activity:")
     activity.content = _.escape(activity.content)
-    console.log(activity)
     if activity.action != "message"
-      @compiled_template = JST['user_notification']({activity: activity})
+      @compiledTemplate = JST['user_notification']({activity: activity})
     else
-      modified_message = Kandan.Modifiers.process(activity, @options.state)
-      if modified_message != false
-        @compiled_template = modified_message
+      modifiedMessage = Kandan.Modifiers.process(activity, @options.state)
+      if modifiedMessage != false
+        @compiledTemplate = modifiedMessage
       else
-        @compiled_template = Kandan.Helpers.Activities.build_from_message_template activity
+        @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate activity
 
-    $(@el).data('activity_id', activity.id)
-    $(@el).attr('id', "activity-#{activity.id}")
-    $(@el).html(@compiled_template)
+    $(@el).data("activity-id", activity.id)
+    $(@el).attr("id", "activity-#{activity.id}")
+    $(@el).html(@compiledTemplate)
+
+    #NOTE can only set the data after it's been appended to the DOM
+    $(@el).find(".posted_at").data("timestamp", activity.created_at)
     @
