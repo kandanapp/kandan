@@ -1,6 +1,6 @@
 class Kandan.Plugins.YouTubeEmbed
 
-  @youtube_regex: /^http(s)?:\/\/www.youtube.com\/watch/i
+  @youtube_regex: /^http(s)?.+www.youtube.com.+watch/i
   @youtube_id_regex: /\Wv=([\w|\-]*)/
 
   @youtube_embed_template: _.template '''
