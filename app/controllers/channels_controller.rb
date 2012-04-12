@@ -12,7 +12,7 @@ class ChannelsController < ApplicationController
       more_activities = (channel.activities.count > Kandan::Config.options[:per_page])
       channel.activities.order('id DESC').includes(:user).page.each do |activity|
         activities.push activity.attributes.merge({
-          :user => activity.user.as_json(:only => [:id, :ido_id, :first_name, :last_name, :gravatar_hash, :active, :locale])
+          :user => activity.user.as_json(:only => [:id, :ido_id, :email, :first_name, :last_name, :gravatar_hash, :active, :locale])
         })
       end
 
