@@ -1,4 +1,4 @@
 www:
   type: ruby
 db:
-  type: postgres
+  type: postgresql
