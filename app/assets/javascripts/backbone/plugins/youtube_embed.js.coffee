@@ -6,8 +6,8 @@ class Kandan.Plugins.YouTubeEmbed
 
     template: _.template '''
       <div class="youtube-preview">
-        <a target="_blank" class="youtube-preview-link" href="<%= video_url %>">
-          <img class="youtube-preview-image" src="<%= thumb_url %>" />
+        <a target="_blank" class="youtube-preview-link" href="<%= videoUrl %>">
+          <img class="youtube-preview-image" src="<%= thumbUrl %>" />
         </a>
         <div class="name"><%= subtitle %></div>
       </div>
@@ -27,7 +27,7 @@ class Kandan.Plugins.YouTubeEmbed
         videoUrl = message.content.split(" ")[0]
 
       videoId = message.content.match(@options.idRegex)[1]
-      thumbUrl = "http://img.youtube.com/vi/#{ video_id }/0.jpg"
+      thumbUrl = "http://img.youtube.com/vi/#{ videoId }/0.jpg"
 
       subtitle = null
       subtitle = "Youtube: #{comment}" if comment? and comment.length > 0

@@ -4,8 +4,8 @@ class Kandan.Plugins.ImageEmbed
 
     template: _.template '''
       <div class="image-preview">
-        <a target="_blank" href="<%= image_url %>">
-          <img class="image-embed" src="<%= image_url %>" height="200" width="200" />
+        <a target="_blank" href="<%= imageUrl %>">
+          <img class="image-embed" src="<%= imageUrl %>" height="200" width="200" />
         </a>
         <div class="name"><%= subtitle %></div>
       </div>

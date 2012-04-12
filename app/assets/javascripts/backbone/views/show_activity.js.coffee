@@ -5,7 +5,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
 
   render: ()->
     activity = @options.activity.toJSON()
-    console.log("Rendering activity:")
+    activity.content = _.escape(activity.content)
     if activity.action != "message"
       @compiledTemplate = JST['user_notification']({activity: activity})
     else
@@ -13,7 +13,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
       if modifiedMessage != false
         @compiledTemplate = modifiedMessage
       else
-        @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate $.extend(activity, {content: _.escape(activity.content)})
+        @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate activity
 
     $(@el).data("activity-id", activity.id)
     $(@el).attr("id", "activity-#{activity.id}")
