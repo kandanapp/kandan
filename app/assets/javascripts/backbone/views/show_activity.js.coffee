@@ -16,7 +16,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
       if modified_message != false
         @compiled_template = modified_message
       else
-        @compiled_template = Kandan.Helpers.Activities.build_from_message_template $.extend(activity, {content: _.escape(activity.content)})
+        @compiled_template = Kandan.Helpers.Activities.build_from_message_template activity
 
     $(@el).data('activity_id', activity.id)
     $(@el).attr('id', "activity-#{activity.id}")
