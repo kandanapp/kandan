@@ -1,7 +1,7 @@
 class Kandan.Plugins.Emoticons
 
   @options:
-    regex: /\([a-zA-Z])/g
+    regex: /\([a-zA-Z]\)/g
     template: _.template '''
       <img class="emoticon-embed" src="/assets/<%= emoticon %>" height="20" width="20" />
     '''
@@ -21,4 +21,4 @@ class Kandan.Plugins.Emoticons
         message.content.replace(search, replacement) if emoticon
       return Kandan.Helpers.Activities.build_from_base_template(message)
 
-# Kandan.Plugins.register "Kandan.Plugins.MeAnnounce"
+# Kandan.Plugins.register "Kandan.Plugins.Emoticons"
