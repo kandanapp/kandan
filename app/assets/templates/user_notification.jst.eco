@@ -5,7 +5,7 @@
   <span class="user">Kandan bot</span>
 
   <span class="content">
-    <%= @activity.user.first_name %> <%= @activity.action %>ed <%- "<a href='#{@activity.content}'>#{@activity.content}</a>" if @activity.action == "upload" %>
+    <%= @activity.user.first_name || @activity.user.email %> <%= @activity.action %>ed <%- "<a href='#{@activity.content}'>#{@activity.content}</a>" if @activity.action == "upload" %>
   </span>
 </div>
 
