@@ -25,5 +25,3 @@ class Kandan.Plugins.Pastie
       url = "/channels/#{message.channel_id}/activities/#{message.id}"
       message.content = @options.template({preview: @truncate(message.content), messageLink: url})
       return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
-
-# Kandan.Plugins.register "Kandan.Plugins.Pastie"
