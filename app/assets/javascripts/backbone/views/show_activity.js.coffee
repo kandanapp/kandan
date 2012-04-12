@@ -5,6 +5,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
 
   render: ()->
     activity = @options.activity.toJSON()
+    console.log("Rendering activity:")
     if activity.action != "message"
       @compiledTemplate = JST['user_notification']({activity: activity})
     else

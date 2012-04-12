@@ -5,7 +5,7 @@
 
 <div class="readable">
   <span class="user">
-    <%= @activity.user.first_name %>
+    <%= @activity.user.first_name || @activity.user.email %>
   </span>
 
   <span class="content">

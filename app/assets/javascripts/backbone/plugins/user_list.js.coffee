@@ -16,8 +16,12 @@ class Kandan.Plugins.UserList
     $el.next().hide();
 
     for user in Kandan.Data.ActiveUsers.all()
+      displayName   = null
+      displayName   = "#{user.first_name} #{user.last_name}" if user.first_name?
+      displayName ||= user.email # Default to user email address if that's all we have
+
       $users.append @template({
-        name: "#{user.first_name} #{user.last_name}",
+        name: displayName,
         gravatarHash: user.gravatar_hash
       })
     $el.html($users)

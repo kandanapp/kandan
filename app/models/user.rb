@@ -4,12 +4,12 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
   before_save :ensure_gravatar_hash
   
+
   # Kandan.devise_modules is defined in config/initializers/kandan.rb
   devise devise *Kandan.devise_modules
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :id, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :locale, :gravatar_hash
-
 
   def bushido_extra_attributes(extra_attributes)
     self.first_name = extra_attributes["first_name"].to_s

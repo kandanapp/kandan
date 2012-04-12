@@ -48,6 +48,7 @@ window.Kandan =
 
     $(window).focus(->
       Kandan.Helpers.Utils.browserTabFocused = true
+      Kandan.Helpers.Utils.resetUnreadActivities()
       $(document).attr('title', 'Kandan')
     )
 
@@ -70,6 +71,7 @@ window.Kandan =
       add: (event, ui) ->
         $('.header .ui-tabs-panel:last').detach().appendTo('#channels')
         $('#kandan').tabs('option', 'disabled', [])
+        $('.header ul a').delegate('cite.close_channel', 'click', window.tabViewGlobal.deleteChannel)
     })
 
     $("#kandan").tabs 'option', 'tabTemplate', '''
@@ -87,7 +89,7 @@ window.Kandan =
 
   initChatArea: (channels)->
     chatArea = new Kandan.Views.ChatArea({channels: channels})
-    $(".main-area").html(chatArea.render().el)
+    $(".main-area").append(chatArea.render().el)
     $(document).scrollTop($(document).height()+9000)
 
 
@@ -106,9 +108,11 @@ window.Kandan =
   setCurrentUser: ()->
     template = JST['current_user']
     currentUser = Kandan.Helpers.Users.currentUser()
+    displayName =   "#{currentUser.first_name} #{currentUser.last_name}" if currentUser.first_name?
+    displayName ||= currentUser.email
     $(".header .user").html template({
       gravatarHash: currentUser.gravatar_hash,
-      name: "#{currentUser.first_name} #{currentUser.last_name}"
+      name: displayName
     })
 
   registerUtilityEvents: ()->
