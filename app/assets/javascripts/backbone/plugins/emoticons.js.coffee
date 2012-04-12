@@ -24,7 +24,7 @@ class Kandan.Plugins.Emoticons
     "(rageguy)"     : "rageguy.jpg",
     "(seriously)"   : "seriously.jpg",
     "(sweetjesus)"  : "sweetjesus.jpg",
-    "(truestory)"   : "truestory.jpg",
+    "(truestory)"   : "truestory.png",
     "(youdontsay)"  : "youdontsay.png",
     "(yuno)"        : "yuno.jpg"
     }
