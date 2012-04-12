@@ -36,14 +36,13 @@ Just click launch on here https://bushi.do/apps/new?app=kandan; you and your tea
 Looking for community help here
 
 ## Heroku
-The following should work reliably on Heroku:
+You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed and to have an existing heroku account. Assuming that, this should work reliably on Heroku:
 
     git clone https://github.com/Bushido/kandan.git
     cd kandan
     heroku create --stack cedar
     git push heroku master
-    heroku run rake db:migrate kandan:bootstrap
-    heroku open
+    heroku run rake db:migrate kandan:bootstrap && heroku open
     
     
 Your app should be up and running now. The admin email by default is `admin@kandan.me` with password `kandanadmin`, or you can sign up as another user.
