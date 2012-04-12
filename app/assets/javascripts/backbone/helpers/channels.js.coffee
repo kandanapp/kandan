@@ -2,7 +2,7 @@ class Kandan.Helpers.Channels
 
   @options:
     autoScrollThreshold: 0.90
-    maxActivities: <%= Kandan::Config.options[:per_page] %>
+    maxActivities: Kandan.options.perPage
 
   @pastAutoScrollThreshold: (channelId)->
     currentPosition     = @currentScrollPosition channelId

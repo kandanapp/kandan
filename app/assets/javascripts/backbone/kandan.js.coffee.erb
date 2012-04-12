@@ -16,6 +16,13 @@ window.Kandan =
   Data:         {}
   Plugins:      {}
 
+  options:
+    broadcaster: "<%= Kandan::Config.options[:broadcaster][:name] %>"
+    perPage    : <%= Kandan::Config.options[:per_page] %>
+    nowThreshold: 3000
+    timestampRefreshInterval: 2000
+
+
   # TODO this is a helper method to register plugins
   # in the order required until we come up with plugin management
   registerPlugins: ->
@@ -50,7 +57,7 @@ window.Kandan =
 
 
   initBroadcasterAndSubscribe: ()->
-    Kandan.broadcaster = new Kandan.Broadcasters.FayeBroadcaster()
+    Kandan.broadcaster = eval "new Kandan.Broadcasters.#{@options.broadcaster}Broadcaster()"
     Kandan.broadcaster.subscribe "/channels/*"
     @registerAppEvents()
 
@@ -58,7 +65,7 @@ window.Kandan =
     $('#kandan').tabs({
       select: (event, ui)->
         $(document).data('active-channel-id',
-        Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
+          Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
         Kandan.Data.Channels.runCallbacks('change')
       add: (event, ui) ->
         $('.header .ui-tabs-panel:last').detach().appendTo('#channels')
@@ -66,16 +73,16 @@ window.Kandan =
     })
 
     $("#kandan").tabs 'option', 'tabTemplate', '''
-    <li>
-      <a href="#{href}" class="show_channel">
-        <span class="tab_right"></span>
-        <span class="tab_left"></span>
-        <span class="tab_content">
-          <cite>#{label}</cite>
-          <cite class="close_channel" title="close channel">x</cite>
-        </span>
-      </a>
-    </li>
+      <li>
+        <a href="#{href}" class="show_channel">
+          <span class="tab_right"></span>
+          <span class="tab_left"></span>
+          <span class="tab_content">
+            <cite>#{label}</cite>
+            <cite class="close_channel" title="close channel">x</cite>
+          </span>
+        </a>
+      </li>
     '''
 
   initChatArea: (channels)->
@@ -104,6 +111,17 @@ window.Kandan =
       name: "#{currentUser.first_name} #{currentUser.last_name}"
     })
 
+  registerUtilityEvents: ()->
+    window.setInterval(=>
+      for el in $(".posted_at")
+        $(el).text (new Date($(el).data("timestamp"))).toRelativeTime(@options.nowThreshold)
+    , @options.timestampRefreshInterval)
+
+    $(".user_menu_link").click (e)->
+      e.preventDefault()
+      $(".user_menu").toggle()
+      false
+
   init: ->
     @setCurrentUser()
     channels = new Kandan.Collections.Channels()
@@ -113,3 +131,4 @@ window.Kandan =
         activeUsers = new Kandan.Collections.ActiveUsers()
         activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
     })
+    @registerUtilityEvents()

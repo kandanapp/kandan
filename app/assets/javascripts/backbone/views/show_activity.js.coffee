@@ -5,7 +5,6 @@ class Kandan.Views.ShowActivity extends Backbone.View
 
   render: ()->
     activity = @options.activity.toJSON()
-    activity.created_at = Kandan.Helpers.Utils.timeToString(new Date(activity.created_at))
     if activity.action != "message"
       @compiledTemplate = JST['user_notification']({activity: activity})
     else
@@ -15,7 +14,10 @@ class Kandan.Views.ShowActivity extends Backbone.View
       else
         @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate $.extend(activity, {content: _.escape(activity.content)})
 
-    $(@el).data('activity-id', activity.id)
-    $(@el).attr('id', "activity-#{activity.id}")
+    $(@el).data("activity-id", activity.id)
+    $(@el).attr("id", "activity-#{activity.id}")
     $(@el).html(@compiledTemplate)
+
+    #NOTE can only set the data after it's been appended to the DOM
+    $(@el).find(".posted_at").data("timestamp", activity.created_at)
     @
