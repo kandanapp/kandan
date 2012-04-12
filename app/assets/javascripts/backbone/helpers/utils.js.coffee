@@ -1,9 +1,12 @@
 class Kandan.Helpers.Utils
+  @unreadActivities = 0
 
   @browserTabFocused: true
 
   @notifyInTitleIfRequired: ->
-    $(document).attr('title', '(new) Kandan') if @browserTabFocused != true
+    if @browserTabFocused != true
+      @unreadActivities += 1
+      $(document).attr('title', "(#{@unreadActivities}) Kandan")
 
   @months: [
     "January"
@@ -19,6 +22,9 @@ class Kandan.Helpers.Utils
     ,"November"
     ,"December"
   ]
+
+  @resetUnreadActivities: () ->
+    @unreadActivities = 0
 
   @time_to_string: (time) ->
     return time if (typeof time != "object")

@@ -41,6 +41,7 @@ window.Kandan =
 
     $(window).focus(->
       Kandan.Helpers.Utils.browserTabFocused = true
+      Kandan.Helpers.Utils.resetUnreadActivities()
       $(document).attr('title', 'Kandan')
     )
 
@@ -102,9 +103,11 @@ window.Kandan =
       <img src="http://gravatar.com/avatar/<%= gravatar_hash %>?s=25&d=http://bushi.do/images/profile.png"/><span><%= name %></span>
     '''
     currentUser = Kandan.Helpers.Users.currentUser()
+    displayName =   "#{currentUser.first_name} #{currentUser.last_name}" if currentUser.first_name?
+    displayName ||= currentUser.email
     $(".header .user").html template({
       gravatar_hash: currentUser.gravatar_hash,
-      name: "#{currentUser.first_name} #{currentUser.last_name}"
+      name: displayName
     })
 
   init: ->
