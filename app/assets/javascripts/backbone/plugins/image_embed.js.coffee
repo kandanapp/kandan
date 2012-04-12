@@ -1,6 +1,6 @@
 class Kandan.Plugins.ImageEmbed
   @options:
-    regex:   /^http.*\.(jpg|jpeg|gif|png)/i
+    regex: /http.*\.(jpg|jpeg|gif|png)/i
 
     template: _.template '''
       <div class="image-preview">
