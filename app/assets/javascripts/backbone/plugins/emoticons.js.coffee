@@ -22,7 +22,7 @@ class Kandan.Plugins.Emoticons
     "(okay)"        : "okay.jpg",
     "(omgface)"     : "omgface.jpg",
     "(pokerface)"   : "pokerface.jpg",
-    "(problem)"     : "problem.jpg",
+    "(problem)"     : "trollface.jpg",
     "(rageguy)"     : "rageguy.jpg",
     "(seriously)"   : "seriously.jpg",
     "(sweetjesus)"  : "sweetjesus.jpg",
