@@ -1,84 +1,144 @@
 class Kandan.Plugins.MusicPlayer
 
-  @plugin_namespace: "Kandan.Plugins.MusicPlayer"
-  @plugin_id: ""
-  @widget_title: "Player"
-  @play_regex: /^\/play .+/
-  @stop_regex: /^\/stop/
-  @local_song_data: false
+  @pluginNamespace: "Kandan.Plugins.MusicPlayer"
+  @pluginId: ""
+  @widgetTitle: "Player"
+  @playRegex: /^&#x2F;play .+/
+  @stopRegex: /^&#x2F;stop/
+  @localSongData: false
 
 
-  @play_template: _.template('<strong><a class="audio-play">playing</a> <a target="_blank" href="<%- url %>"><%- url %></a></strong>')
-  @song_template: _.template('<li><%= song.split("/").pop() %></li>')
+  @playTemplate: _.template('<strong><a class="audio-play">playing</a> <a target="_blank" href="<%- url %>"><%- url %></a></strong>')
+  @songTemplate: _.template('<li><%= song.split("/").pop() %></li>')
 
 
-  @set_error: (error_message)->
-    console.log "music player error", error_message
+  @setError: (errorMessage)->
+    console.log "music player error", errorMessage
 
 
-  @create_song_list: (songs)->
+  @createSongList: (songs)->
     $songs = $('<ul class="songs"></ul>')
     if songs.length == 0
       $songs = "No songs! Maybe add some?"
     else
-      $songs.append(@song_template({song: song})) for song in songs
+      $songs.append(@songTemplate({song: song})) for song in songs
     return $songs
 
 
-  @render: ($widget_el)->
-    $widget_element_class = $widget_el.attr('class')
+  @render: ($widgetEl)->
+    $widgetElementClass = $widgetEl.attr('class')
 
-    if @local_song_data
-      $songs = @create_song_list(@local_song_data)
+    if @localSongData
+      $songs = @createSongList(@localSongData)
     else
-      @get_songs({
+      @getSongs({
         success: (songs)=>
-          $songs = @create_song_list(songs)
+          $songs = @createSongList(songs)
 
         failure: ()->
-          @set_error("Could not load songs")
+          @setError("Could not load songs")
       })
-    $widget_el.html($songs)
+    $widgetEl.html($songs)
 
 
-  # TODO add support for sounds
-  @init: (plugin_id)->
-    @plugin_id = plugin_id
-    @register_modifier()
-    @register_widget()
+  # TODO: Add support for sounds
+  @init: (pluginId)->
+    @pluginId = pluginId
+    @registerModifier()
+    @registerWidget()
 
 
-  @register_widget: ()->
-    Kandan.Widgets.register @plugin_namespace
+  @registerWidget: ()->
+    Kandan.Widgets.register @pluginNamespace
 
 
-  @register_modifier: ()->
-    Kandan.Modifiers.register @play_regex, (message, state)=>
-      if state == Kandan.Helpers.Activities.ACTIVE_STATE
-        console.log "add song to player and play song"
-        @store_song url
+  @registerModifier: ()->
+    Kandan.Modifiers.register @playRegex, (message, state) =>
+      console.log("state:" + state)
+      url = $.trim(message.content.substr(message.content.indexOf(" ") + 1));
+      if true and Kandan.Helpers.Channels.getActiveChannelId()? # state == Kandan.Helpers.Activities.ACTIVE_STATE
+        console.log("message: " + message.content)
+        console.log("url: " + url)
+        @playUrl(Kandan.Helpers.Channels.getActiveChannelId(), Kandan.Helpers.Utils.unescape(url))
       else
         console.log "song is history"
 
-      message.content = @play_template({url: message.content.split @play_regex})
-      return Kandan.Helpers.Activities.build_from_base_template message
+      message.content = @playTemplate({url: url})
+      return Kandan.Helpers.Activities.buildFromBaseTemplate message
 
 
   # TODO display error about song not being added by creating an activity locally
-  @store_song: (url)->
-    @get_songs({
+  @storeSong: (url)->
+    @getSongs({
       success: (data)=>
         data.push url
-        Kandan.Store.set @plugin_id, {
+        Kandan.Store.set @pluginId, {
           success: (data)->
-            @local_song_data = data
-            Kandan.Widgets.render_widget @plugin_namespace
+            @localSongData = data
+            Kandan.Widgets.renderWidget @pluginNamespace
         }
     })
 
 
-  @get_songs: (callbacks)->
-    Kandan.Store.get @plugin_id, callbacks
+  @getSongs: (callbacks)->
+    Kandan.Store.get @pluginId, callbacks
 
+  @nicknameToUrl: (url) ->
+    sounds = {
+      'claps'  : 'golfclap.mp3'
+      'cheers' : 'cheers.mp3'
+      'ding'   : 'ding.wav'
+      'chirp'  : 'chirp.wav'
+      }
+
+    fullUrl   = null
+    fullUrl   = sounds[url]
+    fullUrl ||= url
+
+  @volumes = {}
+
+  @audioChannels: ->
+    Kandan.Helpers.Audio.audioChannels()
+
+  @audioChannel: (id) ->
+    Kandan.Helpers.Audio.audioChannel(id)
+
+  @mute: (channelId) ->
+    channel = @audioChannel(channelId)
+    console.log(channel)
+    @volumes[channelId] = channel.volume
+    console.log(@volumes)
+    @setVolume(channelId, 0)
+
+  @unmute: (channelId) ->
+    @setVolume(channelId, @volumes[channelId])
+
+  @toggle: (channelId) ->
+    if @volumes[channelId] == 0
+      @unmute(channelId)
+    else
+      @mute(channelId)
+
+  @setVolume: (channelId, volume) ->
+    @audioChannel(channelId).volume = volume
+
+  @setAudioUrl: (channelId, url) ->
+    @audioChannel(channelId).setAttribute('src', url)
+
+  @playUrl: (channelId, url) ->
+    console.log(channelId, url)
+    @setAudioUrl(channelId, url)
+    @audioChannel(channelId).play()
+
+  @notifyChannelChanged: () ->
+    # Guards are
+    for channel in @audioChannels()
+      console.log("muting all channels!")
+      console.log(channel)
+      @mute(channel) if channel?
+    channelId = Kandan.Helpers.Channels.getActiveChannelId()
+    if @audioChannel(channelId)?
+      console.log("unmuting channel #{channelId}")
+      @unmute(channelId)
 
 # Kandan.Plugins.register "Kandan.Plugins.MusicPlayer"

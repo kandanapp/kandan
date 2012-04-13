@@ -28,6 +28,7 @@ window.Kandan =
   registerPlugins: ->
     plugins = [
       "UserList"
+      ,"MusicPlayer"
       ,"YouTubeEmbed"
       ,"ImageEmbed"
       ,"LinkEmbed"
@@ -67,7 +68,8 @@ window.Kandan =
     $('#kandan').tabs({
       select: (event, ui)->
         $(document).data('active-channel-id',
-          Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
+          Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index)
+          Kandan.Plugins.MusicPlayer.notifyChannelChanged())
         Kandan.Data.Channels.runCallbacks('change')
       add: (event, ui) ->
         $('.header .ui-tabs-panel:last').detach().appendTo('#channels')
