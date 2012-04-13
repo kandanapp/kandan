@@ -11,11 +11,9 @@ class Kandan.Helpers.Channels
     scrollPercentage > @options.autoScrollThreshold
 
   @scrollToLatestMessage: (channelId)->
-    console.log("scrolling to last message")
     $(document).scrollTop($(document).height()+9000)
 
   @currentScrollPosition: (channelId)->
-    console.log("current scroll position")
     $(document).scrollTop()
 
   @channelActivitiesEl: (channelId)->
@@ -104,23 +102,33 @@ class Kandan.Helpers.Channels
       @createChannelArea(new Kandan.Models.Channel(activityAttributes.channel))
 
 
-  @addActivity: (activityAttributes, state)->
+  @addActivity: (activityAttributes, state, local)->
+    local = local || false
     @createChannelIfNotExists(activityAttributes)
 
     if activityAttributes.channel_id
-      @addMessage(activityAttributes, state)
+      @addMessage(activityAttributes, state, local)
     else
       @addNotification(activityAttributes)
 
     channelId = activityAttributes.channel_id || @getActiveChannelId()
     @scrollToLatestMessage(channelId) if @pastAutoScrollThreshold(channelId)
 
-  @addMessage: (activityAttributes, state)->
-    @channelActivitiesEl(activityAttributes.channel_id)
-      .append(@newActivityView(activityAttributes).render().el)
+
+  @addMessage: (activityAttributes, state, local)->
+    belongsToCurrentUser = ( activityAttributes.user.id == Kandan.Data.Users.currentUser().id )
+    activityExists       = ( $("#activity-#{activityAttributes.id}").length == 0 )
+    local = local || false
+
+    console.log local, !belongsToCurrentUser, !activityExists
+    if local || (!belongsToCurrentUser || !activityExists)
+      @channelActivitiesEl(activityAttributes.channel_id)
+        .append(@newActivityView(activityAttributes).render().el)
+
     @flushActivities(activityAttributes.channel_id)
-    Kandan.Helpers.Utils.notifyInTitleIfRequired()
-    @setPaginationData(activityAttributes.channel_id)
+    if not local
+      Kandan.Helpers.Utils.notifyInTitleIfRequired()
+      @setPaginationData(activityAttributes.channel_id)
 
 
   @addNotification: (activityAttributes)->

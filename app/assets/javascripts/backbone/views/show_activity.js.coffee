@@ -16,7 +16,10 @@ class Kandan.Views.ShowActivity extends Backbone.View
         @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate activity
 
     $(@el).data("activity-id", activity.id)
-    $(@el).attr("id", "activity-#{activity.id}")
+    if activity.id == undefined
+      $(@el).attr("id", "activity-c#{activity.cid}")
+    else
+      $(@el).attr("id", "activity-#{activity.id}")
     $(@el).html(@compiledTemplate)
 
     #NOTE can only set the data after it's been appended to the DOM
