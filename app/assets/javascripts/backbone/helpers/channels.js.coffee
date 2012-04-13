@@ -117,11 +117,11 @@ class Kandan.Helpers.Channels
 
   @addMessage: (activityAttributes, state, local)->
     belongsToCurrentUser = ( activityAttributes.user.id == Kandan.Data.Users.currentUser().id )
-    activityExists       = ( $("#activity-#{activityAttributes.id}").length == 0 )
+    activityExists       = ( $("#activity-#{activityAttributes.id}").length > 0 )
     local = local || false
+    console.log !local, !belongsToCurrentUser, !activityExists
 
-    console.log local, !belongsToCurrentUser, !activityExists
-    if local || (!belongsToCurrentUser || !activityExists)
+    if local || (!local && !belongsToCurrentUser && !activityExists)
       @channelActivitiesEl(activityAttributes.channel_id)
         .append(@newActivityView(activityAttributes).render().el)
 
