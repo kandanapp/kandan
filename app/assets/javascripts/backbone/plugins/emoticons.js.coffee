@@ -44,6 +44,6 @@ class Kandan.Plugins.Emoticons
         replacement = @options.template({ emoticon: emoticon, title: title})
         message.content = message.content.replace(search, replacement) if emoticon
         console.log(message.content)
-      return Kandan.Helpers.Activities.buildFromBaseTemplate(message)
+      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
 
 # Kandan.Plugins.register "Kandan.Plugins.Emoticons"
