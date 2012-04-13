@@ -35,3 +35,6 @@ class Kandan.Helpers.Utils
 
   @resetUnreadActivities: () ->
     @unreadActivities = 0
+
+  @unescape: (string) ->
+    string.replace(/&#x2F;/g, "/")
