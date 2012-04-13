@@ -11,7 +11,9 @@ class Kandan.Views.Chatbox extends Backbone.View
 
 
   postMessageOnEnter: (event)->
-    @postMessage(event) if event.keyCode== 13
+    if event.keyCode== 13
+      @postMessage(event)
+      event.preventDefault()
 
 
   postMessage: (event)->
