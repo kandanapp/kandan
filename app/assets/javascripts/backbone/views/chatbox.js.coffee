@@ -16,6 +16,9 @@ class Kandan.Views.Chatbox extends Backbone.View
 
   postMessage: (event)->
     $chatbox = $(event.target).parent().find(".chat-input")
+    if $chatbox.val() == ""
+      return false
+
     activity = new Kandan.Models.Activity({
       'content':    $chatbox.val(),
       'action':     'message',
