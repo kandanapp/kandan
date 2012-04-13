@@ -83,10 +83,10 @@ class Kandan.Plugins.MusicPlayer
 
   @nicknameToUrl: (url) ->
     sounds = {
-      'claps'  : 'golfclap.mp3'
-      'cheers' : 'cheers.mp3'
-      'ding'   : 'ding.wav'
-      'chirp'  : 'chirp.wav'
+      'claps'  : 'golfclap.mp3',
+      'cheers' : 'cheers.mp3',
+      'ding'   : 'ding.wav',
+      'gong'   : 'gong.mp3'
       }
 
     fullUrl   = null
