@@ -3,7 +3,7 @@ class Kandan.Plugins.Emoticons
   @options:
     regex: /\([a-zA-Z]+\)/g
     template: _.template '''
-      <img class="emoticon-embed" src="/assets/emoticons/<%= emoticon %>" title="<%= title %>" height="30" width="30" />
+      <img class="emoticon-embed" src="/assets/emoticons/<%= emoticon %>" title="<%= title %>" height="40" width="40" />
     '''
 
 
@@ -40,10 +40,8 @@ class Kandan.Plugins.Emoticons
         title       = match.replace(/\(|\)/g, "")
         needle      = match.replace('(', '\\(').replace(')', '\\)')
         search      = new RegExp(needle, 'g')
-        console.log(search)
         replacement = @options.template({ emoticon: emoticon, title: title})
         message.content = message.content.replace(search, replacement) if emoticon
-        console.log(message.content)
       return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
 
 # Kandan.Plugins.register "Kandan.Plugins.Emoticons"

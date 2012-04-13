@@ -3,10 +3,10 @@ class Kandan.Views.ChannelPane extends Backbone.View
 
   render: (container)->
     container = container || $(@el)
-    console.log("channel view render", container);
     $(container).html @paginatedActivitiesView()
     $(container).append @chatboxView()
     @setIdAndData(container)
+    Kandan.Helpers.Audio.createAudioChannel(@options.channel.get('id'))
     @
 
   setIdAndData: (container)->
