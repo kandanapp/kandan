@@ -43,7 +43,7 @@ class Kandan.Broadcasters.FayeBroadcaster
 
   subscribe: (channel)->
     subscription = @fayeClient.subscribe channel, (data)=>
-      Kandan.Helpers.Channels.addActivity(data)
+      Kandan.Helpers.Channels.addActivity(data, Kandan.Helpers.Activities.ACTIVE_STATE)
     subscription.errback((data)->
       console.log "error", data
       alert "Oops! could not connect to the server"
