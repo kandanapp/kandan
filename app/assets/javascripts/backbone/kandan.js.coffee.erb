@@ -68,8 +68,7 @@ window.Kandan =
     $('#kandan').tabs({
       select: (event, ui)->
         $(document).data('active-channel-id',
-          Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index)
-          Kandan.Plugins.MusicPlayer.notifyChannelChanged())
+          Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
         Kandan.Data.Channels.runCallbacks('change')
       add: (event, ui) ->
         $('.header .ui-tabs-panel:last').detach().appendTo('#channels')

@@ -44,6 +44,7 @@ class Kandan.Plugins.MusicPlayer
   # TODO: Add support for sounds
   @init: (pluginId)->
     @pluginId = pluginId
+    Kandan.Data.Channels.registerCallback(@onChannelChange)
     @registerModifier()
     @registerWidget()
 
@@ -59,7 +60,7 @@ class Kandan.Plugins.MusicPlayer
       if true and Kandan.Helpers.Channels.getActiveChannelId()? # state == Kandan.Helpers.Activities.ACTIVE_STATE
         console.log("message: " + message.content)
         console.log("url: " + url)
-        @playUrl(Kandan.Helpers.Channels.getActiveChannelId(), Kandan.Helpers.Utils.unescape(url))
+        @playUrl(message.channel_id, Kandan.Helpers.Utils.unescape(url))
       else
         console.log "song is history"
 
@@ -130,15 +131,21 @@ class Kandan.Plugins.MusicPlayer
     @setAudioUrl(channelId, url)
     @audioChannel(channelId).play()
 
-  @notifyChannelChanged: () ->
-    # Guards are
-    for channel in @audioChannels()
-      console.log("muting all channels!")
-      console.log(channel)
-      @mute(channel) if channel?
-    channelId = Kandan.Helpers.Channels.getActiveChannelId()
-    if @audioChannel(channelId)?
-      console.log("unmuting channel #{channelId}")
-      @unmute(channelId)
+  @currentChannel: () ->
+    $(document).data("activeChannelId")
+
+  @onChannelChange: () ->
+    channelId = @currentChannel()
+    console.log("Current channel: #{channelId}")
+    if channelId
+      for channel in @audioChannels()
+        console.log("muting all channels!")
+        console.log(channel)
+        id = channel.id.split("_")[1]
+        @mute(id) if id? and id != channelId
+
+      if @audioChannel(channelId)?
+        console.log("unmuting channel #{channelId}")
+        @unmute(channelId)
 
 # Kandan.Plugins.register "Kandan.Plugins.MusicPlayer"
