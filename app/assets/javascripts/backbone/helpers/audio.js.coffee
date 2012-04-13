@@ -1,12 +1,13 @@
 class Kandan.Helpers.Audio
-  @audioChannels: ->
+  @audioHolder: ->
     $('.audio_channels')[0]
+
+  @audioChannels: ->
+    $('audio')
 
   @createAudioChannel: (id) ->
     channel = $("<audio class='audio_#{id}'></audio>")
-    console.log(@audioChannels())
-    console.log(channel)
-    channel.appendTo(@audioChannels())
+    channel.appendTo(@audioHolder())
 
   @destroyAudioChannel: (id) ->
     channel = $(".audio_#{id}")

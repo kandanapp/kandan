@@ -44,7 +44,7 @@ class Kandan.Plugins.MusicPlayer
   # TODO: Add support for sounds
   @init: (pluginId)->
     @pluginId = pluginId
-    Kandan.Data.Channels.registerCallback(@onChannelChange)
+    Kandan.Data.Channels.registerCallback("change", $.proxy(@onChannelChange, this))
     @registerModifier()
     @registerWidget()
 
@@ -55,14 +55,11 @@ class Kandan.Plugins.MusicPlayer
 
   @registerModifier: ()->
     Kandan.Modifiers.register @playRegex, (message, state) =>
-      console.log("state:" + state)
       url = $.trim(message.content.substr(message.content.indexOf(" ") + 1));
-      if true and Kandan.Helpers.Channels.getActiveChannelId()? # state == Kandan.Helpers.Activities.ACTIVE_STATE
-        console.log("message: " + message.content)
-        console.log("url: " + url)
+      if true and Kandan.Data.Channels.activeChannelId()? # and state == Kandan.Helpers.Activities.ACTIVE_STATE commented out because state == undefined for some reason
         @playUrl(message.channel_id, Kandan.Helpers.Utils.unescape(url))
       else
-        console.log "song is history"
+        console.log "Not playing stale song"
 
       message.content = @playTemplate({url: url})
       return Kandan.Helpers.Activities.buildFromBaseTemplate message
@@ -96,8 +93,6 @@ class Kandan.Plugins.MusicPlayer
     fullUrl   = sounds[url]
     fullUrl ||= url
 
-  @volumes = {}
-
   @audioChannels: ->
     Kandan.Helpers.Audio.audioChannels()
 
@@ -105,17 +100,13 @@ class Kandan.Plugins.MusicPlayer
     Kandan.Helpers.Audio.audioChannel(id)
 
   @mute: (channelId) ->
-    channel = @audioChannel(channelId)
-    console.log(channel)
-    @volumes[channelId] = channel.volume
-    console.log(@volumes)
     @setVolume(channelId, 0)
 
   @unmute: (channelId) ->
-    @setVolume(channelId, @volumes[channelId])
+    @setVolume(channelId, 1)
 
   @toggle: (channelId) ->
-    if @volumes[channelId] == 0
+    if @audioChannel(channelId).volume == 0
       @unmute(channelId)
     else
       @mute(channelId)
@@ -127,25 +118,21 @@ class Kandan.Plugins.MusicPlayer
     @audioChannel(channelId).setAttribute('src', url)
 
   @playUrl: (channelId, url) ->
-    console.log(channelId, url)
     @setAudioUrl(channelId, url)
     @audioChannel(channelId).play()
 
   @currentChannel: () ->
-    $(document).data("activeChannelId")
+    Kandan.Data.Channels.activeChannelId()
 
   @onChannelChange: () ->
     channelId = @currentChannel()
-    console.log("Current channel: #{channelId}")
-    if channelId
-      for channel in @audioChannels()
-        console.log("muting all channels!")
-        console.log(channel)
-        id = channel.id.split("_")[1]
-        @mute(id) if id? and id != channelId
+    for channel in @audioChannels()
+      raw = $(channel).attr('class').split("_")[1]
+      id = parseInt(raw)
+      continue if isNaN(id)
+      @mute(id)
 
-      if @audioChannel(channelId)?
-        console.log("unmuting channel #{channelId}")
-        @unmute(channelId)
+    if @audioChannel(channelId)?
+      @unmute(channelId)
 
 # Kandan.Plugins.register "Kandan.Plugins.MusicPlayer"
