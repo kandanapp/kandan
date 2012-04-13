@@ -23,7 +23,11 @@ class Kandan.Views.Chatbox extends Backbone.View
     })
 
     $chatbox.val("")
-    Kandan.Helpers.Channels.addActivity _.extend(activity.toJSON(), {cid: activity.cid, user: Kandan.Data.Users.currentUser()}), Kandan.Helpers.Activities.ACTIVE_STATE, true
+    Kandan.Helpers.Channels.addActivity(
+      _.extend(activity.toJSON(), {cid: activity.cid, user: Kandan.Data.Users.currentUser()}, created_at: new Date()),
+      Kandan.Helpers.Activities.ACTIVE_STATE,
+      true
+    )
 
     activity.save({},{success: (model, response)->
       $("#activity-c#{model.cid}").attr("id", "activity-#{model.get('id')}")
