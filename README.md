@@ -2,7 +2,7 @@ Kandan - Modern Open Source Chat
 ================================
 The slickest chat app out there. Open-source and well-supported to boot.
 
-![](http://github.com/Bushido/kandan/raw/master/public/preview.png)
+![](http://github.com/cloudfuji/kandan/raw/master/public/preview.png)
 
 Standard Features
 =================
@@ -30,7 +30,7 @@ SHUT UP AND LET ME USE IT
 ## CloudFuji
 If you're part of the CloudFuji Beta you should already have access to Kandan with all the enhanced features from the app store.
 
-Just click launch on here https://bushi.do/apps/new?app=kandan; you and your team should be all setup.
+Just click launch on here https://cloudfuji.com/apps/new?app=kandan; you and your team should be all setup.
 
 ## Cloud Foundry
 Looking for community help here
@@ -38,7 +38,7 @@ Looking for community help here
 ## Heroku
 You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed and to have an existing heroku account. Assuming that, this should work reliably on Heroku:
 
-    git clone https://github.com/Bushido/kandan.git
+    git clone https://github.com/cloudfuji/kandan.git
     cd kandan
     heroku create --stack cedar
     git push heroku master
@@ -86,7 +86,7 @@ Get Involved!
 That's not a question, it's an order! Or more of a friendly offer, really. Kandan is a fully open-source app, so dive in and start adding features, fixing bugs (what bugs?), and cleaning up the code.
 
 * Talk with us on the [mailing list])(https://groups.google.com/forum/?fromgroups#!forum/cloudfuji)
-* GitHub [issues tracker](https://github.com/Bushido/Kandan/issues)
+* GitHub [issues tracker](https://github.com/cloudfuji/kandan/issues)
 * Twitter [@cloudfuji](https://twitter.com/#!/cloudfuji)
 * [New-wave open-source meetup](www.meetup.com/San-Francisco-New-Wave-Open-Source-Apps/) - we meetup once a month to share tips on how developers grow business around super high-quality open source software
 * ... is there a fifth way? Telegram maybe?
