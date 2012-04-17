@@ -33,7 +33,41 @@ If you're part of the CloudFuji Beta you should already have access to Kandan wi
 Just click launch on here https://cloudfuji.com/apps/new?app=kandan; you and your team should be all setup.
 
 ## Cloud Foundry
-Looking for community help here
+You'll need a [Cloud Foundry account](https://my.cloudfoundry.com/signup) and the [vmc gem](https://rubygems.org/gems/vmc) installed. Do you `vmc target <cloud foundry host>` and `vmc login`, and then this will get you up and running:
+
+    git clone https://github.com/cloudfuji/kandan.git
+    cd kandan
+    bundle install
+    bundle exec rake assets:precompile
+    vmc push my-company-chat --path . --instances 1 --mem 256M --runtime ruby19
+    
+You'll answer a few questions (this example shows <app-name> changed to my-company-chat):
+
+    Application Deployed URL [my-company-chat.cloudfoundry.com]: 
+    Detected a Rails Application, is this correct? [Yn]: 
+    Creating Application: OK
+    Would you like to bind any services to 'my-company-chat'? [yN]: y
+    Would you like to use an existing provisioned service? [yN]: n
+    The following system services are available
+    1: mongodb
+    2: mysql
+    3: postgresql
+    4: rabbitmq
+    5: redis
+    Please select one you wish to provision: 3
+    Specify the name of the service [postgresql-246de]: 
+    Creating Service: OK
+    Binding Service [postgresql-246de]: OK
+    Uploading Application:
+    Checking for available resources: OK
+    Processing resources: OK
+    Packing application: OK
+    Uploading (1M): OK   
+    Push Status: OK
+    Staging Application: OK
+    Starting Application: OK
+    
+And Kandan should be available on your Cloud Foundry backend now!
 
 ## Heroku
 You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed and to have an existing heroku account. Assuming that, this should work reliably on Heroku:
@@ -95,7 +129,8 @@ Credits
 =======
 * CloudFuji for leading and sponsoring the initial development of Kandan
 * [Sacha Greif](http://sachagreif.com/i-wrote-a-book/) for his __amazing__ design job and exacting implemntation standards on Kandan. A wonder and a pleasure to work with.
-* [Andrew Hampton](https://github.com/andrewhampton) For the initial manual server install instructions
+* [Andrew Hampton](https://github.com/andrewhampton) For the initial manual server install instructions.
+* [Thomas Risberg](https://github.com/trisberg) For the Cloud Foundry install instructions and compatibility fixes.
 
 LICENSE
 =======
