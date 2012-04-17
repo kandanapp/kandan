@@ -8,7 +8,7 @@ Standard Features
 =================
 These are features that work out of the box on any provider:
 
- * Easy deploy to CloudFuji, CloudFoundry, Heroku, dotCloud, etc.
+ * Easy deploy to Cloudfuji, CloudFoundry, Heroku, dotCloud, etc.
  * Collaborative team chat
  * Unlimited channels
  * Embed formats for images and youtube videos with requests for others (twitter, facebook, g+, etc.)
@@ -16,21 +16,21 @@ These are features that work out of the box on any provider:
  * /me command!
  * Highly extensible plugin format
 
-CloudFuji Extended Features
+Cloudfuji Extended Features
 ===========================
-In addition to the standard features above, Kandan can take advantage of CloudFuji features when run on our cloud:
+In addition to the standard features above, Kandan can take advantage of Cloudfuji features when run on our cloud:
 
 * One-click deploy
-* Team-aware: Setup your team once, and have them in every CloudFuji app
+* Team-aware: Setup your team once, and have them in every Cloudfuji app
 * Event-aware: Build widgets that display build status, customer signups, website status, and much more
 
 SHUT UP AND LET ME USE IT
 =========================
 
-## CloudFuji
-If you're part of the CloudFuji Beta you should already have access to Kandan with all the enhanced features from the app store.
+## Cloudfuji
+If you're part of the [Cloudfuji Beta](http://cloudfuji.com) you already have access to Kandan with all the enhanced features from the app store.
 
-Just click launch on here https://cloudfuji.com/apps/new?app=kandan; you and your team should be all setup.
+Just click launch http://cloudfuji.com/apps/new?app=kandan; you and your team should be all setup.
 
 ## Cloud Foundry
 You'll need a [Cloud Foundry account](https://my.cloudfoundry.com/signup) and the [vmc gem](https://rubygems.org/gems/vmc) installed. Do you `vmc target <cloud foundry host>` and `vmc login`, and then this will get you up and running:
@@ -127,10 +127,10 @@ That's not a question, it's an order! Or more of a friendly offer, really. Kanda
 
 Credits
 =======
-* CloudFuji for leading and sponsoring the initial development of Kandan
 * [Sacha Greif](http://sachagreif.com/i-wrote-a-book/) for his __amazing__ design job and exacting implementation standards on Kandan. A wonder and a pleasure to work with.
 * [Andrew Hampton](https://github.com/andrewhampton) For the initial manual server install instructions.
 * [Thomas Risberg](https://github.com/trisberg) For the Cloud Foundry install instructions and compatibility fixes.
+* [Cloudfuji](http://cloudfuji.com) for leading and sponsoring the initial development of Kandan
 
 LICENSE
 =======
