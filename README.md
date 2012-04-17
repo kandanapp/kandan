@@ -128,7 +128,7 @@ That's not a question, it's an order! Or more of a friendly offer, really. Kanda
 Credits
 =======
 * CloudFuji for leading and sponsoring the initial development of Kandan
-* [Sacha Greif](http://sachagreif.com/i-wrote-a-book/) for his __amazing__ design job and exacting implemntation standards on Kandan. A wonder and a pleasure to work with.
+* [Sacha Greif](http://sachagreif.com/i-wrote-a-book/) for his __amazing__ design job and exacting implementation standards on Kandan. A wonder and a pleasure to work with.
 * [Andrew Hampton](https://github.com/andrewhampton) For the initial manual server install instructions.
 * [Thomas Risberg](https://github.com/trisberg) For the Cloud Foundry install instructions and compatibility fixes.
 
