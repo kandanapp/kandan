@@ -56,8 +56,8 @@ Looking for community help here.
 If you're looking to install Kandan on a private server (why??) then here are some notes you'll want to read:
 
     # For development-mode
-    sudo apt-get install nodejs # (execjs needed an execution environment)
-    gem install execjs # (maybe I could have just added this to the gemfile?)
+    sudo apt-get install nodejs # (execjs needs an execution environment)
+    gem install execjs # (Could possibly be added to the gemfile in the assets group)
 
     # Add this to the gemfile:
     group :development do  
