@@ -41,7 +41,7 @@ You'll need a [Cloud Foundry account](https://my.cloudfoundry.com/signup) and th
     bundle exec rake assets:precompile
     vmc push my-company-chat --path . --instances 1 --mem 256M --runtime ruby19
     
-You'll answer a few questions (this example shows <app-name> changed to my-company-chat):
+You'll answer a few questions:
 
     Application Deployed URL [my-company-chat.cloudfoundry.com]: 
     Detected a Rails Application, is this correct? [Yn]: 
