@@ -1,6 +1,6 @@
 module Kandan
-  module Bushido
-    def self.enable_bushido!
+  module Cloudfuji
+    def self.enable_cloudfuji!
       self.load_hooks!
       self.extend_user!
     end
@@ -15,7 +15,7 @@ module Kandan
       end
 
       User.class_eval do
-        def bushido_extra_attributes(extra_attributes)
+        def cloudfuji_extra_attributes(extra_attributes)
           self.first_name = "#{extra_attributes['first_name']}"
           self.last_name  = "#{extra_attributes['last_name']}"
           self.locale     = extra_attributes['locale']
@@ -25,18 +25,18 @@ module Kandan
     end
 
     def self.load_hooks!
-      Dir["#{Dir.pwd}/lib/bushido/**/*.rb"].each { |file| load file }
+      Dir["#{Dir.pwd}/lib/cloudfuji/**/*.rb"].each { |file| load file }
     end
 
   end
 end
 
-if Bushido::Platform.on_bushido?
-  class BushidoRailtie < Rails::Railtie
+if Cloudfuji::Platform.on_cloudfuji?
+  class CloudfujiRailtie < Rails::Railtie
     config.to_prepare do
-      puts "Enabling Bushido"
-      Kandan::Bushido.enable_bushido!
-      puts "Finished enabling Bushido"
+      puts "Enabling Cloudfuji"
+      Kandan::Cloudfuji.enable_cloudfuji!
+      puts "Finished enabling Cloudfuji"
     end
   end
 end

@@ -8,10 +8,10 @@ gem 'pg', '0.12.2'
 # Uncomment this is you want to use sqlite locally
 # gem 'sqlite3'
 
-# Auth/Bushido gems
+# Auth/Cloudfuji gems
 gem 'devise'
-gem 'devise_bushido_authenticatable'
-gem 'bushido'
+gem 'devise_cloudfuji_authenticatable'
+gem 'cloudfuji'
 
 # Server/transport gems
 gem 'thin'

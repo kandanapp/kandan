@@ -48,7 +48,7 @@ GEM
     bourbon (1.4.0)
       sass (>= 3.1)
     builder (3.0.0)
-    bushido (0.0.36)
+    cloudfuji (0.0.39)
       highline (>= 1.6.1)
       json (>= 1.4.6)
       orm_adapter (~> 0.0.3)
@@ -67,7 +67,7 @@ GEM
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
-    devise_bushido_authenticatable (1.0.3)
+    devise_cloudfuji_authenticatable (1.0.5)
       devise (= 1.5.3)
       rubycas-client (>= 2.2.1)
     eco (1.0.0)
@@ -179,10 +179,10 @@ DEPENDENCIES
   _bushido-faye (= 0.8.2)
   aws-sdk
   bourbon
-  bushido
+  cloudfuji
   coffee-rails (~> 3.2.1)
   devise
-  devise_bushido_authenticatable
+  devise_cloudfuji_authenticatable
   eco
   execjs
   jquery-rails

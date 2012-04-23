@@ -1,4 +1,4 @@
-class BushidoUserHooks < Bushido::EventObserver
+class CloudfujiUserHooks < Cloudfuji::EventObserver
   def user_added
     data = params['data']
     puts "Adding a new user with incoming data #{params.inspect}"
@@ -29,7 +29,7 @@ class BushidoUserHooks < Bushido::EventObserver
     user = User.find_by_ido_id(data['ido_id'])
 
     if user
-      user.bushido_extra_attributes(data)
+      user.cloudfuji_extra_attributes(data)
       user.save
     end
   end

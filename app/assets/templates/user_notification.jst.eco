@@ -1,7 +1,7 @@
 <span class="posted_at">
   <%= new Date(@activity.created_at).toRelativeTime(Kandan.options.nowThreshold) %>
 </span>
-<img class="avatar" src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30&d=https://bushi.do/images/profile.png"/>
+<img class="avatar" src="http://gravatar.com/avatar/<%= @activity.user.gravatar_hash %>?s=30&d=https://cloudfuji.com/images/profile.png"/>
 
 <div class="readable">
   <span class="user">Kandan bot</span>

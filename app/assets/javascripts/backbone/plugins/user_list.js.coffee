@@ -6,7 +6,7 @@ class Kandan.Plugins.UserList
 
   @template: _.template '''
     <div class="user clearfix">
-      <img class="avatar" src="http://gravatar.com/avatar/<%= gravatarHash %>?s=25&d=https://bushi.do/images/profile.png"/>
+      <img class="avatar" src="http://gravatar.com/avatar/<%= gravatarHash %>?s=25&d=https://cloudfuji.com/images/profile.png"/>
       <span class="name"><%= name %></span>
     </div>
   '''

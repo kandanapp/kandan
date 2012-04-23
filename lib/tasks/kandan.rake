@@ -26,7 +26,7 @@ namespace :kandan do
        "Just paste in an image url and type a subtitle http://kandan.me/images/kandan.png",
        "http://www.youtube.com/watch?v=Jgpty017CIw Same with youtube videos",
        "/me is in proper love with Kandan, innit!",
-       "If you're the type of person who enjoys hacking on projects, the source to Kandan is at https://github.com/bushido/kandan",
+       "If you're the type of person who enjoys hacking on projects, the source to Kandan is at https://github.com/cloudfuji/kandan",
        "Well, that's about it. If you have any questions, concerns, or ideas, just shoot us an email support@cloudfuji.com! Have fun!",
        "Oh, sorry, one last thing - be sure to join the mailing list at https://groups.google.com/forum/?fromgroups#!forum/cloudfuji so you know there's a new release of Kandan!"
       ].each do |message|
