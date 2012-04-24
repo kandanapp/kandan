@@ -127,7 +127,7 @@ class Kandan.Helpers.Channels
 
     @flushActivities(activityAttributes.channel_id)
     if not local
-      Kandan.Helpers.Utils.notifyInTitleIfRequired()
+      Kandan.Helpers.Utils.notifyInTitleIfRequired(activityAttributes)
       @setPaginationData(activityAttributes.channel_id)
 
 
