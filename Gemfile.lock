@@ -53,11 +53,6 @@ GEM
       json (>= 1.4.6)
       orm_adapter (~> 0.0.3)
       rest-client (>= 1.6.1)
-    cloudfuji_paperclip (2.4.6)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
-      cocaine (>= 0.0.2)
-      mime-types
     cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -113,6 +108,11 @@ GEM
     multi_xml (0.4.2)
     nokogiri (1.5.0)
     orm_adapter (0.0.6)
+    paperclip (2.7.0)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     pg (0.12.2)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -180,7 +180,6 @@ DEPENDENCIES
   aws-sdk
   bourbon
   cloudfuji
-  cloudfuji_paperclip
   coffee-rails (~> 3.2.1)
   devise
   devise_cloudfuji_authenticatable
@@ -188,6 +187,7 @@ DEPENDENCIES
   execjs
   jquery-rails
   kaminari
+  paperclip
   pg (= 0.12.2)
   rails (= 3.2.2)
   remotipart
