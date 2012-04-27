@@ -43,6 +43,6 @@
 
 </div>
   <div class="user_menu">
-    <a href="<%= destroy_user_session_path %>">logout</a>
+    <%= link_to 'logout' destroy_user_session_path, :method => :destroy %>
   </div>
 
