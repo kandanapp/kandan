@@ -108,7 +108,7 @@ If you're looking to install Kandan on a private server (why??) then here are so
 
     # Bootstrap the install
     bundle exec rake db:create db:migrate kandan:bootstrap
-    bundle exec rails server
+    bundle exec thin start
 
     
 TODO
