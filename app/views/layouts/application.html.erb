@@ -6,6 +6,8 @@
   <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=PT+Sans:400,700" %>
   <%= stylesheet_link_tag  "application", :media => "all" %>
 
+  <%= airbrake_javascript_notifier %>
+
   <%- Kandan::Config.broadcaster.assets.each do |asset| %>
     <%= javascript_include_tag asset %>
   <%- end %>
