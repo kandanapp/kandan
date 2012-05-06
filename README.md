@@ -1,4 +1,4 @@
-Kandan - Modern Open Source Chat
+Kandan - [Modern Open Source Chat](http://www.kandan.me)
 ================================
 The slickest chat app out there. Open-source and well-supported to boot.
 
@@ -119,7 +119,7 @@ Get Involved!
 =============
 That's not a question, it's an order! Or more of a friendly offer, really. Kandan is a fully open-source app, so dive in and start adding features, fixing bugs (what bugs?), and cleaning up the code.
 
-* Talk with us on the [mailing list])(https://groups.google.com/forum/?fromgroups#!forum/cloudfuji)
+* Talk with us on the [mailing list](https://groups.google.com/forum/?fromgroups#!forum/cloudfuji)
 * GitHub [issues tracker](https://github.com/cloudfuji/kandan/issues)
 * Twitter [@cloudfuji](https://twitter.com/#!/cloudfuji)
 * [New-wave open-source meetup](www.meetup.com/San-Francisco-New-Wave-Open-Source-Apps/) - we meetup once a month to share tips on how developers grow business around super high-quality open source software

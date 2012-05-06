@@ -30,7 +30,7 @@ class Kandan.Plugins.Attachments
 
     fileItemTemplate: _.template '''
       <div class="file_item">
-        <a href="<%= url %>">
+        <a target="_blank" href="<%= url %>">
           <img src="<%= iconUrl %>"/>
           <span><%= fileName %></span>
         </a>
@@ -59,7 +59,7 @@ class Kandan.Plugins.Attachments
 
 
 
-  # TODO this part is very bad for APIs! shoudnt be exposing a backbone collection in a plugin.
+  # TODO this part is very bad for APIs! Shouldn't be exposing a backbone collection in a plugin.
   @render: ($widgetEl)->
     $uploadForm = @templates.dropzone({
       channelId:    Kandan.Data.Channels.activeChannelId(),
@@ -121,6 +121,11 @@ class Kandan.Plugins.Attachments
 
       dragOver: ->
         console.log "reached dropzone!"
+        $(".dropzone").text("UPLOAD!")
+
+      dragLeave: ->
+        console.log "left dropzone!"
+        $(".dropzone").text("Drop file here to upload")
     })
 
 

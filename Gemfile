@@ -20,7 +20,7 @@ gem '_bushido-faye', '0.8.2'
 # Helper gems
 gem 'kaminari'
 gem 'aws-sdk'
-gem 'paperclip'
+gem 'cloudfuji_paperclip'
 gem 'remotipart'
 gem 'jquery-rails'
 
