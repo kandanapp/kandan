@@ -134,4 +134,4 @@ Credits
 
 LICENSE
 =======
-Kandan's code and assets are dual-licensed. Kanda is available generally under the AGPL, and also under a custom license via special agreement. See LICENSE for the AGPL terms, and contact us at [support@cloudfuji.com](mailto:support@cloudfuji.com) if you're interested in development of Kandan under a custom license.
+Kandan's code and assets are dual-licensed. Kandan is available generally under the AGPL, and also under a custom license via special agreement. See LICENSE for the AGPL terms, and contact us at [support@cloudfuji.com](mailto:support@cloudfuji.com) if you're interested in development of Kandan under a custom license.
