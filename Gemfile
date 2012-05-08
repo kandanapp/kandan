@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Core gems
 gem 'rails', '3.2.2'
 
+group :development do  
+  gem 'sqlite3'
+end
 # Database adapters
 gem 'pg', '0.12.2'
 # Uncomment this is you want to use sqlite locally
