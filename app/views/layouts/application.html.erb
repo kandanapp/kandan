@@ -39,5 +39,17 @@
     <audio class="audio_private"></audio>
     <audio class="audio_common"></audio>
   </ul>
+
+  <%- if user_signed_in? && Cloudfuji::Platform.on_cloudfuji? %>
+    <%= javascript_tag do %>
+      <%- cloudfuji_help_vars = {
+          "HUBOT_KANDAN_TOKEN" => User.find_by_email("hubot@cloudfuji.com").try(:authentication_token),
+          "HUBOT_KANDAN_HOST"  => ENV['CLOUDFUJI_DOMAIN']
+      }
+      %>
+
+      window._cloudfuji_help = <%= cloudfuji_help_vars.to_json.html_safe %>;
+    <%- end %>
+  <%- end %>
 </body>
 </html>

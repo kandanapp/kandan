@@ -20,9 +20,7 @@ class ChannelsController < ApplicationController
     end
     
     respond_to do |format|
-      format.json do
-        render :text => nested_channel_data.to_json
-      end
+      format.json { render :text => nested_channel_data.to_json }
     end
   end
 
@@ -40,7 +38,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @channel = Channel.find params[:id]
+    @channel = Channel.where("LOWER(name) = ?", params[:id].downcase).first || Channel.find(params[:id])
     respond_to do |format|
       format.json { render :json => @channel }
     end

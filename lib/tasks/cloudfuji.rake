@@ -37,5 +37,14 @@ namespace :cloudfuji do
         a.save!
       end
     end
+
+    # Create Hubot
+    Rake::Task['kandan:boot_hubot'].invoke
+  end
+
+  desc "Run on update for a Busido app. Copies config files and seeds db."
+  task :update => :environment do
+    # Create Hubot if not already present
+    Rake::Task['kandan:boot_hubot'].invoke
   end
 end
