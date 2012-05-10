@@ -15,6 +15,7 @@ These are features that work out of the box on any provider:
  * Synchronized sound player - play any audio-tag compatible url for the whole channel (Pending :P)
  * /me command!
  * Highly extensible plugin format
+ * [Your very own robotic companion](https://github.com/cloudfuji/hubot-kandan-app)
 
 Cloudfuji Extended Features
 ===========================
