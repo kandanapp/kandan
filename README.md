@@ -86,8 +86,8 @@ Your app should be up and running now. The admin email by default is `admin@kand
 ## dotCloud
 Looking for community help here.
 
-## Masochist server install
-If you're looking to install Kandan on a private server (why??) then here are some notes you'll want to read:
+## Heroic server install
+If you're looking to install Kandan on a private server, or to develop locally for lemonodor fame, then here is the path you must follow, young hero:
 
     # For development-mode
     sudo apt-get install nodejs # (execjs needs an execution environment)
@@ -113,7 +113,7 @@ If you're looking to install Kandan on a private server (why??) then here are so
     
 TODO
 ====
-See the issue tracker
+[See the issue tracker](https://github.com/cloudfuji/kandan/issues)
 
 Get Involved!
 =============
