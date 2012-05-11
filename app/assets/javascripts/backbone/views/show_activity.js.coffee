@@ -19,6 +19,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
     if activity.action == "message" && activity.user.id == Kandan.Helpers.Users.currentUser().id
       $(@el).addClass("current_user")
 
+
     if activity.id == undefined
       $(@el).attr("id", "activity-c#{activity.cid}")
     else
