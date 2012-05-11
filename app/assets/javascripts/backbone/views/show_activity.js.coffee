@@ -16,7 +16,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
         @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate activity
 
     $(@el).data("activity-id", activity.id)
-    if activity.action == "message" && activity.user_id == Kandan.Helpers.Users.currentUser().id
+    if activity.action == "message" && activity.user.id == Kandan.Helpers.Users.currentUser().id
       $(@el).addClass("current_user")
 
     if activity.id == undefined
