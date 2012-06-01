@@ -130,6 +130,7 @@ Credits
 =======
 * [Sacha Greif](http://sachagreif.com/i-wrote-a-book/) for his __amazing__ design job and exacting implementation standards on Kandan. A wonder and a pleasure to work with.
 * [Andrew Hampton](https://github.com/andrewhampton) For the initial manual server install instructions.
+* [Akash Manohar J](https://github.com/HashNuke) For some of the initial work on Kandan
 * [Thomas Risberg](https://github.com/trisberg) For the Cloud Foundry install instructions and compatibility fixes.
 * [Cloudfuji](http://cloudfuji.com) for leading and sponsoring the initial development of Kandan
 
