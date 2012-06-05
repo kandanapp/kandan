@@ -35,33 +35,31 @@
           font-weight: bold
           margin-top: 5px
 
+.posted_at
+  float: right
+  text-align: right
+  font-size: 11px
+  position: absolute
+  right: 0px
+  +border-radius(4px)
+  padding: 4px
+  background: #F3F8F9
+  color: #BDC6CA
+
+
+.avatar
+  margin-right: 10px
+  display: block
+  float: left
+  width: 5%
+  width: 30px
+  height: 30px
+
+.current_user
+  background-color: #F5F5F5
   .posted_at
-    float: right
-    text-align: right
-    font-size: 11px
-    position: absolute
-    right: 0px
-    +border-radius(4px)
-    padding: 4px
-    background: #F3F8F9
-    color: #BDC6CA
-
-
-
-  .avatar
-    margin-right: 10px
-    display: block
-    float: left
-    width: 5%
-    width: 30px
-    height: 30px
-
-
-  &.current_user
-    background-color: #F5F5F5
-    .posted_at
-      background: #E6EAEB
-      color: #A9B1B6
+    background: #E6EAEB
+    color: #A9B1B6
 
 img.image-embed
   max-width: 300px
