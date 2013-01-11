@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 # Core gems
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.11'
 
-group :development do  
+group :development, :test do  
   gem 'sqlite3'
 end
 # Database adapters
@@ -42,9 +42,9 @@ group :assets do
 end
 
 # Test gems, obviously
-# group :test do
-#  gem 'rspec-rails'
-#  gem 'shoulda-matchers'
-#  gem 'factory_girl_rails'
-#  gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
-# end
+group :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
+end
