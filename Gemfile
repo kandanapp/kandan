@@ -5,6 +5,8 @@ gem 'rails', '3.2.11'
 
 group :development, :test do  
   gem 'sqlite3'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 # Database adapters
 gem 'pg', '0.12.2'
@@ -45,6 +47,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 3.0'
   gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
 end
