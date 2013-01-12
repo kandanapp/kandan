@@ -17,13 +17,6 @@ These are features that work out of the box on any provider:
  * Highly extensible plugin format
  * [Your very own robotic companion](https://github.com/cloudfuji/hubot-kandan-app)
 
-Cloudfuji Extended Features
-===========================
-In addition to the standard features above, Kandan can take advantage of Cloudfuji features when run on our cloud:
-
-* One-click deploy
-* Team-aware: Setup your team once, and have them in every Cloudfuji app
-* Event-aware: Build widgets that display build status, customer signups, website status, and much more
 
 SHUT UP AND LET ME USE IT
 =========================
