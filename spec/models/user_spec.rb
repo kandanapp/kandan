@@ -8,12 +8,12 @@ describe User do
   end
 
   it "should have authentication token on creation" do
-    @user = Factory :user
+    @user = FactoryGirl.create(:user)
     @user.authentication_token.should_not be_nil
   end
 
   it "should have gravatar hash on creation" do
-    @user = Factory :user
+    @user = FactoryGirl.create(:user)
     @user.gravatar_hash.should_not be_nil
   end
 end
