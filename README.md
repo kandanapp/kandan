@@ -8,7 +8,7 @@ Standard Features
 =================
 These are features that work out of the box on any provider:
 
- * Easy deploy to Cloudfuji, CloudFoundry, Heroku, dotCloud, etc.
+ * Easy deploy to CloudFoundry, Heroku, dotCloud, etc.
  * Collaborative team chat
  * Unlimited channels
  * Embed formats for images and youtube videos with requests for others (twitter, facebook, g+, etc.)
@@ -27,11 +27,6 @@ In addition to the standard features above, Kandan can take advantage of Cloudfu
 
 SHUT UP AND LET ME USE IT
 =========================
-
-## Cloudfuji
-If you're part of the [Cloudfuji Beta](http://cloudfuji.com) you already have access to Kandan with all the enhanced features from the app store.
-
-Just click launch http://cloudfuji.com/apps/new?app=kandan; you and your team should be all setup.
 
 ## Cloud Foundry
 You'll need a [Cloud Foundry account](https://my.cloudfoundry.com/signup) and the [vmc gem](https://rubygems.org/gems/vmc) installed. Do you `vmc target <cloud foundry host>` and `vmc login`, and then this will get you up and running:
@@ -132,7 +127,6 @@ Credits
 * [Andrew Hampton](https://github.com/andrewhampton) For the initial manual server install instructions.
 * [Akash Manohar J](https://github.com/HashNuke) For some of the initial work on Kandan
 * [Thomas Risberg](https://github.com/trisberg) For the Cloud Foundry install instructions and compatibility fixes.
-* [Cloudfuji](http://cloudfuji.com) for leading and sponsoring the initial development of Kandan
 
 LICENSE
 =======
