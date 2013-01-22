@@ -69,7 +69,17 @@ You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed
     echo "Done, go forth and chat!"
     # Not too bad
     
-    
+### Integrate Kandan on Heroku with your Amazon S3_BUCKET ( [Heroku article on AWS S3 to store static assets and file uploads](https://devcenter.heroku.com/articles/s3) ). Run the following line, replacing the the global variable values with your own:
+
+	heroku config:add S3_ACCESS_KEY_ID=xxx S3_SECRET_ACCESS_KEY=xxxx S3_BUCKET=bucket_name
+
+If successful you should get a response similar to:
+
+	Setting config vars and restarting myapp... done, v12
+	S3_ACCESS_KEY_ID: xxx
+	S3_SECRET_ACCESS_KEY: xxxx
+	S3_BUCKET: bucket_name
+
 Your app should be up and running now. The admin email by default is `admin@kandan.me` with password `kandanadmin`, or you can sign up as another user.
 
 ## dotCloud
