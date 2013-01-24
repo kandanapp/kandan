@@ -4,6 +4,7 @@ class Attachment < ActiveRecord::Base
   belongs_to :channel
   belongs_to :user
 
+=begin
   has_attached_file(:file, {
       :storage         => :s3,
       :s3_credentials  => {
@@ -15,7 +16,9 @@ class Attachment < ActiveRecord::Base
       :url    => "/:attachment/:id/:style/:basename.:extension",
       :path   => "#{ENV['S3_PREFIX']}/:attachment/:id/:style/:basename.:extension"
     })
+=end
 
+  has_attached_file :file
   attr_accessible :file
 
   def url
