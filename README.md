@@ -2,9 +2,11 @@ UPDATE
 ======
 According to this [Issue](https://github.com/cloudfuji/kandan/issues/32) Cloudfuji has disbanded.
 
-In speaking with @kevsettler and @sgrove both @jrgifford and I (@fusion94) are going to attempt to maintain it.
+In speaking with [@kevsettler](https://github.com/kevsettler) and [@sgrove](https://github.com/sgrove) both [@jrgifford](https://github.com/jrgifford) and I ([@fusion94](https://github.com/fusion94)) are going to attempt to maintain it.
 
 As such all new development will be happening in this repository and we will be utilizing this [Issue tracker](https://github.com/kandanapp/kandan/issues) moving forward.
+
+* * * 
 
 Kandan - [Modern Open Source Chat](http://www.kandan.me)
 ================================
