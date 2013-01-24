@@ -1,8 +1,19 @@
+UPDATE
+======
+According to this [Issue](https://github.com/cloudfuji/kandan/issues/32) Cloudfuji has disbanded.
+
+In speaking with [@kevzettler](https://github.com/kevzettler) and [@sgrove](https://github.com/sgrove) both [@jrgifford](https://github.com/jrgifford) and I ([@fusion94](https://github.com/fusion94)) are going to attempt to maintain it.
+
+As such all new development will be happening in this repository and we will be utilizing this [Issue tracker](https://github.com/kandanapp/kandan/issues) moving forward.
+
+* * * 
+[![Build Status](https://travis-ci.org/kandanapp/kandan.png?branch=master)](https://travis-ci.org/kandanapp/kandan)
+
 Kandan - [Modern Open Source Chat](http://www.kandan.me)
 ================================
 The slickest chat app out there. Open-source and well-supported to boot.
 
-![](http://github.com/cloudfuji/kandan/raw/master/public/preview.png)
+![](http://github.com/kandanapp/kandan/raw/master/public/preview.png)
 
 Standard Features
 =================
@@ -24,7 +35,7 @@ SHUT UP AND LET ME USE IT
 ## Cloud Foundry
 You'll need a [Cloud Foundry account](https://my.cloudfoundry.com/signup) and the [vmc gem](https://rubygems.org/gems/vmc) installed. Do you `vmc target <cloud foundry host>` and `vmc login`, and then this will get you up and running:
 
-    git clone https://github.com/cloudfuji/kandan.git
+    git clone https://github.com/kandanapp/kandan.git
     cd kandan
     bundle install
     bundle exec rake assets:precompile
@@ -61,7 +72,7 @@ And Kandan should be available on your Cloud Foundry backend now!
 ## Heroku
 You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed and to have an existing heroku account. Assuming that, this should work reliably on Heroku:
 
-    git clone https://github.com/cloudfuji/kandan.git
+    git clone https://github.com/kandanapp/kandan.git
     cd kandan
     heroku create --stack cedar
     git push heroku master
@@ -112,6 +123,10 @@ If you're looking to install Kandan on a private server, or to develop locally f
     
 TODO
 ====
+This is the new home of the issue tracker:
+[See the issue tracker](https://github.com/kandanapp/kandan/issues)
+
+This is the old home of the issue tracker.
 [See the issue tracker](https://github.com/cloudfuji/kandan/issues)
 
 Get Involved!
@@ -119,7 +134,7 @@ Get Involved!
 That's not a question, it's an order! Or more of a friendly offer, really. Kandan is a fully open-source app, so dive in and start adding features, fixing bugs (what bugs?), and cleaning up the code.
 
 * Talk with us on the [mailing list](https://groups.google.com/forum/?fromgroups#!forum/cloudfuji)
-* GitHub [issues tracker](https://github.com/cloudfuji/kandan/issues)
+* GitHub [issues tracker](https://github.com/kandanapp/kandan/issues)
 * Twitter [@cloudfuji](https://twitter.com/#!/cloudfuji)
 * [New-wave open-source meetup](www.meetup.com/San-Francisco-New-Wave-Open-Source-Apps/) - we meetup once a month to share tips on how developers grow business around super high-quality open source software
 * ... is there a fifth way? Telegram maybe?

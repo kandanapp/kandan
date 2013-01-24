@@ -1,0 +1,11 @@
+language: ruby
+script: 'rake db:migrate'
+rvm:
+  - 1.9.3
+env:
+notifications:
+  email: 
+    james@jamesrgifford.com
+branches:
+  only:
+    - master
