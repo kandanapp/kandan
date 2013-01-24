@@ -37,6 +37,9 @@ group :assets do
 end
 
 group :development do
+  gem 'pry-rails'
+  gem 'quiet_assets'
+  gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -51,5 +54,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'database_cleaner'
   gem 'jasmine', :git => 'https://github.com/pivotal/jasmine-gem.git', :branch => '1.2.rc1'
 end
