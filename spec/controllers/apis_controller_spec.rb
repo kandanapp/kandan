@@ -5,6 +5,7 @@ describe ApisController do
     before do
       @user = FactoryGirl.create(:user)
     end
+    
     context "when a user is authenticated" do
       before do
         request.env['warden'].stub :authenticate! => @user
