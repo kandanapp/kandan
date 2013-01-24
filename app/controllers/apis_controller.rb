@@ -1,5 +1,4 @@
 class ApisController < ApplicationController
-
   before_filter :authenticate_user!
   
   def active_users

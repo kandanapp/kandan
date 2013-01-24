@@ -2,13 +2,8 @@ require 'spec_helper'
 
 describe Channel do
   describe "associations" do
-    it "should have many activities" do
-      should have_many(:activities)
-    end
-
-    it "should have many attachments" do
-      should have_many(:attachments)
-    end
+    it { should have_many(:activities) }
+    it { should have_many(:attachments) }
   end
 
   describe "user_connect" do

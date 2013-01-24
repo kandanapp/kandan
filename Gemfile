@@ -3,15 +3,8 @@ source 'https://rubygems.org'
 # Core gems
 gem 'rails', '3.2.11'
 
-group :development, :test do  
-  gem 'sqlite3'
-  gem 'guard'
-  gem 'guard-rspec'
-end
 # Database adapters
-gem 'pg', '0.12.2'
-# Uncomment this is you want to use sqlite locally
-# gem 'sqlite3'
+gem 'pg'
 
 # Auth/Cloudfuji gems
 gem 'devise'
@@ -35,18 +28,33 @@ gem 'airbrake'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'bourbon'
-  gem 'execjs'   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'execjs'   
   gem 'eco'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 end
 
-# Test gems, obviously
+group :development do
+  gem 'pry-rails'
+  gem 'quiet_assets'
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 group :test do
+  gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails', '~> 3.0'
-  gem 'jasmine', :git => "https://github.com/pivotal/jasmine-gem.git", :branch => "1.2.rc1", :group => [:development, :test]
+  gem 'factory_girl_rails'
+end
+
+group :development, :test do  
+  gem 'sqlite3'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'database_cleaner'
+  gem 'jasmine', :git => 'https://github.com/pivotal/jasmine-gem.git', :branch => '1.2.rc1'
 end
