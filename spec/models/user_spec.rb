@@ -2,18 +2,16 @@ require 'spec_helper'
 
 describe User do
   describe "associations" do
-    it "should have many activities" do
-      should have_many(:activities)
-    end
+    it { should have_many(:activities) }
   end
 
   it "should have authentication token on creation" do
-    @user = FactoryGirl.create(:user)
-    @user.authentication_token.should_not be_nil
+    subject { @user.authentication_token }
+    expect(subject).to_not eq(nil)
   end
 
   it "should have gravatar hash on creation" do
-    @user = FactoryGirl.create(:user)
-    @user.gravatar_hash.should_not be_nil
+    subject { @user.gravatar_hash }
+    expect(subject).to_not eq(nil)
   end
 end
