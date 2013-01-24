@@ -7,6 +7,7 @@ In speaking with [@kevzettler](https://github.com/kevzettler) and [@sgrove](http
 As such all new development will be happening in this repository and we will be utilizing this [Issue tracker](https://github.com/kandanapp/kandan/issues) moving forward.
 
 * * * 
+[![Build Status](https://travis-ci.org/kandanapp/kandan.png?branch=master)](https://travis-ci.org/kandanapp/kandan)
 
 Kandan - [Modern Open Source Chat](http://www.kandan.me)
 ================================
