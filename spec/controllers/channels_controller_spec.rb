@@ -1,13 +1,12 @@
 require "spec_helper"
 
 describe ChannelsController do
-
   before :all do
-    @channel = Factory :channel
+    @channel = FactoryGirl.create(:channel)
   end
 
   before :each do
-    @user = Factory :user
+    @user = FactoryGirl.create(:user)
     request.env['warden'].stub :authenticate! => @user
     controller.stub :current_user => @user
   end

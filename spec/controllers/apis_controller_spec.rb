@@ -3,7 +3,7 @@ require "spec_helper"
 describe ApisController do
   
   before :each do
-    @user = Factory :user
+    @user = FactoryGirl.create(:user)
     request.env['warden'].stub :authenticate! => @user
     controller.stub :current_user => @user
   end
