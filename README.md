@@ -2,7 +2,7 @@ Kandan - [Modern Open Source Chat](http://www.kandan.me)
 ================================
 The slickest chat app out there. Open-source and well-supported to boot.
 
-![](http://github.com/cloudfuji/kandan/raw/master/public/preview.png)
+![](http://github.com/kandanapp/kandan/raw/master/public/preview.png)
 
 Standard Features
 =================
@@ -24,7 +24,7 @@ SHUT UP AND LET ME USE IT
 ## Cloud Foundry
 You'll need a [Cloud Foundry account](https://my.cloudfoundry.com/signup) and the [vmc gem](https://rubygems.org/gems/vmc) installed. Do you `vmc target <cloud foundry host>` and `vmc login`, and then this will get you up and running:
 
-    git clone https://github.com/cloudfuji/kandan.git
+    git clone https://github.com/kandanapp/kandan.git
     cd kandan
     bundle install
     bundle exec rake assets:precompile
@@ -61,7 +61,7 @@ And Kandan should be available on your Cloud Foundry backend now!
 ## Heroku
 You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed and to have an existing heroku account. Assuming that, this should work reliably on Heroku:
 
-    git clone https://github.com/cloudfuji/kandan.git
+    git clone https://github.com/kandanapp/kandan.git
     cd kandan
     heroku create --stack cedar
     git push heroku master
@@ -112,14 +112,14 @@ If you're looking to install Kandan on a private server, or to develop locally f
     
 TODO
 ====
-[See the issue tracker](https://github.com/cloudfuji/kandan/issues)
+[See the issue tracker](https://github.com/kandanapp/kandan/issues)
 
 Get Involved!
 =============
 That's not a question, it's an order! Or more of a friendly offer, really. Kandan is a fully open-source app, so dive in and start adding features, fixing bugs (what bugs?), and cleaning up the code.
 
 * Talk with us on the [mailing list](https://groups.google.com/forum/?fromgroups#!forum/cloudfuji)
-* GitHub [issues tracker](https://github.com/cloudfuji/kandan/issues)
+* GitHub [issues tracker](https://github.com/kandanapp/kandan/issues)
 * Twitter [@cloudfuji](https://twitter.com/#!/cloudfuji)
 * [New-wave open-source meetup](www.meetup.com/San-Francisco-New-Wave-Open-Source-Apps/) - we meetup once a month to share tips on how developers grow business around super high-quality open source software
 * ... is there a fifth way? Telegram maybe?
