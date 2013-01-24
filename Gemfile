@@ -10,8 +10,6 @@ group :development, :test do
 end
 # Database adapters
 gem 'pg', '0.12.2'
-# Uncomment this is you want to use sqlite locally
-# gem 'sqlite3'
 
 # Auth/Cloudfuji gems
 gem 'devise'
