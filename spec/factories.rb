@@ -18,8 +18,8 @@ FactoryGirl.define do
   factory :user do |f|
     f.first_name "Test"
     f.last_name  "User"
-    f.password { Factory.next(:password)}
-    f.email  { Factory.next(:email) }
-    f.ido_id { Factory.next(:ido_id) }
+    f.password { FactoryGirl.generate(:password)}
+    f.email  { FactoryGirl.generate(:email) }
+    f.ido_id { FactoryGirl.generate(:ido_id) }
   end
 end
