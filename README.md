@@ -39,9 +39,6 @@ TODO
 This is the new home of the issue tracker:
 [See the issue tracker](https://github.com/kandanapp/kandan/issues)
 
-This is the old home of the issue tracker.
-[See the issue tracker](https://github.com/cloudfuji/kandan/issues)
-
 Get Involved!
 =============
 That's not a question, it's an order! Or more of a friendly offer, really. Kandan is a fully open-source app, so dive in and start adding features, fixing bugs (what bugs?), and cleaning up the code.
