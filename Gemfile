@@ -56,5 +56,5 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'database_cleaner'
-  gem 'jasmine', :git => 'https://github.com/pivotal/jasmine-gem.git', :branch => '1.2.rc1'
+  gem 'jasmine', '~> 1.3.1'
 end

@@ -1,14 +1,3 @@
-GIT
-  remote: https://github.com/pivotal/jasmine-gem.git
-  revision: 5a7524ae9eaea4fe106a7aaa90ccfb1bc137abe7
-  branch: 1.2.rc1
-  specs:
-    jasmine (1.2.0.rc1)
-      jasmine-core (>= 1.2.0.rc1)
-      rack (>= 1.1)
-      rspec (>= 1.3.1)
-      selenium-webdriver (>= 0.1.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,7 +37,7 @@ GEM
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.2.7)
+    addressable (2.3.2)
     airbrake (3.0.9)
       activesupport
       builder
@@ -69,7 +58,7 @@ GEM
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
-    childprocess (0.3.6)
+    childprocess (0.3.7)
       ffi (~> 1.0, >= 1.0.6)
     cloudfuji (0.0.39)
       highline (>= 1.6.1)
@@ -123,7 +112,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.1.2)
       i18n (~> 0.5)
-    ffi (1.3.0)
+    ffi (1.3.1)
     guard (1.6.1)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -138,6 +127,11 @@ GEM
       multi_json
       multi_xml
     i18n (0.6.1)
+    jasmine (1.3.1)
+      jasmine-core (~> 1.3.1)
+      rack (~> 1.0)
+      rspec (>= 1.3.1)
+      selenium-webdriver (>= 0.1.3)
     jasmine-core (1.3.1)
     journey (1.0.4)
     jquery-rails (2.0.1)
@@ -148,9 +142,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    libwebsocket (0.1.7.1)
-      addressable
-      websocket
     listen (0.7.1)
     lumberjack (1.0.2)
     mail (2.4.4)
@@ -176,7 +167,7 @@ GEM
       pry (>= 0.9.10)
     quiet_assets (1.0.1)
       railties (~> 3.1)
-    rack (1.4.3)
+    rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-ssl (1.3.2)
@@ -227,11 +218,11 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    selenium-webdriver (2.27.2)
+    selenium-webdriver (2.29.0)
       childprocess (>= 0.2.5)
-      libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+      websocket (~> 1.0.4)
     shoulda-matchers (1.4.2)
       activesupport (>= 3.0.0)
       bourne (~> 1.1.2)
@@ -284,7 +275,7 @@ DEPENDENCIES
   faker
   guard
   guard-rspec
-  jasmine!
+  jasmine (~> 1.3.1)
   jquery-rails
   kaminari
   pg
