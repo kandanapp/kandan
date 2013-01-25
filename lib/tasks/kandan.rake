@@ -18,7 +18,7 @@ namespace :kandan do
 
     if channel.nil?
       puts "Creating default channel..."
-      channel = Channel.create :name => "Castle"
+      channel = Channel.create :name => "Lobby"
 
       ["Welcome to Kandan, the slickest chat app out there. Brought to you by the good people of CloudFuji (http://cloudfuji.com) and friends",
        "We think you'll really like Kandan, but if there's anything you would like to see, Kandan is fully open source, so you can dive into it or make suggestions on the mailing list.",
