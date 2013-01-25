@@ -13,6 +13,9 @@
 # sass-cache
 /app/assets/stylesheets/.sass-cache
 
+# Simplecov
+/coverage
+
 .bushido
 .rvmrc
 
