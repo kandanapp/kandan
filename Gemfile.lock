@@ -213,7 +213,7 @@ GEM
     rubycas-client (2.3.8)
       activesupport
     rubyzip (0.9.9)
-    sass (3.1.15)
+    sass (3.2.5)
     sass-rails (3.2.4)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
