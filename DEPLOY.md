@@ -66,25 +66,26 @@ Looking for community help here.
 ## Heroic server install
 If you're looking to install Kandan on a private server, or to develop locally for lemonodor fame, then here is the path you must follow, young hero:
 
-    # For development-mode
-    sudo apt-get install nodejs # (execjs needs an execution environment)
-    gem install execjs # (Could possibly be added to the gemfile in the assets group)
+    For development-mode
+    
+    `sudo apt-get install nodejs` # (execjs needs an execution environment)
+    `gem install execjs` # (Could possibly be added to the gemfile in the assets group)
 
-    # Add this to the gemfile:
-    group :development do  
-      gem 'sqlite3'
-    end
+    Get the new gems:
 
-    # Get the new gems
-    bundle install
+    `bundle install`
 
-    # Use the default database.yml to get started
-    cp config/database.yml.sample config/database.yml
+    Use the default database.yml to get started - you'll need to edit config/database.yml for *production* - you'll need to add something like this:
 
-    # Edit config/database.yml if you want to use postgres/mysql
-
-    # Bootstrap the install
-    bundle exec rake db:create db:migrate kandan:bootstrap
-    bundle exec thin start
+    production:
+      adapter: postgresql
+      host: localhost
+      database: kandan_development
+      pool: 5
+      timeout: 5000
+ 
+    Now, bootstrap the install
+    `bundle exec rake db:create db:migrate kandan:bootstrap`
+    `bundle exec thin start`
 
     
