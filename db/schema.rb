@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120404114631) do
+ActiveRecord::Schema.define(:version => 20130125210407) do
 
   create_table "activities", :force => true do |t|
     t.text     "content"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120404114631) do
     t.datetime "updated_at",                                              :null => false
     t.text     "gravatar_hash"
     t.boolean  "active",                                :default => true
+    t.string   "username"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
