@@ -1,5 +1,3 @@
-require 'cloudfuji_paperclip'
-
 class Attachment < ActiveRecord::Base
   belongs_to :channel
   belongs_to :user

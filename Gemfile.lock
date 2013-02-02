@@ -65,13 +65,7 @@ GEM
       json (>= 1.4.6)
       orm_adapter (~> 0.0.3)
       rest-client (>= 1.6.1)
-    cloudfuji_paperclip (3.0.3)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (>= 0.0.2)
-      mime-types
-    cocaine (0.2.1)
+    cocaine (0.4.2)
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -157,6 +151,12 @@ GEM
     multi_xml (0.4.2)
     nokogiri (1.5.0)
     orm_adapter (0.0.6)
+    paperclip (3.4.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.4.0)
+      mime-types
     pg (0.12.2)
     polyglot (0.3.3)
     pry (0.9.10)
@@ -268,7 +268,6 @@ DEPENDENCIES
   binding_of_caller
   bourbon
   cloudfuji
-  cloudfuji_paperclip
   coffee-rails
   database_cleaner
   devise
@@ -282,6 +281,7 @@ DEPENDENCIES
   jasmine (~> 1.3.1)
   jquery-rails
   kaminari
+  paperclip
   pg
   pry-rails
   quiet_assets
