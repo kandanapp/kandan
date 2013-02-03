@@ -4,13 +4,16 @@ Kandan::Application.routes.draw do
   devise_for :users
 
   get '/search' => "main#search"
-  
+
   resources :channels do
     resources :activities
     resources :attachments
   end
 
   get "/active_users" => "apis#active_users"
+  
+  get "/about" =>"main#about"
+  get "/users/edit" =>"main#users_edit"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
