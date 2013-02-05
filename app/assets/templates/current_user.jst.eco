@@ -1,2 +1,0 @@
-<img src="http://gravatar.com/avatar/<%= @gravatarHash %>?s=25&d=http://cloudfuji.com/images/profile.png"/>
-<span><%= @name %></span>
