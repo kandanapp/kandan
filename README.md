@@ -1,16 +1,7 @@
-UPDATE
-======
-According to this [Issue](https://github.com/cloudfuji/kandan/issues/32) Cloudfuji has disbanded.
-
-In speaking with [@kevzettler](https://github.com/kevzettler) and [@sgrove](https://github.com/sgrove) both [@jrgifford](https://github.com/jrgifford) and I ([@fusion94](https://github.com/fusion94)) are going to attempt to maintain it.
-
-As such all new development will be happening in this repository and we will be utilizing this [Issue tracker](https://github.com/kandanapp/kandan/issues) moving forward.
-
-* * * 
+Kandan - [Modern Open Source Chat](http://www.kandanapp.com)
+================================
 [![Build Status](https://travis-ci.org/kandanapp/kandan.png?branch=master)](https://travis-ci.org/kandanapp/kandan)
 
-Kandan - [Modern Open Source Chat](http://www.kandan.me)
-================================
 The slickest chat app out there. Open-source and well-supported to boot.
 
 ![](http://github.com/kandanapp/kandan/raw/master/public/preview.png)
