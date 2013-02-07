@@ -43,11 +43,9 @@ Get Involved!
 =============
 That's not a question, it's an order! Or more of a friendly offer, really. Kandan is a fully open-source app, so dive in and start adding features, fixing bugs (what bugs?), and cleaning up the code.
 
-* Talk with us on the [mailing list](https://groups.google.com/forum/?fromgroups#!forum/cloudfuji)
 * GitHub [issues tracker](https://github.com/kandanapp/kandan/issues)
-* Twitter [@cloudfuji](https://twitter.com/#!/cloudfuji)
-* [New-wave open-source meetup](www.meetup.com/San-Francisco-New-Wave-Open-Source-Apps/) - we meetup once a month to share tips on how developers grow business around super high-quality open source software
-* ... is there a fifth way? Telegram maybe?
+* Twitter [@kandanapp](https://twitter.com/kandanapp)
+
 
 Credits
 =======
