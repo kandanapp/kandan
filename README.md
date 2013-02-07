@@ -45,6 +45,9 @@ That's not a question, it's an order! Or more of a friendly offer, really. Kanda
 
 * GitHub [issues tracker](https://github.com/kandanapp/kandan/issues)
 * Twitter [@kandanapp](https://twitter.com/kandanapp)
+* [Kandan Demo](http://kandan-demo.kandanapp.com) (Yes we eat our own DogFood)
+
+You can also email us at [admin@kandanapp.com](mailto:admin@kandanap.com)
 
 
 Credits
