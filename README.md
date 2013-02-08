@@ -47,6 +47,7 @@ Credits
 * [Andrew Hampton](https://github.com/andrewhampton) For the initial manual server install instructions.
 * [Akash Manohar J](https://github.com/HashNuke) For some of the initial work on Kandan
 * [Thomas Risberg](https://github.com/trisberg) For the Cloud Foundry install instructions and compatibility fixes.
+* and many other [amazing contributors](https://github.com/kandanapp/kandan/graphs/contributors) 
 
 LICENSE
 =======
