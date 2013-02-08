@@ -65,26 +65,37 @@ Looking for community help here.
 ## Heroic server install
 If you're looking to install Kandan on a private server, or to develop locally for lemonodor fame, then here is the path you must follow, young hero:
 
-    For development-mode
+For development-mode
     
     `sudo apt-get install nodejs` # (execjs needs an execution environment)
     `gem install execjs` # (Could possibly be added to the gemfile in the assets group)
 
-    Get the new gems:
+Install the required gems:
 
     `bundle install`
 
-    Use the default database.yml to get started - you'll need to edit config/database.yml for *production* - you'll need to add something like this:
+You can use the default database.yml to get started in development. For production you'll need to edit config/database.yml to add something like this:
 
     production:
       adapter: postgresql
       host: localhost
-      database: kandan_development
+      database: kandan_production
       pool: 5
       timeout: 5000
+      # You might need these depending on your Postgres auth setup.
+      username: kandan 
+      password: something
  
-    Now, bootstrap the install
+Now, bootstrap the install (you can omit the db:create step if you have already created the DB referenced above):
+
     `bundle exec rake db:create db:migrate kandan:bootstrap`
+
+If you plan to serve the app directly from Thin (rather than through a proxy), you will need to configure Rails to serve assets in the production environment. In config/environments/production.rb:
+      
+    config.serve_static_assets = true
+    
+Start the server
+
     `bundle exec thin start`
 
-    
+Your app should be up and running now. The default admin user is `Admin` with password `kandanappadmin`, or you can sign up as another user.
