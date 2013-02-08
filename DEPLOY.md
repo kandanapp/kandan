@@ -1,4 +1,3 @@
-
 ## Cloud Foundry
 You'll need a [Cloud Foundry account](https://my.cloudfoundry.com/signup) and the [vmc gem](https://rubygems.org/gems/vmc) installed. Do you `vmc target <cloud foundry host>` and `vmc login`, and then this will get you up and running:
 
@@ -58,7 +57,7 @@ If successful you should get a response similar to:
 	S3_SECRET_ACCESS_KEY: xxxx
 	S3_BUCKET: bucket_name
 
-Your app should be up and running now. The admin email by default is `admin@kandan.me` with password `kandanadmin`, or you can sign up as another user.
+Your app should be up and running now. The default admin user is `Admin` with password `kandanappadmin`, or you can sign up as another user.
 
 ## dotCloud
 Looking for community help here.
