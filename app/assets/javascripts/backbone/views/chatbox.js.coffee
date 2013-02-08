@@ -36,6 +36,8 @@ class Kandan.Views.Chatbox extends Backbone.View
 
     activity.save({},{success: (model, response)->
       $("#activity-c#{model.cid}").attr("id", "activity-#{model.get('id')}")
+      $scrollbox = $(event.target).parent().find(".paginated-activities")
+      $scrollbox.prop("scrollTop", $scrollbox.prop('scrollHeight'))
     })
 
   render: ()->
