@@ -34,12 +34,11 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Channel.find(params[:channel_id]).activities.build(params[:activity])
     @activity.user_id = current_user.id if @activity.action == "message"
-    if @activity.save
-      respond_to do |format|
+
+    respond_to do |format|
+      if @activity.save
         format.json { render :json => @activity, :status => :created }
-      end
-    else
-      respond_to do |format|
+      else
         format.json { render :json => @activity.errors, :status => :unprocessable_entity }
       end
     end
