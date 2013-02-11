@@ -30,7 +30,7 @@ gem 'airbrake'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'bourbon'
+  gem 'bourbon', '~> 1.4.0'
   gem 'execjs'   
   gem 'eco'
   gem 'uglifier'
