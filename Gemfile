@@ -21,7 +21,7 @@ gem 'aws-sdk'
 gem 'paperclip'
 gem 'remotipart'
 gem 'jquery-rails'
-
+gem 'rb-readline'
 # Making the world a better, more stable place
 gem 'airbrake'
 
