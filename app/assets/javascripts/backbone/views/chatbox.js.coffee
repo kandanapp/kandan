@@ -37,7 +37,7 @@ class Kandan.Views.Chatbox extends Backbone.View
       )
 
       $("#activity-c#{model.cid}").attr("id", "activity-#{model.get('id')}")
-      $scrollbox = $(event.target).parent().find(".paginated-activities")
+      $scrollbox = $('.channels-pane')
       $scrollbox.prop("scrollTop", $scrollbox.prop('scrollHeight'))
     })
 
