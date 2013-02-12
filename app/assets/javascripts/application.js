@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require lib/jquery.filedrop
 //= require lib/underscore
+//= require lib/underscore.string
 //= require lib/backbone
 //= require backbone/kandan
 //= require_tree .

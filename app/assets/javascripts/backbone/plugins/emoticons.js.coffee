@@ -1,47 +1,56 @@
 class Kandan.Plugins.Emoticons
 
   @options:
-    regex: /\([a-zA-Z]+\)/g
+    regex: /\([a-zA-Z]+\)|(^|\s)+([:|=][\)|\(|P|p])($|\s)/g
     template: _.template '''
-      <img class="emoticon-embed" src="/assets/emoticons/<%= emoticon %>" title="<%= title %>" height="40" width="40" />
+      <img class="emoticon-embed <%= css %>" src="/assets/emoticons/<%= src %>" title="<%= title %>" />
     '''
 
 
   @emoticons: {
-    "(alone)"       : "alone.jpg",
-    "(awwyea)"      : "awwyea.jpg",
-    "(badass)"      : "badass.png",
-    "(bitchplease)" : "bitchplease.jpg",
-    "(cereal)"      : "cereal.jpg",
-    "(challenge)"   : "challenge.jpg",
-    "(fuckyeah)"    : "fuckyeah.jpg",
-    "(gtfo)"        : "seriously.jpg",
-    "(ilied)"       : "ilied.jpg",
-    "(megusta)"     : "megusta.jpg",
-    "(notbad)"      : "notbad.jpg",
-    "(okay)"        : "okay.jpg",
-    "(omgface)"     : "omgface.jpg",
-    "(pokerface)"   : "pokerface.jpg",
-    "(problem)"     : "trollface.jpg",
-    "(rageguy)"     : "rageguy.jpg",
-    "(seriously)"   : "seriously.jpg",
-    "(sweetjesus)"  : "sweetjesus.jpg",
-    "(trollface)"   : "trollface.jpg",
-    "(truestory)"   : "truestory.png",
-    "(youdontsay)"  : "youdontsay.png",
-    "(yuno)"        : "yuno.jpg"
+    "(alone)"       : { src : "alone.jpg", css : "big", title : "alone"},
+    "(awwyea)"      : { src : "awwyea.jpg", css : "big", title : "awwyea"},
+    "(badass)"      : { src : "badass.jpg", css : "big", title : "badass"},
+    "(bitchplease)" : { src : "bitchplease.jpg", css : "big", title : "bitchplease"},
+    "(cereal)"      : { src : "cereal.jpg", css : "big", title : "cereal"},
+    "(challenge)"   : { src : "challenge.jpg", css : "big", title : "challenge"},
+    "(fuckyeah)"    : { src : "fuckyeah.jpg", css : "big", title : "fuckyeah"},
+    "(gtfo)"        : { src : "gtfo.jpg", css : "big", title : "gtfo"},
+    "(ilied)"       : { src : "ilied.jpg", css : "big", title : "ilied"},
+    "(megusta)"     : { src : "megusta.jpg", css : "big", title : "megusta"},
+    "(notbad)"      : { src : "notbad.jpg", css : "big", title : "notbad"},
+    "(okay)"        : { src : "okay.jpg", css : "big", title : "okay"},
+    "(omgface)"     : { src : "omgface.jpg", css : "big", title : "omgface"},
+    "(pokerface)"   : { src : "pokerface.jpg", css : "big", title : "pokerface"},
+    "(problem)"     : { src : "problem.jpg", css : "big", title : "problem"},
+    "(rageguy)"     : { src : "rageguy.jpg", css : "big", title : "rageguy"},
+    "(seriously)"   : { src : "seriously.jpg", css : "big", title : "seriously"},
+    "(sweetjesus)"  : { src : "sweetjesus.jpg", css : "big", title : "sweetjesus"},
+    "(trollface)"   : { src : "trollface.jpg", css : "big", title : "trollface"},
+    "(truestory)"   : { src : "truestory.jpg", css : "big", title : "truestory"},
+    "(youdontsay)"  : { src : "youdontsay.jpg", css : "big", title : "youdontsay"},
+    "(yuno)"        : { src : "yuno.jpg", css : "big", title : "yuno"},
+    ":("            : { src : "sad.png", css : "small", title : "sad"},
+    "=("            : { src : "sad.png", css : "small", title : "sad"},
+    ":)"            : { src : "happy.png", css : "small", title : "happy"},
+    "=)"            : { src : "sad.png", css : "small", title : "happy"},
+    ":p"            : { src : "tongue.png", css : "small", title : ":p"}
+    "=p"            : { src : "tongue.png", css : "small", title : "=p"}
     }
 
   @init: ()->
     Kandan.Modifiers.register @options.regex, (message, state) =>
       matches = message.content.match(@options.regex)
       for match in _.unique(matches)
+        match = match.trim();
         emoticon    = @emoticons[match]
-        title       = match.replace(/\(|\)/g, "")
-        needle      = match.replace('(', '\\(').replace(')', '\\)')
-        search      = new RegExp(needle, 'g')
-        replacement = @options.template({ emoticon: emoticon, title: title})
-        message.content = message.content.replace(search, replacement) if emoticon
+        
+        if emoticon
+            needle = match.replace('(', '\\(').replace(')', '\\)')
+            search = new RegExp(needle, 'g')
+            replacement = @options.template(emoticon)
+            message.content = message.content.replace(search, replacement) 
+
       return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
 
 # Kandan.Plugins.register "Kandan.Plugins.Emoticons"
