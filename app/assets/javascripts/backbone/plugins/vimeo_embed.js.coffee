@@ -31,7 +31,6 @@ class Kandan.Plugins.VimeoEmbed
 
       message.content = @options.template({
         videoId: videoId,
-        thumbUrl: "http://www.edcanvas.com/assets/logo.png",
         subtitle: subtitle
       })
       return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
