@@ -21,7 +21,7 @@ gem 'aws-sdk'
 gem 'paperclip'
 gem 'remotipart'
 gem 'jquery-rails'
-gem 'rb-readline'
+
 # Making the world a better, more stable place
 gem 'airbrake'
 
@@ -30,7 +30,7 @@ gem 'airbrake'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'bourbon'
+  gem 'bourbon', '~> 1.4.0'
   gem 'execjs'   
   gem 'eco'
   gem 'uglifier'

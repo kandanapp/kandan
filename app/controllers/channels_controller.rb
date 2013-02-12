@@ -26,12 +26,10 @@ class ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(params[:channel])
-    if @channel.save
-      respond_to do |format|
+    respond_to do |format|
+      if @channel.save
         format.json { render :json => @channel, :status => :created }
-      end
-    else
-      respond_to do |format|
+      else
         format.json { render :json => @channel.errors, :status => :unprocessable_entity }
       end
     end
@@ -46,12 +44,10 @@ class ChannelsController < ApplicationController
 
   def update
     @channel = Channel.find(params[:id])
-    if @channel.update_attributes(params[:channel])
-      respond_to do |format|
+    respond_to do |format|
+      if @channel.update_attributes(params[:channel])
         format.json { render :json => @channel, :status => :ok }
-      end
-    else
-      respond_to do |format|
+      else
         format.json { render :json => @channel.errors, :status => :unprocessable_entity }
       end
     end
