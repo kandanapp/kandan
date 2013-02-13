@@ -10,25 +10,25 @@ class Kandan.Plugins.Emoticons
   @emoticons: {
     "(alone)"       : { src : "alone.jpg", css : "big", title : "alone"},
     "(awwyea)"      : { src : "awwyea.jpg", css : "big", title : "awwyea"},
-    "(badass)"      : { src : "badass.jpg", css : "big", title : "badass"},
+    "(badass)"      : { src : "badass.png", css : "big", title : "badass"},
     "(bitchplease)" : { src : "bitchplease.jpg", css : "big", title : "bitchplease"},
     "(cereal)"      : { src : "cereal.jpg", css : "big", title : "cereal"},
     "(challenge)"   : { src : "challenge.jpg", css : "big", title : "challenge"},
     "(fuckyeah)"    : { src : "fuckyeah.jpg", css : "big", title : "fuckyeah"},
-    "(gtfo)"        : { src : "gtfo.jpg", css : "big", title : "gtfo"},
+    "(gtfo)"        : { src : "gtfo.png", css : "big", title : "gtfo"},
     "(ilied)"       : { src : "ilied.jpg", css : "big", title : "ilied"},
     "(megusta)"     : { src : "megusta.jpg", css : "big", title : "megusta"},
     "(notbad)"      : { src : "notbad.jpg", css : "big", title : "notbad"},
     "(okay)"        : { src : "okay.jpg", css : "big", title : "okay"},
     "(omgface)"     : { src : "omgface.jpg", css : "big", title : "omgface"},
     "(pokerface)"   : { src : "pokerface.jpg", css : "big", title : "pokerface"},
-    "(problem)"     : { src : "problem.jpg", css : "big", title : "problem"},
+    "(problem)"     : { src : "trollface.jpg", css : "big", title : "problem"},
     "(rageguy)"     : { src : "rageguy.jpg", css : "big", title : "rageguy"},
     "(seriously)"   : { src : "seriously.jpg", css : "big", title : "seriously"},
     "(sweetjesus)"  : { src : "sweetjesus.jpg", css : "big", title : "sweetjesus"},
     "(trollface)"   : { src : "trollface.jpg", css : "big", title : "trollface"},
-    "(truestory)"   : { src : "truestory.jpg", css : "big", title : "truestory"},
-    "(youdontsay)"  : { src : "youdontsay.jpg", css : "big", title : "youdontsay"},
+    "(truestory)"   : { src : "truestory.png", css : "big", title : "truestory"},
+    "(youdontsay)"  : { src : "youdontsay.png", css : "big", title : "youdontsay"},
     "(yuno)"        : { src : "yuno.jpg", css : "big", title : "yuno"},
     ":("            : { src : "sad.png", css : "small", title : "sad"},
     "=("            : { src : "sad.png", css : "small", title : "sad"},
@@ -52,5 +52,3 @@ class Kandan.Plugins.Emoticons
             message.content = message.content.replace(search, replacement) 
 
       return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
-
-# Kandan.Plugins.register "Kandan.Plugins.Emoticons"
