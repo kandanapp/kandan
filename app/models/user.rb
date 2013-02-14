@@ -26,4 +26,11 @@ class User < ActiveRecord::Base
     super && active?
   end
 
+  def self.deleted_user
+    dummy_user = new(:username => "Deleted User", :gravatar_hash => "", :email => "")
+    dummy_user.active = false
+
+    return dummy_user
+  end
+
 end
