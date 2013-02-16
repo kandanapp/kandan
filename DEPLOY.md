@@ -62,6 +62,45 @@ Your app should be up and running now. The default admin user is `Admin` with pa
 ## dotCloud
 Looking for community help here.
 
+## AppFog
+You'll need an [AppFog account](https://www.appfog.com/) and the [af command line tool](https://docs.appfog.com/getting-started/af-cli) installed. Once that's all set up, login from the command line: `af login`. You'll be prompted for the username/password you set on AppFog. You're returned to your operating system's command prompt. It's not a terminal emulator.
+
+If you want to use PostgreSQL rather than MySQL, provision the service on the Services page of the [console](https://console.appfog.com). Note the name of your database and app name on the console and substitute as appropriate.
+
+    git clone https://github.com/kandanapp/kandan.git
+    cd kandan
+    bundle install
+    bundle exec rake assets:precompile
+    af push your_app_name --path . --instances 1 --mem 256M --runtime ruby19
+
+You'll answer a few questions; you'll probably get an error at the end about an invalid app description. That's okay, we'll fix that next:
+
+    Detected a Rails Application, is this correct? [Yn]: y
+    1: AWS US East - Virginia
+    2: AWS EU West - Ireland
+    3: AWS Asia SE - Singapore
+    4: Rackspace AZ 1 - Dallas
+    5: HP AZ 2 - Las Vegas
+    Select Infrastructure: 1
+    Application Deployed URL [<your_app_name>.aws.af.cm]: <your_app_name>
+    Memory reservation (128M, 256M, 512M, 1G, 2G) [256M]: 
+    How many instances? [1]: 
+    Bind existing services to '<your_app_name>'? [yN]: y
+    1: kandan_production
+    2: <your_app_name>-mysql-12781
+    Which one?: 1
+    Bind another? [yN]: n
+    Create services to bind to '<your_app_name>'? [yN]: 
+    Would you like to save this configuration? [yN]: y
+    Manifest written to manifest.yml.
+    Creating Application: Error 300: Invalid application description
+
+If you get the invalid app description, open manifest.yml in a text editor and remove the space from the description. (It defaults to Rails Application, which causes the error.) Then, at the terminal:
+
+    af update <your_app_name>
+
+And you should also restart the app on AppFog (in the console). Then, Kandan should be available on your AppFox backend now! With your browser, visit the domain name assigned to you by AppFog (or create a CNAME record at your DNS provider to use an alternate).
+
 ## Heroic server install
 If you're looking to install Kandan on a private server, or to develop locally for lemonodor fame, then here is the path you must follow, young hero:
 
