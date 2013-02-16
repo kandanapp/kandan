@@ -37,8 +37,9 @@ class Kandan.Views.Chatbox extends Backbone.View
       )
 
       $("#activity-c#{model.cid}").attr("id", "activity-#{model.get('id')}")
-      $scrollbox = $('.channels-pane')
-      $scrollbox.prop("scrollTop", $scrollbox.prop('scrollHeight'))
+      theId = Kandan.Helpers.Channels.getActiveChannelId()
+      Kandan.Helpers.Channels.scrollToLatestMessage(theId)
+      
     })
 
   render: ()->
