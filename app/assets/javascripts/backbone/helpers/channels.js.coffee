@@ -11,10 +11,14 @@ class Kandan.Helpers.Channels
     scrollPercentage > @options.autoScrollThreshold
 
   @scrollToLatestMessage: (channelId)->
-    $(document).scrollTop($(document).height()+9000)
+    if channelId
+      theScrollArea = $('#channels-'+channelId)
+      theScrollArea.scrollTop(theScrollArea.prop('scrollHeight'))
+    else
+      $('.channels-pane').scrollTop($('.channels-pane').prop('scrollHeight'))
 
   @currentScrollPosition: (channelId)->
-    $(document).scrollTop()
+    $('channels-pane').scrollTop()
 
   @channelActivitiesEl: (channelId)->
     $("#channel-activities-#{channelId}")
@@ -32,6 +36,7 @@ class Kandan.Helpers.Channels
         .data("channel-id")
     else
       return $(document).data("active-channel-id")
+
 
 
   @confirmDeletion: ()->
@@ -57,7 +62,7 @@ class Kandan.Helpers.Channels
   @getChannelIdByTabIndex: (tabIndex)->
     $("#kandan .ui-tabs-panel")
       .eq(tabIndex)
-      .data("channel-id")
+      .data("channel-id") 
 
   @getTabIndexByChannelId: (channelId)->
     $("#channels-#{channelId}").prevAll("div").length
@@ -90,6 +95,7 @@ class Kandan.Helpers.Channels
     view = new Kandan.Views.ChannelPane({channel: channel})
     view.render $(channelArea)
     $(channelArea).data("channel_id", channel.get("id"))
+        
 
 
   @newActivityView: (activityAttributes)->

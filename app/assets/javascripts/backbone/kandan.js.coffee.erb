@@ -72,7 +72,15 @@ window.Kandan =
       select: (event, ui)->
         $(document).data('active-channel-id',
           Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
+        
+        #the need for the delay feels hacky to me. 
+        #It is there because the chat area has to render before scrollHeight can be determined.
+        theId = Kandan.Helpers.Channels.getActiveChannelId() 
+        delay = (ms, func) -> setTimeout func, ms
+        delay 1, -> Kandan.Helpers.Channels.scrollToLatestMessage(theId)
         Kandan.Data.Channels.runCallbacks('change')
+
+
       add: (event, ui) ->
         $('.header .ui-tabs-panel:last').detach().appendTo('#channels')
         $('#kandan').tabs('option', 'disabled', [])
@@ -92,10 +100,10 @@ window.Kandan =
       </li>
     '''
 
+
   initChatArea: (channels)->
     chatArea = new Kandan.Views.ChatArea({channels: channels})
     $(".main-area").append(chatArea.render().el)
-    $(document).scrollTop($(document).height()+9000)
 
 
   onFetchActiveUsers: (channels)=>
@@ -109,6 +117,8 @@ window.Kandan =
       Kandan.initChatArea(channels)
       Kandan.initTabs()
       Kandan.Widgets.initAll()
+      Kandan.Helpers.Channels.scrollToLatestMessage()
+       
 
   setCurrentUser: ()->
     template = JST['current_user']
