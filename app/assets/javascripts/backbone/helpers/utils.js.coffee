@@ -3,14 +3,9 @@ class Kandan.Helpers.Utils
 
   @browserTabFocused: true
 
-  @notifyInTitleIfRequired: (activityAttributes) ->
-    console.log(activityAttributes)
-
-    if Kandan.Data.Channels.activeChannelId() == activityAttributes.channel_id and activityAttributes.action == "message" and @browserTabFocused != true
-      Kandan.Plugins.MusicPlayer.playAudioNotice()
-      @unreadActivities += 1
-      $(document).attr('title', "(#{@unreadActivities}) Kandan")
-
+  @notifyInTitle: ()->
+    @unreadActivities += 1
+    $(document).attr('title', "(#{@unreadActivities}) Kandan")
 
   @months: [
     "January"
