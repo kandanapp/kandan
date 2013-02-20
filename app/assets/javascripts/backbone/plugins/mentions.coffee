@@ -18,8 +18,8 @@ class Kandan.Plugins.Mentions
       return Kandan.Helpers.Activities.buildFromMessageTemplate(message)	
       
   @initUsersMentions: (activeUsers)->
-    users = _.map activeUsers, (user)->
-      user.username
-
-    $(".chat-input").atwho("@", {data: users});
-    return
+  	users = _.map activeUsers, (user)->
+  		user.username
+  	users.push "all"
+  	$(".chat-input").atwho("@", {data: users})
+	return
