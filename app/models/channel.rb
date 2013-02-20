@@ -2,6 +2,8 @@ class Channel < ActiveRecord::Base
   has_many :activities, :dependent => :destroy
   has_many :attachments, :dependent => :destroy
 
+  validates :name, :presence => true, :uniqueness => true
+
   class << self
     def user_connect(user)
       Channel.all.each do |channel|

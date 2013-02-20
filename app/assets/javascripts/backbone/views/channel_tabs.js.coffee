@@ -32,6 +32,9 @@ class Kandan.Views.ChannelTabs extends Backbone.View
       channel.save({}, {
         success: (model)->
           Kandan.Helpers.Channels.createChannelArea(model)
+
+        error: (model)->
+          alert("Something went wrong while creating a new Room.\n\nMaybe the room name is already taken?")
       })
       console.log "create channel: #{channelName}"
     return false
