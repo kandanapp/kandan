@@ -72,6 +72,8 @@ window.Kandan =
   initTabs: ()->
     $('#kandan').tabs({
       select: (event, ui)->
+        if ui.tab.id == "create_channel" then return false
+
         $(document).data('active-channel-id',
           Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
         
