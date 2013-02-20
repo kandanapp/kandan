@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :activities
   before_save :ensure_authentication_token
   before_save :ensure_gravatar_hash
+
+  validates :username, :presence => true, :uniqueness => true
   
 
   # Kandan.devise_modules is defined in config/initializers/kandan.rb

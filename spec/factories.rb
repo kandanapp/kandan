@@ -11,6 +11,10 @@ FactoryGirl.define do
     "#{rand(11111111...99999999)}"
   end
 
+  sequence :username do |n|
+    "user#{n}"
+  end
+
   factory :channel do |f|
     f.name "Test channel"
   end
@@ -21,5 +25,6 @@ FactoryGirl.define do
     f.password { FactoryGirl.generate(:password)}
     f.email  { FactoryGirl.generate(:email) }
     f.ido_id { FactoryGirl.generate(:ido_id) }
+    f.username { FactoryGirl.generate(:username) }
   end
 end
