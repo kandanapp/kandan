@@ -19,4 +19,5 @@
 //= require lib/backbone
 //= require backbone/kandan
 //= require_tree .
-
+//= require lib/jquery.atwho
+//= require lib/jquery.caret

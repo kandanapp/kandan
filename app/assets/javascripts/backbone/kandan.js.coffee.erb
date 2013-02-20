@@ -28,6 +28,7 @@ window.Kandan =
   registerPlugins: ->
     plugins = [
       "UserList"
+      ,"Mentions"
       ,"MusicPlayer"
       ,"YouTubeEmbed"
       ,"VimeoEmbed"
@@ -118,7 +119,8 @@ window.Kandan =
       Kandan.initTabs()
       Kandan.Widgets.initAll()
       Kandan.Helpers.Channels.scrollToLatestMessage()
-       
+      Kandan.Plugins.Mentions.initUsersMentions(Kandan.Helpers.ActiveUsers.all())
+      return
 
   setCurrentUser: ()->
     template = JST['current_user']
