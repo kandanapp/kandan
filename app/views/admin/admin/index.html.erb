@@ -1,0 +1,99 @@
+<% content_for :javascript_includes do %>
+	<%= javascript_include_tag "admin/admin" %>
+<% end %>
+
+<div class="admin-main-area">
+	<%= form_for @settings, :url => admin_update_path do |f| %>
+	  <%= f.label :max_rooms, 'Max number of rooms' %>:
+	  <%= f.text_field :max_rooms %><br />
+	  <%= f.label :public_site, 'Is this a public site?' %>:
+	  <%= f.check_box :public_site %><br />
+	  <%= f.submit %>
+	<% end %>
+
+	<div class="waiting-for-approval-users">
+		<% if @waiting_for_approval_users.any? %>
+			<table cellspacing="0" cellpadding="0" border="0">
+				<thead>
+					<tr>
+						<th class="">Username</th>
+						<th class="">First Name</th>
+						<th class="">Last Name</th>
+						<th class="">Email</th>
+						<th class="">Status</th>
+						<th class="">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @all_users.each do |user| %>
+						<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
+							<td>
+								<%= user.username %>
+							</td>
+							<td>
+								<%= user.first_name %>
+							</td>
+							<td>
+								<%= user.last_name %>
+							</td>
+							<td>
+								<%= user.email %>
+							</td>
+							<td>
+								<%= user_status(user) %>
+							</td>
+							<td>
+								
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<div>There are no users. Invite others to join Kandan!</div>
+		<% end %>
+	</div>
+
+	<div class="approved-users">
+		<% if @all_users.any? %>
+			<table cellspacing="0" cellpadding="0" border="0">
+				<thead>
+					<tr>
+						<th class="">Username</th>
+						<th class="">First Name</th>
+						<th class="">Last Name</th>
+						<th class="">Email</th>
+						<th class="">Status</th>
+						<th class="">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @all_users.each do |user| %>
+						<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
+							<td>
+								<%= user.username %>
+							</td>
+							<td>
+								<%= user.first_name %>
+							</td>
+							<td>
+								<%= user.last_name %>
+							</td>
+							<td>
+								<%= user.email %>
+							</td>
+							<td>
+								<%= user_status(user) %>
+							</td>
+							<td>
+								
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<div>There are no users. Invite others to join Kandan!</div>
+		<% end %>
+	</div>
+</div>

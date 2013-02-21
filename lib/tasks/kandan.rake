@@ -1,6 +1,10 @@
 namespace :kandan do
   desc "Bootstrap an initial install of Kandan. Not strictly necessary, but faster."
   task :bootstrap => :environment do
+
+    # Initialize default settings
+    Setting.my_settings
+
     user = User.first
 
     if user.nil?
@@ -12,6 +16,7 @@ namespace :kandan do
       user.last_name  = "OfKandan"
       user.password   = "kandanappadmin"
       user.password_confirmation = "kandanappadmin"
+      user.is_admin = true
       user.save!
     end
 

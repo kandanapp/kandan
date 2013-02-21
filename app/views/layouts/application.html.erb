@@ -6,52 +6,43 @@
   <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=PT+Sans:400,700" %>
   <%= stylesheet_link_tag  "application", :media => "all" %>
   <%= favicon_link_tag %>
-
-  <%= airbrake_javascript_notifier %>
-
-  <%- Kandan::Config.broadcaster.assets.each do |asset| %>
-    <%= javascript_include_tag asset %>
-  <%- end %>
-  
   <%= javascript_include_tag "application" %>
-  <%= javascript_tag do %>
-    <%- if user_signed_in? %>
-      <%- current_user_data = {
-            :id            => current_user.id,
-            :first_name    => current_user.first_name,
-            :last_name     => current_user.last_name,
-            :email         => current_user.email,
-            :username      => current_user.username,
-            :auth_token    => current_user.authentication_token,
-            :gravatar_hash => current_user.gravatar_hash
-          }
-          %>
-      $.data(document, "current-user", <%= current_user_data.to_json.html_safe %>);
-    <%- end %>
-    $(document).data("active-users", [])
-  <%- end %>
+  <%= airbrake_javascript_notifier %>
+  <%= yield :javascript_includes %>
 
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="kandan">
+    <div class="header">
+      <a href="/">
+        <%= image_tag "logo.png", :class=>"logo" %>  
+      </a>
+      <% if user_signed_in? %>
+        <a href="#" class="user_menu_link">
+          <cite class="user_flag"></cite>
+          <div class="user">
+            <img src="http://gravatar.com/avatar/<%= current_user.gravatar_hash %>?s=25&d=http://cloudfuji.com/images/profile.png"/>
+            <span><%= current_user.full_name_or_username %></span>
+          </div>
+        </a>
+        <%= yield :header_content %>
+      </div>
+      <div class="user_menu">
+        <%= link_to 'Admin console', admin_root_path if current_user.is_admin? %>
+        <%= link_to 'Edit Account', users_edit_path, @users_edit %><br />
+        <%= link_to 'Logout', destroy_user_session_path, :method => :delete %><br />
+        <hr>
+        <%= link_to 'About Kandan', about_path, @about %>
+      </div>
+    <% else %>
+      </div>
+      <% end %>
+    <div id="app_body">
 
-  <%= yield %>
+    <%= yield %>
 
-  <ul class="audio_channels" style="display:none;">
-    <audio class="audio_private"></audio>
-    <audio class="audio_common"></audio>
-  </ul>
-
-  <%- if user_signed_in? && Cloudfuji::Platform.on_cloudfuji? %>
-    <%= javascript_tag do %>
-      <%- cloudfuji_help_vars = {
-          "HUBOT_KANDAN_TOKEN" => User.find_by_email("hubot@cloudfuji.com").try(:authentication_token),
-          "HUBOT_KANDAN_HOST"  => ENV['CLOUDFUJI_DOMAIN']
-      }
-      %>
-
-      window._cloudfuji_help = <%= cloudfuji_help_vars.to_json.html_safe %>;
-    <%- end %>
-  <%- end %>
+    </div>
+  </div>
 </body>
 </html>

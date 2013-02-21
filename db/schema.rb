@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125210407) do
+ActiveRecord::Schema.define(:version => 20130221173650) do
 
   create_table "activities", :force => true do |t|
     t.text     "content"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(:version => 20130125210407) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "settings", :force => true do |t|
+    t.text     "values"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "",   :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
@@ -71,6 +77,8 @@ ActiveRecord::Schema.define(:version => 20130125210407) do
     t.text     "gravatar_hash"
     t.boolean  "active",                                :default => true
     t.string   "username"
+    t.boolean  "is_admin"
+    t.string   "status"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

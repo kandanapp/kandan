@@ -74,9 +74,17 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    columnize (0.3.6)
     cookiejar (0.3.0)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    debugger (1.2.3)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.1.5)
+    debugger-linecache (1.1.2)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.1.6)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -98,6 +106,8 @@ GEM
       http_parser.rb (>= 0.5.3)
     em-socksify (0.2.1)
       eventmachine (>= 1.0.0.beta.4)
+    enumerize (0.5.1)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     eventmachine (1.0.0)
     execjs (1.4.0)
@@ -271,9 +281,11 @@ DEPENDENCIES
   cloudfuji
   coffee-rails
   database_cleaner
+  debugger
   devise
   devise_cloudfuji_authenticatable
   eco
+  enumerize
   execjs
   factory_girl_rails
   faker

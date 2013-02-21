@@ -15,6 +15,12 @@ Kandan::Application.routes.draw do
   get "/about" =>"main#about"
   get "/users/edit" =>"main#users_edit"
 
+  namespace :admin do
+    root :to => "admin#index"
+    put "/update", :to => "admin#update", :as => "update"
+    put "/update_users", :to => "admin#update_users", :as => "update_users"
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
