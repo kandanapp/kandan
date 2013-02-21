@@ -12,6 +12,7 @@
 	<% end %>
 
 	<div class="waiting-for-approval-users">
+		<div>Users waiting for approval</div>
 		<% if @waiting_for_approval_users.any? %>
 			<table cellspacing="0" cellpadding="0" border="0">
 				<thead>
@@ -25,7 +26,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @all_users.each do |user| %>
+					<% @waiting_for_approval_users.each do |user| %>
 						<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
 							<td>
 								<%= user.username %>
@@ -55,6 +56,7 @@
 	</div>
 
 	<div class="approved-users">
+		<div>All users</div>
 		<% if @all_users.any? %>
 			<table cellspacing="0" cellpadding="0" border="0">
 				<thead>

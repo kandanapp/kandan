@@ -6,7 +6,7 @@ module Admin
   		@all_users = User.find(:all, :conditions => ["id != ?", current_user.id])
 
   		# Note that this reject! will remove users from all_users in order to show users in 2 different tables
-  		@waiting_for_approval_users = @all_users.reject!{|user| user.status.waiting_approval? } || []
+  		@waiting_for_approval_users = @all_users.select{|user| user.status.waiting_approval? } || []
   	end
 
   	def update

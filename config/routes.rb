@@ -1,5 +1,9 @@
 Kandan::Application.routes.draw do
 
+  get "pages/approval"
+
+  get "pages/suspended"
+
   root :to => "main#index"
   devise_for :users
 
@@ -12,7 +16,6 @@ Kandan::Application.routes.draw do
 
   get "/active_users" => "apis#active_users"
   
-  get "/about" =>"main#about"
   get "/users/edit" =>"main#users_edit"
 
   namespace :admin do
@@ -20,6 +23,11 @@ Kandan::Application.routes.draw do
     put "/update", :to => "admin#update", :as => "update"
     put "/update_users", :to => "admin#update_users", :as => "update_users"
   end
+
+  # Pages Controller
+  get "/approval", :to => "pages#approval"
+  get "/suspended", :to => "pages#suspended"
+  get "/about", :to =>"pages#about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
