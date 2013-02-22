@@ -14,4 +14,8 @@ module Admin::AdminHelper
 
 		"<button class='action #{action.downcase} btn #{css}'>#{action}</button>".html_safe
 	end
+
+	def inline_style_hidden(hidden)
+		"style=display:none;" if hidden
+	end
 end

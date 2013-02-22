@@ -28,90 +28,12 @@
 
 		<div class="waiting-for-approval-users">
 			<h3>Users waiting for approval</h3>
-			<% if @waiting_for_approval_users.any? %>
-				<table class="table table-striped table-bordered" cellspacing="0" cellpadding="0" border="0">
-					<thead>
-						<tr>
-							<th class="">Username</th>
-							<th class="">First Name</th>
-							<th class="">Last Name</th>
-							<th class="">Email</th>
-							<th class="">Status</th>
-							<th class="">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @waiting_for_approval_users.each do |user| %>
-							<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
-								<td>
-									<%= user.username %>
-								</td>
-								<td>
-									<%= user.first_name %>
-								</td>
-								<td>
-									<%= user.last_name %>
-								</td>
-								<td>
-									<%= user.email %>
-								</td>
-								<td>
-									<%= user_status(user) %>
-								</td>
-								<td>
-									<%= user_action(user) %>
-								</td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-			<% else %>
-				<div>There are no users. Invite others to join Kandan!</div>
-			<% end %>
+			<%= render "user_table", :users => @waiting_for_approval_users %>
 		</div>
 
 		<div class="approved-users">
 			<h3>All users</h3>
-			<% if @approved_users.any? %>
-				<table class="table table-striped table-bordered" cellspacing="0" cellpadding="0" border="0">
-					<thead>
-						<tr>
-							<th class="">Username</th>
-							<th class="">First Name</th>
-							<th class="">Last Name</th>
-							<th class="">Email</th>
-							<th class="">Status</th>
-							<th class="">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @approved_users.each do |user| %>
-							<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
-								<td>
-									<%= user.username %>
-								</td>
-								<td>
-									<%= user.first_name %>
-								</td>
-								<td>
-									<%= user.last_name %>
-								</td>
-								<td>
-									<%= user.email %>
-								</td>
-								<td>
-									<%= user_status(user) %>
-								</td>
-								<td>
-									<%= user_action(user) %>
-								</td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-			<% else %>
-				<div>There are no users. Invite others to join Kandan!</div>
-			<% end %>
+			<%= render "user_table", :users => @approved_users %>
 		</div>
 	</div>
 </div>

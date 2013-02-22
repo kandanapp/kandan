@@ -38,7 +38,7 @@ module Admin
 
   		user.save! if user.changed?
 
-  		render :nothing => true, :status => 200
+  		render :json => user, :status => 200
   	end
     
   end
