@@ -2,6 +2,7 @@ $(document).ready ->
 	$(document).on("click", ".waiting-for-approval-users .action.approve", {action : "approve" }, act_on_user)
 	$(document).on("click", ".approved-users .action.suspend", {action : "suspend" }, act_on_user)
 	$(document).on("click", ".approved-users .action.activate", {action : "activate" }, act_on_user)
+	$(document).on("click", ".admin input[type='checkbox']", {}, toggelAdminOnUser)
 	return
 
 act_on_user = (obj)->
@@ -52,8 +53,38 @@ act_on_user = (obj)->
 		return
 	
 	request.error (data, textStatus, jqXHR) ->
-			alert('error')
+			alert('Something went wrong while trying to get change user status')
 	
+	return
+
+toggelAdminOnUser = ()->
+	$el = $(this)
+	$row = $el.closest("tr")
+
+	user_id = $row.data("user-id")
+
+	checked = $el.prop("checked");
+
+	full_name = $row.data("full-name")
+
+	# Generate the message based on the check of the user admin flag
+	message = if checked then "make #{full_name} an administrator?" else "remove #{full_name} from the administrators?"
+	message = "Are you sure " + message
+
+	if(confirm(message) != true)
+		$el.prop("checked", !checked);
+		return
+
+	request = $.post '/admin/toggle_admin',
+		user_id: user_id
+
+	request.success (data) ->
+		alert("#{full_name} is now an administrator")
+		return
+
+	request.error (data, textStatus, jqXHR) ->
+			alert("Something went wrong while trying to make #{full_name} an administrator")
+			$el.prop("checked", !checked);
 	return
 
 # Toggles a table and the container that says there are no users if needed

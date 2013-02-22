@@ -1,3 +1,4 @@
+<% show_admin_column = defined?(show_admin) && show_admin ? true : false%>
 <table <%= inline_style_hidden(users.empty?)%> class="table table-striped table-bordered" cellspacing="0" cellpadding="0" border="0">
 	<thead>
 		<tr>
@@ -7,11 +8,12 @@
 			<th class="email">Email</th>
 			<th class="statu">Status</th>
 			<th class="action">Action</th>
+			<th class="admin" <%= inline_style_hidden( !show_admin_column ) %> >Admin</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% users.each do |user| %>
-			<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
+			<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>" data-full-name="<%= user.full_name %>">
 				<td class="username">
 					<%= user.username %>
 				</td>
@@ -29,6 +31,9 @@
 				</td>
 				<td class="action">
 					<%= user_action(user) %>
+				</td>
+				<td class="admin" <%= inline_style_hidden( !show_admin_column ) %>>
+					<input type="checkbox" <%=  "checked" if user.is_admin? %> />
 				</td>
 			</tr>
 		<% end %>

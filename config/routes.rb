@@ -27,6 +27,7 @@ Kandan::Application.routes.draw do
     root :to => "admin#index"
     post "/update", :to => "admin#update", :as => "update"
     post "/update_user", :to => "admin#update_user", :as => "update_user"
+    post "/toggle_admin", :to => "admin#toggle_admin"
   end
 
   # Pages Controller

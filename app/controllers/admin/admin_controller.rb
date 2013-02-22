@@ -39,6 +39,18 @@ module Admin
 
   		render :json => user, :status => 200
   	end
+
+  	def toggle_admin
+  		user_id = params[:user_id]
+
+  		user = User.find(user_id)
+
+  		user.is_admin = !user.is_admin?
+
+  		user.save!
+
+  		render :json => user, :status => 200  		
+  	end
     
   end
 end
