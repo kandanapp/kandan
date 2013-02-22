@@ -1,17 +1,17 @@
 module Admin::AdminHelper
 	def user_status user
-		"<div class='#{user.status}'>#{user.status}</div>".html_safe
+		"<div class='#{user.status}'>#{user.status.titlecase}</div>".html_safe
 	end
 
 	def user_action user
-		action = if user.status.waiting_approval?
-			"Approve"
+		action, css = if user.status.waiting_approval?
+			["Approve", "btn-success"]
 		elsif user.status.suspended?
-			"Activate"
+			["Activate", "btn-success"] 
 		else
-			"Suspend"
+			["Suspend", "btn-danger"]
 		end
 
-		"<button class='action #{action.downcase}'>#{action}</button>".html_safe
+		"<button class='action #{action.downcase} btn #{css}'>#{action}</button>".html_safe
 	end
 end

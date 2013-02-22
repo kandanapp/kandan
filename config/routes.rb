@@ -1,5 +1,10 @@
 Kandan::Application.routes.draw do
 
+  devise_for :users,
+  :controllers => {
+    :sessions => "sessions"
+  }
+
   get "pages/approval"
 
   get "pages/suspended"

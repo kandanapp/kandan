@@ -1,101 +1,117 @@
 <% content_for :javascript_includes do %>
 	<%= javascript_include_tag "admin/admin" %>
+
+	<%# Removed the following line when we start using Bootstrap all over the app %>
+	<%= stylesheet_link_tag  "admin", :media => "all" %>
 <% end %>
 
-<div class="admin-main-area">
-	<%= form_for @settings, :url => admin_update_path, :method => :post do |f| %>
-	  <%= f.label :max_rooms, 'Max number of rooms' %>:
-	  <%= f.text_field :max_rooms %><br />
-	  <%= f.label :public_site, 'Is this a public site?' %>:
-	  <%= f.check_box :public_site %><br />
-	  <%= f.submit %>
-	<% end %>
-
-	<div class="waiting-for-approval-users">
-		<% if @waiting_for_approval_users.any? %>
-			<div>Users waiting for approval</div>
-			<table cellspacing="0" cellpadding="0" border="0">
-				<thead>
-					<tr>
-						<th class="">Username</th>
-						<th class="">First Name</th>
-						<th class="">Last Name</th>
-						<th class="">Email</th>
-						<th class="">Status</th>
-						<th class="">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @waiting_for_approval_users.each do |user| %>
-						<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
-							<td>
-								<%= user.username %>
-							</td>
-							<td>
-								<%= user.first_name %>
-							</td>
-							<td>
-								<%= user.last_name %>
-							</td>
-							<td>
-								<%= user.email %>
-							</td>
-							<td>
-								<%= user_status(user) %>
-							</td>
-							<td>
-								<%= user_action(user) %>
-							</td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		<% else %>
-			<div>There are no users. Invite others to join Kandan!</div>
+<div class="container">
+	<div class="admin-main-area span12">
+		<h3>Site settings</h3>
+		<%= form_for @settings, :url => admin_update_path, :method => :post, :html => { :class => "" } do |f| %>
+		  <div class="control-group">
+		  	<%= f.label :max_rooms, 'Max number of rooms', :class => "control-label" %>
+		  	<div class="controls">
+		  		<%= f.number_field :max_rooms, :class => "input-mini" %>
+		  	</div>
+		  </div>
+		  <div class="control-group">
+		  	<%= f.label :public_site, 'Is this a public site?', :class => "control-label" %>
+		  	<div class="controls">
+		  		<%= f.check_box :public_site %>
+		  	</div>
+		  </div>
+		  <div class="control-group">
+		  	<%= f.submit :class => "btn btn-success" %>
+		  </div>
 		<% end %>
-	</div>
 
-	<div class="approved-users">
-		<% if @approved_users.any? %>
-			<div>All users</div>
-			<table cellspacing="0" cellpadding="0" border="0">
-				<thead>
-					<tr>
-						<th class="">Username</th>
-						<th class="">First Name</th>
-						<th class="">Last Name</th>
-						<th class="">Email</th>
-						<th class="">Status</th>
-						<th class="">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @approved_users.each do |user| %>
-						<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
-							<td>
-								<%= user.username %>
-							</td>
-							<td>
-								<%= user.first_name %>
-							</td>
-							<td>
-								<%= user.last_name %>
-							</td>
-							<td>
-								<%= user.email %>
-							</td>
-							<td>
-								<%= user_status(user) %>
-							</td>
-							<td>
-								<%= user_action(user) %>
-							</td>
+		<div class="waiting-for-approval-users">
+			<h3>Users waiting for approval</h3>
+			<% if @waiting_for_approval_users.any? %>
+				<table class="table table-striped table-bordered" cellspacing="0" cellpadding="0" border="0">
+					<thead>
+						<tr>
+							<th class="">Username</th>
+							<th class="">First Name</th>
+							<th class="">Last Name</th>
+							<th class="">Email</th>
+							<th class="">Status</th>
+							<th class="">Action</th>
 						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		<% else %>
-			<div>There are no users. Invite others to join Kandan!</div>
-		<% end %>
+					</thead>
+					<tbody>
+						<% @waiting_for_approval_users.each do |user| %>
+							<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
+								<td>
+									<%= user.username %>
+								</td>
+								<td>
+									<%= user.first_name %>
+								</td>
+								<td>
+									<%= user.last_name %>
+								</td>
+								<td>
+									<%= user.email %>
+								</td>
+								<td>
+									<%= user_status(user) %>
+								</td>
+								<td>
+									<%= user_action(user) %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% else %>
+				<div>There are no users. Invite others to join Kandan!</div>
+			<% end %>
+		</div>
+
+		<div class="approved-users">
+			<h3>All users</h3>
+			<% if @approved_users.any? %>
+				<table class="table table-striped table-bordered" cellspacing="0" cellpadding="0" border="0">
+					<thead>
+						<tr>
+							<th class="">Username</th>
+							<th class="">First Name</th>
+							<th class="">Last Name</th>
+							<th class="">Email</th>
+							<th class="">Status</th>
+							<th class="">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @approved_users.each do |user| %>
+							<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
+								<td>
+									<%= user.username %>
+								</td>
+								<td>
+									<%= user.first_name %>
+								</td>
+								<td>
+									<%= user.last_name %>
+								</td>
+								<td>
+									<%= user.email %>
+								</td>
+								<td>
+									<%= user_status(user) %>
+								</td>
+								<td>
+									<%= user_action(user) %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% else %>
+				<div>There are no users. Invite others to join Kandan!</div>
+			<% end %>
+		</div>
 	</div>
 </div>

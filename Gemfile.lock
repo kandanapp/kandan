@@ -53,6 +53,8 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.6.8)
+    bootstrap-sass (2.3.0.1)
+      sass (~> 3.2)
     bourbon (1.4.0)
       sass (>= 3.1)
     bourne (1.1.2)
@@ -277,6 +279,7 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 2.3.0.1)
   bourbon (~> 1.4.0)
   cloudfuji
   coffee-rails

@@ -35,6 +35,7 @@ group :assets do
   gem 'execjs'   
   gem 'eco'
   gem 'uglifier'
+  gem 'bootstrap-sass', '~> 2.3.0.1'
 end
 
 group :development do
