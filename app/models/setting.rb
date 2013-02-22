@@ -37,7 +37,7 @@ class Setting < ActiveRecord::Base
   end
 
   def self.default_values
-  	return {:max_rooms => 99, :public_site => true }
+  	{:max_rooms => Kandan::Config.options[:max_rooms], :public_site => Kandan::Config.options[:public_site]}
   end
 
   # Helper methods to be used while we don't need to deal with multi-tenancy
