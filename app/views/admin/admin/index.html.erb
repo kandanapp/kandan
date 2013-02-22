@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="admin-main-area">
-	<%= form_for @settings, :url => admin_update_path do |f| %>
+	<%= form_for @settings, :url => admin_update_path, :method => :post do |f| %>
 	  <%= f.label :max_rooms, 'Max number of rooms' %>:
 	  <%= f.text_field :max_rooms %><br />
 	  <%= f.label :public_site, 'Is this a public site?' %>:
@@ -12,8 +12,8 @@
 	<% end %>
 
 	<div class="waiting-for-approval-users">
-		<div>Users waiting for approval</div>
 		<% if @waiting_for_approval_users.any? %>
+			<div>Users waiting for approval</div>
 			<table cellspacing="0" cellpadding="0" border="0">
 				<thead>
 					<tr>
@@ -44,7 +44,7 @@
 								<%= user_status(user) %>
 							</td>
 							<td>
-								
+								<%= user_action(user) %>
 							</td>
 						</tr>
 					<% end %>
@@ -56,8 +56,8 @@
 	</div>
 
 	<div class="approved-users">
-		<div>All users</div>
-		<% if @all_users.any? %>
+		<% if @approved_users.any? %>
+			<div>All users</div>
 			<table cellspacing="0" cellpadding="0" border="0">
 				<thead>
 					<tr>
@@ -70,7 +70,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @all_users.each do |user| %>
+					<% @approved_users.each do |user| %>
 						<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>">
 							<td>
 								<%= user.username %>
@@ -88,7 +88,7 @@
 								<%= user_status(user) %>
 							</td>
 							<td>
-								
+								<%= user_action(user) %>
 							</td>
 						</tr>
 					<% end %>

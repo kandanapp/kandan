@@ -20,8 +20,8 @@ Kandan::Application.routes.draw do
 
   namespace :admin do
     root :to => "admin#index"
-    put "/update", :to => "admin#update", :as => "update"
-    put "/update_users", :to => "admin#update_users", :as => "update_users"
+    post "/update", :to => "admin#update", :as => "update"
+    post "/update_user", :to => "admin#update_user", :as => "update_user"
   end
 
   # Pages Controller

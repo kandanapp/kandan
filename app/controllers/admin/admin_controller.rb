@@ -6,7 +6,11 @@ module Admin
   		@all_users = User.find(:all, :conditions => ["id != ?", current_user.id])
 
   		# Note that this reject! will remove users from all_users in order to show users in 2 different tables
-  		@waiting_for_approval_users = @all_users.select{|user| user.status.waiting_approval? } || []
+  		@waiting_for_approval_users = []
+  		@approved_users = []
+
+  		# Iterate over the array to get approved and non-approved users
+  		@all_users.each{|user| user.status.waiting_approval? ? @waiting_for_approval_users.push(user) : @approved_users.push(user) }
   	end
 
   	def update
@@ -19,8 +23,22 @@ module Admin
   		redirect_to :admin_root
   	end
 
-  	def update_users
+  	def update_user
+  		user_id = params[:user_id]
+  		action = params[:action_taken].to_s
 
+  		user = User.find(user_id)
+
+  		case action
+  		when "activate", "approve"
+  			user.status = "active"
+  		when "suspend"
+  			user.status = "suspended"
+  		end
+
+  		user.save! if user.changed?
+
+  		render :nothing => true, :status => 200
   	end
     
   end
