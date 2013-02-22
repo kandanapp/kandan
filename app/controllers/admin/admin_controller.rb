@@ -5,7 +5,6 @@ module Admin
   		@settings = Setting.my_settings
   		@all_users = User.find(:all, :conditions => ["id != ?", current_user.id])
 
-  		# Note that this reject! will remove users from all_users in order to show users in 2 different tables
   		@waiting_for_approval_users = []
   		@approved_users = []
 
