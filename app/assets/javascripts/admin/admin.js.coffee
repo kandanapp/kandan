@@ -50,6 +50,9 @@ act_on_user = (obj)->
 			toggleTableIfNeeded $(".waiting-for-approval-users")
 			toggleTableIfNeeded $(".approved-users")
 
+			# Show the admin row that is hidden on the waiting for approval users table
+			$row.find("td.admin").show()
+
 		return
 	
 	request.error (data, textStatus, jqXHR) ->
@@ -71,6 +74,7 @@ toggelAdminOnUser = ()->
 	message = if checked then "make #{full_name} an administrator?" else "remove #{full_name} from the administrators?"
 	message = "Are you sure " + message
 
+	# If the user didnt confirm then put the check back and return
 	if(confirm(message) != true)
 		$el.prop("checked", !checked);
 		return
