@@ -4,47 +4,63 @@
   })
 <%- end %>
 
-<div id="kandan">
-  <div class="header">
-    <%= image_tag "logo.png", :class=>"logo" %>  
-    <a href="#" class="user_menu_link">
-      <cite class="user_flag"></cite>
-      <div class="user"></div>
-    </a>
+<%- Kandan::Config.broadcaster.assets.each do |asset| %>
+  <%= javascript_include_tag asset %>
+<%- end %>
+  
+<%= javascript_tag do %>
+  <%- if user_signed_in? %>
+    <%- current_user_data = {
+          :id            => current_user.id,
+          :first_name    => current_user.first_name,
+          :last_name     => current_user.last_name,
+          :email         => current_user.email,
+          :username      => current_user.username,
+          :auth_token    => current_user.authentication_token,
+          :gravatar_hash => current_user.gravatar_hash
+        }
+        %>
+    $.data(document, "current-user", <%= current_user_data.to_json.html_safe %>);
+  <%- end %>
+  $(document).data("active-users", [])
+<%- end %>
 
-    <div class="search">
+<% content_for :header_content do %>
+  <div class="search">
       <form method="get" action="/search" target="_blank">
-	      <input type="text" class="query" name="query"/>
+        <input type="text" class="query" name="query"/>
       </form>
     </div>
-  </div>
+<% end %>
 
-
-  <div id="app_body">
-    <div class="main-area">
-
-
-      <div id="mask_container">
-	<div id="head-mask">
-	  <div class="corner_cover" style="float:left;position:relative;left:-10px;"></div>
-	  <div class="corner_cover"  style="float:right;position:relative;right:-10px;"></div>
-	</div>
-      </div>
-    </div>
-
-    <div class="sidebar">
-      <div class="sidebar_filler">
-	<div class="widgets"></div>
-      </div>
+  <div class="main-area">
+    <div id="mask_container">
+    	<div id="head-mask">
+    	  <div class="corner_cover" style="float:left;position:relative;left:-10px;"></div>
+    	  <div class="corner_cover"  style="float:right;position:relative;right:-10px;"></div>
+    	</div>
     </div>
   </div>
-
-  <div id="mask">&nbsp;</div>
-
+  <div class="sidebar">
+    <div class="sidebar_filler">
+      <div class="widgets"></div>
+    </div>
+  </div>
 </div>
-  <div class="user_menu">
-    <%= link_to 'Edit Account', users_edit_path, @users_edit %><br />
-    <%= link_to 'Logout', destroy_user_session_path, :method => :delete %><br />
-    <hr>
-    <%= link_to 'About Kandan', about_path, @about %>
-  </div>
+<div id="mask">&nbsp;</div>
+<ul class="audio_channels" style="display:none;">
+  <audio class="audio_private"></audio>
+  <audio class="audio_common"></audio>
+</ul>
+
+<%- if user_signed_in? && Cloudfuji::Platform.on_cloudfuji? %>
+  <%= javascript_tag do %>
+    <%- cloudfuji_help_vars = {
+        "HUBOT_KANDAN_TOKEN" => User.find_by_email("hubot@cloudfuji.com").try(:authentication_token),
+        "HUBOT_KANDAN_HOST"  => ENV['CLOUDFUJI_DOMAIN']
+    }
+    %>
+
+  window._cloudfuji_help = <%= cloudfuji_help_vars.to_json.html_safe %>;
+  <%- end %>
+<%- end %>

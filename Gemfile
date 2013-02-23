@@ -21,6 +21,7 @@ gem 'aws-sdk'
 gem 'paperclip'
 gem 'remotipart'
 gem 'jquery-rails'
+gem 'enumerize'
 
 # Making the world a better, more stable place
 gem 'airbrake'
@@ -34,6 +35,7 @@ group :assets do
   gem 'execjs'   
   gem 'eco'
   gem 'uglifier'
+  gem 'bootstrap-sass', '~> 2.3.0.1'
 end
 
 group :development do
@@ -42,6 +44,7 @@ group :development do
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'debugger'
 end
 
 group :test do

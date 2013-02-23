@@ -9,3 +9,7 @@
   :name: "Faye"
 
 :per_page: 30
+
+:max_rooms: 99
+
+:public_site: true

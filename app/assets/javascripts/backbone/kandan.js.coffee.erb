@@ -125,29 +125,13 @@ window.Kandan =
       Kandan.Plugins.Mentions.initUsersMentions(Kandan.Helpers.ActiveUsers.all())
       return
 
-  setCurrentUser: ()->
-    template = JST['current_user']
-    currentUser = Kandan.Helpers.Users.currentUser()
-    displayName =   "#{currentUser.first_name} #{currentUser.last_name}" if currentUser.first_name?
-    displayName ||= currentUser.email
-    $(".header .user").html template({
-      gravatarHash: currentUser.gravatar_hash,
-      name: displayName
-    })
-
   registerUtilityEvents: ()->
     window.setInterval(=>
       for el in $(".posted_at")
         $(el).text (new Date($(el).data("timestamp"))).toRelativeTime(@options.nowThreshold)
     , @options.timestampRefreshInterval)
 
-    $(".user_menu_link").click (e)->
-      e.preventDefault()
-      $(".user_menu").toggle()
-      false
-
   init: ->
-    @setCurrentUser()
     channels = new Kandan.Collections.Channels()
     channels.fetch({
       success: (channelsCollection)=>
