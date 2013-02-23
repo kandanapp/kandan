@@ -1,6 +1,10 @@
 namespace :kandan do
   desc "Bootstrap an initial install of Kandan. Not strictly necessary, but faster."
   task :bootstrap => :environment do
+
+    # Initialize default settings
+    Setting.my_settings
+
     user = User.first
 
     if user.nil?
@@ -12,6 +16,7 @@ namespace :kandan do
       user.last_name  = "OfKandan"
       user.password   = "kandanappadmin"
       user.password_confirmation = "kandanappadmin"
+      user.is_admin = true
       user.save!
     end
 
@@ -26,6 +31,9 @@ namespace :kandan do
        "To get started, you can embed images or youtube clips, use the /me command (/me is in proper love with Kandan, innit!), upload files, or of course, just chat with your teammates.",
        "Just paste in an image url and type a subtitle http://kandanapp.com/images/kandanlogo.png",
        "http://www.youtube.com/watch?v=MvzyWk4lMc8 Same with youtube videos",
+       "To mention other folks just use @ and their username or use @all",
+       "Checkout all emoticons available at http://www.emoji-cheat-sheet.com/",
+       ":+1:",
        "/me is in proper love with Kandan, innit!",
        "If you're the type of person who enjoys hacking on projects, the source to Kandan is at https://github.com/kandanapp/kandan",
        "Well, that's about it. If you have any questions, concerns, or ideas, just shoot us an email admin@kandanapp.com! Have fun!",

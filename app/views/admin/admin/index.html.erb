@@ -1,0 +1,39 @@
+<% content_for :javascript_includes do %>
+	<%= javascript_include_tag "admin/admin" %>
+
+	<%# Removed the following line when we start using Bootstrap all over the app %>
+	<%= stylesheet_link_tag  "admin", :media => "all" %>
+<% end %>
+
+<div class="container">
+	<div class="admin-main-area span12">
+		<h3>Site settings</h3>
+		<%= form_for @settings, :url => admin_update_path, :method => :post, :html => { :class => "" } do |f| %>
+		  <div class="control-group">
+		  	<%= f.label :max_rooms, 'Max number of rooms', :class => "control-label" %>
+		  	<div class="controls">
+		  		<%= f.number_field :max_rooms, :class => "input-mini" %>
+		  	</div>
+		  </div>
+		  <div class="control-group">
+		  	<%= f.label :public_site, 'Is this a public site?', :class => "control-label" %>
+		  	<div class="controls">
+		  		<%= f.check_box :public_site %>
+		  	</div>
+		  </div>
+		  <div class="control-group">
+		  	<%= f.submit :class => "btn btn-success" %>
+		  </div>
+		<% end %>
+
+		<div class="waiting-for-approval-users">
+			<h3>Users waiting for approval</h3>
+			<%= render "user_table", :users => @waiting_for_approval_users %>
+		</div>
+
+		<div class="approved-users">
+			<h3>All users</h3>
+			<%= render "user_table", :users => @approved_users, :show_admin => true %>
+		</div>
+	</div>
+</div>
