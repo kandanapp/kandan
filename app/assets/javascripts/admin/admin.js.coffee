@@ -1,7 +1,13 @@
+SUSPEND_ACTION = "suspend"
+SUSPEND_BTN_CSS = "btn-danger"
+ACTIVATE_ACTION = "activate"
+ACTIVATE_APPROVE_BTN_CSS = "btn-success"
+APPROVE_ACTION = "approve"
+
 $(document).ready ->
-	$(document).on("click", ".waiting-for-approval-users .action.approve", {action : "approve" }, act_on_user)
-	$(document).on("click", ".approved-users .action.suspend", {action : "suspend" }, act_on_user)
-	$(document).on("click", ".approved-users .action.activate", {action : "activate" }, act_on_user)
+	$(document).on("click", ".waiting-for-approval-users .action.approve", {action : APPROVE_ACTION }, act_on_user)
+	$(document).on("click", ".approved-users .action.suspend", {action : SUSPEND_ACTION }, act_on_user)
+	$(document).on("click", ".approved-users .action.activate", {action : ACTIVATE_ACTION }, act_on_user)
 	$(document).on("click", ".admin input[type='checkbox']", {}, toggelAdminOnUser)
 	return
 
@@ -19,21 +25,21 @@ act_on_user = (obj)->
 	request.success (data) ->
 		# We will set the new and old css actions depending on the action that was taken because this method
 		# is used by 3 different buttons
-		if action_taken == "suspend"
-			old_btn_class = "suspend"
-			old_css_class = "btn-danger"
-			new_btn_class = "btn-success"
-			new_css_class = "activate"
+		if action_taken == SUSPEND_ACTION
+			old_btn_class = SUSPEND_ACTION
+			old_css_class = SUSPEND_BTN_CSS
+			new_btn_class = ACTIVATE_APPROVE_BTN_CSS
+			new_css_class = ACTIVATE_ACTION
 		else
 			# Approve and activate will be almost the same except for the original css class 
-			if action_taken == "activate"
-				old_css_class = "activate"	
+			if action_taken == ACTIVATE_ACTION
+				old_css_class = ACTIVATE_ACTION
 			else
-				old_css_class = "approve"
+				old_css_class = APPROVE_ACTION
 			
-			old_btn_class = "btn-success"
-			new_btn_class = "btn-danger"
-			new_css_class = "suspend"
+			old_btn_class = ACTIVATE_APPROVE_BTN_CSS
+			new_btn_class = SUSPEND_BTN_CSS
+			new_css_class = SUSPEND_ACTION
 
 		btn_text = _.str.titleize(new_css_class)
 
@@ -43,7 +49,7 @@ act_on_user = (obj)->
 		$el.text(btn_text).removeClass("#{old_btn_class} #{old_css_class}").addClass("#{new_btn_class} #{new_css_class}")
 
 		# Check if the user was an approval. If so, move the user out of the waiting for approval table and add it to the approved table
-		if action_taken == "approve"
+		if action_taken == APPROVE_ACTION
 			$row.remove()
 			$(".approved-users table").show().append($row)
 
