@@ -33,7 +33,7 @@ class Kandan.Plugins.Emoticons
     ":("            : { src : "sad.png", css : "small", title : "sad"},
     "=("            : { src : "sad.png", css : "small", title : "sad"},
     ":)"            : { src : "happy.png", css : "small", title : "happy"},
-    ":)"            : { src : "happy.png", css : "small", title : "happy"},
+    "=)"            : { src : "happy.png", css : "small", title : "happy"},
     ":p"            : { src : "tongue.png", css : "small", title : ":p"},
     "=p"            : { src : "tongue.png", css : "small", title : "=p"},
     ":bowtie:"      : { src : "emojis/bowtie.png", css : "small", title : "bowtie"},
