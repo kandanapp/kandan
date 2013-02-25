@@ -1,4 +1,3 @@
-
   <title>About Kandan</title>
 
 <div class="about">
@@ -57,6 +56,21 @@
 	<li>Twitter <a href="https://twitter.com/kandanapp">@kandanapp</a></li>
 	<li><a href="http://kandan-demo.kandanapp.com/">Kandan Demo</a> (Yes we eat our own DogFood)</li>
 	</ul>
+
+	<h3>Contributors</h3>
+    <div id="contributors"></div>
+    <script>
+  $.getJSON('contributors.json', function(data) {
+        var output="<ul>";
+        for (var i in data.contributors) {
+        	output+="";
+            output+="<span><li><img src='https://secure.gravatar.com/avatar/"+ data.contributors[i].gravatar_id+"' height='30' width='30'> <a href='"+ data.contributors[i].html_url+ "'>"+ data.contributors[i].login + "</a></li></span>";
+        }
+
+        output+="</ul></div>";
+        document.getElementById("contributors").innerHTML=output;
+  });
+    </script>
 
 	<h3>Contact Us</h3>
 	<p>If you find any security issues please submit an <a href="https://github.com/kandanapp/kandan/issues">Issue</a> or <a href="mailto:admin@kandanapp.com">email us</a>.</p>
