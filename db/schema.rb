@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20130224150724) do
     t.boolean  "active",                                :default => true
     t.string   "username"
     t.boolean  "is_admin"
-    t.string   "status",                                :default => "active"
+    t.string   "registration_status",                   :default => "active"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

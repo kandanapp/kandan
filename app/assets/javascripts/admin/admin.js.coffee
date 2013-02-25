@@ -43,7 +43,7 @@ act_on_user = (obj)->
 
 		btn_text = _.str.titleize(new_css_class)
 
-		$row.find("td.status").text(_.str.titleize(data.status))
+		$row.find("td.registration_status").text(_.str.titleize(data.registration_status))
 
 		# Change the look of the buttons by removing and adding classes
 		$el.text(btn_text).removeClass("#{old_btn_class} #{old_css_class}").addClass("#{new_btn_class} #{new_css_class}")
