@@ -32,7 +32,8 @@ namespace :kandan do
         admin = User.where(:username => "admin").first
 
         if admin
-          admin.is_admin = true && admin.save!
+          admin.is_admin = true
+          admin.save!
         else
           puts "\e[31mIt looks like there are no admins in your database. Run rake kandan:add_admin_user\e[0m"
         end
