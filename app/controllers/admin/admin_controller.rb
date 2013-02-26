@@ -9,7 +9,7 @@ module Admin
   		@approved_users = []
 
   		# Iterate over the array to get approved and non-approved users
-  		@all_users.each{|user| user.status.waiting_approval? ? @waiting_for_approval_users.push(user) : @approved_users.push(user) }
+  		@all_users.each{|user| user.registration_status.waiting_approval? ? @waiting_for_approval_users.push(user) : @approved_users.push(user) }
   	end
 
   	def update
@@ -30,12 +30,10 @@ module Admin
 
   		case action
   		when "activate", "approve"
-  			user.status = "active"
+  			user.activate!
   		when "suspend"
-  			user.status = "suspended"
+  			user.suspend!
   		end
-
-  		user.save! if user.changed?
 
   		render :json => user, :status => 200
   	end
