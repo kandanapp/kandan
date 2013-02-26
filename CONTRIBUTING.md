@@ -29,7 +29,6 @@ of keeping on top of things.
 * Fork the repository on GitHub
 
 # Making Changes
-
 * Get the latest code from Github
   * Fork the Main Kandan repository.
   * Clone your fork of the Kandan repository.
@@ -44,11 +43,20 @@ of keeping on top of things.
   * Create a branch from where you want to base your work.
   * Generally you'll want to branch from __MASTER__
   * Please use the naming convention "master-[issue-num]" for your branch name to help us keep track of what your patch actually fixes
-* 
+* Push your code and make a pull request
+ * Sign the [Contributor License Agreement](http://www.clahub.com/agreements/kandanapp/kandan)
+ * Push your changes to your fork of the repository. 
+ * `git push origin master-[issue-num]`
+ * Submit a pull request to the Kandan main repository.
 
-
-
-
+# Additional Resources
+* More information on contributing
+ * [Contributing Code](https://github.com/kandanapp/kandan/wiki/How-to-Contribute-Code)
+ * [Contributing Issues](https://github.com/kandanapp/kandan/wiki/How-to-Contribute-Issues)
+* [Issue tracker](https://github.com/kandanapp/kandan/issues)
+* [Contributor License Agreement](http://www.clahub.com/agreements/kandanapp/kandan)
+* [General GitHub documentation](http://help.github.com/)
+* [GitHub pull request documentation](http://help.github.com/send-pull-requests/)
 
 
 
