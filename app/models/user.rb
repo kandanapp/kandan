@@ -68,4 +68,20 @@ class User < ActiveRecord::Base
     return dummy_user
   end
 
+  def activate
+    self.registration_status = "active"
+  end
+
+  def activate!
+    self.activate && self.save!
+  end
+
+  def suspend
+    self.registration_status = "suspended"
+  end
+
+  def suspend!
+    self.suspend && self.save!
+  end
+
 end
