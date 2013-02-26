@@ -30,12 +30,10 @@ module Admin
 
   		case action
   		when "activate", "approve"
-  			user.registration_status = "active"
+  			user.activate!
   		when "suspend"
-  			user.registration_status = "suspended"
+  			user.suspend!
   		end
-
-  		user.save! if user.changed?
 
   		render :json => user, :status => 200
   	end
