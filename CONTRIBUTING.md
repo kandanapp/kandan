@@ -51,7 +51,6 @@ of keeping on top of things.
 
 # Additional Resources
 * More information on contributing
- * [Contributing Code](https://github.com/kandanapp/kandan/wiki/How-to-Contribute-Code)
  * [Contributing Issues](https://github.com/kandanapp/kandan/wiki/How-to-Contribute-Issues)
 * [Issue tracker](https://github.com/kandanapp/kandan/issues)
 * [Contributor License Agreement](http://www.clahub.com/agreements/kandanapp/kandan)
