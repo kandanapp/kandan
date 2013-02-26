@@ -1,4 +1,11 @@
-### Get Involved
+# How to contribute
+
+Third-party patches are essential for keeping kandan great. We simply can't access the huge number of platforms and 
+myriad configurations for running kandan. We want to keep it as easy as possible to contribute changes that get things 
+working in your environment. There are a few guidelines that we need contributors to follow so that we can have a chance 
+of keeping on top of things.
+
+## Get Involved
 Since Kandan is a fully open-source app, we would appreciate if you dive in and start adding features, fixing bugs 
 (what bugs?), and cleaning up the code.
 
