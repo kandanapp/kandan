@@ -18,6 +18,27 @@ namespace :kandan do
       user.password_confirmation = "kandanappadmin"
       user.is_admin = true
       user.save!
+    else
+      # Doing some cleanup if this is an upgrade instead of a new DB
+      
+      # Users that were already in the database with no registration status will be added as active
+      User.where("registration_status IS NULL").each do |user|
+        user.activate!
+      end
+
+      # If there is no admin we will try to find a user with username admin and make it an admin. Otherwise we will
+      # alert the user
+      if User.where(:is_admin => true).count == 0
+        admin = User.where(:username => "admin").first
+
+        if admin
+          admin.is_admin = true
+          admin.save!
+        else
+          puts "\e[31mIt looks like there are no admins in your database. Run rake kandan:add_admin_user\e[0m"
+        end
+      end
+
     end
 
     channel = Channel.first
@@ -75,6 +96,40 @@ namespace :kandan do
       puts "Your hubot access key is #{ authentication_token }"
     else
       puts "There's not hubot account. Run rake kandan:boot_hubot to create a bot account."
+    end
+  end
+
+  desc "Adds an admin based on a username if there are no admins in kandan"
+  task :add_admin_user => :environment do 
+    if User.count == 0
+      puts "\e[31mThere are no users on your kandan DB. Try running rake kandan:bootstrap first\e[0m"
+    elsif User.where(:is_admin => true).count != 0
+      puts "\e[32mLooks like you already have an admin. Nothing to do here.\e[0m"
+    else
+      username = ""
+      exit_word = "EXIT"
+      done = false
+
+      while not done 
+        puts "Enter the email address of your admin user or type '#{exit_word}' to cancel this script"
+        answer = (STDIN.gets).delete("\n")
+
+        if answer == exit_word
+          puts "Ok. We forgive you. Carry on....."
+          done = true
+        elsif user = User.where(:username => answer).first
+          user.is_admin = true
+          user.save!
+
+          puts "Done. #{user.full_name_or_username} is now admin!"
+
+          done = true
+        else
+          puts "User not found. Let's try that again."
+        end
+      
+      end
+    
     end
   end
 end
