@@ -121,7 +121,7 @@ namespace :kandan do
           user.is_admin = true
           user.save!
 
-          puts "Done. #{user.full_name} is now admin!"
+          puts "Done. #{user.full_name_or_username} is now admin!"
 
           done = true
         else

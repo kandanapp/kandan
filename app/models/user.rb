@@ -13,10 +13,7 @@ class User < ActiveRecord::Base
   after_destroy :ensure_at_least_one_admin
   
   validates :username, :presence => true, :uniqueness => true
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
   
-
   # Kandan.devise_modules is defined in config/initializers/kandan.rb
   devise devise *Kandan.devise_modules
 
