@@ -57,6 +57,10 @@ of keeping on top of things.
 * [General GitHub documentation](http://help.github.com/)
 * [GitHub pull request documentation](http://help.github.com/send-pull-requests/)
 
+# Additional Notes on CLA and Pull Requests
+When we have multiple PRs for the same issue. We will choose the best or if equal the first. In the event the PR 
+requestor has not signed the CLA, we'll give you at least 48 hours to sign and if we don't here back we'll take the 
+PR from someone who has.
 
 
 
