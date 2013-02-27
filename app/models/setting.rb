@@ -28,7 +28,7 @@ class Setting < ActiveRecord::Base
 
   # Making sure the max_rooms is an integer and is never less than the current number of rooms
   def validate_max_rooms
-  	self.values[:max_rooms].is_a?(Integer) && self.values[:max_rooms] >= Channel.count unless self.new_record?
+  	self.values[:max_rooms].is_a?(Integer) && self.values[:max_rooms] > 0 && self.values[:max_rooms] >= Channel.count unless self.new_record?
   end
 
   # Making sure the public site is a boolean
