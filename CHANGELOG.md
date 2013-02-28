@@ -1,6 +1,137 @@
 CHANGELOG
 =========
 
+#### [v1.1]
+ * [b13494f](http://github.com/kandanapp/kandan/commit/b13494f) Merge pull request #139 from gabceb/master __(James Gifford)__
+ * [18df9fc](http://github.com/kandanapp/kandan/commit/18df9fc) Removing all references of cloudfuji profile icon from js templates __(Gabriel Cebrian)__
+ * [ff10fba](http://github.com/kandanapp/kandan/commit/ff10fba) Update CONTRIBUTING.md __(Tony Guntharp)__
+ * [7e441b0](http://github.com/kandanapp/kandan/commit/7e441b0) Merge pull request #130 from jrgifford/updating-rails-for-security-patchs __(Gabriel Cebrian)__
+ * [f68abe1](http://github.com/kandanapp/kandan/commit/f68abe1) Updated rails to fix security holes. __(James Gifford)__
+ * [5690a56](http://github.com/kandanapp/kandan/commit/5690a56) Merge pull request #129 from gabceb/kandan_128 __(Tony Guntharp)__
+ * [9d94081](http://github.com/kandanapp/kandan/commit/9d94081) Added check to make sure the # of rooms is respected when adding more rooms __(Gabriel Cebrian)__
+ * [b0c0669](http://github.com/kandanapp/kandan/commit/b0c0669) Update CONTRIBUTING.md __(Tony Guntharp)__
+ * [d6ea111](http://github.com/kandanapp/kandan/commit/d6ea111) Update CONTRIBUTING.md __(Tony Guntharp)__
+ * [e1cb85f](http://github.com/kandanapp/kandan/commit/e1cb85f) Update CONTRIBUTING.md __(Tony Guntharp)__
+ * [6d0ae10](http://github.com/kandanapp/kandan/commit/6d0ae10) Update CONTRIBUTING.md __(Tony Guntharp)__
+ * [0da443c](http://github.com/kandanapp/kandan/commit/0da443c) Merge pull request #116 from gabceb/kandan_113 __(Don Thorp)__
+ * [b367ccf](http://github.com/kandanapp/kandan/commit/b367ccf) Removed first and last name. Using full_name_or_username instead of full_name everywhere now __(Gabriel Cebrian)__
+ * [e03e9d9](http://github.com/kandanapp/kandan/commit/e03e9d9) Merge pull request #125 from donthorp/issue-119 __(Tony Guntharp)__
+ * [d6a3291](http://github.com/kandanapp/kandan/commit/d6a3291) Merge branch 'master' into issue-119 __(donthorp)__
+ * [25cb0f7](http://github.com/kandanapp/kandan/commit/25cb0f7) Fixes #119. emoji with number underscore dash or plus ignored. __(donthorp)__
+ * [bf59ed7](http://github.com/kandanapp/kandan/commit/bf59ed7) Merge pull request #117 from gabceb/kandan_114 __(Tony Guntharp)__
+ * [10f87f6](http://github.com/kandanapp/kandan/commit/10f87f6) Merge pull request #124 from fusion94/master-123 __(Gabriel Cebrian)__
+ * [b3fd34d](http://github.com/kandanapp/kandan/commit/b3fd34d) Making Ruby happy __(Gabriel Cebrian)__
+ * [92f3ab1](http://github.com/kandanapp/kandan/commit/92f3ab1) Admin controller now uses suspend and activate methods __(Gabriel Cebrian)__
+ * [7adc29e](http://github.com/kandanapp/kandan/commit/7adc29e) Added more code to bootstrap task to deal with upgrade cases. __(Gabriel Cebrian)__
+ * [2b81b1c](http://github.com/kandanapp/kandan/commit/2b81b1c) moved version string to git_revision Fixes #123 __(Tony Guntharp)__
+ * [bcf746c](http://github.com/kandanapp/kandan/commit/bcf746c) Merge pull request #121 from fusion94/master-120 __(Gabriel Cebrian)__
+ * [f490117](http://github.com/kandanapp/kandan/commit/f490117) Adding Contributors to About page. Fixed #120 __(Tony Guntharp)__
+ * [f8b1a39](http://github.com/kandanapp/kandan/commit/f8b1a39) Status is now registration_status all over the app __(Gabriel Cebrian)__
+ * [138409d](http://github.com/kandanapp/kandan/commit/138409d) Merge pull request #118 from donthorp/rake-git-tasks __(Tony Guntharp)__
+ * [802d93e](http://github.com/kandanapp/kandan/commit/802d93e) Add add_team_repos and prune_team_repos tasks to assist in PR handling __(donthorp)__
+ * [17a3a19](http://github.com/kandanapp/kandan/commit/17a3a19) Merge pull request #115 from talltroym/fix-emoticon-typo __(Tony Guntharp)__
+ * [c5b055a](http://github.com/kandanapp/kandan/commit/c5b055a) Fix trigger text for happy fave graphic with equal sign and right parenthesis __(Troy Murray)__
+ * [6c1a1b0](http://github.com/kandanapp/kandan/commit/6c1a1b0) Fixed typo on admin.'s location for recompilation __(Gabriel Cebrian)__
+ * [7896ffe](http://github.com/kandanapp/kandan/commit/7896ffe) Added default status for users. Closes #113 __(Gabriel Cebrian)__
+ * [d5fe480](http://github.com/kandanapp/kandan/commit/d5fe480) Fix a typo that displayed a sad face graphic when a happy face emoticon was used __(Troy Murray)__
+ * [1009b71](http://github.com/kandanapp/kandan/commit/1009b71) don't ask... __(Tony Guntharp)__
+ * [bf322fe](http://github.com/kandanapp/kandan/commit/bf322fe) Merge pull request #112 from fusion94/master-110 __(Don Thorp)__
+ * [6c91ecc](http://github.com/kandanapp/kandan/commit/6c91ecc) correcting a typo for xhtml compliance __(Tony Guntharp)__
+ * [c8a83ec](http://github.com/kandanapp/kandan/commit/c8a83ec) Removed features from about messaging __(Tony Guntharp)__
+ * [90cb909](http://github.com/kandanapp/kandan/commit/90cb909) Adding Git SHA to about page as well as some new messaging. __(Tony Guntharp)__
+ * [7b57f80](http://github.com/kandanapp/kandan/commit/7b57f80) Merge pull request #108 from gabceb/CanCanAdmin __(Tony Guntharp)__
+ * [4963b69](http://github.com/kandanapp/kandan/commit/4963b69) Small fixes from the code review __(Gabriel Cebrian)__
+ * [4c15ac8](http://github.com/kandanapp/kandan/commit/4c15ac8) Make sure approved users have an admin checkbox when they are approved __(Gabriel Cebrian)__
+ * [e0ed0fb](http://github.com/kandanapp/kandan/commit/e0ed0fb) Added ability to have add admins __(Gabriel Cebrian)__
+ * [9ac14de](http://github.com/kandanapp/kandan/commit/9ac14de) Small fixes __(Gabriel Cebrian)__
+ * [53339a7](http://github.com/kandanapp/kandan/commit/53339a7) Javascript to handle users finished. Added check to make sure approved users are not stuck on the approval page. Same for suspended __(Gabriel Cebrian)__
+ * [7b11928](http://github.com/kandanapp/kandan/commit/7b11928) Added a couple more messages to the bootstrap rake task __(Gabriel Cebrian)__
+ * [d33aed7](http://github.com/kandanapp/kandan/commit/d33aed7) Added bootstrap to project. __(Gabriel Cebrian)__
+ * [00a1620](http://github.com/kandanapp/kandan/commit/00a1620) Keep bots away from the sites. __(Gabriel Cebrian)__
+ * [ad65897](http://github.com/kandanapp/kandan/commit/ad65897) Merge pull request #107 from donthorp/issue-106 __(Tony Guntharp)__
+ * [1d3f3e5](http://github.com/kandanapp/kandan/commit/1d3f3e5) Fixes #106. =) shows wrong graphic __(donthorp)__
+ * [f875d9e](http://github.com/kandanapp/kandan/commit/f875d9e) Merge pull request #104 from donthorp/kandan-15 __(Gabriel Cebrian)__
+ * [ff66804](http://github.com/kandanapp/kandan/commit/ff66804) Extended emoticon plugin to support emoji for #15. Thanks to https://github.com/arvida/emoji-cheat-sheet.com for making this easy. __(donthorp)__
+ * [834fef9](http://github.com/kandanapp/kandan/commit/834fef9) Added some js and actions to update a user status __(Gabriel Cebrian)__
+ * [7e5c285](http://github.com/kandanapp/kandan/commit/7e5c285) Moved default values of kandan settings to kandan config yaml file __(Gabriel Cebrian)__
+ * [101df98](http://github.com/kandanapp/kandan/commit/101df98) Added simple approval and suspended pages. Added filters to redirect users depending on the status. Moved about page to the pages controller __(Gabriel Cebrian)__
+ * [ebb5f3f](http://github.com/kandanapp/kandan/commit/ebb5f3f) Initial implementation of admin console and site settings __(Gabriel Cebrian)__
+ * [fd01af1](http://github.com/kandanapp/kandan/commit/fd01af1) Merge pull request #99 from gabceb/master __(Tony Guntharp)__
+ * [fe1124f](http://github.com/kandanapp/kandan/commit/fe1124f) Added all to mentions __(Gabriel Cebrian)__
+ * [4a1fa47](http://github.com/kandanapp/kandan/commit/4a1fa47) Merge pull request #97 from gabceb/master __(Tony Guntharp)__
+ * [ac22801](http://github.com/kandanapp/kandan/commit/ac22801) Trying to fix notification buttons AGAIN! __(Gabriel Cebrian)__
+ * [b961af3](http://github.com/kandanapp/kandan/commit/b961af3) Merge pull request #96 from gabceb/master __(Tony Guntharp)__
+ * [5fcd900](http://github.com/kandanapp/kandan/commit/5fcd900) Addedd username to factory girl __(Gabriel Cebrian)__
+ * [1b1ec67](http://github.com/kandanapp/kandan/commit/1b1ec67) Merge pull request #95 from gabceb/master-70 __(Tony Guntharp)__
+ * [6c0ece5](http://github.com/kandanapp/kandan/commit/6c0ece5) Added uniqueness and presence for user's username __(Gabriel Cebrian)__
+ * [459acb9](http://github.com/kandanapp/kandan/commit/459acb9) Room names added as unique. An error is now showed if an error occurred while creating a room. Updated backbone and underscore to latest versions __(Gabriel Cebrian)__
+ * [9c07e55](http://github.com/kandanapp/kandan/commit/9c07e55) Merge pull request #92 from gabceb/master __(Tony Guntharp)__
+ * [a7eb71e](http://github.com/kandanapp/kandan/commit/a7eb71e) Moved css from layout to application.css.sass __(Gabriel Cebrian)__
+ * [99365b6](http://github.com/kandanapp/kandan/commit/99365b6) Merge pull request #91 from gabceb/master __(Tony Guntharp)__
+ * [fa1af63](http://github.com/kandanapp/kandan/commit/fa1af63) Merge branch 'master' of https://github.com/kandanapp/kandan __(Gabriel Cebrian)__
+ * [0d7eb34](http://github.com/kandanapp/kandan/commit/0d7eb34) Added mentions and at who plugin __(Gabriel Cebrian)__
+ * [52b233c](http://github.com/kandanapp/kandan/commit/52b233c) Merge pull request #90 from gabceb/kanda-24 __(Tony Guntharp)__
+ * [a986430](http://github.com/kandanapp/kandan/commit/a986430) Added notifications pane. __(Gabriel Cebrian)__
+ * [f52250d](http://github.com/kandanapp/kandan/commit/f52250d) Merge pull request #89 from SpencerCooley/master __(Tony Guntharp)__
+ * [97baf5a](http://github.com/kandanapp/kandan/commit/97baf5a) Merge branch 'master' of https://github.com/kandanapp/kandan __(Spencer)__
+ * [623ff1b](http://github.com/kandanapp/kandan/commit/623ff1b) auto scroll is working on initial load and tab switch __(Spencer)__
+ * [8a0c6f6](http://github.com/kandanapp/kandan/commit/8a0c6f6) Merge pull request #88 from skypanther/master __(Tony Guntharp)__
+ * [025dca9](http://github.com/kandanapp/kandan/commit/025dca9) Added AppFog installation instructions __(Tim Poulsen)__
+ * [026807e](http://github.com/kandanapp/kandan/commit/026807e) Merge pull request #84 from gabceb/master __(Tony Guntharp)__
+ * [08cdef3](http://github.com/kandanapp/kandan/commit/08cdef3) Merge pull request #83 from gabceb/kandan-82 __(Tony Guntharp)__
+ * [bf0f81d](http://github.com/kandanapp/kandan/commit/bf0f81d) Added logger to development env for Thin server __(Gabriel Cebrian)__
+ * [35e30a3](http://github.com/kandanapp/kandan/commit/35e30a3) Added dummy deleted user to be used when a message associated with a user that has been deleted is shown __(Gabriel Cebrian)__
+ * [b2053b7](http://github.com/kandanapp/kandan/commit/b2053b7) Merge pull request #80 from gabceb/master __(Tony Guntharp)__
+ * [1e6a668](http://github.com/kandanapp/kandan/commit/1e6a668) Fixed references to some emoticons. Added GTFO emoticon image __(Gabriel Cebrian)__
+ * [7cf6f98](http://github.com/kandanapp/kandan/commit/7cf6f98) Merge pull request #74 from gabceb/master __(Tony Guntharp)__
+ * [a8b1392](http://github.com/kandanapp/kandan/commit/a8b1392) Updated file drop to latest version work with latest jquery where live is deprecated __(Gabriel Cebrian)__
+ * [e23bb66](http://github.com/kandanapp/kandan/commit/e23bb66) Merge pull request #73 from gabceb/master __(Tony Guntharp)__
+ * [5eb73d9](http://github.com/kandanapp/kandan/commit/5eb73d9) Removed unnecessary dummy thumb url __(Gabriel Cebrian)__
+ * [a351bdd](http://github.com/kandanapp/kandan/commit/a351bdd) Added vimeo plugin __(Gabriel Cebrian)__
+ * [b194115](http://github.com/kandanapp/kandan/commit/b194115) Merge pull request #71 from gabceb/master __(Tony Guntharp)__
+ * [ed48045](http://github.com/kandanapp/kandan/commit/ed48045) Merge branch 'master' of https://github.com/kandanapp/kandan __(Gabriel Cebrian)__
+ * [61dc435](http://github.com/kandanapp/kandan/commit/61dc435) Added real emoticons to emoticons plugin. __(Gabriel Cebrian)__
+ * [3019dd2](http://github.com/kandanapp/kandan/commit/3019dd2) Merge pull request #68 from sergii/cleanup_actions __(James Gifford)__
+ * [5f81fb8](http://github.com/kandanapp/kandan/commit/5f81fb8) Updated rails so we don't get bitten by the JSON bug.   CVE-2013-0276   CVE-2013-0277 __(James Gifford)__
+ * [9231078](http://github.com/kandanapp/kandan/commit/9231078) Updated rails so we don't get bitten by the JSON bug. __(James Gifford)__
+ * [aa2ffdd](http://github.com/kandanapp/kandan/commit/aa2ffdd) Clean up actions __(Sergii Ponomarov)__
+ * [688b52a](http://github.com/kandanapp/kandan/commit/688b52a) Merge pull request #67 from SpencerCooley/master __(Tony Guntharp)__
+ * [30d8fd3](http://github.com/kandanapp/kandan/commit/30d8fd3) took out rb-readline, fixed autoscroll for client. Still needs autscroll on push event. __(Spencer)__
+ * [95bc6ee](http://github.com/kandanapp/kandan/commit/95bc6ee) Merge branch 'master' of https://github.com/kandanapp/kandan __(Spencer)__
+ * [8738ad9](http://github.com/kandanapp/kandan/commit/8738ad9) fixed the autoscroll problem __(Spencer)__
+ * [a0b07b5](http://github.com/kandanapp/kandan/commit/a0b07b5) Merge pull request #66 from SpencerCooley/master __(James Gifford)__
+ * [949d504](http://github.com/kandanapp/kandan/commit/949d504) fixed all the weird spacing issues. __(Spencer)__
+ * [bd3dcd6](http://github.com/kandanapp/kandan/commit/bd3dcd6) one more line __(Spencer)__
+ * [bf1c359](http://github.com/kandanapp/kandan/commit/bf1c359) added one more line __(Spencer)__
+ * [0e486c2](http://github.com/kandanapp/kandan/commit/0e486c2) added space at bottom of sass file to see if the \no new line thing would go away __(Spencer)__
+ * [0035d13](http://github.com/kandanapp/kandan/commit/0035d13) fixed that weird gap that shows when the chat area is scrolled all the way to the top __(Spencer)__
+ * [1269429](http://github.com/kandanapp/kandan/commit/1269429) Merge branch 'master' of https://github.com/kandanapp/kandan __(Spencer)__
+ * [47ac582](http://github.com/kandanapp/kandan/commit/47ac582) fixed the global scroll __(Spencer)__
+ * [9ef4b26](http://github.com/kandanapp/kandan/commit/9ef4b26) Create gen-changelog.sh __(Tony Guntharp)__
+ * [a8d8212](http://github.com/kandanapp/kandan/commit/a8d8212) Merge pull request #65 from mguinada/fix-pastie __(Tony Guntharp)__
+ * [e5c584b](http://github.com/kandanapp/kandan/commit/e5c584b) Fix message sender pastie link __(Miguel Guinada)__
+ * [d555a07](http://github.com/kandanapp/kandan/commit/d555a07) Update CONTRIBUTING.md __(Tony Guntharp)__
+ * [5790912](http://github.com/kandanapp/kandan/commit/5790912) Merge pull request #63 from gabceb/add_contributors_link_to_readme __(James Gifford)__
+ * [f900bee](http://github.com/kandanapp/kandan/commit/f900bee) Added link to contributors of the Readme file __(Gabriel Cebrian)__
+ * [8eaf7a8](http://github.com/kandanapp/kandan/commit/8eaf7a8) Merge pull request #62 from gabceb/add_left_margin_avatar __(Tony Guntharp)__
+ * [e484567](http://github.com/kandanapp/kandan/commit/e484567) Added left margin to the avatar __(Gabriel Cebrian)__
+ * [ad4f8c5](http://github.com/kandanapp/kandan/commit/ad4f8c5) Merge pull request #61 from gabceb/added_rgb_and_hex_color_plugin __(James Gifford)__
+ * [555f7e9](http://github.com/kandanapp/kandan/commit/555f7e9) Added ability to have more than one hex or rgb on a message __(Gabriel Cebrian)__
+ * [e91e0cd](http://github.com/kandanapp/kandan/commit/e91e0cd) Merge pull request #52 from gabceb/add_kandan_favicon __(Tony Guntharp)__
+ * [fe683a8](http://github.com/kandanapp/kandan/commit/fe683a8) Renamed variables on hex plugin __(Gabriel Cebrian)__
+ * [6c0271f](http://github.com/kandanapp/kandan/commit/6c0271f) Merge pull request #60 from gabceb/add_DS_Store_to_git_ignore __(Tony Guntharp)__
+ * [606df32](http://github.com/kandanapp/kandan/commit/606df32) Merge pull request #59 from magicmarkker/master __(Tony Guntharp)__
+ * [bcc6829](http://github.com/kandanapp/kandan/commit/bcc6829) Added plugins to show hex and rgb colors when they are used on messages __(Gabriel Cebrian)__
+ * [4006ad2](http://github.com/kandanapp/kandan/commit/4006ad2) better scrolling in chat rooms __(Mark)__
+ * [7d29af8](http://github.com/kandanapp/kandan/commit/7d29af8) Added DS_Store to the .gitignore file __(Gabriel Cebrian)__
+ * [8f7f0f4](http://github.com/kandanapp/kandan/commit/8f7f0f4) CSS fix for Password errors do strange things to the layout __(Mark)__
+ * [26da0df](http://github.com/kandanapp/kandan/commit/26da0df) Merge pull request #58 from scotje/patch-1 __(Tony Guntharp)__
+ * [f0be264](http://github.com/kandanapp/kandan/commit/f0be264) Clarified self-hosted section of DEPLOY.md __(Jesse Scott)__
+ * [e963183](http://github.com/kandanapp/kandan/commit/e963183) Added kandan favicon __(Gabriel Cebrian)__
+ * [0fe77ee](http://github.com/kandanapp/kandan/commit/0fe77ee) Merge pull request #51 from Norrit/patch-1 __(James Gifford)__
+ * [2285ee0](http://github.com/kandanapp/kandan/commit/2285ee0) Update DEPLOY.md __(Norbert Schneider)__
+ * [3ae40df](http://github.com/kandanapp/kandan/commit/3ae40df) Create CHANGELOG.md __(Tony Guntharp)__
+
 #### [v1.0]
  * [38f4875](http://github.com/kandanapp/kandan/commit/38f4875) Create CONTRIBUTING.md __(Tony Guntharp)__
  * [605c237](http://github.com/kandanapp/kandan/commit/605c237) Update README.md __(Tony Guntharp)__
