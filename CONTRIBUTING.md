@@ -1,6 +1,5 @@
 # Introduction
-Since Kandan is a fully open-source app, we would appreciate if you dive in and start adding features, fixing bugs 
-(what bugs?), and cleaning up the code.
+Since Kandan is a fully open-source app, we would appreciate if you dive in and start adding features, fixing bugs, and cleaning up the code.
 
 If you’re going to contribute code then we need you to sign our [Contributor License Agreement](http://www.clahub.com/agreements/kandanapp/kandan) 
 (hereafter referred to as CLA) which is modeled after the one that [NodeJS](http://nodejs.org) uses.
@@ -42,12 +41,17 @@ of keeping on top of things.
 * Make a branch for your changes
   * Create a branch from where you want to base your work.
   * Generally you'll want to branch from __MASTER__
-  * Please use the naming convention "master-[issue-num]" for your branch name to help us keep track of what your patch actually fixes
+  * Please use the naming convention "kandan-[issue-num]" for your branch name to help us keep track of what your patch actually fixes
 * Push your code and make a pull request
  * Sign the [Contributor License Agreement](http://www.clahub.com/agreements/kandanapp/kandan)
+ * One pull request per issue. Do NOT try and fix multiple issues with a single pull request.
+ * Please make your commit messages and pull requests informative. i.e. `moved version string to git_revision Fixes #123`. By using the Fixes/Fixed #Issue-Number in the commit message it will allow for closing of issues once the pull request is merged. For more information please read [this](https://github.com/blog/831-issues-2-0-the-next-generation).
  * Push your changes to your fork of the repository. 
- * `git push origin master-[issue-num]`
+ * `git push origin kandan-[issue-num]`
  * Submit a pull request to the Kandan main repository.
+
+At this point you're waiting on us. We like to at least comment on, if not accept, pull requests within three business 
+days (and, typically, one business day). We may suggest some changes or improvements or alternatives.
 
 # Additional Resources
 * More information on contributing
