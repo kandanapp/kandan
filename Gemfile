@@ -38,7 +38,12 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.3.0.1'
 end
 
+group :production do
+  gem 'kandan-count'
+end
+
 group :development do
+  gem 'kandan-count-dev'
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'awesome_print'
