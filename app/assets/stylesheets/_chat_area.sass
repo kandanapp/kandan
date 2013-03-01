@@ -125,12 +125,14 @@ html body .ui-tabs .ui-tabs-nav li
 
 
 #mask_container
-  position: fixed
+  position: absolute
   top: 0px
   background: #E6EBEE url("/assets/page_bg.png") repeat
   z-index: 9000
-  padding-top: 55px
-  width: 80%
+  padding-top: 20px
+  padding-left: 20px !important
+  padding-right: 5px !important
+  width: 100%
 
 .corner_cover
   display: block
@@ -138,7 +140,7 @@ html body .ui-tabs .ui-tabs-nav li
   height: 15px
   background: #FFF
 
-html body .ui-tabs .ui-tabs-panel, html body #app_body .main-area #mask_container
+html body .ui-tabs .ui-tabs-panel
   padding-left: 20px !important
   padding-right: 20px !important
 
@@ -155,12 +157,13 @@ html body #app_body .main-area #head-mask
 .chatbox
   +border-bottom-radius(4px)
   +box-shadow(5px 0px 5px -3px #cccccc, -5px 0px 5px -3px #cccccc, 0px 5px 5px 0px #cccccc)
-  float: left
   border-top: 1px solid #f5f8f9
   padding: 10px 0px 10px 10px
-  width: 77.2%
-  position: fixed
-  bottom: 0px
+  margin-bottom: 20px
+  right: 5px
+  left: 20px
+  bottom: -30px
+  position: absolute
   margin-bottom: 20px
   background: #e6edef
   z-index: 600
