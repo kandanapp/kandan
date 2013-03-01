@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Core gems
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 
 # Database adapters
 gem 'pg'
@@ -38,7 +38,12 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.3.0.1'
 end
 
+group :production do
+  gem 'kandan-count'
+end
+
 group :development do
+  gem 'kandan-count-dev'
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'awesome_print'

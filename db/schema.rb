@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221173650) do
+ActiveRecord::Schema.define(:version => 20130224150724) do
 
   create_table "activities", :force => true do |t|
     t.text     "content"
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(:version => 20130221173650) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "",   :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
+    t.string   "email",                                 :default => "",       :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -72,13 +72,13 @@ ActiveRecord::Schema.define(:version => 20130221173650) do
     t.text     "last_name"
     t.text     "ido_id"
     t.string   "locale"
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
     t.text     "gravatar_hash"
     t.boolean  "active",                                :default => true
     t.string   "username"
     t.boolean  "is_admin"
-    t.string   "status"
+    t.string   "registration_status",                   :default => "active"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

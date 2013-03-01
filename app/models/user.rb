@@ -2,26 +2,23 @@ class User < ActiveRecord::Base
   extend Enumerize
 
   # Being pesimistic here and making the default waiting for approval for security reasons
-  enumerize :status, in: [:active, :suspended, :waiting_approval], :default => :waiting_approval
+  enumerize :registration_status, in: [:active, :suspended, :waiting_approval], :default => :waiting_approval
 
   has_many :activities
   before_save :ensure_authentication_token
   before_save :ensure_gravatar_hash
-  before_create :mark_status_depending_on_app_settings
+  before_create :mark_registration_status_depending_on_app_settings
 
   after_create :ensure_at_least_one_admin
   after_destroy :ensure_at_least_one_admin
   
   validates :username, :presence => true, :uniqueness => true
-  validates :first_name, :presence => true
-  validates :last_name, :presence => true
   
-
   # Kandan.devise_modules is defined in config/initializers/kandan.rb
   devise devise *Kandan.devise_modules
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :id, :username, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :locale, :gravatar_hash, :status
+  attr_accessible :id, :username, :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :locale, :gravatar_hash, :registration_status
 
   def full_name
     "#{self.first_name.to_s} #{self.last_name.to_s}".titlecase
@@ -38,10 +35,10 @@ class User < ActiveRecord::Base
     self.locale     = extra_attributes["locale"]
   end
 
-  # Callback to mark the user status depending on the settings of the app
-  def mark_status_depending_on_app_settings
+  # Callback to mark the user registration status depending on the settings of the app
+  def mark_registration_status_depending_on_app_settings
     # If the site is public we will make the user active. Otherwise we will make the user as waiting_approval
-    self.status = Setting.my_settings.public_site? ? :active : :waiting_approval
+    self.registration_status = Setting.my_settings.public_site? ? :active : :waiting_approval
   end
 
   def ensure_gravatar_hash
@@ -66,6 +63,22 @@ class User < ActiveRecord::Base
     dummy_user.active = false
 
     return dummy_user
+  end
+
+  def activate
+    self.registration_status = "active"
+  end
+
+  def activate!
+    self.activate && self.save!
+  end
+
+  def suspend
+    self.registration_status = "suspended"
+  end
+
+  def suspend!
+    self.suspend && self.save!
   end
 
 end

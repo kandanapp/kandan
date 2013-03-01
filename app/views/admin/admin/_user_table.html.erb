@@ -13,7 +13,7 @@
 	</thead>
 	<tbody>
 		<% users.each do |user| %>
-			<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>" data-full-name="<%= user.full_name %>">
+			<tr class="<%= cycle('odd', 'even')%>" data-user-id="<%= user.id%>" data-full-name="<%= user.full_name_or_username %>">
 				<td class="username">
 					<%= user.username %>
 				</td>
@@ -27,7 +27,7 @@
 					<%= user.email %>
 				</td>
 				<td class="status">
-					<%= user_status(user) %>
+					<%= user_registration_status(user) %>
 				</td>
 				<td class="action">
 					<%= user_action(user) %>
