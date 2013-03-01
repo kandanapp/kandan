@@ -12,6 +12,7 @@ namespace :git do
 		'fusion94' => 'git://github.com/fusion94/kandan.git',
 		'SpencerCooley' => 'git://github.com/SpencerCooley/kandan.git',
 		'jrgifford' => 'git://github.com/jrgifford/kandan.git',
+		'mjtko' => 'git://github.com/mjtko/kandan.git',
 	}
 
 	def get_remotes
