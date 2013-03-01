@@ -62,7 +62,7 @@ class Kandan.Helpers.Channels
   @getChannelIdByTabIndex: (tabIndex)->
     $("#kandan .ui-tabs-panel")
       .eq(tabIndex)
-      .data("channel-id") 
+      .data("channel-id")
 
   @getTabIndexByChannelId: (channelId)->
     $("#channels-#{channelId}").prevAll("div").length
@@ -89,14 +89,14 @@ class Kandan.Helpers.Channels
   @createChannelArea: (channel)->
     channelArea = "#channels-#{channel.get('id')}"
     totalTabs = $("#kandan").tabs("length")
-    $createTab = $("#create_channel").parents("li").detach()
+    createTab = $("#create_channel").parents("li").detach()
     $("#kandan").tabs("add", channelArea, "#{channel.get("name")}", totalTabs)
-    $createTab.appendTo("ul.ui-tabs-nav")
+    createTab.appendTo("ul.ui-tabs-nav")
+    $('#ui-tabs-1').remove()
     view = new Kandan.Views.ChannelPane({channel: channel})
-    view.render $(channelArea)
-    $(channelArea).data("channel_id", channel.get("id"))
-        
-
+    newChannel = $(channelArea)
+    view.render newChannel
+    newChannel.addClass('ui-tabs-panel')
 
   @newActivityView: (activityAttributes)->
     activity = new Kandan.Models.Activity(activityAttributes)
