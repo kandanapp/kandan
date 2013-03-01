@@ -21,6 +21,8 @@ window.Kandan =
     perPage    : <%= Kandan::Config.options[:per_page] %>
     nowThreshold: 3000
     timestampRefreshInterval: 2000
+    avatarUrl: "<%= Kandan::Config.options[:avatar_url] %>"
+    avatarFallback: "<%= Kandan::Config.options[:avatar_fallback] %>"
 
 
   # TODO this is a helper method to register plugins

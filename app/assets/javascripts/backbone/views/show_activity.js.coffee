@@ -6,6 +6,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
   render: ()->
     activity = @options.activity.toJSON()
     activity.content = _.escape(activity.content)
+    activity.avatarUrl = Kandan.Helpers.Avatars.urlFor(@options.activity, {size: 30})
     if activity.action != "message"
       @compiledTemplate = JST['user_notification']({activity: activity})
     else
@@ -20,10 +21,10 @@ class Kandan.Views.ShowActivity extends Backbone.View
 
       user_mention_regex = new RegExp("@#{Kandan.Helpers.Users.currentUser().username}\\b")
       all_mention_regex = new RegExp("@all")
-      
+
       if activity.user.id == Kandan.Helpers.Users.currentUser().id
         $(@el).addClass("current_user")
-      
+
       if user_mention_regex.test(@compiledTemplate) || all_mention_regex.test(@compiledTemplate)
         $(@el).addClass("mentioned_user")
 

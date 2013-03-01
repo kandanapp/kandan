@@ -22,7 +22,7 @@
         <a href="#" class="user_menu_link">
           <cite class="user_flag"></cite>
           <div class="user">
-            <img src="http://gravatar.com/avatar/<%= current_user.gravatar_hash %>?s=25"/>
+            <img src="<%= avatar_url_for(current_user, :size => 25) %>"/>
             <span><%= current_user.full_name_or_username %></span>
           </div>
         </a>

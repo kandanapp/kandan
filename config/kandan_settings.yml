@@ -13,3 +13,6 @@
 :max_rooms: 99
 
 :public_site: true
+
+:avatar_url: http://gravatar.com/avatar/%{hash}?s=%{size}&d=%{fallback}
+:avatar_fallback: identicon
