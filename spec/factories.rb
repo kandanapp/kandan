@@ -1,8 +1,4 @@
 FactoryGirl.define do
-  sequence :ido_id do |n|
-    "abc-#{n}"
-  end
-
   sequence :email do |n|
     "email#{n}@example.com"
   end
@@ -24,7 +20,6 @@ FactoryGirl.define do
     f.last_name  "User"
     f.password { FactoryGirl.generate(:password)}
     f.email  { FactoryGirl.generate(:email) }
-    f.ido_id { FactoryGirl.generate(:ido_id) }
     f.username { FactoryGirl.generate(:username) }
   end
 end

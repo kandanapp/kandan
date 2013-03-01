@@ -71,7 +71,7 @@ namespace :kandan do
 
   desc "Creates the default hubot account."
   task :boot_hubot => :environment do
-    user = User.find_by_email("hubot@cloudfuji.com")
+    user = User.find_by_email("hubot@kandanapp.com")
 
     if user.nil?
       puts "Creating hubot user..."
@@ -80,7 +80,7 @@ namespace :kandan do
       128.times { password << (('a'..'z').to_a + ('A'..'Z').to_a + ['!','@','#','$','%','^','&','*','(',')'].to_a).sample }
 
       hubot = User.new
-      hubot.email      = "hubot@cloudfuji.com"
+      hubot.email      = "hubot@kandanapp.com"
       hubot.first_name = "Hubot"
       hubot.last_name  = "vonGithubben"
       hubot.ido_id     = "a-bot-lives-in-solitude"
@@ -92,7 +92,7 @@ namespace :kandan do
 
   desc "Output the hubot access key"
   task :hubot_access_key => :environment do
-    if authentication_token = User.find_by_email("hubot@cloudfuji.com").try(:authentication_token)
+    if authentication_token = User.find_by_email("hubot@kandanapp.com").try(:authentication_token)
       puts "Your hubot access key is #{ authentication_token }"
     else
       puts "There's not hubot account. Run rake kandan:boot_hubot to create a bot account."
