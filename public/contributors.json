@@ -19,6 +19,25 @@
     "contributions": 160
   },
   {
+    "login": "fusion94",
+    "id": 51660,
+    "avatar_url": "https://secure.gravatar.com/avatar/061847c843db5f7c87b3ea7c60db78ae?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+    "gravatar_id": "061847c843db5f7c87b3ea7c60db78ae",
+    "url": "https://api.github.com/users/fusion94",
+    "html_url": "https://github.com/fusion94",
+    "followers_url": "https://api.github.com/users/fusion94/followers",
+    "following_url": "https://api.github.com/users/fusion94/following",
+    "gists_url": "https://api.github.com/users/fusion94/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/fusion94/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/fusion94/subscriptions",
+    "organizations_url": "https://api.github.com/users/fusion94/orgs",
+    "repos_url": "https://api.github.com/users/fusion94/repos",
+    "events_url": "https://api.github.com/users/fusion94/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/fusion94/received_events",
+    "type": "User",
+    "contributions": 66
+  },
+  {
     "login": "kevzettler",
     "id": 126209,
     "avatar_url": "https://secure.gravatar.com/avatar/b4466a237baa1c4accab612d746e3ba9?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
@@ -38,25 +57,6 @@
     "contributions": 57
   },
   {
-    "login": "fusion94",
-    "id": 51660,
-    "avatar_url": "https://secure.gravatar.com/avatar/061847c843db5f7c87b3ea7c60db78ae?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
-    "gravatar_id": "061847c843db5f7c87b3ea7c60db78ae",
-    "url": "https://api.github.com/users/fusion94",
-    "html_url": "https://github.com/fusion94",
-    "followers_url": "https://api.github.com/users/fusion94/followers",
-    "following_url": "https://api.github.com/users/fusion94/following",
-    "gists_url": "https://api.github.com/users/fusion94/gists{/gist_id}",
-    "starred_url": "https://api.github.com/users/fusion94/starred{/owner}{/repo}",
-    "subscriptions_url": "https://api.github.com/users/fusion94/subscriptions",
-    "organizations_url": "https://api.github.com/users/fusion94/orgs",
-    "repos_url": "https://api.github.com/users/fusion94/repos",
-    "events_url": "https://api.github.com/users/fusion94/events{/privacy}",
-    "received_events_url": "https://api.github.com/users/fusion94/received_events",
-    "type": "User",
-    "contributions": 56
-  },
-  {
     "login": "gabceb",
     "id": 470852,
     "avatar_url": "https://secure.gravatar.com/avatar/41961e6ca6b5cc11684805773479d0f5?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
@@ -73,7 +73,7 @@
     "events_url": "https://api.github.com/users/gabceb/events{/privacy}",
     "received_events_url": "https://api.github.com/users/gabceb/received_events",
     "type": "User",
-    "contributions": 37
+    "contributions": 49
   },
   {
     "login": "amanelis",
@@ -111,7 +111,7 @@
     "events_url": "https://api.github.com/users/jrgifford/events{/privacy}",
     "received_events_url": "https://api.github.com/users/jrgifford/received_events",
     "type": "User",
-    "contributions": 19
+    "contributions": 21
   },
   {
     "login": "SpencerCooley",
@@ -131,6 +131,25 @@
     "received_events_url": "https://api.github.com/users/SpencerCooley/received_events",
     "type": "User",
     "contributions": 12
+  },
+  {
+    "login": "donthorp",
+    "id": 8629,
+    "avatar_url": "https://secure.gravatar.com/avatar/5e6bb2c56e67e9ebca71589f450ba54c?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+    "gravatar_id": "5e6bb2c56e67e9ebca71589f450ba54c",
+    "url": "https://api.github.com/users/donthorp",
+    "html_url": "https://github.com/donthorp",
+    "followers_url": "https://api.github.com/users/donthorp/followers",
+    "following_url": "https://api.github.com/users/donthorp/following",
+    "gists_url": "https://api.github.com/users/donthorp/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/donthorp/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/donthorp/subscriptions",
+    "organizations_url": "https://api.github.com/users/donthorp/orgs",
+    "repos_url": "https://api.github.com/users/donthorp/repos",
+    "events_url": "https://api.github.com/users/donthorp/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/donthorp/received_events",
+    "type": "User",
+    "contributions": 7
   },
   {
     "login": "sgrove",
@@ -169,25 +188,6 @@
     "received_events_url": "https://api.github.com/users/MichaelEvans/received_events",
     "type": "User",
     "contributions": 5
-  },
-  {
-    "login": "donthorp",
-    "id": 8629,
-    "avatar_url": "https://secure.gravatar.com/avatar/5e6bb2c56e67e9ebca71589f450ba54c?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
-    "gravatar_id": "5e6bb2c56e67e9ebca71589f450ba54c",
-    "url": "https://api.github.com/users/donthorp",
-    "html_url": "https://github.com/donthorp",
-    "followers_url": "https://api.github.com/users/donthorp/followers",
-    "following_url": "https://api.github.com/users/donthorp/following",
-    "gists_url": "https://api.github.com/users/donthorp/gists{/gist_id}",
-    "starred_url": "https://api.github.com/users/donthorp/starred{/owner}{/repo}",
-    "subscriptions_url": "https://api.github.com/users/donthorp/subscriptions",
-    "organizations_url": "https://api.github.com/users/donthorp/orgs",
-    "repos_url": "https://api.github.com/users/donthorp/repos",
-    "events_url": "https://api.github.com/users/donthorp/events{/privacy}",
-    "received_events_url": "https://api.github.com/users/donthorp/received_events",
-    "type": "User",
-    "contributions": 4
   },
   {
     "login": "talltroym",
