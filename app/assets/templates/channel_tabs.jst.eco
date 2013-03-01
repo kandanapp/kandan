@@ -5,7 +5,9 @@
     <span class="tab_left"></span>
     <span class="tab_content">	
       <cite><%= channel.get('name') %></cite>
-      <cite class="close_channel" title="close channel">x</cite>
+      <% unless channel.get('id') == 1: %>
+        <cite class="close_channel" title="close channel">x</cite>
+      <% end %>
     </span>
   </a>	
   </li>

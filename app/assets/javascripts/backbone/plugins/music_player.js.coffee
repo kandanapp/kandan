@@ -7,7 +7,10 @@ class Kandan.Plugins.MusicPlayer
   @stopRegex: /^&#x2F;stop/
   @resumeRegex: /^&#x2F;resume/
   @localSongData: false
-
+  @sounds: {
+    channel: 'ding.wav'
+    attention: 'gong.mp3'
+  }
 
   @playTemplate:   _.template('<strong><a class="audio-play">playing</a> <a target="_blank" href="<%- url %>"><%- url %></a></strong>')
   @stopTemplate:   _.template('<strong><a class="audio-play">stopping</a> the music.')
@@ -170,8 +173,9 @@ class Kandan.Plugins.MusicPlayer
     if @audioChannel(channelId)?
       @unmute(channelId)
 
-  @playAudioNotice: ->
-    url    = @localFileUrl('ding.wav')
+  @playAudioNotice: (type)->
+    sound  = @sounds[type] || 'ding.wav'
+    url    = @localFileUrl(sound)
     player = $('.audio_private')[0]
     player.setAttribute('src', url)
     player.play()
