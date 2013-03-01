@@ -6,7 +6,7 @@ class Kandan.Plugins.UserList
 
   @template: _.template '''
     <div class="user clearfix">
-      <img class="avatar" src="http://gravatar.com/avatar/<%= gravatarHash %>?s=25"/>
+      <img class="avatar" src="<%= avatarUrl %>"/>
       <span class="name"><%= name %></span>
     </div>
   '''
@@ -22,7 +22,7 @@ class Kandan.Plugins.UserList
 
       $users.append @template({
         name: displayName,
-        gravatarHash: user.gravatar_hash
+        avatarUrl: Kandan.Helpers.Avatars.urlFor(user, {size: 25})
       })
     $el.html($users)
 
