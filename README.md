@@ -2,9 +2,11 @@ Kandan - [Modern Open Source Chat](http://www.kandanapp.com)
 ================================
 [![Build Status](https://travis-ci.org/kandanapp/kandan.png?branch=master)](https://travis-ci.org/kandanapp/kandan)
 
-The slickest chat app out there. Open-source and well-supported to boot.
+What is Kandan? Kandan is a private chat service for your company or team. You can invite colleagues to share ideas and files in a persistent group chat room or rooms.
 
-![](http://github.com/kandanapp/kandan/raw/master/public/preview.png)
+Unlike HipChat or other alternatives, Kandan is completely Open Source and can be hosted internally or externally by your organization or by a third party.
+
+![](https://raw.github.com/kandanapp/kandan/resources/kandan_1.1.png)
 
 Standard Features
 =================
