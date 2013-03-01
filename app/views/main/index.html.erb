@@ -9,9 +9,6 @@
 <%- end %>
   
 <%= javascript_tag do %>
-  <%- if user_signed_in? %>
-    $.data(document, "current-user", <%= current_user_data.to_json.html_safe %>);
-  <%- end %>
   $(document).data("active-users", [])
 <%- end %>
 
