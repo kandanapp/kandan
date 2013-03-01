@@ -76,7 +76,7 @@ class Kandan.Plugins.Notifications
   @onPopupNotificationsEnabled: ()->
     if @webkitNotificationsEnabled()
       @enablePopupNotifications()
-    
+
     return
 
   # If you are wondering why the kandan icon is not displayed on OS X this is the reason:
@@ -108,7 +108,7 @@ class Kandan.Plugins.Notifications
     @sound_notifications_enabled = true
     $(".sound-notifications .enable-sound-notifications").remove()
     $(".notification.sound-notifications").append(@disable_sound_notifications_template())
-    
+
     return
 
   @disableSoundNotifications: ()->
@@ -118,7 +118,9 @@ class Kandan.Plugins.Notifications
     $(".notification.sound-notifications").append(@enable_sound_notifications_template())
     return
 
-  @playAudioNotification: ()->
-    if @sound_notifications_enabled
-      Kandan.Plugins.MusicPlayer.playAudioNotice()
+  @playAudioNotification: (type)->
+    if @sound_notifications_enabled and not @isPlaying
+      @isPlaying = true
+      setTimeout (=> @isPlaying = false), 1000
+      Kandan.Plugins.MusicPlayer.playAudioNotice(type)
     return
