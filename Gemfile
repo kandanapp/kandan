@@ -6,10 +6,8 @@ gem 'rails', '3.2.12'
 # Database adapters
 gem 'pg'
 
-# Auth/Cloudfuji gems
+# Auth gems
 gem 'devise'
-gem 'devise_cloudfuji_authenticatable'
-gem 'cloudfuji'
 
 # Server/transport gems
 gem 'thin'

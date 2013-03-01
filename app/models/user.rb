@@ -28,13 +28,6 @@ class User < ActiveRecord::Base
     self.full_name.blank? ? self.username : self.full_name
   end
 
-  def cloudfuji_extra_attributes(extra_attributes)
-    self.first_name = extra_attributes["first_name"].to_s
-    self.last_name  = extra_attributes["last_name"].to_s
-    self.email      = extra_attributes["email"]
-    self.locale     = extra_attributes["locale"]
-  end
-
   # Callback to mark the user registration status depending on the settings of the app
   def mark_registration_status_depending_on_app_settings
     # If the site is public we will make the user active. Otherwise we will make the user as waiting_approval
