@@ -2,7 +2,7 @@
 # The show_activities addMessage method is the responsible of changing the look of a message body when a user is mentioned
 class Kandan.Plugins.Mentions
   @options:
-    regex: /@\S*/g
+    regex: /\B@\S+/g
 
     template: _.template '''<span class="mention"><%= mention %></span>'''
 
