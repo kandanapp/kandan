@@ -135,7 +135,7 @@ class Kandan.Helpers.Channels
 
     if not local and @getActiveChannelId() == activityAttributes.channel_id and activityAttributes.action == "message" and Kandan.Helpers.Utils.browserTabFocused != true
       Kandan.Helpers.Utils.notifyInTitle()
-      Kandan.Plugins.Notifications.playAudioNotification()
+      Kandan.Plugins.Notifications.playAudioNotification('channel')
       Kandan.Plugins.Notifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content)
 
       @setPaginationData(activityAttributes.channel_id)
