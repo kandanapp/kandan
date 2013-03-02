@@ -1,15 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    _bushido-faye (0.8.2)
-      _bushido-faye-websocket (>= 0.4.0)
-      cookiejar (>= 0.3.0)
-      em-http-request (>= 0.3.0)
-      eventmachine (>= 0.12.0)
-      rack (>= 1.0.0)
-      yajl-ruby (>= 1.0.0)
-    _bushido-faye-websocket (0.4.4)
-      eventmachine (>= 0.12.0)
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
       mail (~> 2.4.4)
@@ -37,7 +28,6 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.3.2)
     arel (3.0.2)
     awesome_print (1.1.0)
     aws-sdk (1.8.1.2)
@@ -68,7 +58,6 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     columnize (0.3.6)
-    cookiejar (0.3.0)
     daemons (1.1.9)
     database_cleaner (0.9.1)
     debugger (1.3.3)
@@ -88,14 +77,6 @@ GEM
       eco-source
       execjs
     eco-source (1.1.0.rc.1)
-    em-http-request (1.0.3)
-      addressable (>= 2.2.3)
-      cookiejar
-      em-socksify
-      eventmachine (>= 1.0.0.beta.4)
-      http_parser.rb (>= 0.5.3)
-    em-socksify (0.2.1)
-      eventmachine (>= 1.0.0.beta.4)
     enumerize (0.5.1)
       activesupport (>= 3.2)
     erubis (2.7.0)
@@ -120,7 +101,6 @@ GEM
       guard (>= 1.1)
       rspec (~> 2.11)
     hike (1.2.1)
-    http_parser.rb (0.5.3)
     i18n (0.6.2)
     jasmine (1.3.1)
       jasmine-core (~> 1.3.1)
@@ -252,13 +232,11 @@ GEM
     warden (1.2.1)
       rack (>= 1.0)
     websocket (1.0.7)
-    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  _bushido-faye (= 0.8.2)
   awesome_print
   aws-sdk
   better_errors
