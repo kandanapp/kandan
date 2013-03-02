@@ -83,7 +83,6 @@ namespace :kandan do
       hubot.email      = "hubot@kandanapp.com"
       hubot.first_name = "Hubot"
       hubot.last_name  = "vonGithubben"
-      hubot.ido_id     = "a-bot-lives-in-solitude"
       hubot.password   = password            if hubot.respond_to?("password=".to_sym)
       hubot.password_confirmation = password if hubot.respond_to?("password_confirmation=".to_sym)
       hubot.save!
