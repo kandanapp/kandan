@@ -15,18 +15,16 @@ class Channel < ActiveRecord::Base
   end
 
   class << self
+    def primary
+      self.find(1)
+    end
+
     def user_connect(user)
-      Channel.all.each do |channel|
-        activity = channel.activities.build(:user_id => user.id, :action => "connect")
-        activity.save
-      end
+      activity = Channel.primary.activities.create!(:user_id => user.id, :action => "connect")
     end
 
     def user_disconnect(user)
-      Channel.all.each do |channel|
-        activity = channel.activities.build(:user_id => user.id, :action => "disconnect")
-        activity.save
-      end
+      activity = Channel.primary.activities.create!(:user_id => user.id, :action => "disconnect")
     end
   end
 end
