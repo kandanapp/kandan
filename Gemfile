@@ -11,6 +11,7 @@ gem 'devise'
 
 # Server/transport gems
 gem 'thin'
+gem 'faye'
 
 # Helper gems
 gem 'kaminari'
