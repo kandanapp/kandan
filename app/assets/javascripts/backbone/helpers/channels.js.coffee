@@ -54,10 +54,12 @@ class Kandan.Helpers.Channels
 
   @confirmAndDeleteChannel: (channel, tabIndex)->
     return false if @confirmDeletion() == false
-    channel.destroy({success: ()=>
-      $("#kandan").tabs("remove", tabIndex)
-    })
+    channel.destroy {
+      success: ()=> #@removeChannelTab(tabIndex)
+    }
 
+  @removeChannelTab: (tabIndex)->
+    $("#kandan").tabs("remove", tabIndex)
 
   @getChannelIdByTabIndex: (tabIndex)->
     $("#kandan .ui-tabs-panel")
@@ -70,7 +72,7 @@ class Kandan.Helpers.Channels
   @deleteChannelById: (channelId)->
     if @channelExists(channelId)
       tabIndex = @getTabIndexByChannelId(channelId)
-      @deleteChannelByTabIndex(tabIndex, true)
+      @removeChannelTab(tabIndex)
 
   @deleteChannelByTabIndex: (tabIndex, deleted)->
     # NOTE gotcha, 0 index being passed a natural index from the html views
