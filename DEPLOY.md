@@ -104,6 +104,13 @@ And you should also restart the app on AppFog (in the console). Then, Kandan sho
 ## Heroic server install
 If you're looking to install Kandan on a private server, or to develop locally for lemonodor fame, then here is the path you must follow, young hero:
 
+You still need kandan (from above)
+    git clone https://github.com/kandanapp/kandan.git
+    cd kandan
+    
+Lots of the gems require other libraries:
+    sudo apt-get install ruby1.9.1-dev libxslt-dev libxml2-dev libpq-dev libsqlite3-dev
+
 For development-mode
     
     `sudo apt-get install nodejs` # (execjs needs an execution environment)
