@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224150724) do
+ActiveRecord::Schema.define(:version => 20130301022941) do
 
   create_table "activities", :force => true do |t|
     t.text     "content"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20130224150724) do
     t.string   "authentication_token"
     t.text     "first_name"
     t.text     "last_name"
-    t.text     "ido_id"
     t.string   "locale"
     t.datetime "created_at",                                                  :null => false
     t.datetime "updated_at",                                                  :null => false
@@ -83,6 +82,5 @@ ActiveRecord::Schema.define(:version => 20130224150724) do
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["ido_id"], :name => "index_users_on_ido_id", :unique => true
 
 end

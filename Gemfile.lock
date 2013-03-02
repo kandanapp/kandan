@@ -38,10 +38,6 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
-    airbrake (3.1.8)
-      activesupport
-      builder
-      json
     arel (3.0.2)
     awesome_print (1.1.0)
     aws-sdk (1.8.1.2)
@@ -62,11 +58,6 @@ GEM
     builder (3.0.4)
     childprocess (0.3.8)
       ffi (~> 1.0, >= 1.0.11)
-    cloudfuji (0.0.46)
-      highline (>= 1.6.1)
-      json (>= 1.4.6)
-      orm_adapter (~> 0.0.3)
-      rest-client (>= 1.6.1)
     cocaine (0.4.2)
     coderay (1.0.8)
     coffee-rails (3.2.2)
@@ -91,9 +82,6 @@ GEM
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
-    devise_cloudfuji_authenticatable (1.0.5)
-      devise (= 1.5.3)
-      rubycas-client (>= 2.2.1)
     diff-lcs (1.1.3)
     eco (1.0.0)
       coffee-script
@@ -131,7 +119,6 @@ GEM
     guard-rspec (2.4.0)
       guard (>= 1.1)
       rspec (~> 2.11)
-    highline (1.6.15)
     hike (1.2.1)
     http_parser.rb (0.5.3)
     i18n (0.6.2)
@@ -207,8 +194,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     remotipart (1.0.5)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -224,8 +209,6 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
-    rubycas-client (2.3.9)
-      activesupport
     rubyzip (0.9.9)
     sass (3.2.5)
     sass-rails (3.2.6)
@@ -276,19 +259,16 @@ PLATFORMS
 
 DEPENDENCIES
   _bushido-faye (= 0.8.2)
-  airbrake
   awesome_print
   aws-sdk
   better_errors
   binding_of_caller
   bootstrap-sass (~> 2.3.0.1)
   bourbon (~> 1.4.0)
-  cloudfuji
   coffee-rails
   database_cleaner
   debugger
   devise
-  devise_cloudfuji_authenticatable
   eco
   enumerize
   execjs
