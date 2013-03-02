@@ -36,6 +36,7 @@ class Kandan.Broadcasters.FayeBroadcaster
 
   processEventsForChannel: (eventName, data)->
     Kandan.Helpers.Channels.deleteChannelById(data.entity.id) if eventName == "delete"
+    Kandan.Helpers.Channels.createChannelIfNotExists(channel: data.entity, channel_id: data.entity.id) if eventName == "create"
 
     # TODO this has to be implemented
     Kandan.Helpers.Channels.renameChannelById(data.entity.id, data.entity.name) if data.eventName == "update"
