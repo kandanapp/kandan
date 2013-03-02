@@ -11,7 +11,6 @@ gem 'devise'
 
 # Server/transport gems
 gem 'thin'
-gem '_bushido-faye', '0.8.2'
 
 # Helper gems
 gem 'kaminari'
