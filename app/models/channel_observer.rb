@@ -1,11 +1,19 @@
 class ChannelObserver < ActiveRecord::Observer
   def after_destroy(channel)
-    broadcast_data = {
-      :event  => "channel#delete",
-      :entity => channel.attributes,
-      :extra  => {}
-    }
+    broadcast('delete', channel)
+  end
 
-    Kandan::Config.broadcaster.broadcast("/app/activities", broadcast_data)
+  def after_create(channel)
+    broadcast('create', channel)
+  end
+
+  private
+  def broadcast(event, channel)
+    data = {
+      :event => "channel#" << event,
+      :entity => channel.attributes,
+      :extra => {}
+    }
+    Kandan::Config.broadcaster.broadcast("/app/activities", data)
   end
 end
