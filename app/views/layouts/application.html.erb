@@ -10,6 +10,12 @@
   <%= yield :javascript_includes %>
 
   <%= csrf_meta_tags %>
+
+  <%- if user_signed_in? %>
+    <%= javascript_tag do %>
+      $.data(document, "current-user", <%= current_user_data.to_json.html_safe %>);
+    <% end %>
+  <%- end %>
 </head>
 <body>
   <div id="kandan">

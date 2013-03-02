@@ -1,6 +1,4 @@
 <%= javascript_tag do %>
-  $.data(document, "current-user", <%= current_user_data.to_json.html_safe %>);
-
   $(document).ready(function(){
     Kandan.Plugins.initAll()
     activities = <%= @activities.to_json(:include => :user).html_safe %>;
