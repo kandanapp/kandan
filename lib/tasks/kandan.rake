@@ -81,6 +81,7 @@ namespace :kandan do
 
       hubot = User.new
       hubot.email      = "hubot@kandanapp.com"
+      hubot.username   = "hubot"
       hubot.first_name = "Hubot"
       hubot.last_name  = "vonGithubben"
       hubot.password   = password            if hubot.respond_to?("password=".to_sym)
