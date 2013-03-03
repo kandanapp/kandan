@@ -1,9 +1,10 @@
 class ChannelsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_channel_by_name, :only => :show
+  load_and_authorize_resource
 
   def index
     # NOTE Eager loading doesn't respect limit
-    @channels = Channel.find(:all)
     nested_channel_data = []
 
     # TODO this can be shortened
@@ -25,7 +26,6 @@ class ChannelsController < ApplicationController
   end
 
   def create
-    @channel = Channel.new(params[:channel])
     respond_to do |format|
       if @channel.save
         format.json { render :json => @channel, :status => :created }
@@ -36,14 +36,12 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @channel = Channel.where("LOWER(name) = ?", params[:id].downcase).first || Channel.find(params[:id])
     respond_to do |format|
       format.json { render :json => @channel }
     end
   end
 
   def update
-    @channel = Channel.find(params[:id])
     respond_to do |format|
       if @channel.update_attributes(params[:channel])
         format.json { render :json => @channel, :status => :ok }
@@ -54,10 +52,14 @@ class ChannelsController < ApplicationController
   end
 
   def destroy
-    @channel = Channel.find params[:id]
-    @channel.destroy if not @channel.id == 1
+    @channel.destroy
     respond_to do |format|
       format.json { render :json => nil, :status => :ok}
     end
+  end
+
+  private
+  def find_channel_by_name
+    @channel = Channel.where("LOWER(name) = ?", params['id'].downcase).first
   end
 end

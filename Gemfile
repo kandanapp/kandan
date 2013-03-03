@@ -8,6 +8,7 @@ gem 'pg'
 
 # Auth gems
 gem 'devise'
+gem 'cancan'
 
 # Server/transport gems
 gem 'thin'

@@ -1,5 +1,5 @@
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' unless ENV['KANDAN_NO_COVERAGE']
 
 require 'coveralls'
 Coveralls.wear! 'rails'
