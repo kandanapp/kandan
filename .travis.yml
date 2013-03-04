@@ -6,6 +6,8 @@ env:
 notifications:
   email: 
     james@jamesrgifford.com
+    fusion94@gmail.com
+# whitelist    
 branches:
   only:
     - master
