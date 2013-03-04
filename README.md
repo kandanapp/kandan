@@ -1,6 +1,7 @@
 Kandan - [Modern Open Source Chat](http://www.kandanapp.com)
 ================================
 [![Build Status](https://travis-ci.org/kandanapp/kandan.png?branch=master)](https://travis-ci.org/kandanapp/kandan)
+[![Coverage Status](https://coveralls.io/repos/kandanapp/kandan/badge.png?branch=master)](https://coveralls.io/r/kandanapp/kandan)
 
 What is Kandan? Kandan is a private chat service for your company or team. You can invite colleagues to share ideas and files in a persistent group chat room or rooms.
 
