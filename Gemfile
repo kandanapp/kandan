@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 # Core gems
 gem 'rails', '3.2.12'
 
@@ -27,7 +29,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'bourbon', '~> 1.4.0'
-  gem 'execjs'   
+  gem 'execjs'
   gem 'eco'
   gem 'uglifier'
   gem 'bootstrap-sass', '~> 2.3.0.1'
@@ -55,7 +57,7 @@ group :test do
   gem 'simplecov', :require => false
 end
 
-group :development, :test do  
+group :development, :test do
   gem 'sqlite3'
   gem 'guard'
   gem 'guard-rspec'
