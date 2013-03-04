@@ -58,8 +58,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    colorize (0.5.8)
     columnize (0.3.6)
     cookiejar (0.3.0)
+    coveralls (0.6.0)
+      colorize
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      thor
     daemons (1.1.9)
     database_cleaner (0.9.1)
     debugger (1.3.3)
@@ -69,10 +76,11 @@ GEM
     debugger-linecache (1.1.2)
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.2.0)
-    devise (1.5.3)
+    devise (2.2.3)
       bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.3)
-      warden (~> 1.1)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     diff-lcs (1.1.3)
     eco (1.0.0)
       coffee-script
@@ -151,7 +159,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.6.1)
     nokogiri (1.5.6)
-    orm_adapter (0.0.7)
+    orm_adapter (0.4.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -194,6 +202,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     remotipart (1.0.5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -265,6 +275,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.0.1)
   bourbon (~> 1.4.0)
   coffee-rails
+  coveralls
   database_cleaner
   debugger
   devise
