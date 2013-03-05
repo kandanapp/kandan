@@ -1,4 +1,76 @@
-## Cloud Foundry
+# Installation
+
+### Table of Contents
+
+* [Requirements](#requirements)
+* [WARNING](#warning)
+* [Cloud Foundry](#cloud-foundry)
+* [Heroku](#heroku)
+* [dotCloud](#dotcloud)
+* [AppFog](#appfog)
+* [Stand Alone Server](#standalone-server) 
+
+<hr>
+# <a name="requirements"></a>Requirements
+* Ruby 1.9
+
+<hr>
+# <a name="warning"></a>WARNING
+We try and keep the __MASTER__ branch of the Kandan code clean and usable but it is __bleeding edge__ and can cause unpredictable results.
+
+If you need a version of Kandan that's both __tested & stable__ then please make sure you're installing from the lastest `tagged` version of the code.
+
+```
+git clone git@github.com/kandanapp/kandan.git
+cd kandan
+git tag -l
+git checkout <tag_name>
+```
+
+Depending on your setup you might also see the following error:
+
+```
+Building native extensions. This could take a while...
+ERROR: Error installing debugger-linecache:
+ERROR: Failed to build gem native extension.
+ 
+/home/jrg/.rbenv/versions/1.9.3-p385/bin/ruby extconf.rb
+checking for vm_core.h... no
+checking for vm_core.h... no
+Makefile creation failed
+**************************************************************************
+No source for ruby-1.9.3-p385 provided with debugger-ruby_core_source gem.
+**************************************************************************
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers. Check the mkmf.log file for more
+details. You may need configuration options.
+ 
+Provided configuration options:
+--with-opt-dir
+--without-opt-dir
+--with-opt-include
+--without-opt-include=${opt-dir}/include
+--with-opt-lib
+--without-opt-lib=${opt-dir}/lib
+--with-make-prog
+--without-make-prog
+--srcdir=.
+--curdir
+--ruby=/home/jrg/.rbenv/versions/1.9.3-p385/bin/ruby
+--with-ruby-dir
+--without-ruby-dir
+--with-ruby-include
+--without-ruby-include=${ruby-dir}/include
+--with-ruby-lib
+--without-ruby-lib=${ruby-dir}/lib
+```
+To work around it run this then attempt to re-install.
+
+`gem install debugger-ruby_core_source`
+
+<hr>
+# <a name="cloud-foundry"></a>Cloud Foundry
 You'll need a [Cloud Foundry account](https://my.cloudfoundry.com/signup) and the [vmc gem](https://rubygems.org/gems/vmc) installed. Do you `vmc target <cloud foundry host>` and `vmc login`, and then this will get you up and running:
 
     git clone https://github.com/kandanapp/kandan.git
@@ -35,8 +107,9 @@ You'll answer a few questions:
     
 And Kandan should be available on your Cloud Foundry backend now!
 
-## Heroku
-You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed and to have an existing heroku account. Assuming that, this should work reliably on Heroku:
+<hr>
+# <a name="heroku"></a>Heroku
+You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed and to have an existing [heroku account](https://api.heroku.com/signup). Assuming that, this should work reliably on Heroku:
 
     git clone https://github.com/kandanapp/kandan.git
     cd kandan
@@ -59,10 +132,12 @@ If successful you should get a response similar to:
 
 Your app should be up and running now. The default admin user is `Admin` with password `kandanappadmin`, or you can sign up as another user.
 
-## dotCloud
+<hr>
+# <a name="dotcloud"></a>dotCloud
 Looking for community help here.
 
-## AppFog
+<hr>
+# <a name="appfog"></a>AppFog
 You'll need an [AppFog account](https://www.appfog.com/) and the [af command line tool](https://docs.appfog.com/getting-started/af-cli) installed. Once that's all set up, login from the command line: `af login`. You'll be prompted for the username/password you set on AppFog. You're returned to your operating system's command prompt. It's not a terminal emulator.
 
 If you want to use PostgreSQL rather than MySQL, provision the service on the Services page of the [console](https://console.appfog.com). Note the name of your database and app name on the console and substitute as appropriate.
@@ -101,15 +176,13 @@ If you get the invalid app description, open manifest.yml in a text editor and r
 
 And you should also restart the app on AppFog (in the console). Then, Kandan should be available on your AppFox backend now! With your browser, visit the domain name assigned to you by AppFog (or create a CNAME record at your DNS provider to use an alternate).
 
-## Heroic server install
+<hr>
+# <a name="standalone-server"></a>Stand Alone Server
 If you're looking to install Kandan on a private server, or to develop locally for lemonodor fame, then here is the path you must follow, young hero:
 
-You still need kandan (from above)
-    git clone https://github.com/kandanapp/kandan.git
-    cd kandan
-    
-Lots of the gems require other libraries:
-    sudo apt-get install ruby1.9.1-dev libxslt-dev libxml2-dev libpq-dev libsqlite3-dev
+You still need kandan (from above) git clone https://github.com/kandanapp/kandan.git cd kandan
+
+Lots of the gems require other libraries: sudo apt-get install ruby1.9.1-dev libxslt-dev libxml2-dev libpq-dev libsqlite3-dev
 
 For development-mode
     
