@@ -180,18 +180,23 @@ And you should also restart the app on AppFog (in the console). Then, Kandan sho
 # <a name="standalone-server"></a>Stand Alone Server
 If you're looking to install Kandan on a private server, or to develop locally for lemonodor fame, then here is the path you must follow, young hero:
 
-You still need kandan (from above) git clone https://github.com/kandanapp/kandan.git cd kandan
+You still need kandan (from above) 
 
-Lots of the gems require other libraries: sudo apt-get install ruby1.9.1-dev libxslt-dev libxml2-dev libpq-dev libsqlite3-dev
+    git clone https://github.com/kandanapp/kandan.git 
+    cd kandan
+
+Lots of the gems require other libraries: 
+
+    sudo apt-get install ruby1.9.1-dev libxslt-dev libxml2-dev libpq-dev libsqlite3-dev
 
 For development-mode
     
-    `sudo apt-get install nodejs` # (execjs needs an execution environment)
-    `gem install execjs` # (Could possibly be added to the gemfile in the assets group)
+    sudo apt-get install nodejs # (execjs needs an execution environment)
+    gem install execjs # (Could possibly be added to the gemfile in the assets group)
 
 Install the required gems:
 
-    `bundle install`
+    bundle install
 
 You can use the default database.yml to get started in development. For production you'll need to edit config/database.yml to add something like this:
 
@@ -207,7 +212,7 @@ You can use the default database.yml to get started in development. For producti
  
 Now, bootstrap the install (you can omit the db:create step if you have already created the DB referenced above):
 
-    `bundle exec rake db:create db:migrate kandan:bootstrap`
+    bundle exec rake db:create db:migrate kandan:bootstrap
 
 If you plan to serve the app directly from Thin (rather than through a proxy), you will need to configure Rails to serve assets in the production environment. In config/environments/production.rb:
       
@@ -215,6 +220,6 @@ If you plan to serve the app directly from Thin (rather than through a proxy), y
     
 Start the server
 
-    `bundle exec thin start`
+    bundle exec thin start
 
 Your app should be up and running now. The default admin user is `Admin` with password `kandanappadmin`, or you can sign up as another user.
