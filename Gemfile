@@ -28,7 +28,7 @@ gem 'enumerize'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'bourbon', '~> 1.4.0'
+  gem 'bourbon'
   gem 'execjs'
   gem 'eco'
   gem 'uglifier'
