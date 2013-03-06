@@ -22,8 +22,10 @@
   .widget
     margin-bottom: 20px
     border: 1px solid #D0D5D8
-    +border-top-radius(4px)
-    +border-bottom-radius(7px)
+    border-top-left-radius: 4px
+    border-top-right-radius: 4px
+    border-bottom-left-radius: 7px
+    border-bottom-right-radius: 7px
     background: #F3F8F9
     float: left
     width: 100%
@@ -31,8 +33,8 @@
 
 .widget_header
   +background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2))
-  +border-top-left-radius(4px)
-  +border-top-right-radius(4px)
+  border-top-left-radius: 4px
+  border-top-right-radius: 4px
   border-bottom: 1px solid #DBDFE0
   float: left
   width: 100%
@@ -53,7 +55,7 @@
   
 
 .widget_content
-  +border-bottom-radius(7px)
+  border-bottom-radius: 7px
   float: left
   width: 100%
   clear: both
@@ -62,7 +64,7 @@
   font-size: 13px
 
 .widget_action_bar
-  +border-bottom-radius(7px)
+  border-bottom-radius: 7px
   font-size: 13px
   text-align: center
   line-height: 40px
@@ -85,7 +87,7 @@
   border-bottom: none
   height: 100%
   input
-    +border-radius(20px)
+    border-radius: 20px
     background: $search-bg url(image_path('search_icon.png')) no-repeat
     +box-shadow(inset 0px 7px 6px -5px #3a4547, 2px 7px 7px -6px #7f8587)
     background-position: 95% center
