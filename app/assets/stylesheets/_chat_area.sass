@@ -5,7 +5,7 @@
 
 .ui-widget-header
   background: transparent !important
-  +border-radius(0px)
+  border-radius: 0px
   border: none
   .ui-state-active
     background: $active-tab-bg
@@ -61,7 +61,7 @@ html body .ui-tabs .ui-tabs-nav li
     &:hover
       background-position-x: -70px
 .ui-tabs
-  +border-radius(0px)
+  border-radius: 0px
   padding: 0px
   margin-top: 0px
   border: none
@@ -93,7 +93,7 @@ html body .ui-tabs .ui-tabs-nav li
   height: 100%
 
 .ui-corner-all .ui-corner-bottom, .ui-corner-bottom, .ui-corner-left, .ui-corner-right, .ui-corner-bl, .ui-corner-br
-  +border-radius(none)
+  border-radius: none
 
 .ui-state-default
   font-size: 14px
@@ -105,7 +105,8 @@ html body .ui-tabs .ui-tabs-nav li
 
 .paginated-activities, #head-mask
   +box-shadow(5px 0px 5px -3px #cccccc, -5px 0px 5px -3px #cccccc, 5px 10px 5px -3px #cccccc, -5px 10px 5px -3px #cccccc)
-  +border-top-radius(4px)
+  border-top-left-radius: 4px
+  border-top-right-radius: 4px
   float: left
   width: 100%
   background: #FFF
@@ -153,7 +154,8 @@ html body #app_body .main-area #head-mask
 /*   padding: 0px !important
 
 .chatbox
-  +border-bottom-radius(4px)
+  border-bottom-left-radius: 4px
+  border-bottom-right-radius: 4px
   +box-shadow(5px 0px 5px -3px #cccccc, -5px 0px 5px -3px #cccccc, 0px 5px 5px 0px #cccccc)
   float: left
   border-top: 1px solid #f5f8f9
@@ -165,8 +167,8 @@ html body #app_body .main-area #head-mask
   background: #e6edef
   z-index: 600
   textarea
-    +border-top-left-radius(4px)
-    +border-bottom-left-radius(4px)
+    border-top-left-radius: 4px
+    border-bottom-left-radius: 4px
     border: 1px solid #AEB9BD
     width: 92%
     padding: 0px
@@ -175,8 +177,8 @@ html body #app_body .main-area #head-mask
     resize: none
   button
     +background-image(linear-gradient(#c8ecf6, #9fdff4))
-    +border-top-right-radius(4px)
-    +border-bottom-right-radius(4px)
+    border-top-right-radius: 4px
+    border-bottom-right-radius: 4px
     position: relative
     left: -5px
     border: 1px solid #AEB9BD
