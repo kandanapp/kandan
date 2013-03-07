@@ -17,7 +17,7 @@ class ChannelsController < ApplicationController
         })
       end
 
-      nested_channel_data.push channel.attributes.merge({:activities => activities.reverse, :more_activities => more_activities})
+      nested_channel_data.push channel.attributes.merge({:activities => activities.reverse, :more_activities => more_activities, destroyable: can?(:destroy, channel)})
     end
     
     respond_to do |format|
