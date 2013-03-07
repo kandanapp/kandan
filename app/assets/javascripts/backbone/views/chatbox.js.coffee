@@ -11,7 +11,11 @@ class Kandan.Views.Chatbox extends Backbone.View
 
 
   postMessageOnEnter: (event)->
-    if event.keyCode == 13 && !(event.metaKey || event.shiftKey || event.altKey || event.ctrlKey)
+    # If a modifier key is used with enter, messages are not posted.
+    # This allows the chatbox textarea to behave predictably, inline
+    # with usual form semantics (ie. ctrl+enter etc. generates a new
+    # line).
+    if event.keyCode == 13 && !event.metaKey && !event.shiftKey && !event.altKey && !event.ctrlKey
       @postMessage(event)
       event.preventDefault()
 
