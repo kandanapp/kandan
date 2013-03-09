@@ -25,18 +25,15 @@ class Kandan.Plugins.YouTubeEmbed
       else
       # Spaces indicate a subtitle
         comment = $.trim(message.content.substr(message.content.indexOf(" ") + 1));
-        videoUrl = message.content.split(" ")[0]
 
       videoId = message.content.match(@options.idRegex)[1]
-
-      thumbUrl = "http://img.youtube.com/vi/#{ videoId }/0.jpg"
 
       subtitle = null
       subtitle = "Youtube: #{comment}" if comment? and comment.length > 0
       subtitle ||= videoUrl
 
       message.content = @options.template({
-        videoId: videoId
+        videoId: videoId,
         subtitle: subtitle
       })
       return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
