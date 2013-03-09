@@ -1,0 +1,19 @@
+class Kandan.Plugins.Emojis
+  @options:
+    atWhoTemplate: '''<li data-value="${insert}"><img class="emoticon-embed small" height="20" width="20" src="${src}" alt="${name}" title="${name}" /> ${name}</li>'''
+
+  @emojis: <%= Emoji.names.to_s %>
+
+  @init: ->
+    @emojis = $.map @emojis, (v) ->
+      {
+        name: v,
+        insert: "#{v}:"
+        src: "<%= image_path('emoticons/emojis') %>/#{v}.png"
+      }
+
+  @attachToChatbox: ->
+    $(".chat-input").atwho ':([a-zA-Z0-9_+-]+)',
+      data: @emojis
+      tpl: @options.atWhoTemplate
+      limit: 10

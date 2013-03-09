@@ -33,6 +33,7 @@ group :assets do
   gem 'eco'
   gem 'uglifier'
   gem 'bootstrap-sass', '~> 2.3.0.1'
+  gem 'gemoji'
 end
 
 group :production do
