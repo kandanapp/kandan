@@ -124,6 +124,7 @@ GEM
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
     ffi (1.4.0)
+    gemoji (1.4.0)
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -291,6 +292,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   faye
+  gemoji
   guard
   guard-rspec
   jasmine (~> 1.3.1)
