@@ -41,6 +41,7 @@ window.Kandan =
       ,"Attachments"
       ,"MeAnnounce"
       ,"Emoticons"
+      ,"Emojis"
       ,"RgbColorEmbed"
       ,"HexColorEmbed"
     ]
@@ -127,6 +128,7 @@ window.Kandan =
       Kandan.Widgets.initAll()
       Kandan.Helpers.Channels.scrollToLatestMessage()
       Kandan.Plugins.Mentions.initUsersMentions(Kandan.Helpers.ActiveUsers.all())
+      Kandan.Plugins.Emojis.attachToChatbox()
       return
 
   registerUtilityEvents: ()->
