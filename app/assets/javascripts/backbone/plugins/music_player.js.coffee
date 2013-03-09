@@ -9,7 +9,7 @@ class Kandan.Plugins.MusicPlayer
   @localSongData: false
   @sounds: {
     channel: 'ding.wav'
-    attention: 'gong.mp3'
+    attention: 'threetone-alert.wav'
   }
 
   @playTemplate:   _.template('<strong><a class="audio-play">playing</a> <a target="_blank" href="<%- url %>"><%- url %></a></strong>')
@@ -117,10 +117,8 @@ class Kandan.Plugins.MusicPlayer
 
   @localSounds: (name) ->
     sounds = {
-      'claps'  : @localFileUrl('golfclap.mp3')
-      'cheers' : @localFileUrl('cheers.mp3')
-      'ding'   : @localFileUrl('ding.wav')
-      'gong'   : @localFileUrl('gong.mp3')
+      'threetone-alert'  : @localFileUrl('threetone-alert.wav')
+      'ding'             : @localFileUrl('ding.wav')
       }
 
     sounds[name]
@@ -174,6 +172,7 @@ class Kandan.Plugins.MusicPlayer
       @unmute(channelId)
 
   @playAudioNotice: (type)->
+    console.log "told to play for: #{type}"
     sound  = @sounds[type] || 'ding.wav'
     url    = @localFileUrl(sound)
     player = $('.audio_private')[0]
