@@ -22,4 +22,4 @@ class Kandan.Plugins.Mentions
       user.username
     users.push "all"
     $(".chat-input").atwho("(?:^|\\s)@", {data: users})
-  return
+    return
