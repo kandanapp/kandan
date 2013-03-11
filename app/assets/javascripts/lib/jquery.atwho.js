@@ -20,7 +20,7 @@
     var Controller, DEFAULT_CALLBACKS, DEFAULT_TPL, KEY_CODE, Mirror, View;
     Mirror = (function() {
 
-      Mirror.prototype.css_attr = ["overflowY", "height", "width", "paddingTop", "paddingLeft", "paddingRight", "paddingBottom", "marginTop", "marginLeft", "marginRight", "marginBottom", 'fontFamily', 'borderStyle', 'borderWidth', 'wordWrap', 'fontSize', 'lineHeight', 'overflowX'];
+      Mirror.prototype.css_attr = ["overflowY", "height", "width", "paddingTop", "paddingLeft", "paddingRight", "paddingBottom", "marginTop", "marginLeft", "marginRight", "marginBottom", "fontFamily", "borderStyle", "borderWidth", "wordWrap", "fontSize", "lineHeight", "overflowX", "text-align"];
 
       function Mirror($inputor) {
         this.$inputor = $inputor;
@@ -75,6 +75,9 @@
     };
     DEFAULT_CALLBACKS = {
       data_refactor: function(data) {
+        if (!$.isArray(data)) {
+          return data;
+        }
         return $.map(data, function(item, k) {
           if (!$.isPlainObject(item)) {
             item = {
@@ -115,8 +118,13 @@
       sorter: function(query, items, search_key) {
         var item, results, text, _i, _len;
         if (!query) {
-          items;
-
+          return items.sort(function(a, b) {
+            if (a[search_key].toLowerCase() > b[search_key].toLowerCase()) {
+              return 1;
+            } else {
+              return -1;
+            }
+          });
         }
         results = [];
         for (_i = 0, _len = items.length; _i < _len; _i++) {
@@ -187,11 +195,7 @@
         current_settings = {};
         current_settings = $.isPlainObject(flag) ? this.common_settings = $.extend({}, this.common_settings, flag) : !this.settings[flag] ? this.settings[flag] = $.extend({}, settings) : this.settings[flag] = $.extend({}, this.settings[flag], settings);
         data = current_settings["data"];
-        if (typeof data === "string") {
-          current_settings["data"] = data;
-        } else if (data) {
-          current_settings["data"] = this.callbacks("data_refactor").call(this, data);
-        }
+        current_settings["data"] = this.callbacks("data_refactor").call(this, data);
         return this;
       };
 
@@ -373,21 +377,33 @@
         return this.view.render(data);
       };
 
+      Controller.prototype.remote_call = function(data, query) {
+        var params, _callback;
+        params = {
+          q: query.text,
+          limit: this.get_opt("limit")
+        };
+        _callback = function(data) {
+          this.reg(this.current_flag, {
+            data: data
+          });
+          return this.render_view(this.data());
+        };
+        _callback = $.proxy(_callback, this);
+        return this.callbacks('remote_filter').call(this, params, data, _callback);
+      };
+
       Controller.prototype.look_up = function() {
-        var data, origin_data, params, query, search_key;
+        var data, query, search_key;
         query = this.catch_query();
         if (!query) {
           return false;
         }
-        origin_data = this.get_opt("data");
+        data = this.data();
         search_key = this.get_opt("search_key");
-        if (typeof origin_data === "string") {
-          params = {
-            q: query.text,
-            limit: this.get_opt("limit")
-          };
-          this.callbacks('remote_filter').call(this, params, origin_data, $.proxy(this.render_view, this));
-        } else if ((data = this.callbacks('filter').call(this, query.text, origin_data, search_key))) {
+        if (typeof data === "string") {
+          this.remote_call(data, query);
+        } else if ((data = this.callbacks('filter').call(this, query.text, data, search_key))) {
           this.render_view(data);
         } else {
           this.view.hide();
@@ -556,6 +572,135 @@
       display_flag: true,
       display_timeout: 300,
       tpl: DEFAULT_TPL
+    };
+  });
+
+}).call(this);
+
+
+/*
+  Implement Github like autocomplete mentions
+  http://ichord.github.com/At.js
+
+  Copyright (c) 2013 chord.luo@gmail.com
+  Licensed under the MIT license.
+*/
+
+
+/*
+本插件操作 textarea 或者 input 内的插入符
+只实现了获得插入符在文本框中的位置，我设置
+插入符的位置.
+*/
+
+
+(function() {
+
+  (function(factory) {
+    if (typeof exports === 'object') {
+      return factory(require('jquery'));
+    } else if (typeof define === 'function' && define.amd) {
+      return define(['jquery']);
+    } else {
+      return factory(window.jQuery);
+    }
+  })(function($) {
+    var getCaretPos, setCaretPos;
+    getCaretPos = function(inputor) {
+      var end, endRange, len, normalizedValue, pos, range, start, textInputRange;
+      if (document.selection) {
+        /*
+                #assume we select "HATE" in the inputor such as textarea -> { }.
+                 *               start end-point.
+                 *              /
+                 * <  I really [HATE] IE   > between the brackets is the selection range.
+                 *                   \
+                 *                    end end-point.
+        */
+
+        range = document.selection.createRange();
+        pos = 0;
+        if (range && range.parentElement() === inputor) {
+          normalizedValue = inputor.value.replace(/\r\n/g, "\n");
+          /* SOMETIME !!!
+           "/r/n" is counted as two char.
+            one line is two, two will be four. balalala.
+            so we have to using the normalized one's length.;
+          */
+
+          len = normalizedValue.length;
+          /*
+                       <[  I really HATE IE   ]>:
+                        the whole content in the inputor will be the textInputRange.
+          */
+
+          textInputRange = inputor.createTextRange();
+          /*                 _here must be the position of bookmark.
+                           /
+             <[  I really [HATE] IE   ]>
+              [---------->[           ] : this is what moveToBookmark do.
+             <   I really [[HATE] IE   ]> : here is result.
+                            \ two brackets in should be in line.
+          */
+
+          textInputRange.moveToBookmark(range.getBookmark());
+          endRange = inputor.createTextRange();
+          /*  [--------------------->[] : if set false all end-point goto end.
+            <  I really [[HATE] IE  []]>
+          */
+
+          endRange.collapse(false);
+          /*
+                                    ___VS____
+                                   /         \
+                     <   I really [[HATE] IE []]>
+                                              \_endRange end-point.
+          
+                    " > -1" mean the start end-point will be the same or right to the end end-point
+                   * simplelly, all in the end.
+          */
+
+          if (textInputRange.compareEndPoints("StartToEnd", endRange) > -1) {
+            start = end = len;
+          } else {
+            /*
+                                I really |HATE] IE   ]>
+                                       <-|
+                              I really[ [HATE] IE   ]>
+                                    <-[
+                            I reall[y  [HATE] IE   ]>
+            
+                          will return how many unit have moved.
+            */
+
+            start = -textInputRange.moveStart("character", -len);
+            end = -textInputRange.moveEnd("character", -len);
+          }
+        }
+      } else {
+        start = inputor.selectionStart;
+      }
+      return start;
+    };
+    setCaretPos = function(inputor, pos) {
+      var range;
+      if (document.selection) {
+        range = inputor.createTextRange();
+        range.move("character", pos);
+        return range.select();
+      } else {
+        return inputor.setSelectionRange(pos, pos);
+      }
+    };
+    return $.fn.caretPos = function(pos) {
+      var inputor;
+      inputor = this[0];
+      inputor.focus();
+      if (pos) {
+        return setCaretPos(inputor, pos);
+      } else {
+        return getCaretPos(inputor);
+      }
     };
   });
 

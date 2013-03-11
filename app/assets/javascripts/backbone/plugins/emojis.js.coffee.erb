@@ -13,7 +13,7 @@ class Kandan.Plugins.Emojis
       }
 
   @attachToChatbox: ->
-    $(".chat-input").atwho ':([a-zA-Z0-9_+-]+)',
+    $(".chat-input").atwho '(?:^|\\s):',
       data: @emojis
       tpl: @options.atWhoTemplate
       limit: 10
