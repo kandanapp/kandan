@@ -13,7 +13,11 @@ module Broadcasters
       end
 
       def assets
-        ["/remote/faye.js"]
+        if Rails.env == "test"
+          ["http://localhost:9292/remote/faye.js"]
+        else
+          ['remote/faye']
+        end
       end
     end
   end

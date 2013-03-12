@@ -1,7 +1,13 @@
 class Kandan.Broadcasters.FayeBroadcaster
 
   constructor: ()->
+    <% if Rails.env == "test" %>
+    @fayeClient = new Faye.Client("http://localhost:9292/remote/faye")
+    @fayeClient.setHeader('Access-Control-Allow-Origin', '*');
+    <% else %>
     @fayeClient = new Faye.Client("/remote/faye")
+    <% end %>
+
     @fayeClient.disable('websocket')
     authExtension = {
       outgoing: (message, callback)->
