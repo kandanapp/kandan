@@ -57,6 +57,10 @@ group :test do
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false
   gem 'coveralls', :require => false
+
+  gem 'poltergeist'
+  gem 'launchy'
+  gem 'capybara'
 end
 
 group :development, :test do
