@@ -23,14 +23,15 @@ describe "Login" do
     page.should have_content(@user.first_name)
     page.should have_content(@user.last_name)
 
-    fill_in "chat-input", :with => "Hello there"
+    chat_input = find(:css, ".chat-input")
+    chat_input.set "Hello there"
     click_button "Post"
 
     within("#channel-activities-1") do
       page.should have_content("Hello there")
     end
 
-    fill_in "chat-input", :with => "Hi again"
+    chat_input.set "Hi again"
     click_button "Post"
 
     within("#channel-activities-1") do
