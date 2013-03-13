@@ -1,11 +1,10 @@
 class Kandan.Broadcasters.FayeBroadcaster
 
   constructor: ()->
+    @fayeClient = new Faye.Client("http://<%= ActionMailer::Base.default_url_options[:host] %>/remote/faye")
+
     <% if Rails.env == "test" %>
-    @fayeClient = new Faye.Client("http://localhost:9292/remote/faye")
     @fayeClient.setHeader('Access-Control-Allow-Origin', '*');
-    <% else %>
-    @fayeClient = new Faye.Client("/remote/faye")
     <% end %>
 
     @fayeClient.disable('websocket')

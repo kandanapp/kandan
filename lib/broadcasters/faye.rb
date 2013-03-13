@@ -13,11 +13,7 @@ module Broadcasters
       end
 
       def assets
-        if Rails.env == "test"
-          ["http://localhost:9292/remote/faye.js"]
-        else
-          ['remote/faye']
-        end
+        ["http://#{ActionMailer::Base.default_url_options[:host]}/remote/faye.js"]
       end
     end
   end
