@@ -16,3 +16,6 @@
 
 :avatar_url: http://gravatar.com/avatar/%{hash}?s=%{size}&d=%{fallback}
 :avatar_fallback: identicon
+
+:now_threshold: 3000
+:timestamp_refresh_interval: 2000

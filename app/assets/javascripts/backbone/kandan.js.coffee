@@ -17,12 +17,7 @@ window.Kandan =
   Plugins:      {}
 
   options: ->
-    unless @_options?
-      @_options = $('body').data('kandan-config')
-      @_options.nowThreshold = 3000
-      @_options.timestampRefreshInterval = 2000
-    return @_options
-
+    @_options ?= $('body').data('kandan-config')
 
   # TODO this is a helper method to register plugins
   # in the order required until we come up with plugin management
@@ -133,8 +128,8 @@ window.Kandan =
   registerUtilityEvents: ()->
     window.setInterval(=>
       for el in $(".posted_at")
-        $(el).text (new Date($(el).data("timestamp"))).toRelativeTime(@options().nowThreshold)
-    , @options().timestampRefreshInterval)
+        $(el).text (new Date($(el).data("timestamp"))).toRelativeTime(@options().now_threshold)
+    , @options().timestamp_refresh_interval)
 
   init: ->
     channels = new Kandan.Collections.Channels()
