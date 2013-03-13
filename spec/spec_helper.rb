@@ -11,6 +11,35 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require "#{Rails.root}/lib/active_users.rb"
 
+require 'capybara/rails'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, {:timeout => 60})
+end
+
+Capybara.javascript_driver = :poltergeist
+
+require 'faye'
+require ::File.expand_path("../../lib/active_users.rb",  __FILE__)
+require ::File.expand_path("../../lib/faye_extensions/devise_auth.rb",  __FILE__)
+
+faye_server = Faye::RackAdapter.new(:mount => "/remote/faye", :timeout => 30)
+faye_server.add_extension(DeviseAuth.new)
+
+FAYE_CLIENT = faye_server.get_client
+
+faye_server.bind(:unsubscribe) do |client_id|
+  ActiveUsers.remove_by_client_id(client_id)
+end
+
+Thread.new {faye_server.listen(9292)}
+
+Capybara.app = Rack::URLMap.new({
+  "/"        => Kandan::Application
+})
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -29,7 +58,7 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
-  
+
   # Database cleaner
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
