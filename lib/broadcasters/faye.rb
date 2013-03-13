@@ -13,7 +13,7 @@ module Broadcasters
       end
 
       def assets
-        ["http://#{ActionMailer::Base.default_url_options[:host]}/remote/faye.js"]
+        ["#{ENV['FULL_HOST']}/remote/faye.js"]
       end
     end
   end
