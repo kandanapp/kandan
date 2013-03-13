@@ -8,6 +8,7 @@ class Kandan.Plugins.UserList
     <div class="user clearfix">
       <img class="avatar" src="<%= avatarUrl %>"/>
       <span class="name"><%= name %></span>
+      <span class="name">&nbsp;<%= admins %></span>
     </div>
   '''
 
@@ -19,9 +20,11 @@ class Kandan.Plugins.UserList
       displayName   = null
       displayName   = user.username # Defaults to username
       displayName ||= user.email # Revert to user email address if that's all we have
+      isAdmin       = user.is_admin
 
       $users.append @template({
         name: displayName,
+        admins: isAdmin,
         avatarUrl: Kandan.Helpers.Avatars.urlFor(user, {size: 25})
       })
     $el.html($users)
