@@ -1,7 +1,8 @@
 class Kandan.Broadcasters.FayeBroadcaster
 
   constructor: ()->
-    @fayeClient = new Faye.Client("<%= ENV['KANDAN_FAYE_URL'] %>/remote/faye")
+    endpoint = $('body').data('kandan-config').broadcaster.config.endpoint
+    @fayeClient = new Faye.Client(endpoint)
 
     @fayeClient.disable('websocket')
     authExtension = {

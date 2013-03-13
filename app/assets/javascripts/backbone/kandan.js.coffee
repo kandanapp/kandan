@@ -16,13 +16,12 @@ window.Kandan =
   Data:         {}
   Plugins:      {}
 
-  options:
-    broadcaster: "<%= Kandan::Config.options[:broadcaster][:name] %>"
-    perPage    : <%= Kandan::Config.options[:per_page] %>
-    nowThreshold: 3000
-    timestampRefreshInterval: 2000
-    avatarUrl: "<%= Kandan::Config.options[:avatar_url] %>"
-    avatarFallback: "<%= Kandan::Config.options[:avatar_fallback] %>"
+  options: ->
+    unless @_options?
+      @_options = $('body').data('kandan-config')
+      @_options.nowThreshold = 3000
+      @_options.timestampRefreshInterval = 2000
+    return @_options
 
 
   # TODO this is a helper method to register plugins
@@ -69,7 +68,7 @@ window.Kandan =
 
 
   initBroadcasterAndSubscribe: ()->
-    Kandan.broadcaster = eval "new Kandan.Broadcasters.#{@options.broadcaster}Broadcaster()"
+    Kandan.broadcaster = eval "new Kandan.Broadcasters.#{@options().broadcaster.name}Broadcaster()"
     Kandan.broadcaster.subscribe "/channels/*"
     @registerAppEvents()
 
@@ -80,10 +79,10 @@ window.Kandan =
 
         $(document).data('active-channel-id',
           Kandan.Helpers.Channels.getChannelIdByTabIndex(ui.index))
-        
-        #the need for the delay feels hacky to me. 
+
+        #the need for the delay feels hacky to me.
         #It is there because the chat area has to render before scrollHeight can be determined.
-        theId = Kandan.Helpers.Channels.getActiveChannelId() 
+        theId = Kandan.Helpers.Channels.getActiveChannelId()
         delay = (ms, func) -> setTimeout func, ms
         delay 1, -> Kandan.Helpers.Channels.scrollToLatestMessage(theId)
         Kandan.Data.Channels.runCallbacks('change')
@@ -134,8 +133,8 @@ window.Kandan =
   registerUtilityEvents: ()->
     window.setInterval(=>
       for el in $(".posted_at")
-        $(el).text (new Date($(el).data("timestamp"))).toRelativeTime(@options.nowThreshold)
-    , @options.timestampRefreshInterval)
+        $(el).text (new Date($(el).data("timestamp"))).toRelativeTime(@options().nowThreshold)
+    , @options().timestampRefreshInterval)
 
   init: ->
     channels = new Kandan.Collections.Channels()

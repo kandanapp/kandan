@@ -2,7 +2,6 @@ class Kandan.Helpers.Channels
 
   @options:
     autoScrollThreshold: 0.90
-    maxActivities: Kandan.options.perPage
 
   @pastAutoScrollThreshold: (channelId)->
     currentPosition     = @currentScrollPosition channelId
@@ -45,7 +44,7 @@ class Kandan.Helpers.Channels
 
   @flushActivities: (channelId)->
     $channelActivities = $("#channel-activities-#{channelId}")
-    if $channelActivities.children().length == @options.maxActivities + 1
+    if $channelActivities.children().length == Kandan.options().per_page + 1
       $channelActivities.children().first().remove()
       oldest = $channelActivities.children().first().data("activity-id")
       $channelActivities.prev().data("oldest", oldest)
