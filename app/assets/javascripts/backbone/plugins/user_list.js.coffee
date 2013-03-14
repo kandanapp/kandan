@@ -5,10 +5,12 @@ class Kandan.Plugins.UserList
   @pluginNamespace: "Kandan.Plugins.UserList"
 
   @template: _.template '''
-    <div class="user clearfix">
+    <div class="user clearfix">  
       <img class="avatar" src="<%= avatarUrl %>"/>
       <span class="name"><%= name %></span>
-      <span class="name">&nbsp;<%= admins %></span>
+      <% if(admin){ %>
+          &nbsp;<span class="badge badge-important">Admin</span>
+      <% } %>  
     </div>
   '''
 
@@ -24,7 +26,7 @@ class Kandan.Plugins.UserList
 
       $users.append @template({
         name: displayName,
-        admins: isAdmin,
+        admin: isAdmin,
         avatarUrl: Kandan.Helpers.Avatars.urlFor(user, {size: 25})
       })
     $el.html($users)
