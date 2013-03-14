@@ -1,7 +1,7 @@
 class Kandan.Broadcasters.FayeBroadcaster
 
   constructor: ()->
-    @fayeClient = new Faye.Client("<%= ENV['FULL_HOST'] %>/remote/faye")
+    @fayeClient = new Faye.Client("<%= ENV['KANDAN_FAYE_URL'] %>/remote/faye")
 
     @fayeClient.disable('websocket')
     authExtension = {

@@ -36,6 +36,7 @@ Kandan::Application.configure do
   config.active_support.deprecation = :stderr
 
   # Variable set to be able to get faye client for test environments
-  ENV['FULL_HOST'] = "http://localhost:9292"
+  ENV['KANDAN_FAYE_PORT'] = "9292" unless ENV['KANDAN_FAYE_PORT']
+  ENV['KANDAN_FAYE_URL'] = "http://localhost:#{ENV['KANDAN_FAYE_PORT']}" unless ENV['KANDAN_FAYE_URL']
 
 end
