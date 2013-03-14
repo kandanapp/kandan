@@ -23,6 +23,7 @@ describe "Login" do
     page.should have_content(@user.first_name)
     page.should have_content(@user.last_name)
 
+    expect(page).to have_css('.chat-input')
     chat_input = find(:css, ".chat-input")
     chat_input.set "Hello there"
     click_button "Post"
