@@ -1,5 +1,5 @@
 <span class="posted_at">
-  <%= new Date(@activity.created_at).toRelativeTime(Kandan.options.nowThreshold) %>
+  <%= new Date(@activity.created_at).toRelativeTime(Kandan.options().now_threshold) %>
 </span>
 <img class="avatar" src="<%= @activity.avatarUrl %>"/>
 
