@@ -10,12 +10,12 @@ class Kandan.Plugins.Mentions
     Kandan.Data.ActiveUsers.registerCallback "change", (data)=>
       @initUsersMentions(data.extra.active_users)
 
-    Kandan.Modifiers.register @options.regex, (message, state) =>
-      for mention in message.content.match(@options.regex)
+    Kandan.Modifiers.register @options.regex, (message, activity) =>
+      for mention in message.match(@options.regex)
         replacement = @options.template({mention: mention})
-        message.content = message.content.replace(mention, replacement)
+        message = message.replace(mention, replacement)
 
-      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
+      return message
 
   @initUsersMentions: (activeUsers)->
     users = _.map activeUsers, (user)->
