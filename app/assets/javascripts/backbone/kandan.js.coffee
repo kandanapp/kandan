@@ -97,7 +97,6 @@ window.Kandan =
           <span class="tab_left"></span>
           <span class="tab_content">
             <cite>#{label}</cite>
-            <cite class="close_channel" title="close channel">x</cite>
           </span>
         </a>
       </li>

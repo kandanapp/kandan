@@ -5,9 +5,6 @@
     <span class="tab_left"></span>
     <span class="tab_content">	
       <cite><%= channel.get('name') %></cite>
-      <% if channel.get('destroyable'): %>
-        <cite class="close_channel" title="close channel">x</cite>
-      <% end %>
     </span>
   </a>	
   </li>

@@ -1,9 +1,11 @@
 class Channel < ActiveRecord::Base
   has_many :activities, :dependent => :destroy
   has_many :attachments, :dependent => :destroy
+  belongs_to :user
 
   validates :name, :presence => { :message => "Room name cannot be blank"}, :uniqueness => { :message => "Room name is already taken" }
-
+  validates :user, :presence => { :message => "Room must belong to a user"}
+ 
   before_create :ensure_app_max_rooms
 
   def ensure_app_max_rooms

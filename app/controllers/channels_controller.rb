@@ -2,6 +2,7 @@ class ChannelsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_channel_by_name, :only => :show
   load_and_authorize_resource
+  before_filter :set_channel_owner, only: :create
 
   def index
     # NOTE Eager loading doesn't respect limit
@@ -61,5 +62,9 @@ class ChannelsController < ApplicationController
   private
   def find_channel_by_name
     @channel = Channel.where("LOWER(name) = ?", params['id'].downcase).first
+  end
+
+  def set_channel_owner
+    @channel.user = current_user
   end
 end
