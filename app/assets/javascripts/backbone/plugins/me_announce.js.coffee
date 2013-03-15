@@ -4,7 +4,7 @@ class Kandan.Plugins.MeAnnounce
     regex: /^&#x2F;me /
 
   @init: ()->
-    Kandan.Modifiers.register @options.regex, (message, state) =>
-      actor = message.user.username || message.user.email
-      message.content = message.content.replace @options.regex, "#{actor} "
-      return Kandan.Helpers.Activities.buildFromBaseTemplate(message)
+    Kandan.Modifiers.register @options.regex, (message, activity) =>
+      actor = activity.user.username || activity.user.email
+      message = message.replace @options.regex, "#{actor} "
+      return message

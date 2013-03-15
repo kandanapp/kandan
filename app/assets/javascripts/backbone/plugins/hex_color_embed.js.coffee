@@ -5,9 +5,9 @@ class Kandan.Plugins.HexColorEmbed
     template: _.template '''<span class="color-preview" style="background-color:<%= hex %>;"/>'''
 
   @init: ()->
-    Kandan.Modifiers.register @options.regex, (message, state) =>
-      for hex in message.content.match(@options.regex)
+    Kandan.Modifiers.register @options.regex, (message, activity) =>
+      for hex in message.match(@options.regex)
         replacement = @options.template({hex: hex}) + hex
-        message.content = message.content.replace(hex, replacement)
+        message = message.replace(hex, replacement)
 
-      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
+      return message

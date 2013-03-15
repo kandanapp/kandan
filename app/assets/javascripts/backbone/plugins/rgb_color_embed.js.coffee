@@ -5,10 +5,10 @@ class Kandan.Plugins.RgbColorEmbed
     template: _.template '''<span class="color-preview" style="background-color:<%= rgb %>;"/>'''
 
   @init: ()->
-    Kandan.Modifiers.register @options.regex, (message, state) =>
-      for rgb in message.content.match(@options.regex)
+    Kandan.Modifiers.register @options.regex, (message, activity) =>
+      for rgb in message.match(@options.regex)
         replacement = @options.template({rgb: rgb}) + rgb
-        message.content = message.content.replace(rgb, replacement)
+        message = message.replace(rgb, replacement)
 
-      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
+      return message
 

@@ -24,6 +24,7 @@ window.Kandan =
   registerPlugins: ->
     plugins = [
       "UserList"
+      ,"Pastie"
       ,"Mentions"
       ,"Notifications"
       ,"MusicPlayer"
@@ -31,7 +32,6 @@ window.Kandan =
       ,"VimeoEmbed"
       ,"ImageEmbed"
       ,"LinkEmbed"
-      ,"Pastie"
       ,"Attachments"
       ,"MeAnnounce"
       ,"Emoticons"

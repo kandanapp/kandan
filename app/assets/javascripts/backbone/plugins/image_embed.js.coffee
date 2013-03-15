@@ -13,17 +13,17 @@ class Kandan.Plugins.ImageEmbed
 
 
   @init: ()->
-    Kandan.Modifiers.register @options.regex, (message, state) =>
-      url        = message.content.match(@options.regex)[0]
+    Kandan.Modifiers.register @options.regex, (message, activity) =>
+      url        = message.match(@options.regex)[0]
       fileName   = url.split("/").pop()
-      comment    = $.trim(message.content.split(url).join(""))
+      comment    = $.trim(message.split(url).join(""))
       subtitle   = null
       subtitle   = comment if comment.length > 0
       subtitle ||= fileName
 
-      message.content = @options.template({
+      message = @options.template({
         imageUrl: url,
         subtitle: subtitle
       })
 
-      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
+      return message

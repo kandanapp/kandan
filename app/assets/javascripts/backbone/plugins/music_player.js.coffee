@@ -63,15 +63,15 @@ class Kandan.Plugins.MusicPlayer
 
 
   @registerPlayModifier: ()->
-    Kandan.Modifiers.register @playRegex, (message, state) =>
-      url = $.trim(message.content.substr(message.content.indexOf(" ") + 1));
-      if true and Kandan.Data.Channels.activeChannelId()? # and state == Kandan.Helpers.Activities.ACTIVE_STATE commented out because state == undefined for some reason
+    Kandan.Modifiers.register @playRegex, (message, activity) =>
+      url = $.trim(message.substr(message.indexOf(" ") + 1));
+      if true and Kandan.Data.Channels.activeChannelId()?
         rawInput  = Kandan.Helpers.Utils.unescape(url)
         soundUrl  = null
         soundUrl  = @localSounds(rawInput)
         soundUrl ?= rawInput
 
-        @playUrl(message.channel_id, soundUrl)
+        @playUrl(activity.channel_id, soundUrl)
       else
         console.log "Not playing stale song"
 
@@ -79,21 +79,21 @@ class Kandan.Plugins.MusicPlayer
       return Kandan.Helpers.Activities.buildFromBaseTemplate message
 
   @registerStopModifier: ()->
-    Kandan.Modifiers.register @stopRegex, (message, state) =>
-      url = $.trim(message.content.substr(message.content.indexOf(" ") + 1));
+    Kandan.Modifiers.register @stopRegex, (message, activity) =>
+      url = $.trim(message.substr(message.indexOf(" ") + 1));
       if true and Kandan.Data.Channels.activeChannelId()?
-        @stopSound(message.channel_id)
+        @stopSound(activity.channel_id)
 
-      message.content = @stopTemplate()
-      return Kandan.Helpers.Activities.buildFromBaseTemplate message
+      message = @stopTemplate()
+      return message
 
   @registerResumeModifier: ()->
-    Kandan.Modifiers.register @resumeRegex, (message, state) =>
+    Kandan.Modifiers.register @resumeRegex, (message, activity) =>
       if true and Kandan.Data.Channels.activeChannelId()?
-        @play(message.channel_id)
+        @play(activity.channel_id)
 
-      message.content = @resumeTemplate()
-      return Kandan.Helpers.Activities.buildFromBaseTemplate message
+      message = @resumeTemplate()
+      return message
 
 
   # TODO display error about song not being added by creating an activity locally
