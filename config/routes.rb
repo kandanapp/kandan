@@ -19,6 +19,8 @@ Kandan::Application.routes.draw do
     resources :attachments
   end
 
+  resources :users, :only => [:index, :show]
+
   get "/active_users" => "apis#active_users"
   get "/me" => "apis#me"
  
