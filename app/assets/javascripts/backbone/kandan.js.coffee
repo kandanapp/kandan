@@ -108,21 +108,17 @@ window.Kandan =
     $(".main-area").append(chatArea.render().el)
 
 
-  onFetchActiveUsers: (channels)=>
-    return (activeUsers)=>
+  onFetchUsers: (callback) ->
+    (users) =>
+      Kandan.Helpers.Users.setFromCollection(users)
+      callback()
+
+  onFetchActiveUsers: (callback) ->
+    (activeUsers) =>
       if not Kandan.Helpers.ActiveUsers.collectionHasCurrentUser(activeUsers)
         activeUsers.add([Kandan.Helpers.Users.currentUser()])
-
       Kandan.Helpers.ActiveUsers.setFromCollection(activeUsers)
-      Kandan.registerPlugins()
-      Kandan.Plugins.initAll()
-      Kandan.initChatArea(channels)
-      Kandan.initTabs()
-      Kandan.Widgets.initAll()
-      Kandan.Helpers.Channels.scrollToLatestMessage()
-      Kandan.Plugins.Mentions.initUsersMentions(Kandan.Helpers.ActiveUsers.all())
-      Kandan.Plugins.Emojis.attachToChatbox()
-      return
+      callback()
 
   registerUtilityEvents: ()->
     window.setInterval(=>
@@ -131,11 +127,34 @@ window.Kandan =
     , @options().timestamp_refresh_interval)
 
   init: ->
-    channels = new Kandan.Collections.Channels()
-    channels.fetch({
-      success: (channelsCollection)=>
-        @initBroadcasterAndSubscribe()
-        activeUsers = new Kandan.Collections.ActiveUsers()
-        activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
-    })
+    initializer = @createCallback 3, =>
+      Kandan.registerPlugins()
+      Kandan.Plugins.initAll()
+      Kandan.initChatArea(Kandan.Helpers.Channels.getCollection())
+      Kandan.initTabs()
+      Kandan.Widgets.initAll()
+      Kandan.Helpers.Channels.scrollToLatestMessage()
+      Kandan.Plugins.Mentions.initUsersMentions(Kandan.Helpers.ActiveUsers.all())
+      Kandan.Plugins.Emojis.attachToChatbox()
+      return
+
+    new Kandan.Collections.Channels().fetch {
+      success: @onFetchChannels(initializer)
+    }
+    new Kandan.Collections.ActiveUsers().fetch {
+      success: @onFetchActiveUsers(initializer)
+    }
+    new Kandan.Collections.Users().fetch {
+      success: @onFetchUsers(initializer)
+    }
     @registerUtilityEvents()
+    @initBroadcasterAndSubscribe()
+
+  createCallback: (limit, callback)->
+    finishedCalls = 0
+    -> callback() if ++finishedCalls == limit
+
+  onFetchChannels: (callback) ->
+    (channels) =>
+      Kandan.Helpers.Channels.setCollection(channels)
+      callback()
