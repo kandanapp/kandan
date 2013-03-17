@@ -1,7 +1,7 @@
 class Kandan.Plugins.YouTubeEmbed
 
   @options:
-    regex: /^http(s)?.+www.youtube.com.+watch/i
+    regex: /http(s)?.+www.youtube.com.+watch/i
     idRegex: /\Wv=([\w|\-]*)/
 
     template: _.template '''
@@ -16,24 +16,24 @@ class Kandan.Plugins.YouTubeEmbed
 
 
   @init: ()->
-    Kandan.Modifiers.register @options.regex, (message, state) =>
+    Kandan.Modifiers.register @options.regex, (message, activity) =>
       comment = null
 
       # No spaces in message content indicates just a link
-      if message.content.indexOf(" ") == -1
-        videoUrl = message.content
+      if message.indexOf(" ") == -1
+        videoUrl = message
       else
       # Spaces indicate a subtitle
-        comment = $.trim(message.content.substr(message.content.indexOf(" ") + 1));
+        comment = $.trim(message.substr(message.indexOf(" ") + 1));
 
-      videoId = message.content.match(@options.idRegex)[1]
+      videoId = message.match(@options.idRegex)[1]
 
       subtitle = null
-      subtitle = "Youtube: #{comment}" if comment? and comment.length > 0
+      subtitle = "#{comment}" if comment? and comment.length > 0
       subtitle ||= videoUrl
 
-      message.content = @options.template({
+      message = @options.template({
         videoId: videoId,
         subtitle: subtitle
       })
-      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
+      return message

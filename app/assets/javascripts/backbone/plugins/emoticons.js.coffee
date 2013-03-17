@@ -906,13 +906,13 @@ class Kandan.Plugins.Emoticons
     }
 
   @init: ()->
-    Kandan.Modifiers.register @options.regex, (message, state) =>
-      matches = message.content.match(@options.regex)
+    Kandan.Modifiers.register @options.regex, (message, activity) =>
+      matches = message.match(@options.regex)
       for match in _.unique(matches)
         match = match.trim();
         emoticon = @emoticons[match]
         
         if emoticon
-            message.content = message.content.replace(match, @options.template(emoticon)) 
+            message = message.replace(match, @options.template(emoticon)) 
 
-      return Kandan.Helpers.Activities.buildFromMessageTemplate(message)
+      return message

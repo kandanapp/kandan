@@ -7,9 +7,10 @@ class Kandan.Modifiers
   @all: ()->
     @modifiers
 
-  @process: (message, state)->
+  @process: (activity)->
+    message = activity.content
     for modifier in @modifiers
-      if message.content.match(modifier.regex)!=null
-        modified_object = modifier.callback(message, state)
-        return modified_object if modified_object != false
-    false
+      if message.match(modifier.regex) != null
+        message = modifier.callback(message, activity)
+    
+    return message
