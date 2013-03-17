@@ -48,7 +48,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
     end
 
     add_index :users, :email,  :unique => true
-    add_index :users, :ido_id, :unique => true
     # add_index :users, :confirmation_token,   :unique => true
     # add_index :users, :unlock_token,         :unique => true
     add_index :users, :authentication_token, :unique => true

@@ -6,6 +6,9 @@ gem 'rails', '3.2.12'
 # Database adapters
 gem 'pg'
 
+# Uncomment next line when using MySQL database
+#gem 'mysql2'
+
 # Auth gems
 gem 'devise'
 
