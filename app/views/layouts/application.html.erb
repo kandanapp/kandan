@@ -38,7 +38,7 @@
         <%= link_to 'Edit Account', users_edit_path, @users_edit %><br />
         <%= link_to 'Logout', destroy_user_session_path, :method => :delete %><br />
         <hr>
-        <%= link_to 'About Kandan', about_path, @about %>
+        <%= link_to 'About Kandan', about_path, :target => "_blank" %>
       </div>
     <% else %>
       </div>
