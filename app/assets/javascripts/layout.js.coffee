@@ -3,3 +3,6 @@ $(document).ready ->
       e.preventDefault()
       $(".user_menu").toggle()
       false
+
+  	$(".user_menu a").click (e)->
+      $(".user_menu").toggle()
