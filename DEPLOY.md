@@ -109,11 +109,11 @@ And Kandan should be available on your Cloud Foundry backend now!
 
 <hr>
 # <a name="heroku"></a>Heroku
-You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed and to have an existing [heroku account](https://api.heroku.com/signup). Assuming that, this should work reliably on Heroku:
+You'll need to have the [heroku CLI](https://github.com/heroku/heroku) installed and to have an existing [heroku account](https://api.heroku.com/signup). Assuming that, this should work reliably on Heroku:
 
     git clone https://github.com/kandanapp/kandan.git
     cd kandan
-    heroku create --stack cedar
+    heroku create __appname__ # appname is optional
     git push heroku master
     heroku run rake db:migrate kandan:bootstrap && heroku open
     echo "Done, go forth and chat!"
@@ -121,7 +121,7 @@ You'll need to have the [heroku gem](https://github.com/heroku/heroku) installed
     
 ### Integrate Kandan on Heroku with your Amazon S3_BUCKET ( [Heroku article on AWS S3 to store static assets and file uploads](https://devcenter.heroku.com/articles/s3) ). Run the following line, replacing the the global variable values with your own:
 
-	heroku config:add S3_ACCESS_KEY_ID=xxx S3_SECRET_ACCESS_KEY=xxxx S3_BUCKET=bucket_name
+	heroku config:add S3_ACCESS_KEY_ID=abc S3_SECRET_ACCESS_KEY=xyz S3_BUCKET=bucket_name
 
 If successful you should get a response similar to:
 
