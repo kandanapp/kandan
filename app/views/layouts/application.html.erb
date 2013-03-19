@@ -34,11 +34,11 @@
         <%= yield :header_content %>
       </div>
       <div class="user_menu">
-        <%= link_to 'Admin console', admin_root_path if current_user.is_admin? %>
-        <%= link_to 'Edit Account', users_edit_path, @users_edit %><br />
+        <%= link_to 'Admin console', admin_root_path, :target => "_blank" if current_user.is_admin? %>
+        <%= link_to 'Edit Account', users_edit_path, :target => "_blank" %><br />
         <%= link_to 'Logout', destroy_user_session_path, :method => :delete %><br />
         <hr>
-        <%= link_to 'About Kandan', about_path, @about %>
+        <%= link_to 'About Kandan', about_path, :target => "_blank" %>
       </div>
     <% else %>
       </div>
