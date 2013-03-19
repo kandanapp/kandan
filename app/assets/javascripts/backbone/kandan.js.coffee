@@ -61,11 +61,9 @@ window.Kandan =
       Kandan.Helpers.Utils.browserTabFocused = false
     )
 
-
   initBroadcasterAndSubscribe: ()->
     Kandan.broadcaster = eval "new Kandan.Broadcasters.#{@options().broadcaster.name}Broadcaster()"
     Kandan.broadcaster.subscribe "/channels/*"
-    @registerAppEvents()
 
   initTabs: ()->
     $('#kandan').tabs({
@@ -97,7 +95,6 @@ window.Kandan =
           <span class="tab_left"></span>
           <span class="tab_content">
             <cite>#{label}</cite>
-            <cite class="close_channel" title="close channel">x</cite>
           </span>
         </a>
       </li>
@@ -108,22 +105,22 @@ window.Kandan =
     chatArea = new Kandan.Views.ChatArea({channels: channels})
     $(".main-area").append(chatArea.render().el)
 
+  onFetchChannels: (callback) ->
+    (channels) ->
+      Kandan.Helpers.Channels.setCollection(channels)
+      callback()
 
-  onFetchActiveUsers: (channels)=>
-    return (activeUsers)=>
+  onFetchActiveUsers: (callback) ->
+    (activeUsers) ->
       if not Kandan.Helpers.ActiveUsers.collectionHasCurrentUser(activeUsers)
         activeUsers.add([Kandan.Helpers.Users.currentUser()])
-
       Kandan.Helpers.ActiveUsers.setFromCollection(activeUsers)
-      Kandan.registerPlugins()
-      Kandan.Plugins.initAll()
-      Kandan.initChatArea(channels)
-      Kandan.initTabs()
-      Kandan.Widgets.initAll()
-      Kandan.Helpers.Channels.scrollToLatestMessage()
-      Kandan.Plugins.Mentions.initUsersMentions(Kandan.Helpers.ActiveUsers.all())
-      Kandan.Plugins.Emojis.attachToChatbox()
-      return
+      callback()
+
+  onFetchUsers: (callback) ->
+    (users) ->
+      Kandan.Helpers.Users.setFromCollection(users)
+      callback()
 
   registerUtilityEvents: ()->
     window.setInterval(=>
@@ -132,11 +129,36 @@ window.Kandan =
     , @options().timestamp_refresh_interval)
 
   init: ->
-    channels = new Kandan.Collections.Channels()
-    channels.fetch({
-      success: (channelsCollection)=>
-        @initBroadcasterAndSubscribe()
-        activeUsers = new Kandan.Collections.ActiveUsers()
-        activeUsers.fetch({success: @onFetchActiveUsers(channelsCollection)})
-    })
+    asyncInitializers = [
+      (callback) => new Kandan.Collections.Channels().fetch { success: @onFetchChannels(callback) }
+      (callback) => new Kandan.Collections.ActiveUsers().fetch { success: @onFetchActiveUsers(callback) }
+      (callback) => new Kandan.Collections.Users().fetch { success: @onFetchUsers(callback) }
+    ]
+    # The initializer callback should only be called after all
+    # asynchronous initialization has been completed.
+    syncInitializer = @callAfter asyncInitializers.length, =>
+      @registerPlugins()
+      Kandan.Plugins.initAll()
+      @initChatArea(Kandan.Helpers.Channels.getCollection())
+      @initTabs()
+      Kandan.Widgets.initAll()
+      Kandan.Helpers.Channels.scrollToLatestMessage()
+      Kandan.Plugins.Mentions.initUsersMentions(Kandan.Helpers.ActiveUsers.all())
+      Kandan.Plugins.Emojis.attachToChatbox()
+
+    # Call the asynchronous initializers, passing the synchronous
+    # initializer in as the callback to execute after all asynchrnous
+    # initialization is complete.
+    _(asyncInitializers).each (f) -> f.call(@, syncInitializer)
+
+    # The following intiialization routines don't require deferred
+    # initialization and can be executed immediately.
     @registerUtilityEvents()
+    @initBroadcasterAndSubscribe()
+    @registerAppEvents()
+
+  # Create a function that is fired only after it has been attempted
+  # `limit` times.
+  callAfter: (limit, callback) ->
+    finishedCalls = 0
+    -> callback() if ++finishedCalls == limit

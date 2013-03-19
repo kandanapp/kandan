@@ -33,7 +33,6 @@ class Kandan.Views.ChannelTabs extends Backbone.View
         error: (model, response)->
           _.each(JSON.parse(response.responseText), alert);
       })
-      console.log "create channel: #{channelName}"
     return false
 
   deleteChannel: (event)->
