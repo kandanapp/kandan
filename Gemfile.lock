@@ -49,6 +49,7 @@ GEM
     bourne (1.2.1)
       mocha (= 0.12.7)
     builder (3.0.4)
+    cancan (1.6.9)
     capybara (2.0.2)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -295,6 +296,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 2.3.0.1)
   bourbon
+  cancan
   capybara
   coffee-rails
   coveralls

@@ -1,4 +1,13 @@
 class Kandan.Helpers.Channels
+  @all: (options)->
+    $(document).data("channels")
+
+  @getCollection: ->
+    $(document).data("channelsCollection")
+
+  @setCollection: (collection)->
+    $(document).data("channelsCollection", collection)
+    $(document).data("channels", collection.toJSON())
 
   @options:
     autoScrollThreshold: 0.90
