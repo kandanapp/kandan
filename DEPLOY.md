@@ -21,7 +21,7 @@ We try and keep the __MASTER__ branch of the Kandan code clean and usable but it
 If you need a version of Kandan that's both __tested & stable__ then please make sure you're installing from the lastest `tagged` version of the code.
 
 ```
-git clone git@github.com/kandanapp/kandan.git
+git clone git@github.com:kandanapp/kandan.git
 cd kandan
 git tag -l
 git checkout <tag_name>
