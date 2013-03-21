@@ -6,8 +6,7 @@ rvm:
 env:
 notifications:
   email: 
-    james@jamesrgifford.com
-    fusion94@gmail.com
+    team@kandanapp.com
 # whitelist    
 branches:
   only:
