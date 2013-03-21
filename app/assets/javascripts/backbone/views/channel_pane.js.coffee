@@ -55,12 +55,14 @@ class Kandan.Views.ChannelPane extends Backbone.View
           activityView = new Kandan.Views.ShowActivity({activity: activity, silence_mentions: true})
           $container.find(".channel-activities").prepend(activityView.render().el)
 
-        $container.scrollTop($current_top_element.offset().top)
+        if $current_top_element.length != 0
+          $container.scrollTop($current_top_element.offset().top)
 
         Kandan.Helpers.Channels.setPaginationState(
           collection.channelId,
           collection.moreActivities,
-          _.last(collection.models).get("id")
+          _.last(collection.models),
+          $container
         )
 
         @loading_new_messages = false

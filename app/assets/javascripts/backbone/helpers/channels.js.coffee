@@ -20,13 +20,16 @@ class Kandan.Helpers.Channels
 
   @scrollToLatestMessage: (channelId)->
     if channelId
-      theScrollArea = $('#channels-'+channelId)
+      theScrollArea = @channelPane(channelId)
       theScrollArea.scrollTop(theScrollArea.prop('scrollHeight'))
     else
       $('.channels-pane').scrollTop($('.channels-pane').prop('scrollHeight'))
 
   @currentScrollPosition: (channelId)->
     $('channels-pane').scrollTop()
+
+  @channelPane: (channelId)->
+    $("#channels-#{channelId}")
 
   @channelActivitiesEl: (channelId)->
     $("#channel-activities-#{channelId}")
@@ -92,12 +95,12 @@ class Kandan.Helpers.Channels
 
 
   @channelExists: (channelId)->
-    return true if $("#channels-#{channelId}").length > 0
+    return true if @channelPane(channelId).length > 0
     false
 
 
   @createChannelArea: (channel)->
-    channelArea = "#channels-#{channel.get('id')}"
+    channelArea = @channelPane(channel.get('id'))
     totalTabs = $("#kandan").tabs("length")
     $createTab = $("#create_channel").parents("li").detach()
     $("#kandan").tabs("add", channelArea, "#{channel.get("name")}", totalTabs)
@@ -161,12 +164,18 @@ class Kandan.Helpers.Channels
 
 
   @setPaginationState: (channelId, moreActivities, oldest)->
-    @channelPaginationEl(channelId).data("oldest", oldest)
     console.log "pagination element", moreActivities, @channelPaginationEl(channelId)
     if moreActivities == true
+      # Only set pagination data if there are more activities. Otherwise is useless
+      @channelPaginationEl(channelId).data("oldest", oldest.get("id"))
+
       @channelPaginationEl(channelId).show()
     else
       @channelPaginationEl(channelId).hide()
+      
+      # If there are no more messages we will unbind the scroll event
+      @channelPane(channelId).unbind("scroll")
+
 
 
   @setPaginationData: (channelId)->
