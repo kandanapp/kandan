@@ -23,7 +23,8 @@ class Kandan.Views.ShowActivity extends Backbone.View
       if activity.user.id == Kandan.Helpers.Users.currentUser().id
         $(@el).addClass("current_user")
 
-      if user_mention_regex.test(@compiledTemplate) || all_mention_regex.test(@compiledTemplate)
+      # Only fire mentions if we are not loading old messages
+      if !@options.silence_mentions && (user_mention_regex.test(@compiledTemplate) || all_mention_regex.test(@compiledTemplate))
         $(@el).addClass("mentioned_user")
         Kandan.Plugins.Notifications?.playAudioNotification('attention')
 
