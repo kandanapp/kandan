@@ -32,7 +32,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Channel.find(params[:channel_id]).activities.build(params[:activity])
+    @activity = Channel.find(params[:channel_id]).activities.build(params.require(:activity).permit(:content, :channel_id, :action))
     @activity.user_id = current_user.id if @activity.action == "message"
 
     respond_to do |format|
