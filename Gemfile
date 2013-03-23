@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 
 # Core gems
-gem 'rails', '3.2.16'
+gem "rails", "~> 4.0.2"
+
+# Core Ruby gems
+gem "rails-observers"
+gem "activerecord-session_store"
 
 # Database adapters
 gem 'pg'

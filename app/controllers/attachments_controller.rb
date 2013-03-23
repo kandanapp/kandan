@@ -19,7 +19,7 @@ class AttachmentsController < ApplicationController
   # POST /attachments.json
   def create
     @channel    = Channel.find(params[:channel_id])
-    @attachment = Attachment.new(params[:attachment])
+    @attachment = Attachment.new(params.require(:attachment).permit(:file))
 
     @attachment.user_id = current_user.id
     @attachment.channel_id = @channel.id
