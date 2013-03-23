@@ -27,9 +27,4 @@ Kandan::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.logger = Logger.new(STDOUT)
-  config.logger.level = Logger.const_get(
-    ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
-  )
-  
 end
