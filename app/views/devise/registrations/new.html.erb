@@ -1,29 +1,58 @@
-<div class="devise">
+<%# Remove the following line when we start using Bootstrap all over the app %>
+<%= stylesheet_link_tag  "admin", :media => "all" %>
 
-<h2>Register an Account</h2>
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      .form-signin {
+        max-width: 350px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="email"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
 
-  <p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></p>
+    </style>
 
-  <p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></p>  
+<div class="container">
+  <div class="form-signin">
+    <h3 class="form-signin-heading">Register an Account</h3>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
 
-  <p><%= f.label :username %><br />
-  <%= f.text_field :username %></p>
+        <%= f.text_field :first_name,  :placeholder => 'First Name' %>
+        <%= f.text_field :last_name,  :placeholder => 'Last Name' %>
+        <%= f.email_field :email,  :placeholder => 'Email Address' %>
+        <%= f.text_field :username,  :placeholder => 'Username' %>
+        <%= f.password_field :password,  :placeholder => 'Password' %>
+        <%= f.password_field :password_confirmation,  :placeholder => 'Password Confirmation' %>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+        <p><%= f.submit "Register",   :class => "btn  btn-primary" %></p>
+      <% end %>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Register" %></p>
-<% end %>
-
-<p><%= render :partial => "devise/shared/links" %></p>
+      <p><%= render :partial => "devise/shared/links" %></p>
+  </div>      
+</div>
