@@ -1,5 +1,4 @@
 class Setting < ActiveRecord::Base
-  attr_accessible :values
   serialize :values, Hash
 
   before_create :set_default_values

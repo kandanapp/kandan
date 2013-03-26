@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   before_filter :force_approved_account
   before_filter :redirect_suspended_account
 
+  # Apply strong_parameters filtering before CanCan authorization
+  # See https://github.com/ryanb/cancan/issues/571#issuecomment-10753675
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   def force_approved_account
   	# We will redirect to the approval page if a user is signed in, is not an admin and is marked as waiting for approval
   	redirect = user_signed_in? && !current_user.is_admin? && current_user.registration_status.waiting_approval?

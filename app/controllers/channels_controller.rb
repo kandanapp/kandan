@@ -44,7 +44,7 @@ class ChannelsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @channel.update_attributes(params[:channel])
+      if @channel.update_attributes(channel_params)
         format.json { render :json => @channel, :status => :ok }
       else
         format.json { render :json => @channel.errors, :status => :unprocessable_entity }
@@ -66,5 +66,10 @@ class ChannelsController < ApplicationController
 
   def set_channel_owner
     @channel.user = current_user
+  end
+
+private
+  def channel_params
+    params.require(:channel).permit(:name)
   end
 end
