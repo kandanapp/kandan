@@ -283,6 +283,7 @@ CHANGELOG
  * [0fe77ee](http://github.com/kandanapp/kandan/commit/0fe77ee) Merge pull request #51 from Norrit/patch-1 __(James Gifford)__
  * [2285ee0](http://github.com/kandanapp/kandan/commit/2285ee0) Update DEPLOY.md __(Norbert Schneider)__
  * [3ae40df](http://github.com/kandanapp/kandan/commit/3ae40df) Create CHANGELOG.md __(Tony Guntharp)__
+
 #### [v1.0]
  * [38f4875](http://github.com/kandanapp/kandan/commit/38f4875) Create CONTRIBUTING.md __(Tony Guntharp)__
  * [605c237](http://github.com/kandanapp/kandan/commit/605c237) Update README.md __(Tony Guntharp)__
