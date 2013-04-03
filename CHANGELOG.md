@@ -1,7 +1,158 @@
 CHANGELOG
 =========
 
-#### [v1.1]
+#### [v1.2]
+ * [1866fc8](http://github.com/kandanapp/kandan/commit/1866fc8) mini-revert __(Tony Guntharp)__
+ * [8bbb11e](http://github.com/kandanapp/kandan/commit/8bbb11e) updating gems for 1.2 release __(Tony Guntharp)__
+ * [5f15fbd](http://github.com/kandanapp/kandan/commit/5f15fbd) Merge pull request #244 from donthorp/kandan-174 __(Tony Guntharp)__
+ * [19ff5c9](http://github.com/kandanapp/kandan/commit/19ff5c9) Fixes #174. Prints a pithy message if you misuse /me __(Don Thorp)__
+ * [6209287](http://github.com/kandanapp/kandan/commit/6209287) Update .travis.yml __(Gabriel Cebrian)__
+ * [930039c](http://github.com/kandanapp/kandan/commit/930039c) Merge pull request #238 from gabceb/180 __(James Gifford)__
+ * [189e765](http://github.com/kandanapp/kandan/commit/189e765) Fixes to deal with empty channels __(Gabriel Cebrian)__
+ * [c3cd3c4](http://github.com/kandanapp/kandan/commit/c3cd3c4) Updated some gems that were updated to work with Rails 3.2.13 __(Gabriel Cebrian)__
+ * [ee1c31c](http://github.com/kandanapp/kandan/commit/ee1c31c) Implements infinite scrolling __(Gabriel Cebrian)__
+ * [d3d6cde](http://github.com/kandanapp/kandan/commit/d3d6cde) Merge pull request #236 from brookr/master __(Tony Guntharp)__
+ * [f08e759](http://github.com/kandanapp/kandan/commit/f08e759) Update instructions for deploying to Heroku __(Brook Riggio)__
+ * [646bc8f](http://github.com/kandanapp/kandan/commit/646bc8f) Merge pull request #223 from mjtko/kandan-131 __(Tony Guntharp)__
+ * [83de39a](http://github.com/kandanapp/kandan/commit/83de39a) Use #create! to ensure channel creation fails noisily if it doesn't validate correctly; ensure the primary channel is assigned to the primary user. __(Mark J. Titorenko)__
+ * [df8f166](http://github.com/kandanapp/kandan/commit/df8f166) Merge pull request #235 from gabceb/kandan-234 __(Tony Guntharp)__
+ * [7ac4113](http://github.com/kandanapp/kandan/commit/7ac4113) All links on header menu open in new tabs now __(Gabriel Cebrian)__
+ * [16540f6](http://github.com/kandanapp/kandan/commit/16540f6) About page opens in a new page __(Gabriel Cebrian)__
+ * [b757826](http://github.com/kandanapp/kandan/commit/b757826) Merge pull request #230 from gabceb/kandan-229 __(Tony Guntharp)__
+ * [4aee581](http://github.com/kandanapp/kandan/commit/4aee581) Updated gems __(Gabriel Cebrian)__
+ * [60d6f53](http://github.com/kandanapp/kandan/commit/60d6f53) Merge pull request #228 from gabceb/kandan-227 __(Tony Guntharp)__
+ * [3090013](http://github.com/kandanapp/kandan/commit/3090013) Updates kandan-count and kandan-count-dev __(Gabriel Cebrian)__
+ * [829a790](http://github.com/kandanapp/kandan/commit/829a790) Merge pull request #222 from gabceb/kandan-207 __(Tony Guntharp)__
+ * [7d9f4ca](http://github.com/kandanapp/kandan/commit/7d9f4ca) Merge pull request #221 from gabceb/kandan-219 __(Tony Guntharp)__
+ * [4338246](http://github.com/kandanapp/kandan/commit/4338246) Slight refactoring; added comments about what is going on. :) __(Mark J. Titorenko)__
+ * [828cd54](http://github.com/kandanapp/kandan/commit/828cd54) Increase capybara wait time to 10s for locating .chat-input. __(Mark J. Titorenko)__
+ * [c21ace8](http://github.com/kandanapp/kandan/commit/c21ace8) Better user handling; better initialization callbacks. __(Mark J. Titorenko)__
+ * [621fdf6](http://github.com/kandanapp/kandan/commit/621fdf6) fix abilities for channel ownership __(Mark J. Titorenko)__
+ * [e6d30a4](http://github.com/kandanapp/kandan/commit/e6d30a4) Add users_controller and set as show/index resource in routes. __(Mark J. Titorenko)__
+ * [0f35eb4](http://github.com/kandanapp/kandan/commit/0f35eb4) Remove obsolete additional attribute for channel JSON. __(Mark J. Titorenko)__
+ * [adb613d](http://github.com/kandanapp/kandan/commit/adb613d) Channels now need a user. __(Mark J. Titorenko)__
+ * [91d40be](http://github.com/kandanapp/kandan/commit/91d40be) Introduce channel ownership; delete button only displayed for destroyable channels (non-primary, owned, or all except primary channel if you're an admin). __(Mark J. Titorenko)__
+ * [b6b983a](http://github.com/kandanapp/kandan/commit/b6b983a) Don't render delete button unless channel metadata contains trueish destroyable flage. __(Mark J. Titorenko)__
+ * [3de5e3a](http://github.com/kandanapp/kandan/commit/3de5e3a) Add authorization for channels; initial implementation is such that only administrators may delete channels. (refs #131, #154) __(Mark J. Titorenko)__
+ * [df305ae](http://github.com/kandanapp/kandan/commit/df305ae) Fixes MySql support __(Gabriel Cebrian)__
+ * [883f927](http://github.com/kandanapp/kandan/commit/883f927) Implementation of plugin chaining. __(Gabriel Cebrian)__
+ * [ff6530a](http://github.com/kandanapp/kandan/commit/ff6530a) Merge pull request #213 from mjtko/feature/decouple-configuration-from-assets __(Gabriel Cebrian)__
+ * [d4a857f](http://github.com/kandanapp/kandan/commit/d4a857f) Moved nowThreshold and timestampRefreshInterval to kandan_settings.yml for consistency. __(Mark J. Titorenko)__
+ * [d92fb81](http://github.com/kandanapp/kandan/commit/d92fb81) Pass configuration through the DOM rather than relying on ERB rendering, removing the coupling between rendered assets and the backend application configuration in place at time of rendering. __(Mark J. Titorenko)__
+ * [82cfd2c](http://github.com/kandanapp/kandan/commit/82cfd2c) Merge pull request #212 from mjtko/fix/repeated-id __(Gabriel Cebrian)__
+ * [6f2b972](http://github.com/kandanapp/kandan/commit/6f2b972) Make capybara await the presence of the .chat-input before #find-ing it. __(Mark J. Titorenko)__
+ * [989d673](http://github.com/kandanapp/kandan/commit/989d673) Merge pull request #214 from fusion94/kandan-198 __(Gabriel Cebrian)__
+ * [5a99802](http://github.com/kandanapp/kandan/commit/5a99802) adds proper css badging to admins. Fixes #198 __(Tony Guntharp)__
+ * [f086bac](http://github.com/kandanapp/kandan/commit/f086bac) oy.... __(Tony Guntharp)__
+ * [9ea95bc](http://github.com/kandanapp/kandan/commit/9ea95bc) Refactor integration tests to allow configuration of Faye port for testing. __(Mark J. Titorenko)__
+ * [6187c23](http://github.com/kandanapp/kandan/commit/6187c23) Remove non-unique ID - chatbox template is used for each channel so we can't use an ID here (without violating standards anyway!) __(Mark J. Titorenko)__
+ * [fc93ad8](http://github.com/kandanapp/kandan/commit/fc93ad8) Merge pull request #211 from fusion94/kandan-208 __(Don Thorp)__
+ * [712ef34](http://github.com/kandanapp/kandan/commit/712ef34) support for ruby 2.0.0 added to travis-ci __(Tony Guntharp)__
+ * [bbc4ccb](http://github.com/kandanapp/kandan/commit/bbc4ccb) removing 1.9.3 from Gemfile. Supports ruby 2.0 __(Tony Guntharp)__
+ * [c03cf0b](http://github.com/kandanapp/kandan/commit/c03cf0b) Update out of date gems Fixes #208 __(Tony Guntharp)__
+ * [8b49252](http://github.com/kandanapp/kandan/commit/8b49252) Merge pull request #210 from gabceb/kandan-209 __(Tony Guntharp)__
+ * [ae6b41a](http://github.com/kandanapp/kandan/commit/ae6b41a) Fixed faye host bug for production __(Gabriel Cebrian)__
+ * [6c2b3fe](http://github.com/kandanapp/kandan/commit/6c2b3fe) Merge pull request #206 from oponder/front_end_tests_with_poltergeist __(Gabriel Cebrian)__
+ * [c592bef](http://github.com/kandanapp/kandan/commit/c592bef) remove branching on Rails.env for faye urls __(Oliver Ponder)__
+ * [74967a7](http://github.com/kandanapp/kandan/commit/74967a7) Increase poltergeist timeout to see if it passes travis build __(Oliver Ponder)__
+ * [51837e1](http://github.com/kandanapp/kandan/commit/51837e1) Merge pull request #202 from oponder/add_youtube_embed __(Tony Guntharp)__
+ * [6c89ac3](http://github.com/kandanapp/kandan/commit/6c89ac3) Make sure the app connects to the test faye when it is in the test environment __(Oliver Ponder)__
+ * [8c0ba3e](http://github.com/kandanapp/kandan/commit/8c0ba3e) Add an ID to the chat textarea so the test can find it easily __(Oliver Ponder)__
+ * [bd44210](http://github.com/kandanapp/kandan/commit/bd44210) Add requires and setup for new gems. Spin up Faye in a seperate thread and port. __(Oliver Ponder)__
+ * [911570a](http://github.com/kandanapp/kandan/commit/911570a) Ensures headless JS server and testing environment are connecting to same database __(Oliver Ponder)__
+ * [47e6f19](http://github.com/kandanapp/kandan/commit/47e6f19) Add a proof of concept login test __(Oliver Ponder)__
+ * [c95ab13](http://github.com/kandanapp/kandan/commit/c95ab13) Add gems that help with testing JS __(Oliver Ponder)__
+ * [804b508](http://github.com/kandanapp/kandan/commit/804b508) Merge pull request #203 from mjtko/feature/atwho-regex-improvements __(Tony Guntharp)__
+ * [bd8fbc2](http://github.com/kandanapp/kandan/commit/bd8fbc2) Use master jqeury.atwho.js incorporating ichord/At.js#51 __(Mark J. Titorenko)__
+ * [4f12e3d](http://github.com/kandanapp/kandan/commit/4f12e3d) Fix broken whitespace __(Mark J. Titorenko)__
+ * [ca74879](http://github.com/kandanapp/kandan/commit/ca74879) Improvements to atwho regexes to only match at start of line or after whitespace. (Fixes #157) __(Mark J. Titorenko)__
+ * [b80f097](http://github.com/kandanapp/kandan/commit/b80f097) Was missing a comma, not sure if it mattered though. __(Oliver Ponder)__
+ * [7e653d6](http://github.com/kandanapp/kandan/commit/7e653d6) Issue #196 - Youtube plugin should embed video __(Oliver Ponder)__
+ * [374e568](http://github.com/kandanapp/kandan/commit/374e568) Merge pull request #201 from mjtko/feature/updated-mention-sound __(Gabriel Cebrian)__
+ * [f2240b0](http://github.com/kandanapp/kandan/commit/f2240b0) Remove MP3 files (not currently supported in Firefox or Opera); added threetone-alert.wav to replace gong.mp3 for mention sounds; updated music_player to remove references to unused/obsolete MP3s. __(Mark J. Titorenko)__
+ * [7530273](http://github.com/kandanapp/kandan/commit/7530273) Merge pull request #199 from mjtko/feature/chatbox-emojis-preview __(Gabriel Cebrian)__
+ * [c6ad98b](http://github.com/kandanapp/kandan/commit/c6ad98b) Preview emojis in chatbox. __(Mark J. Titorenko)__
+ * [e3479c0](http://github.com/kandanapp/kandan/commit/e3479c0) Merge pull request #195 from mjtko/feature/chatbox-history __(Gabriel Cebrian)__
+ * [61f9614](http://github.com/kandanapp/kandan/commit/61f9614) Rework logic to remove confusion; add comment about why modifier keys are ignored. __(Mark J. Titorenko)__
+ * [b47d9b4](http://github.com/kandanapp/kandan/commit/b47d9b4) Added 'history' capability to the chatbox input. __(Mark J. Titorenko)__
+ * [022a643](http://github.com/kandanapp/kandan/commit/022a643) Merge pull request #194 from mjtko/kandan-192 __(Tony Guntharp)__
+ * [fb51556](http://github.com/kandanapp/kandan/commit/fb51556) Remove use of obsolete border-radius mixins (fixes #192). __(Mark J. Titorenko)__
+ * [ccd1ecf](http://github.com/kandanapp/kandan/commit/ccd1ecf) Merge pull request #191 from jjasghar/patch-1 __(Tony Guntharp)__
+ * [fb7996e](http://github.com/kandanapp/kandan/commit/fb7996e) Update DEPLOY.md __(JJ Asghar)__
+ * [38e0f6b](http://github.com/kandanapp/kandan/commit/38e0f6b) Update DEPLOY.md __(Tony Guntharp)__
+ * [0a02634](http://github.com/kandanapp/kandan/commit/0a02634) Merge pull request #190 from gabceb/kandan-189 __(Tony Guntharp)__
+ * [fddf0e1](http://github.com/kandanapp/kandan/commit/fddf0e1) Updated all development gems. Fixes #189 __(Gabriel Cebrian)__
+ * [c143cc0](http://github.com/kandanapp/kandan/commit/c143cc0) Merge pull request #188 from fusion94/kandan-187 __(Don Thorp)__
+ * [7f6f693](http://github.com/kandanapp/kandan/commit/7f6f693) Updated runtime gems to latest. Fixes #187 __(Tony Guntharp)__
+ * [b653945](http://github.com/kandanapp/kandan/commit/b653945) Merge pull request #185 from gabceb/kandan-184 __(Tony Guntharp)__
+ * [fd728f8](http://github.com/kandanapp/kandan/commit/fd728f8) Fixes Devise 2.0 migrations __(Gabriel Cebrian)__
+ * [16d0108](http://github.com/kandanapp/kandan/commit/16d0108) Merge pull request #182 from gabceb/kandan-181 __(James Gifford)__
+ * [371e0a0](http://github.com/kandanapp/kandan/commit/371e0a0) Updated devise and dependencies to latest version. __(Gabriel Cebrian)__
+ * [11816d1](http://github.com/kandanapp/kandan/commit/11816d1) Update README.md __(Tony Guntharp)__
+ * [ff7971d](http://github.com/kandanapp/kandan/commit/ff7971d) Update README.md __(Tony Guntharp)__
+ * [634a35b](http://github.com/kandanapp/kandan/commit/634a35b) Added coverage status __(Tony Guntharp)__
+ * [537f13d](http://github.com/kandanapp/kandan/commit/537f13d) Merge pull request #179 from fusion94/kandan-178 __(James Gifford)__
+ * [26ec515](http://github.com/kandanapp/kandan/commit/26ec515) need to actually add the .coveralls.yml file __(Tony Guntharp)__
+ * [9972104](http://github.com/kandanapp/kandan/commit/9972104) adding Coveralls suite Fixes #178 __(Tony Guntharp)__
+ * [b88793e](http://github.com/kandanapp/kandan/commit/b88793e) adding email addresses __(Tony Guntharp)__
+ * [4a0f6ee](http://github.com/kandanapp/kandan/commit/4a0f6ee) Update README.md __(Tony Guntharp)__
+ * [a40fa42](http://github.com/kandanapp/kandan/commit/a40fa42) Merge pull request #175 from linjunpop/ruby-1.9.3 __(Tony Guntharp)__
+ * [e7379e6](http://github.com/kandanapp/kandan/commit/e7379e6) Lock ruby version to 1.9.3. __(Jun Lin)__
+ * [ca181a8](http://github.com/kandanapp/kandan/commit/ca181a8) Merge pull request #166 from fusion94/kandan-165 __(James Gifford)__
+ * [8160c94](http://github.com/kandanapp/kandan/commit/8160c94) Merge pull request #173 from mjtko/kandan-170 __(Tony Guntharp)__
+ * [9a37b1c](http://github.com/kandanapp/kandan/commit/9a37b1c) Merge pull request #172 from mjtko/kandan-171 __(Tony Guntharp)__
+ * [c6727a7](http://github.com/kandanapp/kandan/commit/c6727a7) Merge pull request #169 from mjtko/kandan-168 __(Tony Guntharp)__
+ * [c2eb6de](http://github.com/kandanapp/kandan/commit/c2eb6de) Handle channel creation across clients (Fixes #170). __(Mark J. Titorenko)__
+ * [0f823a0](http://github.com/kandanapp/kandan/commit/0f823a0) Remote clients perform tab removal correctly for channel deletion (Fixes #171). __(Mark J. Titorenko)__
+ * [942ab52](http://github.com/kandanapp/kandan/commit/942ab52) Send application activity for channel creation as well as deletion. __(Mark J. Titorenko)__
+ * [b26b973](http://github.com/kandanapp/kandan/commit/b26b973) Wire up /me to ApisController#me action. __(Mark J. Titorenko)__
+ * [0b9684c](http://github.com/kandanapp/kandan/commit/0b9684c) Merge pull request #167 from mjtko/kandan-135 __(Gabriel Cebrian)__
+ * [f3aa968](http://github.com/kandanapp/kandan/commit/f3aa968) Confine disconnect/connect activities to primary channel (Fixes #135). __(Mark J. Titorenko)__
+ * [59739d1](http://github.com/kandanapp/kandan/commit/59739d1) Added hubot.username to kandan.rake Fixes #165 __(Tony Guntharp)__
+ * [0877f00](http://github.com/kandanapp/kandan/commit/0877f00) Merge pull request #109 from drdamour/patch-1 __(Tony Guntharp)__
+ * [d1ecafc](http://github.com/kandanapp/kandan/commit/d1ecafc) Merge pull request #164 from mjtko/kandan-163 __(James Gifford)__
+ * [2e3c481](http://github.com/kandanapp/kandan/commit/2e3c481) Reinstate faye requirement in Gemfile (Fixes #163). __(Mark J. Titorenko)__
+ * [ed79097](http://github.com/kandanapp/kandan/commit/ed79097) Merge pull request #162 from jrgifford/master __(Tony Guntharp)__
+ * [21cbcf9](http://github.com/kandanapp/kandan/commit/21cbcf9) Final removal of cloudfuji stuff __(James Gifford)__
+ * [86986f7](http://github.com/kandanapp/kandan/commit/86986f7) Merge pull request #159 from gabceb/kandan_158 __(Tony Guntharp)__
+ * [cfd28c3](http://github.com/kandanapp/kandan/commit/cfd28c3) Merge pull request #161 from gabceb/kandan-160 __(James Gifford)__
+ * [fc64c7a](http://github.com/kandanapp/kandan/commit/fc64c7a) Removed last references of cloudfuji ido_id. Fixes #160 __(Gabriel Cebrian)__
+ * [5e2b913](http://github.com/kandanapp/kandan/commit/5e2b913) Merges #142 __(James Gifford)__
+ * [228731a](http://github.com/kandanapp/kandan/commit/228731a) Update README.md __(Tony Guntharp)__
+ * [50975d0](http://github.com/kandanapp/kandan/commit/50975d0) Update CONTRIBUTING.md __(Tony Guntharp)__
+ * [0d4a0b0](http://github.com/kandanapp/kandan/commit/0d4a0b0) Adding items to make contribs clearer. Fixes #152 __(Tony Guntharp)__
+ * [cd33520](http://github.com/kandanapp/kandan/commit/cd33520) Merge pull request #141 from gabceb/master __(Don Thorp)__
+ * [331bdc1](http://github.com/kandanapp/kandan/commit/331bdc1) Moved current_user to the application layout. Fixes #158 __(Gabriel Cebrian)__
+ * [a8aece6](http://github.com/kandanapp/kandan/commit/a8aece6) Merge branch 'master' of https://github.com/kandanapp/kandan __(Gabriel Cebrian)__
+ * [c48996b](http://github.com/kandanapp/kandan/commit/c48996b) Merge pull request #151 from mjtko/proposal/fluidapp-notifications __(Gabriel Cebrian)__
+ * [fc014cf](http://github.com/kandanapp/kandan/commit/fc014cf) Merge branch 'proposal/fluidapp-notifications' of git://github.com/mjtko/kandan __(Gabriel Cebrian)__
+ * [e128e9f](http://github.com/kandanapp/kandan/commit/e128e9f) Fluid notifications (to support Fluid App, http://fluidapp.com) __(Mark J. Titorenko)__
+ * [1eadbbd](http://github.com/kandanapp/kandan/commit/1eadbbd) Merge branch 'master' of https://github.com/kandanapp/kandan __(Gabriel Cebrian)__
+ * [3b39026](http://github.com/kandanapp/kandan/commit/3b39026) Merge pull request #145 from mjtko/master-143 __(Gabriel Cebrian)__
+ * [5ee7a46](http://github.com/kandanapp/kandan/commit/5ee7a46) Merge pull request #148 from mjtko/fix/remove-lobby-delete-button __(Don Thorp)__
+ * [daf9f8c](http://github.com/kandanapp/kandan/commit/daf9f8c) Merge pull request #147 from mjtko/master-138 __(Don Thorp)__
+ * [b338f4a](http://github.com/kandanapp/kandan/commit/b338f4a) Merge pull request #155 from donthorp/kandan-153 __(James Gifford)__
+ * [3d3d1ef](http://github.com/kandanapp/kandan/commit/3d3d1ef) Merge branch 'master' into kandan-153 __(Don Thorp)__
+ * [5902496](http://github.com/kandanapp/kandan/commit/5902496) Fixes #153. Add mjtko to git rake task __(Don Thorp)__
+ * [7ba3ca6](http://github.com/kandanapp/kandan/commit/7ba3ca6) Merge branch 'master-133' of https://github.com/mjtko/kandan into 150 Fixes #150. __(James Gifford)__
+ * [42873da](http://github.com/kandanapp/kandan/commit/42873da) Merge pull request #144 from mjtko/master-134 __(James Gifford)__
+ * [6031deb](http://github.com/kandanapp/kandan/commit/6031deb) Enhanced notifications - now uses gong for @messages and ding for channel messages __(Mark J. Titorenko)__
+ * [ccbb6a8](http://github.com/kandanapp/kandan/commit/ccbb6a8) Use '$' prefix convention to indicate jquery object variables __(Mark J. Titorenko)__
+ * [b3f1e18](http://github.com/kandanapp/kandan/commit/b3f1e18) Remove 'delete channel' button from primary channel ('Lobby') __(Mark J. Titorenko)__
+ * [903c87c](http://github.com/kandanapp/kandan/commit/903c87c) Fix deletion of newly created channels. __(Mark J. Titorenko)__
+ * [9ea3256](http://github.com/kandanapp/kandan/commit/9ea3256) Fix search facility by setting current-user; factored current_user_data commonality into ApplicationHelper. __(Mark J. Titorenko)__
+ * [bfedc7c](http://github.com/kandanapp/kandan/commit/bfedc7c) Allow configuration of avatar URL generation; remove obsolete template (current_user) __(Mark J. Titorenko)__
+ * [a9e80bf](http://github.com/kandanapp/kandan/commit/a9e80bf) Removed ido_id from user factories __(Gabriel Cebrian)__
+ * [2e02d3e](http://github.com/kandanapp/kandan/commit/2e02d3e) Revert "Fixed mentions regex to stop matching email addresses" __(Gabriel Cebrian)__
+ * [01141bf](http://github.com/kandanapp/kandan/commit/01141bf) Removed unused ido_id from users table __(Gabriel Cebrian)__
+ * [95eb878](http://github.com/kandanapp/kandan/commit/95eb878) Rename hubot to @kandanapp.com __(Gabriel Cebrian)__
+ * [211cc51](http://github.com/kandanapp/kandan/commit/211cc51) Removed all cloudfuji code from kandan __(Gabriel Cebrian)__
+ * [73ffc08](http://github.com/kandanapp/kandan/commit/73ffc08) Remove Airbrake code from project __(Gabriel Cebrian)__
+ * [d526da8](http://github.com/kandanapp/kandan/commit/d526da8) Fixed mentions regex to stop matching email addresses __(Gabriel Cebrian)__
+ * [b9c39e9](http://github.com/kandanapp/kandan/commit/b9c39e9) Merge pull request #140 from gabceb/master __(Tony Guntharp)__
+ * [55252b5](http://github.com/kandanapp/kandan/commit/55252b5) Merge branch 'master' of https://github.com/kandanapp/kandan __(Gabriel Cebrian)__
+ * [1566001](http://github.com/kandanapp/kandan/commit/1566001) Added kandan-count gems to production and development groups __(Gabriel Cebrian)__
+ * [1ebc585](http://github.com/kandanapp/kandan/commit/1ebc585) Version 1.1 released. __(Tony Guntharp)__
  * [b13494f](http://github.com/kandanapp/kandan/commit/b13494f) Merge pull request #139 from gabceb/master __(James Gifford)__
  * [18df9fc](http://github.com/kandanapp/kandan/commit/18df9fc) Removing all references of cloudfuji profile icon from js templates __(Gabriel Cebrian)__
  * [ff10fba](http://github.com/kandanapp/kandan/commit/ff10fba) Update CONTRIBUTING.md __(Tony Guntharp)__
@@ -42,6 +193,7 @@ CHANGELOG
  * [7b57f80](http://github.com/kandanapp/kandan/commit/7b57f80) Merge pull request #108 from gabceb/CanCanAdmin __(Tony Guntharp)__
  * [4963b69](http://github.com/kandanapp/kandan/commit/4963b69) Small fixes from the code review __(Gabriel Cebrian)__
  * [4c15ac8](http://github.com/kandanapp/kandan/commit/4c15ac8) Make sure approved users have an admin checkbox when they are approved __(Gabriel Cebrian)__
+ * [580eb64](http://github.com/kandanapp/kandan/commit/580eb64) Update DEPLOY.md __(drdamour)__
  * [e0ed0fb](http://github.com/kandanapp/kandan/commit/e0ed0fb) Added ability to have add admins __(Gabriel Cebrian)__
  * [9ac14de](http://github.com/kandanapp/kandan/commit/9ac14de) Small fixes __(Gabriel Cebrian)__
  * [53339a7](http://github.com/kandanapp/kandan/commit/53339a7) Javascript to handle users finished. Added check to make sure approved users are not stuck on the approval page. Same for suspended __(Gabriel Cebrian)__
@@ -131,7 +283,6 @@ CHANGELOG
  * [0fe77ee](http://github.com/kandanapp/kandan/commit/0fe77ee) Merge pull request #51 from Norrit/patch-1 __(James Gifford)__
  * [2285ee0](http://github.com/kandanapp/kandan/commit/2285ee0) Update DEPLOY.md __(Norbert Schneider)__
  * [3ae40df](http://github.com/kandanapp/kandan/commit/3ae40df) Create CHANGELOG.md __(Tony Guntharp)__
-
 #### [v1.0]
  * [38f4875](http://github.com/kandanapp/kandan/commit/38f4875) Create CONTRIBUTING.md __(Tony Guntharp)__
  * [605c237](http://github.com/kandanapp/kandan/commit/605c237) Update README.md __(Tony Guntharp)__
