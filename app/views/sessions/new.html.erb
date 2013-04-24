@@ -1,20 +1,51 @@
-<div class="devise">
+<%# Remove the following line when we start using Bootstrap all over the app %>
+<%= stylesheet_link_tag  "admin", :media => "all" %>
 
-<h2>Sign In</h2>
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :username %><br />
-  <%= f.text_field :username %></p>
+      .form-signin {
+        max-width: 350px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+    </style>
 
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
-<% end %>
-
-<p><%= render :partial => "devise/shared/links" %></p>
+<div class="container">
+	<div class="form-signin">
+        		<h3 class="form-signin-heading">Sign In</h3>
+		     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>   
+		    <%= f.text_field :username,  :autofocus => true, :placeholder => 'Username' %>
+		    <%= f.password_field :password,  :placeholder => 'Password' %>
+		        <label class="checkbox">
+		          <input type="checkbox" value="remember-me"> Remember me
+		        </label>
+		        <%= f.submit "Sign in",  :class => "btn  btn-primary" %>
+		        <% end %>
+		        <%= render :partial => "devise/shared/links" %>
+	</div>
 </div>
