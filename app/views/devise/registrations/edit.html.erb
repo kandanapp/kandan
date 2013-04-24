@@ -1,29 +1,63 @@
-<div class="devise">
+<%# Remove the following line when we start using Bootstrap all over the app %>
+<%= stylesheet_link_tag  "admin", :media => "all" %>
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        max-width: 350px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="email"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+      .note  i {
+        font-size: 12px;
+        color: red;
+      }
+    </style>
+
+<div class="container">
+  <div class="form-signin">
+    <h3>Edit <%= resource_name.to_s.humanize %></h3>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></p>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %>
+  <%= f.email_field :email %>
+  <div class="note"><i>(leave blank if you don't want to change it)</i>
+  <%= f.password_field :password ,  :placeholder => ' New Password' %>
+  <%= f.password_field :password_confirmation,  :placeholder => ' New Password Confirm'  %>
+</div>
+  <div class="note"><i>(Enter your current password to confirm your changes)</i>
+  <%= f.password_field :current_password,   :placeholder => ' Current  Password' %>
+  </div>
 
-  <p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></p>
-  
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></p>
-
-  <p><%= f.submit "Update" %></p>
+  <p><%= f.submit "Update" ,   :class => "btn  btn-primary"  %>&nbsp;<%= link_to "Cancel my account", registration_path(resource_name),   :class => "btn  btn-danger", :confirm => "Are you sure you want to delete your account?", :method => :delete %></p>
 <% end %>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+</div>
+</div>
