@@ -32,7 +32,7 @@ See DEPLOY.md for information on deploying.
 
 TODO
 ====
-This is the new home of the issue tracker:
+We're tracking milestones and todo items in the tracker
 [See the issue tracker](https://github.com/kandanapp/kandan/issues)
 
 Get Involved!
