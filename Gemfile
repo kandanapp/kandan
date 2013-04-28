@@ -9,6 +9,8 @@ gem 'pg'
 # Uncomment next line when using MySQL database
 #gem 'mysql2'
 
+gem 'audited-activerecord'
+
 # Auth gems
 gem 'devise'
 gem 'cancan'

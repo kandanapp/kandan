@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   extend Enumerize
-
+  audited
+  
   # Being pesimistic here and making the default waiting for approval for security reasons
   enumerize :registration_status, in: [:active, :suspended, :waiting_approval], :default => :waiting_approval
 

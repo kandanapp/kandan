@@ -1,7 +1,7 @@
 class Attachment < ActiveRecord::Base
   belongs_to :channel
   belongs_to :user
-
+  audited
 =begin
   has_attached_file(:file, {
       :storage         => :s3,

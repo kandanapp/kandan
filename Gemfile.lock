@@ -30,6 +30,10 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.3)
     arel (3.0.2)
+    audited (3.0.0)
+    audited-activerecord (3.0.0)
+      activerecord (~> 3.0)
+      audited (= 3.0.0)
     awesome_print (1.1.0)
     aws-sdk (1.8.5)
       json (~> 1.4)
@@ -290,6 +294,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  audited-activerecord
   awesome_print
   aws-sdk
   better_errors
