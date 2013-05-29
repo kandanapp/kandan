@@ -103,11 +103,11 @@ class Kandan.Helpers.Channels
     channelArea = @channelPane(channel.get('id'))
     totalTabs = $("#kandan").tabs("length")
     $createTab = $("#create_channel").parents("li").detach()
-    $("#kandan").tabs("add", channelArea, "#{channel.get("name")}", totalTabs)
+    $("#kandan").tabs("add", "#channels-#{channel.get('id')}", "#{channel.get("name")}", totalTabs)
     $createTab.appendTo("ul.ui-tabs-nav")
     $('#ui-tabs-1').remove()
     view = new Kandan.Views.ChannelPane({channel: channel})
-    $newChannel = $(channelArea)
+    $newChannel = $("#channels-#{channel.get('id')}")
     view.render $newChannel
     $newChannel.addClass('ui-tabs-panel')
 
