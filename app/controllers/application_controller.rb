@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_suspended_account
-  	# We will redirect to suspended if a user is singed in and its marked as suspended 
+  	# We will redirect to suspended if a user is signed in and its marked as suspended 
   	redirect = user_signed_in? && current_user.registration_status.suspended?
   	
   	redirect_to suspended_path if redirect
