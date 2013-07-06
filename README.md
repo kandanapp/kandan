@@ -27,7 +27,7 @@ These are features that work out of the box on any provider:
 Deployment
 ==========
 
-See DEPLOY.md for information on deploying.
+See [DEPLOY.md](https://github.com/kandanapp/kandan/blob/master/DEPLOY.md) for information on deploying.
 
 
 TODO
