@@ -82,12 +82,7 @@ class User < ActiveRecord::Base
   # and if image extension is allowed
   def check_external_avatar
     # avatar url is not required
-    if self.avatar_url.nil?
-      return
-    end
-
-    if self.avatar_url.empty?
-      errors.add(:avatar_url, "cannot be empty")
+    if self.avatar_url.nil? or self.avatar_url.empty?
       return
     end
 

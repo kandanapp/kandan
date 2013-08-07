@@ -77,13 +77,13 @@ describe User do
     context "check url" do
       subject { FactoryGirl.build(:user) }
 
-      it "should accept non-empty small image with allowed extension" do
+      it "should accept small image url with allowed extension" do
         subject.avatar_url = "https://github.global.ssl.fastly.net/images/icons/emoji/+1.png"
         expect(subject.save).to be_true
         expect(subject).to be_valid
       end
 
-      it "should not accept extension that is not allowed in config" do
+      it "should not accept url with extension that is not allowed in config" do
         # a 35KB midi sound
         subject.avatar_url = "http://saya.pianomidi.org/musica/lfals/a-asturias.mid"
         expect(subject.save).to be_false
@@ -105,13 +105,6 @@ describe User do
         expect(subject).to_not be_valid
         expect(subject.errors).to have_key(:avatar_url)      
       end
-
-      it "should not validate empty url as avatar" do
-        subject.avatar_url = ""
-        expect(subject.save).to be_false
-        expect(subject).to_not be_valid
-        expect(subject.errors).to have_key(:avatar_url)
-      end        
     end
   end 
 end
