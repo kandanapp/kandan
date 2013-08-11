@@ -27,7 +27,8 @@
       }
       .form-signin input[type="text"],
       .form-signin input[type="email"],
-      .form-signin input[type="password"] {
+      .form-signin input[type="password"],
+      .form-signin input[type="url"] {
         font-size: 16px;
         height: auto;
         margin-bottom: 15px;
@@ -52,7 +53,10 @@
   <div class="note"><i>(leave blank if you don't want to change it)</i>
   <%= f.password_field :password ,  :placeholder => ' New Password' %>
   <%= f.password_field :password_confirmation,  :placeholder => ' New Password Confirm'  %>
-</div>
+  </div>
+  <div class="note"><i>(Avatar URL replaces your gravatar image)</i>
+  <%= f.url_field :avatar_url,  :placeholder => ' Avatar URL' %>
+  </div>  
   <div class="note"><i>(Enter your current password to confirm your changes)</i>
   <%= f.password_field :current_password,   :placeholder => ' Current  Password' %>
   </div>
