@@ -1,8 +1,8 @@
 language: ruby
-script: 'bundle exec rake db:migrate && bundle exec rspec spec/'
+script: 'bundle exec rake db:create db:migrate'
+#script: 'bundle exec rake db:migrate && bundle exec rspec spec/'
 rvm:
   - 2.0.0
-  - 1.9.3
 env:
 notifications:
   email: 
