@@ -19,3 +19,7 @@
 
 :now_threshold: 3000
 :timestamp_refresh_interval: 2000
+
+# Max external avatar size in bytes
+:external_avatar_max_size: 102400
+:external_avatar_formats: [".jpeg", ".jpg", ".png", ".gif"]

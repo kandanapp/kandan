@@ -7,7 +7,8 @@ module ApplicationHelper
       :email         => current_user.email,
       :username      => current_user.username,
       :auth_token    => current_user.authentication_token,
-      :gravatar_hash => current_user.gravatar_hash
+      :gravatar_hash => current_user.gravatar_hash,
+      :avatar_url    => current_user.avatar_url
     }
   end
 end
