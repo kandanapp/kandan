@@ -1,0 +1,77 @@
+=full-height
+  min-height: 100%
+  height: 100%
+
+*
+  +box-sizing(border-box)
+
+// .user_menu_link
+//   float: right
+//   .user
+//     float: right
+//   .user_flag
+//     float: right
+
+// .user_flag
+//   display: block
+//   border-color: #a8aeb0 transparent transparent transparent
+//   border-style: solid
+//   border-width: 7px
+//   float: right
+//   width: 0
+//   height: 0
+//   margin-top: 15px
+
+// .user_menu
+//   background-color: $header-bg-1
+//   +background-image(linear-gradient($header-bg-1, $header-bg-2))
+//   border-radius: 4px
+//   position: fixed
+//   right: 0px
+//   display: none
+//   top: 0px
+//   z-index: 9000
+//   height: 100px
+//   width: 100px
+//   padding: 5px
+//   bottom: -24px
+//   margin-top: 31px
+//   a
+//     color: #FFF
+
+// .search form
+//   padding-top: 5px
+
+html, body
+  +full-height
+  width: 100%
+
+body
+  font-family: 'PT Sans', sans-serif
+  font-size: 13px
+
+body, .main-area
+  background: $page-bg image-url('page_bg.png') repeat !important
+
+.main-area
+  min-height: 100%
+  position: relative
+  z-index: 1000
+  +transition-property (transform)
+  +transition-duration(.25s)
+  +transition-timing-function(ease)
+
+  @media (max-width: $break)
+    +box-shadow(0 0 7px 0 #000)
+
+    &.slide
+      +transform(translateX(-1 * $sidebar-width-mobile))
+
+  // @media (min-width: $break)
+  //   width: $main-area-width
+
+.main-area, .sidebar
+  padding-top: $header-height
+
+@import layout/header
+@import layout/sidebar

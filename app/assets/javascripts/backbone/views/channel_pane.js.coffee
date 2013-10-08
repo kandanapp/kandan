@@ -7,7 +7,7 @@ class Kandan.Views.ChannelPane extends Backbone.View
 
     # Flag to avoid pulling new messages when we already requested new messages from the server
     @loading_new_messages = false
-    
+
     $container.bind 'scroll', ()=>
       if $container.scrollTop() <= 100 && !@loading_new_messages
         @loading_new_messages = true
@@ -19,7 +19,7 @@ class Kandan.Views.ChannelPane extends Backbone.View
     $li = $("a[href=#channels-#{@options.channel.get('id')}]").parent()
     if @options.channel.isDestroyable()
       $li.addClass 'destroyable'
-      $li.find('cite').after '<cite class="close_channel" title="close channel">x</cite>'
+      $li.find('cite').after '<i class="icon-remove close_channel" title="close channel"></i>'
     else
       $li.addClass 'protected'
     Kandan.Helpers.Audio.createAudioChannel(@options.channel.get('id'))
@@ -40,7 +40,7 @@ class Kandan.Views.ChannelPane extends Backbone.View
 
   loadMoreActivities: ($container)->
     $channel_activities = $container.find(".channel-activities")
-    
+
     # Keeping a reference of the first child to find the offset after the elements are added
     $current_top_element = $channel_activities.children().first()
 

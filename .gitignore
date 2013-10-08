@@ -31,3 +31,5 @@ DS_Store
 /tmp
 
 public/system/*
+
+vendor/bundle

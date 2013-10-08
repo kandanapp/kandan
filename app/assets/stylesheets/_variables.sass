@@ -1,28 +1,37 @@
 $neutral-color: #E6EBEE
 
 $page-bg: $neutral-color
-$main-area-width: 80%
-
 $panel-bg: $neutral-color
-$chatbox-bg-1: #f3f8f9
-$chatbox-bg-2: #dbdfe0
 
 $header-height: 35px
 $header-bg-1: #566569
 $header-bg-2: #3f494b
 
-$widget-title-color: #7f8587
-$widget-title-bg-1: #f3f8f9
-$widget-title-bg-2: #dbdfe0
+$main-area-width: 75%
 
-$sidebar-width: 20%
 $sidebar-bg: $neutral-color
+$sidebar-width-mobile: 280px
+$sidebar-width-desktop: 100% - $main-area-width
 
-$search-bg: #5d676b
-$search-color: #cccccc
+$medium: 768px
+$large: 1024px
+
+
+$break: ($sidebar-width-mobile / $sidebar-width-desktop) * 100%
 
 $inactive-tab-color: #54595b
 $inactive-tab-bg: #99a2a5
 
 $active-tab-color: #82898b
 $active-tab-bg: $page-bg
+
+$search-bg: #5d676b
+$search-color: #cccccc
+
+$widget-title-bg-1: #f3f8f9
+$widget-title-bg-2: #dbdfe0
+$widget-title-color: #7f8587
+
+$chatbox-bg-1: #f3f8f9
+$chatbox-bg-2: #dbdfe0
+$chatbox-height: 81px

@@ -17,37 +17,12 @@
     <% end %>
   <%- end %>
 </head>
-<body data-kandan-config="<%= Kandan::Config.to_json %>">
-  <div id="kandan">
-    <div class="header">
-      <a href="/">
-        <%= image_tag "logo.png", :class=>"logo" %>  
-      </a>
-      <% if user_signed_in? %>
-        <a href="#" class="user_menu_link">
-          <cite class="user_flag"></cite>
-          <div class="user">
-            <img src="<%= avatar_url_for(current_user, :size => 25) %>"/>
-            <span><%= current_user.full_name_or_username %></span>
-          </div>
-        </a>
-        <%= yield :header_content %>
-      </div>
-      <div class="user_menu">
-        <%= link_to 'Admin console', admin_root_path, :target => "_blank" if current_user.is_admin? %>
-        <%= link_to 'Edit Account', users_edit_path, :target => "_blank" %><br />
-        <%= link_to 'Logout', destroy_user_session_path, :method => :delete %><br />
-        <hr>
-        <%= link_to 'About Kandan', about_path, :target => "_blank" %>
-      </div>
-    <% else %>
-      </div>
-      <% end %>
-    <div id="app_body">
-
+<body id="kandan" data-kandan-config="<%= Kandan::Config.to_json %>">
+  <article class="main-area">
+    <%= render "layouts/header" %>
     <%= yield %>
-
-    </div>
-  </div>
+  </article>
+  <%= render "layouts/sidebar" if content_for? :sidebar %>
+  <%= yield :end %>
 </body>
 </html>

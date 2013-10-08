@@ -7,7 +7,7 @@ class Kandan.Views.ChatArea extends Backbone.View
 
     # Binding tab events here, backbone can't properly attach
     $('#create_channel').click(tabView.createChannel)
-    $('.header ul a').delegate('cite.close_channel', 'click', tabView.deleteChannel)
+    $('.header ul a').delegate('.close_channel', 'click', tabView.deleteChannel)
 
     for channel in @options.channels.models
       view = new Kandan.Views.ChannelPane({channel: channel})
