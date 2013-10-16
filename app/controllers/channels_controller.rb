@@ -7,7 +7,22 @@ class ChannelsController < ApplicationController
   def index
     # NOTE Eager loading doesn't respect limit
     nested_channel_data = []
+    user_channels = current_user.allowed_channels.split(',')
+    user_channels_sql = ''
+    n = 1
+    user_channels.each do |id|
 
+        user_channels_sql = user_channels_sql + ' id = ' + id.to_s
+
+       if n != user_channels.size
+         user_channels_sql = user_channels_sql + ' OR '
+       end
+
+
+      n += 1
+    end
+
+    @channels =   Channel.where(user_channels_sql)  #by marcnaweb OBS: no need to update allowed_channels when deleting a channel with this way.
     # TODO this can be shortened
     @channels.each do |channel|
       activities = []
@@ -28,23 +43,31 @@ class ChannelsController < ApplicationController
 
   def create
     respond_to do |format|
-      if @channel.save
-        format.json { render :json => @channel, :status => :created }
-      else
-        format.json { render :json => @channel.errors, :status => :unprocessable_entity }
+      if current_user.is_admin == true
+        if @channel.save
+          current_user.allowed_channels = current_user.allowed_channels + @channel.id.to_s + ','
+          current_user.save
+          format.json { render :json => @channel, :status => :created }
+        else
+          format.json { render :json => @channel.errors, :status => :unprocessable_entity }
+        end
       end
+
     end
   end
 
   def show
-    respond_to do |format|
-      format.json { render :json => @channel }
+    if current_user.allowed_channels.split(',').include?(@channel.id.to_s)
+      respond_to do |format|
+        format.json { render :json => @channel }
+      end
     end
+
   end
 
   def update
     respond_to do |format|
-      if @channel.update_attributes(params[:channel])
+      if  current_user.allowed_channels.split(',').include?(@channel.id.to_s) and @channel.update_attributes(params[:channel])
         format.json { render :json => @channel, :status => :ok }
       else
         format.json { render :json => @channel.errors, :status => :unprocessable_entity }
@@ -53,7 +76,10 @@ class ChannelsController < ApplicationController
   end
 
   def destroy
-    @channel.destroy
+
+    if current_user.allowed_channels.split(',').include?(@channel.id.to_s)
+      @channel.destroy
+    end
     respond_to do |format|
       format.json { render :json => nil, :status => :ok}
     end
@@ -65,6 +91,9 @@ class ChannelsController < ApplicationController
   end
 
   def set_channel_owner
-    @channel.user = current_user
+    #if current_user.allowed_channels.split(',').include?(@channel.id)
+      @channel.user = current_user
+    #end
+
   end
 end

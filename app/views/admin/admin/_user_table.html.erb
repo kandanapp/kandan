@@ -8,6 +8,7 @@
 			<th class="email">Email</th>
 			<th class="statu">Status</th>
 			<th class="action">Action</th>
+            <th class="allowed_channels">Allowed Channels</th>
 			<th class="admin" <%= inline_style_hidden( !show_admin_column ) %> >Admin</th>
 		</tr>
 	</thead>
@@ -32,6 +33,11 @@
 				<td class="action">
 					<%= user_action(user) %>
 				</td>
+
+              <td class="allowed_channels">
+                <%= user.allowed_channels %>
+              </td>
+
 				<td class="admin" <%= inline_style_hidden( !show_admin_column ) %>>
 					<input type="checkbox" <%=  "checked" if user.is_admin? %> />
 				</td>

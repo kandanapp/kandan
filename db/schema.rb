@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623202749) do
+ActiveRecord::Schema.define(:version => 20131016121746) do
 
   create_table "activities", :force => true do |t|
     t.text     "content"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130623202749) do
     t.boolean  "is_admin"
     t.string   "registration_status",    :default => "active"
     t.string   "avatar_url"
+    t.string   "allowed_channels",       :default => "0,"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

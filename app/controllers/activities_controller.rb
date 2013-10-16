@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :check_if_allowed, :only => [:create,  :index]
 
   def index
     # TODO can be divided into two actions
@@ -46,12 +47,26 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find params[:id]
-    respond_to do |format|
-      format.html do
-        render :inline => "<pre><%= @activity.content %></pre>", :content_type => 'text/html'
+    if current_user.allowed_channels.split(',').include?(@activity.channel_id.to_s)
+
+      respond_to do |format|
+        format.html do
+          render :inline => "<pre><%= @activity.content %></pre>", :content_type => 'text/html'
+        end
+        format.json { render :json => @activity }
       end
-      format.json { render :json => @activity }
     end
+  end
+
+  private
+
+  def check_if_allowed
+    if current_user.allowed_channels.split(',').include?(params[:channel_id].to_s)
+      return true
+    else
+      return false
+    end
+
   end
 
 end

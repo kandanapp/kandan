@@ -17,6 +17,9 @@ Kandan::Application.routes.draw do
 
   get "/active_users" => "apis#active_users"
   get "/me" => "apis#me"
+  get "/last_created_channel" => "apis#last_created_channel"
+  get "/add_user_to_channel/:user_channel"  => "apis#add_user_to_channel"
+  get "/remove_user_from_channel/:user_channel"  => "apis#remove_user_from_channel"
 
   get "/users/edit" =>"main#users_edit"
 
