@@ -1,6 +1,4 @@
-<nav class="header">
-  <a href="/">
-    <%= image_tag "logo.png", :class=>"logo" %>
-  </a>
-  <%= yield :header_content %>
-</nav>
+<header class="header main-header">
+  <%= yield :header %>
+  <a href="/" class="logo"><%= image_tag "logo.png" %></a>
+</header>

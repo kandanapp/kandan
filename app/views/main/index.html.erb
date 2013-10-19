@@ -1,15 +1,14 @@
-<div id="channels"></div>
-
-<% content_for :sidebar do %>
-  <div class="search">
-    <form method="get" action="/search" target="_blank">
-      <input type="text" class="query" name="query"/>
-    </form>
-  </div>
-  <div class="widgets"></div>
+<% content_for :header do %>
+  <a href="#" class="nav-toggle button left"><i class="icon-comments"></i></a>
+  <a href="#" class="sidebar-toggle button right"><i class="icon-reorder"></i></a>
 <% end %>
 
+<div id="channels"></div>
+
 <% content_for :end do %>
+  <%= render "nav" %>
+  <%= render "sidebar" %>
+
   <%= javascript_tag do %>
     $(document).ready(function(){
       Kandan.init()
@@ -29,3 +28,4 @@
     <audio class="audio_common"></audio>
   </ul>
 <% end %>
+

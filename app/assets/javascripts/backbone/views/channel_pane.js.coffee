@@ -1,14 +1,14 @@
 class Kandan.Views.ChannelPane extends Backbone.View
   tagName: 'div'
 
-  render: (container)->
+  render: (container) ->
     $container = $(container || @el)
     $container.html @paginatedActivitiesView()
 
     # Flag to avoid pulling new messages when we already requested new messages from the server
     @loading_new_messages = false
 
-    $container.bind 'scroll', ()=>
+    $container.bind 'scroll', =>
       if $container.scrollTop() <= 100 && !@loading_new_messages
         @loading_new_messages = true
         @loadMoreActivities($container)
@@ -16,29 +16,34 @@ class Kandan.Views.ChannelPane extends Backbone.View
 
     $container.append @chatboxView()
     @setIdAndData($container)
-    $li = $("a[href=#channels-#{@options.channel.get('id')}]").parent()
-    if @options.channel.isDestroyable()
-      $li.addClass 'destroyable'
-      $li.find('cite').after '<i class="icon-remove close_channel" title="close channel"></i>'
-    else
-      $li.addClass 'protected'
+    @renderNav()
     Kandan.Helpers.Audio.createAudioChannel(@options.channel.get('id'))
     @
 
-  setIdAndData: (container)->
+  setIdAndData: (container) ->
     $(container).attr "id", "channels-#{@options.channel.get("id")}"
     $(container).attr "class", "channels-pane"
     $(container).data "channel-id", @options.channel.get('id')
 
-  paginatedActivitiesView: ()->
-    view = new Kandan.Views.PaginatedActivities({channel: @options.channel})
+  paginatedActivitiesView: ->
+    view = new Kandan.Views.PaginatedActivities(channel: @options.channel)
     view.render().el
 
-  chatboxView: ()->
-    view = new Kandan.Views.Chatbox({channel: @options.channel})
+  chatboxView: ->
+    view = new Kandan.Views.Chatbox(channel: @options.channel)
     view.render().el
 
-  loadMoreActivities: ($container)->
+  renderNav: ->
+    @nav = new Kandan.Views.ChannelNav(channel: @options.channel)
+    @nav.pane = @
+
+    unless $('#channel_nav #create_channel').length
+      create = new Kandan.Views.CreateChannel
+      $('#channel_nav').append(create.render().el)
+
+    $('#create_channel').parents('li').before(@nav.render().el)
+
+  loadMoreActivities: ($container) ->
     $channel_activities = $container.find(".channel-activities")
 
     # Keeping a reference of the first child to find the offset after the elements are added
@@ -47,12 +52,12 @@ class Kandan.Views.ChannelPane extends Backbone.View
     $pagination = $container.find(".pagination")
     oldest = $pagination.data("oldest")
 
-    activities = new Kandan.Collections.Activities([], {channel_id: @options.channel.get("id")})
-    activities.fetch({
+    activities = new Kandan.Collections.Activities([], channel_id: @options.channel.get("id"))
+    activities.fetch
       data: { oldest: oldest },
-      success: (collection)=>
+      success: (collection) =>
         for activity in collection.models.reverse()
-          activityView = new Kandan.Views.ShowActivity({activity: activity, silence_mentions: true})
+          activityView = new Kandan.Views.ShowActivity(activity: activity, silence_mentions: true)
           $container.find(".channel-activities").prepend(activityView.render().el)
 
         if $current_top_element.length != 0
@@ -66,4 +71,3 @@ class Kandan.Views.ChannelPane extends Backbone.View
         )
 
         @loading_new_messages = false
-    })

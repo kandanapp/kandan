@@ -1,78 +1,75 @@
-  <title>About Kandan</title>
-
+<% content_for :title, "About Kandan" %>
 <div class="about">
+  <h1>
+    <img class="aboutlogo" src="/assets/kandanlogo.png" height="125" width="125">
+    About Kandan
+  </h1>
 
- 	<h1>
- 		About Kandan
-			<img class="aboutlogo" src="/assets/kandanlogo.png" height="125" width="125">
- 	</h1>
-	
-	<h3><%= AppName::VERSION %> (<%= AppName::REVISION %>)</h3>
+  <h3><%= AppName::VERSION %> (<%= AppName::REVISION %>)</h3>
 
-	<h3>Description</h3>
-	
-	<p>Kandan is an Open Source alternative to HipChat.</p>
-	
-	<p>What is Kandan? Kandan is a private chat service for your company or team. You can invite colleagues to share ideas and files in a persistent group chat room or rooms.</p>
+  <h3>Description</h3>
 
-	<p>Unlike HipChat or other alternatives, Kandan is completely Open Source and can be hosted internally or externally by your organization or by a third party. </p>
+  <p>Kandan is an Open Source alternative to HipChat.</p>
 
-	<h3>Background</h3>
+  <p>What is Kandan? Kandan is a private chat service for your company or team. You can invite colleagues to share ideas and files in a persistent group chat room or rooms.</p>
 
-	<p>Kandan was originally developed by <a href="http://cloudfuji.com/">Cloudfuji</a> and they started development on it back on March 6th of 2012. Development went pretty fast and furious until about June 4th of 2012. After that there wasn’t another commit to the repository until some pull requests came in during the month of January of 2013.</p>
+  <p>Unlike HipChat or other alternatives, Kandan is completely Open Source and can be hosted internally or externally by your organization or by a third party. </p>
 
-	<p>In February of 2013 control of the project was transfered to the current development team.</p>
+  <h3>Background</h3>
 
-	<ul>
-	<li><a href="https://github.com/fusion94">Tony Guntharp</a></li>
-	<li><a href="https://github.com/jrgifford">James Gifford</a></li>
-	<li><a href="https://github.com/gabceb">Gabriel Cebrian</a></li>
-	<li><a href="https://github.com/donthorp">Don Thorp</a></li>
-	<li><a href="https://github.com/SpencerCooley">Spencer Cooley</a></li>
-	<li><a href="https://github.com/kucharo">Greg Kucharo</a></li>
-	</ul>
+  <p>Kandan was originally developed by <a href="http://cloudfuji.com/">Cloudfuji</a> and they started development on it back on March 6th of 2012. Development went pretty fast and furious until about June 4th of 2012. After that there wasn’t another commit to the repository until some pull requests came in during the month of January of 2013.</p>
 
-	<p>Since Kandan is a fully open-source app, we would appreciate if you dive in and start adding features, fixing bugs (what bugs?), and cleaning up the code.</p>
+  <p>In February of 2013 control of the project was transfered to the current development team.</p>
 
-	<p>But before you jump right in there there are a few caveats.</p>
+  <ul>
+    <li><a href="https://github.com/fusion94">Tony Guntharp</a></li>
+    <li><a href="https://github.com/jrgifford">James Gifford</a></li>
+    <li><a href="https://github.com/gabceb">Gabriel Cebrian</a></li>
+    <li><a href="https://github.com/donthorp">Don Thorp</a></li>
+    <li><a href="https://github.com/SpencerCooley">Spencer Cooley</a></li>
+    <li><a href="https://github.com/kucharo">Greg Kucharo</a></li>
+  </ul>
 
-	<p>If you’re going to contribute code then you’re going to have to sign our <a href="http://www.clahub.com/agreements/kandanapp/kandan">Contributor License Agreement</a> (hereafter referred to as CLA) which is modeled after the one that <a href="http://nodejs.org/">NodeJS</a> uses.</p>
+  <p>Since Kandan is a fully open-source app, we would appreciate if you dive in and start adding features, fixing bugs (what bugs?), and cleaning up the code.</p>
 
-	<p>A CLA is a legal document in which you state you are entitled to contribute the code/documentation/translation to the project you’re contributing to and are willing to have it used in distributions and derivative works. This means that should there be any kind of legal issue in the future as to the origins and ownership of any particular piece of code, then that project has the necessary forms on file from the contributor(s) saying they were permitted to make this contribution.</p>
+  <p>But before you jump right in there there are a few caveats.</p>
 
-	<p>The CLA also ensures that once you have provided a contribution, you cannot try to withdraw permission for its use at a later date. People and companies can therefore use that software, confident that they will not be asked to stop using pieces of the code at a later date.</p>
+  <p>If you’re going to contribute code then you’re going to have to sign our <a href="http://www.clahub.com/agreements/kandanapp/kandan">Contributor License Agreement</a> (hereafter referred to as CLA) which is modeled after the one that <a href="http://nodejs.org/">NodeJS</a> uses.</p>
 
-	<p>Please also take the time to read these two wiki pages in regards to contributing.</p>
+  <p>A CLA is a legal document in which you state you are entitled to contribute the code/documentation/translation to the project you’re contributing to and are willing to have it used in distributions and derivative works. This means that should there be any kind of legal issue in the future as to the origins and ownership of any particular piece of code, then that project has the necessary forms on file from the contributor(s) saying they were permitted to make this contribution.</p>
 
-	<ul>
-	<li><a href="https://github.com/kandanapp/kandan/wiki/How-to-Contribute-Code">How to Contribute Code</a></li>
-	<li><a href="https://github.com/kandanapp/kandan/wiki/How-to-Contribute-Issues">How to Contribute Issues</a></li>
-	</ul>
+  <p>The CLA also ensures that once you have provided a contribution, you cannot try to withdraw permission for its use at a later date. People and companies can therefore use that software, confident that they will not be asked to stop using pieces of the code at a later date.</p>
 
-	<p>Make sure you check out these resources as well.</p>
+  <p>Please also take the time to read these two wiki pages in regards to contributing.</p>
 
-	<ul>
-	<li>GitHub <a href="https://github.com/kandanapp/kandan/issues">Issues Tracker</a></li>
-	<li>Twitter <a href="https://twitter.com/kandanapp">@kandanapp</a></li>
-	<li><a href="http://kandan-demo.kandanapp.com/">Kandan Demo</a> (Yes we eat our own DogFood)</li>
-	</ul>
+  <ul>
+  <li><a href="https://github.com/kandanapp/kandan/wiki/How-to-Contribute-Code">How to Contribute Code</a></li>
+  <li><a href="https://github.com/kandanapp/kandan/wiki/How-to-Contribute-Issues">How to Contribute Issues</a></li>
+  </ul>
 
-	<h3>Contributors</h3>
+  <p>Make sure you check out these resources as well.</p>
+
+  <ul>
+  <li>GitHub <a href="https://github.com/kandanapp/kandan/issues">Issues Tracker</a></li>
+  <li>Twitter <a href="https://twitter.com/kandanapp">@kandanapp</a></li>
+  <li><a href="http://kandan-demo.kandanapp.com/">Kandan Demo</a> (Yes we eat our own DogFood)</li>
+  </ul>
+
+  <h3>Contributors</h3>
     <div id="contributors"></div>
-    <script>
-  $.getJSON('contributors.json', function(data) {
-        var output="<ul>";
-        for (var i in data.contributors) {
-        	output+="";
-            output+="<span><li><img src='https://secure.gravatar.com/avatar/"+ data.contributors[i].gravatar_id+"' height='30' width='30'> <a href='"+ data.contributors[i].html_url+ "'>"+ data.contributors[i].login + "</a></li></span>";
-        }
+    <%= javascript_tag do %>
+    $.getJSON('contributors.json', function(data) {
+      var output="<ul>";
+      for (var i in data.contributors) {
+        output+="";
+          output+="<li><img src='https://secure.gravatar.com/avatar/"+ data.contributors[i].gravatar_id+"' height='30' width='30'> <a href='"+ data.contributors[i].html_url+ "'>"+ data.contributors[i].login + "</a></li>";
+      }
+      output+="</ul>";
+      document.getElementById("contributors").innerHTML=output;
+    });
+    <% end %>
 
-        output+="</ul></div>";
-        document.getElementById("contributors").innerHTML=output;
-  });
-    </script>
-
-	<h3>Contact Us</h3>
-	<p>If you find any security issues please submit an <a href="https://github.com/kandanapp/kandan/issues">Issue</a> or <a href="mailto:admin@kandanapp.com">email us</a>.</p>
-	<br><br>
+  <h3>Contact Us</h3>
+  <p>If you find any security issues please submit an <a href="https://github.com/kandanapp/kandan/issues">Issue</a> or <a href="mailto:admin@kandanapp.com">email us</a>.</p>
+  <br><br>
 </div>

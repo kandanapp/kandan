@@ -7,12 +7,17 @@ class Kandan.Views.ShowActivity extends Backbone.View
     activity = @options.activity.toJSON()
     activity.content = _.escape(activity.content)
     activity.avatarUrl = Kandan.Helpers.Avatars.urlFor(@options.activity, {size: 30})
-    if activity.action != "message"
-      @compiledTemplate = JST['user_notification']({activity: activity})
-    else
-      activity.content =  Kandan.Modifiers.process(activity)
 
-      @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate activity
+    switch activity.action
+      when "message"
+        activity.content =  Kandan.Modifiers.process(activity)
+        @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate activity
+      when "upload"
+        file_path = _.unescape(activity.content).split('?')[0].split('/')
+        activity.filename = decodeURIComponent(file_path[file_path.length-1])
+        @compiledTemplate = JST['user_notification']({activity: activity})
+      else
+        @compiledTemplate = JST['user_notification']({activity: activity})
 
     $(@el).data("activity-id", activity.id)
     if activity.action == "message"

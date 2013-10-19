@@ -1,8 +1,12 @@
+<% content_for :header do %>
+  <%= link_to content_tag(:i, nil, class: 'icon-angle-left'), :back, class: 'button left' %>
+<% end %>
+
 <%= javascript_tag do %>
   $(document).ready(function(){
     Kandan.Plugins.initAll()
     activities = <%= @activities.to_json(:include => :user).html_safe %>;
-    
+
     $.each(activities, function(index, activityAttributes) {
       activity = new Kandan.Models.Activity(activityAttributes);
       activityView = new Kandan.Views.ShowActivity({activity: activity});
@@ -11,7 +15,4 @@
   })
 <%- end %>
 
-<div class="activities">
-</div>
-
-
+<div class="activities"></div>

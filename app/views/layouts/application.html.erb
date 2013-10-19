@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Kandan</title>
-  <%= stylesheet_link_tag  "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" %>
-  <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=PT+Sans:400,700" %>
-  <%= stylesheet_link_tag  "application", :media => "all" %>
+  <title><%= content_for?(:title) ? yield(:title) : "Kandan" %></title>
   <%= favicon_link_tag %>
-  <%= javascript_include_tag "application" %>
-  <%= yield :javascript_includes %>
-
   <%= csrf_meta_tags %>
-
+  <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=PT+Sans:400,700" %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= yield :head %>
   <%- if user_signed_in? %>
     <%= javascript_tag do %>
       $.data(document, "current-user", <%= current_user_data.to_json.html_safe %>);
@@ -22,7 +19,6 @@
     <%= render "layouts/header" %>
     <%= yield %>
   </article>
-  <%= render "layouts/sidebar" if content_for? :sidebar %>
   <%= yield :end %>
 </body>
 </html>

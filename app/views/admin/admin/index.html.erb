@@ -1,8 +1,6 @@
-<% content_for :javascript_includes do %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "bootstrap", media: "all" %>
 	<%= javascript_include_tag "admin/admin" %>
-
-	<%# Removed the following line when we start using Bootstrap all over the app %>
-	<%= stylesheet_link_tag  "admin", :media => "all" %>
 <% end %>
 
 <div class="container">

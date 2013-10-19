@@ -12,7 +12,7 @@ class Kandan.Plugins.Attachments
 
   @templates:
     noFiles: _.template '''
-      <div style="text-align:center; text-transform: uppercase; font-size: 11px; color: #999; padding: 10px;">
+      <div class="no-media">
         No media yet. Try uploading.
       </div>
     '''
@@ -29,12 +29,12 @@ class Kandan.Plugins.Attachments
     '''
 
     fileItemTemplate: _.template '''
-      <div class="file_item">
+      <li class="file_item">
         <a target="_blank" href="<%= url %>">
           <img src="<%= iconUrl %>"/>
           <span><%= fileName %></span>
         </a>
-      </div>
+      </li>
     '''
 
   @csrfParam: ->
@@ -73,7 +73,7 @@ class Kandan.Plugins.Attachments
 
     populate = (collection)=>
       if collection.models.length > 0
-        $fileList = $("<div class='file_list'></div>")
+        $fileList = $("<ul class='file_list'></ul>")
         for model in collection.models
           $fileList.append(
             @templates.fileItemTemplate({

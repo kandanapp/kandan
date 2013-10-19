@@ -1,0 +1,91 @@
+.nav
+  @extend %slide-out
+  left: 0
+
+  .search
+    @extend %header
+    padding: 5px 10px
+
+    input.query
+      border-radius: 20px
+      background: $search-bg
+      +box-shadow(inset 0px 7px 6px -5px #3a4547, 2px 7px 7px -6px #7f8587)
+      border: 2px solid darken($search-bg, 10%)
+      width: 100%
+      color: $search-color
+      line-height: 16px
+      padding: 2px 30px 2px 10px
+
+      &:focus
+        background: $search-bg-focus
+        color: $search-color-focus
+        outline: none
+
+    input.submit
+      background: image-url('search_icon.png') center no-repeat
+      border: none
+      width: 16px
+      padding: 0
+      text-indent: 100%
+      white-space: nowrap
+      overflow: hidden
+      position: absolute
+      top: 5px
+      right: 20px
+      bottom: 5px
+
+  ul#channel_nav
+    @extend %content-block
+    list-style: none
+    max-height: 100%
+    margin: 0
+    padding: 0
+    position: relative
+    overflow-y: auto
+
+    li
+      border-bottom: 1px solid #DEE6E8
+      line-height: 20px
+      margin-right: 1px
+      position: relative
+
+      &:last-child
+        border-bottom: none
+
+      &.active
+        background-color: #F5F5F5
+
+      a
+        color: #797D7F
+        display: block
+        padding: 10px 30px 10px 10px
+        text-decoration: none
+
+      i[class*="icon-"]
+        line-height: 20px
+
+      .close_channel
+        color: #AEB9BD
+        position: absolute
+        top: 10px
+        right: 10px
+        bottom: 10px
+
+      #create_channel
+        text-align: center
+
+// .search
+//   min-width: 100px
+//   float: right
+//   text-align: right
+//   padding: 0px 5px
+//   border: 1px solid $header-bg-2
+//   border-top: none
+//   border-bottom: none
+//   height: 100%
+
+//   input
+//     margin-top: 2px
+
+// .search form
+//   padding-top: 5px

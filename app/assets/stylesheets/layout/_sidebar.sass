@@ -1,119 +1,62 @@
-.sidebar
-  border-left: 1px solid #CDD1D4
-  width: $sidebar-width-mobile
-  position: fixed
-  top: 0
-  right: 0
-  bottom: 0
-  z-index: 0
+%user
+  line-height: 24px
+  padding: 4px 10px 5px
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
 
-  @media (min-width: $break)
+  img
+    float: left
+    margin-right: 10px
+
+.sidebar
+  @extend %slide-out
+  right: 0
+
+  @media (min-width: $large)
+    border-left: 1px solid #CDD1D4
     width: $sidebar-width-desktop
     left: 100% - $sidebar-width-desktop
     z-index: 2000
 
-.sidebar_filler
-  padding-top: $header-height + 20
-  height: 100%
-  width: 100%
-  border-left: 1px solid #F2F4F6
+  .user-header
+    @extend %header
+    z-index: 700
 
-.widgets
-  float: left
-  width: 100%
-  padding-left: 15px
-  padding-right: 15px
-  .widget
-    margin-bottom: 20px
-    border: 1px solid #D0D5D8
-    border-top-left-radius: 4px
-    border-top-right-radius: 4px
-    border-bottom-left-radius: 7px
-    border-bottom-right-radius: 7px
-    background: #F3F8F9
-    float: left
-    width: 100%
-    +box-shadow(0px 2px #d1d6d9)
+    &.open-menu
+      a.user-menu-toggle .button
+        @extend .active
+        @extend .icon-angle-up
 
-.widget_header
-  +background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2))
-  border-top-left-radius: 4px
-  border-top-right-radius: 4px
-  border-bottom: 1px solid #DBDFE0
-  float: left
-  width: 100%
-  padding-left: 10px
-  padding-top: 5px
-  padding-bottom: 5px
-  font-size: 13px
-  line-height: 20px
-  text-transform: uppercase
-  color: $widget-title-color
-  h3
-    margin: 0 !important
-    padding-left: 30px
-    background-repeat: no-repeat
-    background-position: center left
-    background-size: 20px auto
+      ul.user-menu
+        height: 160px
 
-.widget_content
-  border-bottom-radius: 7px
-  float: left
-  width: 100%
-  clear: both
-  background: #F3F8F9
-  padding-left: 10px
-  font-size: 13px
+    a
+      color: #fff
+      display: block
+      text-decoration: none
 
-.widget_action_bar
-  border-bottom-radius: 7px
-  font-size: 13px
-  text-align: center
-  line-height: 40px
-  color: #808789
-  float: left
-  width: 100%
-  clear: both
-  height: 40px
-  min-height: 40px
-  border-top: 2px solid #D2D8D8
-  background: #E9EFF0
+    a.user-menu-toggle
+      @extend %user
 
-.search
-  min-width: 100px
-  float: right
-  text-align: right
-  padding: 0px 5px
-  border: 1px solid $header-bg-2
-  border-top: none
-  border-bottom: none
-  height: 100%
-  input
-    border-radius: 20px
-    background: $search-bg url(image_path('search_icon.png')) no-repeat
-    +box-shadow(inset 0px 7px 6px -5px #3a4547, 2px 7px 7px -6px #7f8587)
-    background-position: 95% center
-    background-size: 15px
-    width: 100%
-    color: $search-color
-    border: 2px solid darken($search-bg, 10%)
-    margin-top: 2px
-    padding-right: 15%
+      .button
+        line-height: 24px
+        margin-left: 10px
+        @extend .icon-angle-down
 
-.header .user
-  float: right
-  color: #CCC
-  padding-left: 10px
-  padding-right: 10px
-  padding-top: 7px
-  height: 20px
-  line-height: 20px
-  span
-    position: relative
-    left: 5px
-    top: 2px
-    padding-left: 5px
-  img
-    vertical-align: middle
-    width: 20px
-    height: 20px
+    ul.user-menu
+      background: #3f494b
+      height: 0
+      list-style: none
+      margin: 0
+      padding: 0
+      overflow: hidden
+      +transition(height .25s ease-in)
+
+      li
+        line-height: 20px
+
+        a
+          padding: 10px
+
+  @import widget

@@ -1,17 +1,17 @@
 .chatbox
   background: #e6edef
-  border-radius: 0 0 4px 4px
   border-top: 1px solid #f5f8f9
-  margin: 0 20px 20px
   padding: 10px 85px 10px 10px
-  @extend %area_layout
+  position: absolute
+  right: 0
   bottom: 0
+  left: 0
   z-index: 600
 
   textarea
     border-width: 1px 0 1px 1px
     border-style: solid
-    border-color: #AEB9BD
+    border-color: #aeb9bd
     border-radius: 4px 0 0 4px
     display: block
     width: 100%
@@ -24,7 +24,7 @@
 
   button
     +background-image(linear-gradient(#c8ecf6, #9fdff4))
-    border: 1px solid #AEB9BD
+    border: 1px solid #aeb9bd
     border-radius: 0 4px 4px 0
     color: #59808B
     font-size: 16px

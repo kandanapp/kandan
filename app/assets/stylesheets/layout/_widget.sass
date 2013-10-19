@@ -1,0 +1,33 @@
+.widget
+  @extend %content-block
+  background: #F3F8F9
+  border: 1px solid #D0D5D8
+  margin-bottom: 15px
+
+  .widget-header
+    +background-image(linear-gradient($widget-title-bg-1, $widget-title-bg-2))
+    border-bottom: 1px solid #DBDFE0
+    color: $widget-title-color
+    line-height: 20px
+    margin: 0 !important
+    padding: 5px 10px
+    text-transform: uppercase
+
+    img
+      width: 20px
+      height: auto
+      margin-right: 5px
+      vertical-align: middle
+
+  .widget-content
+    background: #F3F8F9
+
+  .widget-action-bar
+    background: #E9EFF0
+    border-top: 1px solid #D2D8D8
+    color: #808789
+    font-size: 13px
+    height: 40px
+    line-height: 40px
+    min-height: 40px
+    text-align: center

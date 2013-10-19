@@ -7,53 +7,40 @@
     width: 600px
 
 .about
-  padding-top: 120px
+  max-height: 100%
+  overflow-y: auto
 
   .aboutlogo
+    display: block
     position: relative
-    float: right
-    margin: -150px 320px 0 0
+    top: 10px
+    left: 150px
 
-  p, h1, h3, ul
+  p, h1, h3, ul, #contributors
     margin-left: auto
     margin-right: auto
-    width: 600px
+    max-width: 600px
 
   #contributors
-    margin-left: auto
-    margin-right: auto
-    width: 600px
-    overflow: auto
-    margin-bottom: 3em
+    color: #aaa
+    font-size: 15px
+
+    ul
+      list-style: none
+      padding: 0
+      margin: 0 -10px -10px 0
 
     li
-      list-style-type: none
-      width: 180px
-      margin-right: 12px
-      margin-bottom: 12px
-      overflow: auto
       float: left
-      padding: 1px 0px
+      padding: 0 10px 10px 0
+      width: 150px
 
     li, a
       display: block
       text-decoration: none
       overflow: auto
 
-    li, span
-      display: block
-      float: left
-      margin-left: 12px
-      font-size: 15px
-      color: #aaa
-
-    li, a, span
-      font-size: 15px
-      margin-top: 7px
-
-    li, img
-      float: left
-      -webkit-border-radius: 3px
-      -moz-border-radius: 3px
+    img
       border-radius: 3px
-      margin-right: 12px
+      float: left
+      margin-right: 10px
