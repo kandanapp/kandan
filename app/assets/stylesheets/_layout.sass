@@ -11,49 +11,6 @@
     background: #566569
     border-radius: 4px
 
-%content-block
-  background: #fff
-  border-radius: 4px
-  +box-shadow(0 1px 5px 0 #ccc)
-  overflow: hidden
-
-%slide-out
-  width: $sidebar-width-mobile
-  position: fixed
-  top: 0
-  bottom: 0
-  z-index: 0
-
-%header
-  background-color: $header-bg-1
-  +background-image(linear-gradient($header-bg-1, $header-bg-2))
-  border-bottom: 1px solid #FFF
-  +box-shadow(inset 0px -10px 10px -10px #000000)
-  display: block
-  height: $header-height
-  margin: 0
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-
-  .button
-    color: rgba(255,255,255,.5)
-    display: block
-    font-size: 21px
-    height: 100%
-    text-decoration: none
-
-    &:active,
-    &.active
-      color: #fff
-
-    &.left
-      float: left
-
-    &.right
-      float: right
-
 html, body
   height: 100%
   width: 100%

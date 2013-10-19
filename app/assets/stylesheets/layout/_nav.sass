@@ -2,9 +2,21 @@
   @extend %slide-out
   left: 0
 
+  @media (min-width: $medium)
+    height: 35px
+    padding: 0 150px 0 0
+    width: auto
+    left: 85px
+    right: 28px
+    z-index: 2000
+
   .search
     @extend %header
     padding: 5px 10px
+
+    @media (min-width: $medium)
+      width: 150px
+      left: auto
 
     input.query
       border-radius: 20px
@@ -37,55 +49,106 @@
   ul#channel_nav
     @extend %content-block
     list-style: none
-    max-height: 100%
     margin: 0
     padding: 0
-    position: relative
-    overflow-y: auto
 
-    li
-      border-bottom: 1px solid #DEE6E8
-      line-height: 20px
-      margin-right: 1px
+    @media (max-width: $medium)
+      max-height: 100%
+      overflow-y: auto
       position: relative
 
-      &:last-child
-        border-bottom: none
+    @media (min-width: $medium)
+      background: none
+      border-radius: 0
+      +box-shadow(none)
+      min-height: 100%
+      overflow-x: auto
+      padding-top: 5px
+      white-space: nowrap
 
-      &.active
-        background-color: #F5F5F5
+    li
+      position: relative
 
       a
-        color: #797D7F
-        display: block
-        padding: 10px 30px 10px 10px
         text-decoration: none
 
-      i[class*="icon-"]
-        line-height: 20px
+        @media (max-width: $medium)
+          color: #797D7F
+          display: block
+          padding: 10px 30px 10px 10px
+
+        @media (min-width: $medium)
+          color: #585d5f
+          font-weight: bold
 
       .close_channel
         color: #AEB9BD
-        position: absolute
-        top: 10px
-        right: 10px
-        bottom: 10px
+
+        @media (max-width: $medium)
+          position: absolute
+          top: 10px
+          right: 10px
+          bottom: 10px
 
       #create_channel
         text-align: center
 
-// .search
-//   min-width: 100px
-//   float: right
-//   text-align: right
-//   padding: 0px 5px
-//   border: 1px solid $header-bg-2
-//   border-top: none
-//   border-bottom: none
-//   height: 100%
+        @media (max-width: $medium)
+          &:after
+            content: ' Create channel'
 
-//   input
-//     margin-top: 2px
+      @media (max-width: $medium)
+        border-bottom: 1px solid #DEE6E8
+        line-height: 20px
+        margin-right: 1px
 
-// .search form
-//   padding-top: 5px
+        &:last-child
+          border-bottom: none
+
+        &.active
+          background-color: #F5F5F5
+
+        i[class*="icon-"]
+          line-height: 20px
+
+      @media (min-width: $medium)
+        background: image-url('tabs/tab-inactive-middle.png') bottom repeat-x
+        color: #585d5f
+        line-height: 30px
+        margin: 0 30px
+
+        &:before
+          background: image-url('tabs/tab-inactive-left.png') right bottom no-repeat
+          right: 100%
+
+        &:after
+          background: image-url('tabs/tab-inactive-right.png') left bottom no-repeat
+          left: 100%
+
+        &:before,
+        &:after
+          content: ''
+          width: 30px
+          position: absolute
+          bottom: 0
+
+        &,
+        &:before,
+        &:after
+          height: 30px
+          display: inline-block
+
+        &.active
+          background-image: image-url('tabs/tab-active-middle.png')
+
+          &:before
+            background-image: image-url('tabs/tab-active-left.png')
+
+          &:after
+            background-image: image-url('tabs/tab-active-right.png')
+
+        .close_channel
+          width: auto
+          position: relative
+          right: -5px
+          z-index: 100
