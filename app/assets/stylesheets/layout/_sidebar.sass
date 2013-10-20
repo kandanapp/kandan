@@ -1,28 +1,29 @@
-%user
-  line-height: 24px
-  padding: 4px 10px 5px
-  overflow: hidden
-  text-overflow: ellipsis
-  white-space: nowrap
-
-  img
-    float: left
-    margin-right: 10px
-
 .sidebar
   @extend %slide-out
   right: 0
 
   @media (min-width: $large)
     border-left: 1px solid #CDD1D4
-    width: $sidebar-width-desktop
-    left: 100% - $sidebar-width-desktop
+    margin-top: $header-height
+    padding-top: 10px
+    width: $sidebar-width
+    right: 0
     z-index: 2000
 
-  .user-header
-    @extend %header
+  .header
     z-index: 700
 
+    @media (min-width: $large)
+      top: auto
+      bottom: 100%
+      left: -1px
+
+    a
+      color: #fff
+      display: block
+      text-decoration: none
+
+  .user-header
     &.open-menu
       a.user-menu-toggle .button
         @extend .active
@@ -30,11 +31,6 @@
 
       ul.user-menu
         height: 160px
-
-    a
-      color: #fff
-      display: block
-      text-decoration: none
 
     a.user-menu-toggle
       @extend %user
@@ -45,7 +41,6 @@
         @extend .icon-angle-down
 
     ul.user-menu
-      background: #3f494b
       height: 0
       list-style: none
       margin: 0
@@ -54,6 +49,7 @@
       +transition(height .25s ease-in)
 
       li
+        background: #3f494b
         line-height: 20px
 
         a

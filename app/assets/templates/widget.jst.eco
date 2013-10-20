@@ -1,7 +1,7 @@
 <div class="widget" id="widget_<%= @element_id %>">
-  <h4 class="widget-header">
+  <h5 class="widget-header">
     <img src="<%= @icon_url %>"><%= @title %>
-  </h4>
+  </h5>
   <div class="widget-content" id="<%= @element_id %>"></div>
   <div class="widget-action-bar"></div>
 </div>

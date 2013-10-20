@@ -15,3 +15,9 @@ $(document).ready ->
 
   $('.user-menu a').click ->
     $('.user-header').removeClass('open-menu')
+
+  $('.search .query')
+    .on 'focus', ->
+      $(this).closest('.nav').addClass('search-focus')
+    .on 'blur', ->
+      $(this).closest('.nav').removeClass('search-focus')

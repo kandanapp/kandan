@@ -1,4 +1,4 @@
-%header
+.header
   background-color: $header-bg-1
   +background-image(linear-gradient($header-bg-1, $header-bg-2))
   border-bottom: 1px solid #FFF
@@ -6,7 +6,7 @@
   display: block
   height: $header-height
   margin: 0
-  position: absolute
+  position: fixed
   top: 0
   left: 0
   right: 0
@@ -24,6 +24,8 @@
 
     &.left
       float: left
+      margin-right: 10px
 
     &.right
       float: right
+      margin-left: 10px

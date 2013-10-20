@@ -15,6 +15,11 @@
   <%- end %>
 </head>
 <body id="kandan" data-kandan-config="<%= Kandan::Config.to_json %>">
+  <% if content_for? :sidebar %>
+    <aside class="sidebar">
+      <%= yield :sidebar %>
+    </aside>
+  <% end %>
   <article class="main-area">
     <%= render "layouts/header" %>
     <%= yield %>

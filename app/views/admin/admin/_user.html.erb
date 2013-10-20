@@ -1,0 +1,17 @@
+<li class="user" data-user-id="<%= user.id%>" data-full-name="<%= user.full_name_or_username %>">
+  <%= image_tag avatar_url_for(user, :size => 70), class: 'avatar' %>
+  <div class="name">
+    <% if user.full_name.blank? %>
+      <%= user.username %>
+    <% else %>
+      <%= "#{user.full_name} (#{user.username})" %>
+    <% end %>
+  </div>
+  <div class="email-and-status">
+    <span class="email"><%= user.email %></span> <%= user_status_badge(user) %>
+  </div>
+  <div>
+    <%= user_status_button(user) %>
+    <%= user_admin_button(user) %>
+  </div>
+</li>

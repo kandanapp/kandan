@@ -1,4 +1,9 @@
 <% content_for :title, "About Kandan" %>
+
+<% content_for :header do %>
+  <%= link_to content_tag(:i, nil, class: 'icon-angle-left'), root_path, class: 'button left' %>
+<% end %>
+
 <div class="about">
   <h1>
     <img class="aboutlogo" src="/assets/kandanlogo.png" height="125" width="125">

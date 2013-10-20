@@ -1,16 +1,12 @@
-<% content_for :head do %>
-  <%= stylesheet_link_tag "bootstrap", media: "all" %>
-<% end %>
-
-<div class="sign-in">
+<div class="devise">
   <h3 class="heading">Sign In</h3>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= f.text_field :username,  :autofocus => true, :placeholder => 'Username' %>
   <%= f.password_field :password,  :placeholder => 'Password' %>
-      <label class="checkbox">
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-      <%= f.submit "Sign in",  :class => "btn  btn-primary" %>
-      <% end %>
-      <%= render :partial => "devise/shared/links" %>
+  <label class="checkbox">
+    <input type="checkbox" value="remember-me"> Remember me
+  </label>
+  <%= f.submit "Sign in",  :class => "btn  btn-primary" %>
+  <% end %>
+  <%= render :partial => "devise/shared/links" %>
 </div>
