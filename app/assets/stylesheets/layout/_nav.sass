@@ -21,7 +21,6 @@
   .search
     @extend .header
     padding: 5px 10px
-    position: absolute
 
     @media (min-width: $medium)
       +transition(width .25s ease)
@@ -71,6 +70,7 @@
       max-height: 100%
       overflow-y: auto
       position: relative
+      +has-scrollbar
 
     @media (min-width: $medium)
       background: none
@@ -80,6 +80,7 @@
       overflow-x: auto
       padding-top: 5px
       white-space: nowrap
+      +hide-scrollbar
 
     li
       position: relative

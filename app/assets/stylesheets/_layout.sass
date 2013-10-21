@@ -1,16 +1,6 @@
 *
   +box-sizing(border-box)
 
-  &::-webkit-scrollbar
-    background: transparent
-    border-radius: 4px
-    height: 8px
-    width: 8px
-
-  &::-webkit-scrollbar-thumb
-    background: #566569
-    border-radius: 4px
-
 html, body
   height: 100%
   width: 100%
@@ -41,12 +31,8 @@ body
   &.slide-left
     overflow: hidden
 
-.sidebar
-  .header,
-  + .main-area .header
-    position: absolute
-
-  @media (min-width: $large)
+@media (min-width: $large)
+  .sidebar
     + .main-area
       margin-right: $sidebar-width
 
