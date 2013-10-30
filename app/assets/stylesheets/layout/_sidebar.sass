@@ -1,0 +1,58 @@
+.sidebar
+  @extend %slide-out
+  right: 0
+
+  @media (min-width: $large)
+    border-left: 1px solid #CDD1D4
+    margin-top: $header-height
+    padding-top: 10px
+    width: $sidebar-width
+    right: 0
+    z-index: 2000
+
+  .header
+    z-index: 700
+
+    @media (min-width: $large)
+      top: auto
+      bottom: 100%
+      left: -1px
+
+    a
+      color: #fff
+      display: block
+      text-decoration: none
+
+  .user-header
+    &.open-menu
+      a.user-menu-toggle .button
+        @extend .active
+        @extend .icon-angle-up
+
+      ul.user-menu
+        height: 160px
+
+    a.user-menu-toggle
+      @extend %user
+
+      .button
+        line-height: 24px
+        margin-left: 10px
+        @extend .icon-angle-down
+
+    ul.user-menu
+      height: 0
+      list-style: none
+      margin: 0
+      padding: 0
+      overflow: hidden
+      +transition(height .25s ease-in)
+
+      li
+        background: #3f494b
+        line-height: 20px
+
+        a
+          padding: 10px
+
+  @import widget

@@ -1,0 +1,52 @@
+.admin
+  @extend %content-block
+  max-width: 940px
+  margin: 0 auto
+  padding: 0 10px 10px
+
+  .site-settings
+    width: 280px
+
+    label
+      +clearfix
+      margin-bottom: 10px
+
+      input
+        margin-bottom: 0
+
+  .users
+    list-style: none
+    padding: 0
+    margin: 0 0 -10px -10px
+
+    li
+      margin: 0 0 10px 10px
+
+      &.user
+        display: inline-block
+        width: 300px
+
+        img.avatar
+          border-radius: 4px
+          float: left
+          margin-right: 10px
+          width: 70px
+
+        .name
+          overflow: hidden
+          text-overflow: ellipsis
+          white-space: nowrap
+
+        .email-and-status
+          white-space: nowrap
+          margin-bottom: 7px
+
+        .email
+          font-style: italic
+
+
+        .badge
+          margin-top: 0
+
+  .waiting-for-approval-users .users .admin-action
+    display: none

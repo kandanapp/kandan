@@ -1,0 +1,14 @@
+<div class="header user-header">
+  <a href="#" class="user-menu-toggle">
+    <img src="<%= avatar_url_for(current_user, :size => 25) %>"/>
+    <i class="icon-angle button right"></i>
+    <%= current_user.full_name_or_username %>
+  </a>
+  <ul class="user-menu">
+    <li><%= link_to 'Admin console', admin_root_path if current_user.is_admin? %></li>
+    <li><%= link_to 'Edit Account', users_edit_path %></li>
+    <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+    <li><%= link_to 'About Kandan', about_path %></li>
+  </ul>
+</div>
+<div class="widgets"></div>

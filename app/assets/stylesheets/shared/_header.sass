@@ -1,0 +1,31 @@
+.header
+  background-color: $header-bg-1
+  +background-image(linear-gradient($header-bg-1, $header-bg-2))
+  border-bottom: 1px solid #FFF
+  +box-shadow(inset 0px -10px 10px -10px #000000)
+  display: block
+  height: $header-height
+  margin: 0
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+
+  .button
+    color: rgba(255,255,255,.5)
+    display: block
+    font-size: 21px
+    height: 100%
+    text-decoration: none
+
+    &:active,
+    &.active
+      color: #fff
+
+    &.left
+      float: left
+      margin-right: 10px
+
+    &.right
+      float: right
+      margin-left: 10px

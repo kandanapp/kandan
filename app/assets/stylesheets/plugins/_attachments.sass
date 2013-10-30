@@ -1,40 +1,47 @@
+.no-media
+  font-size: 11px
+  color: #999
+  padding: 10px
+  text-align: center
+  text-transform: uppercase
+
 #file
   display: none
 
 .file_list
-  float: left
-  clear: both
-  width: 100%
-  height: 158px
-  overflow: scroll
+  list-style: none
+  margin: 1px 1px 1px 0
+  padding: 0
+  max-height: 158px
+  overflow-y: auto
+  +has-scrollbar
+
   .file_item
-    clear: both
-    float: left
-    line-height: 30px
     color: #585D5F
+    line-height: 25px
+    padding: 5px 10px
+
     img
       width: 14px
       height: 12px
       margin-right: 10px
+
     a
       text-decoration: none
       font-weight: bold
       color: #585D5F
-      &:hover
-        span
-          text-decoration: underline !important
 
-.widget_action_bar
+      &:hover span
+        text-decoration: underline !important
+
+.widget-action-bar
   form
-    width: 100%
     height: 100%
     min-height: 100%
-    float: left
+    margin: 0
+
     .dropzone
-      display: block
-      float: left
-      width: 100%
-      min-height: 100%
-      height: 100%
-      text-align: center
       line-height: 40px
+      height: 100%
+      min-height: 100%
+      text-align: center

@@ -1,7 +1,7 @@
 <div class="widget" id="widget_<%= @element_id %>">
-  <div class="widget_header">
-    <h3 style="background-image:url(<%= @icon_url %>);"><%= @title %></h3>
-  </div>
-  <div class="widget_content" id="<%= @element_id %>"></div>
-  <div class="widget_action_bar"></div>
+  <h5 class="widget-header">
+    <img src="<%= @icon_url %>"><%= @title %>
+  </h5>
+  <div class="widget-content" id="<%= @element_id %>"></div>
+  <div class="widget-action-bar"></div>
 </div>

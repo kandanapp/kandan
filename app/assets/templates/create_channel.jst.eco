@@ -1,3 +1,1 @@
-<li>
-   <a href="#" id="create_channel">&nbsp;</a>
-</li>
+<a href="#" id="create_channel"><i class="icon-plus"></i></a>

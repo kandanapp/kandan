@@ -1,0 +1,66 @@
+*
+  +box-sizing(border-box)
+
+html, body
+  height: 100%
+  width: 100%
+
+body
+  background-image: image-url('page_bg.png')
+  background-repeat: repeat
+  min-width: 320px
+  +transform(translate3d(0,0,0))
+
+  &.slide-right
+    .main-area,
+    .sidebar
+      +transform(translateX($sidebar-width))
+
+      @media (min-width: $medium)
+        +transform(none)
+
+  &.slide-left
+    .main-area,
+    .nav
+      +transform(translateX(-1 * $sidebar-width))
+
+      @media (min-width: $large)
+        +transform(none)
+
+  &.slide-right,
+  &.slide-left
+    overflow: hidden
+
+@media (min-width: $large)
+  .sidebar
+    + .main-area
+      margin-right: $sidebar-width
+
+    ~ .nav
+      right: $sidebar-width
+
+.main-area
+  background: $bodyBackground image-url('page_bg.png') repeat !important
+  +box-shadow(0 0 15px 0 rgba(0,0,0,.5))
+  min-height: 100%
+  position: relative
+  z-index: 1000
+
+  @media (min-width: $large)
+    +box-shadow(none)
+
+  @import layout/header
+
+.main-area,
+.sidebar,
+.nav
+  padding: $header-height+10px 10px 10px
+  +transition-property (transform)
+  +transition-duration(.25s)
+  +transition-timing-function(ease)
+
+@import layout/sidebar
+@import layout/nav
+
+#at-view
+  z-index: 9999 !important

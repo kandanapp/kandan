@@ -4,20 +4,35 @@ class Kandan.Plugins.Notifications
   @widget_icon_url: "/assets/people_icon.png"
   @pluginNamespace: "Kandan.Plugins.Notifications"
 
-  @popup_notifications_template: _.template '<div class="notification popup-notifications"></div>'
-  @enable_popup_notifications_template = _.template '<a class="btn enable-popup-notifications" href="#"><i class="icon-check-empty"></i> Desktop notifications</a>'
-  @disable_popup_notifications_template = _.template '<a class="btn disable-popup-notifications" href="#"><i class="icon-check"></i> Desktop notifications</a>'
+  @popup_notifications_template: _.template '''
+    <li class="notification popup-notifications">
+      <label>
+        <input type="checkbox"<% if(checked){ %> checked="checked"<% } %> class="switch"> Desktop notifications
+        <span></span>
+      </label>
+    </li>
+  '''
 
-  @sound_notifications_template: _.template '<div class="notification sound-notifications"></div>'
-  @enable_sound_notifications_template = _.template '<a class="btn enable-sound-notifications" href="#"><i class="icon-check-empty"></i> Sounds</a>'
-  @disable_sound_notifications_template = _.template '<a class="btn disable-sound-notifications" href="#"><i class="icon-check"></i> Sounds</a>'
+  @sound_notifications_template: _.template '''
+    <li class="notification sound-notifications">
+      <label>
+        <input type="checkbox" checked="checked" class="switch"> Sounds
+        <span></span>
+      </label>
+    </li>
+  '''
 
-  @fluid_notifications_template: _.template '<div class="notification fluid-notifications"></div>'
-  @enable_fluid_notifications_template = _.template '<a class="btn enable-fluid-notifications" href="#"><i class="icon-check-empty"></i> Fluid notifications</a>'
-  @disable_fluid_notifications_template = _.template '<a class="btn disable-fluid-notifications" href="#"><i class="icon-check"></i> Fluid notifications</a>'
+  @fluid_notifications_template: _.template '''
+    <li class="notification fluid-notifications">
+      <label>
+        <input type="checkbox" checked="checked" class="switch"> Fluid notifications
+        <span></span>
+      </label>
+    </li>
+  '''
 
   @render: ($el)->
-    $notifications = $("<div class='notifications_list'></div>")
+    $notifications = $("<ul class='notifications_list'></ul>")
     $el.next().hide();
 
     @initPopupsNotificationsButtons()
@@ -37,13 +52,17 @@ class Kandan.Plugins.Notifications
 
   # HTML 5 Popups
   @initPopupsNotificationsButtons: ()->
-    $(document).on 'click', '.enable-popup-notifications', => @enablePopupNotifications()
-    $(document).on 'click', '.disable-popup-notifications', => @disablePopupNotifications()
+    $(document).on 'change', '.popup-notifications .switch', (e) =>
+      if e.target.checked
+        @enablePopupNotifications()
+      else
+        @disablePopupNotifications()
+
     return
 
   @initWebkitNotifications: (container)->
     if Modernizr.notification && not window.fluid
-      container.append(@popup_notifications_template())
+      container.append @popup_notifications_template(checked: @webkitNotificationsEnabled())
 
       if @webkitNotificationsEnabled()
         @enablePopupNotifications()
@@ -53,13 +72,12 @@ class Kandan.Plugins.Notifications
   @enablePopupNotifications: ()->
     if @webkitNotificationsEnabled()
       @popups_notifications_enabled = true
-      $(".popup-notifications .enable-popup-notifications").remove()
-      $(".notification.popup-notifications").append(@disable_popup_notifications_template())
     else
       if @webkitNotificationsDenied()
         # If the notifications have been denied we need to let the user know because there is nothing else we can do
         alert("It looks like notifications are denied for this page.\n\nUse your browser settings to allow notifications for this page.")
       else
+        $('.popup-notifications .switch').prop 'checked', false
         window.webkitNotifications.requestPermission(=> @onPopupNotificationsEnabled())
 
     return
@@ -67,8 +85,6 @@ class Kandan.Plugins.Notifications
   @disablePopupNotifications: ()->
     @popups_notifications_enabled = false
 
-    $(".popup-notifications .disable-popup-notifications").remove()
-    $(".notification.popup-notifications").append(@enable_popup_notifications_template())
     return
 
   # Returns true if notifications are enabled for this page.
@@ -81,14 +97,19 @@ class Kandan.Plugins.Notifications
   # Callback when notifiactions are enabled for the first time
   @onPopupNotificationsEnabled: ()->
     if @webkitNotificationsEnabled()
+      $('.popup-notifications .switch').prop 'checked', true
       @enablePopupNotifications()
 
     return
 
   # Fluid notifications -- http://fluidapp.com
   @initFluidNotificationsButtons: ()->
-    $(document).on 'click', '.enable-fluid-notifications', => @enableFluidNotifications()
-    $(document).on 'click', '.disable-fluid-notifications', => @disableFluidNotifications()
+    $(document).on 'change', '.fluid-notifications .switch', (e) =>
+      if e.target.checked
+        @enableFluidNotifications()
+      else
+        @disableFluidNotifications()
+
     return
 
   @initFluidNotifications: (container)->
@@ -99,14 +120,10 @@ class Kandan.Plugins.Notifications
 
   @enableFluidNotifications: ()->
     @fluid_notifications_enabled = true
-    $(".fluid-notifications .enable-fluid-notifications").remove()
-    $(".notification.fluid-notifications").append(@disable_fluid_notifications_template())
     return
 
   @disableFluidNotifications: ()->
     @fluid_notifications_enabled = false
-    $(".fluid-notifications .disable-fluid-notifications").remove()
-    $(".notification.fluid-notifications").append(@enable_fluid_notifications_template())
     return
 
   # If you are wondering why the kandan icon is not displayed on OS X this is the reason:
@@ -149,22 +166,24 @@ class Kandan.Plugins.Notifications
       @initSoundNotificationsButtons()
 
   @initSoundNotificationsButtons: ()->
-    $(document).on 'click', '.enable-sound-notifications', => @enableSoundNotifications()
-    $(document).on 'click', '.disable-sound-notifications', => @disableSoundNotifications()
+    $(document).on 'change', '.sound-notifications .switch', (e) =>
+      if e.target.checked
+        @enableSoundNotifications()
+      else
+        @disableSoundNotifications()
+
+      console.log e.target, e.target.checked
+
     return
 
   @enableSoundNotifications: ()->
     @sound_notifications_enabled = true
-    $(".sound-notifications .enable-sound-notifications").remove()
-    $(".notification.sound-notifications").append(@disable_sound_notifications_template())
 
     return
 
   @disableSoundNotifications: ()->
     @sound_notifications_enabled = false
 
-    $(".sound-notifications .disable-sound-notifications").remove()
-    $(".notification.sound-notifications").append(@enable_sound_notifications_template())
     return
 
   @playAudioNotification: (type)->

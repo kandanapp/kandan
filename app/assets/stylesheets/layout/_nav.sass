@@ -1,0 +1,170 @@
+.nav
+  @extend %slide-out
+  left: 0
+
+  @media (min-width: $medium)
+    height: 35px
+    padding: 0 150px 0 0
+    +transition-property (transform, padding)
+    +transition-duration(.25s, .25s)
+    +transition-timing-function(ease, ease)
+    width: auto
+    left: 85px
+    right: 28px
+    z-index: 2000
+    &.search-focus
+      padding-right: 250px
+
+      .search
+        width: 250px
+
+  .search
+    @extend .header
+    padding: 5px 10px
+
+    @media (min-width: $medium)
+      +transition(width .25s ease)
+      width: 150px
+      left: auto
+
+
+
+    input.query
+      border-radius: 20px
+      background: $search-bg
+      +box-sizing(border-box)
+      +box-shadow(inset 0px 7px 6px -5px #3a4547, 2px 7px 7px -6px #7f8587)
+      border: 2px solid darken($search-bg, 10%)
+      width: 100%
+      color: $search-color
+      height: 24px
+      line-height: 16px
+      margin: 0
+      padding: 2px 30px 2px 10px
+
+      &:focus
+        background: $search-bg-focus
+        color: $search-color-focus
+        outline: none
+
+    input.submit
+      background: image-url('search_icon.png') center no-repeat
+      border: none
+      width: 16px
+      padding: 0
+      text-indent: 100%
+      white-space: nowrap
+      overflow: hidden
+      position: absolute
+      top: 5px
+      right: 20px
+      bottom: 5px
+
+  ul#channel_nav
+    @extend %content-block
+    list-style: none
+    margin: 0
+    padding: 0
+
+    @media (max-width: $medium - 1px)
+      max-height: 100%
+      overflow-y: auto
+      position: relative
+      +has-scrollbar
+
+    @media (min-width: $medium)
+      background: none
+      border-radius: 0
+      +box-shadow(none)
+      min-height: 100%
+      overflow-x: auto
+      padding-top: 5px
+      white-space: nowrap
+      +hide-scrollbar
+
+    li
+      position: relative
+
+      a
+        text-decoration: none
+
+        @media (max-width: $medium - 1px)
+          color: #797D7F
+          display: block
+          padding: 10px 30px 10px 10px
+
+        @media (min-width: $medium)
+          color: #585d5f
+          font-weight: bold
+
+      .close_channel
+        color: #AEB9BD
+
+        @media (max-width: $medium - 1px)
+          position: absolute
+          top: 10px
+          right: 10px
+          bottom: 10px
+
+      #create_channel
+        text-align: center
+
+        @media (max-width: $medium - 1px)
+          &:after
+            content: ' Create channel'
+
+      @media (max-width: $medium - 1px)
+        border-bottom: 1px solid #DEE6E8
+        line-height: 20px
+        margin-right: 1px
+
+        &:last-child
+          border-bottom: none
+
+        &.active
+          background-color: #F5F5F5
+
+        i[class*="icon-"]
+          line-height: 20px
+
+      @media (min-width: $medium)
+        background: image-url('tabs/tab-inactive-middle.png') bottom repeat-x
+        color: #585d5f
+        line-height: 30px
+        margin: 0 30px
+
+        &:before
+          background: image-url('tabs/tab-inactive-left.png') right bottom no-repeat
+          right: 100%
+
+        &:after
+          background: image-url('tabs/tab-inactive-right.png') left bottom no-repeat
+          left: 100%
+
+        &:before,
+        &:after
+          content: ''
+          width: 30px
+          position: absolute
+          bottom: 0
+
+        &,
+        &:before,
+        &:after
+          height: 30px
+          display: inline-block
+
+        &.active
+          background-image: image-url('tabs/tab-active-middle.png')
+
+          &:before
+            background-image: image-url('tabs/tab-active-left.png')
+
+          &:after
+            background-image: image-url('tabs/tab-active-right.png')
+
+        .close_channel
+          width: auto
+          position: relative
+          right: -5px
+          z-index: 100

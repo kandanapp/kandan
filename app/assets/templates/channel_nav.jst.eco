@@ -1,0 +1,1 @@
+<a href="#<%= "channels-#{@channel.get('id')}" %>" class="show_channel" ><%= @channel.get('name') %></a>

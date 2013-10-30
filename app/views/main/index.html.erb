@@ -1,41 +1,32 @@
-<%= javascript_tag do %>
-  $(document).ready(function(){
-    Kandan.init()
-  })
-<%- end %>
-
-<%- Kandan::Config.broadcaster.assets.each do |asset| %>
-  <%= javascript_include_tag asset %>
-<%- end %>
-  
-<%= javascript_tag do %>
-  $(document).data("active-users", [])
-<%- end %>
-
-<% content_for :header_content do %>
-  <div class="search">
-      <form method="get" action="/search" target="_blank">
-        <input type="text" class="query" name="query"/>
-      </form>
-    </div>
+<% content_for :header do %>
+  <a href="#" class="nav-toggle button left"><i class="icon-comments"></i></a>
+  <a href="#" class="sidebar-toggle button right"><i class="icon-reorder"></i></a>
 <% end %>
 
-  <div class="main-area">
-    <div id="mask_container">
-    	<div id="head-mask">
-    	  <div class="corner_cover" style="float:left;position:relative;left:-10px;"></div>
-    	  <div class="corner_cover"  style="float:right;position:relative;right:-10px;"></div>
-    	</div>
-    </div>
-  </div>
-  <div class="sidebar">
-    <div class="sidebar_filler">
-      <div class="widgets"></div>
-    </div>
-  </div>
-</div>
-<div id="mask">&nbsp;</div>
-<ul class="audio_channels" style="display:none;">
-  <audio class="audio_private"></audio>
-  <audio class="audio_common"></audio>
-</ul>
+<% content_for :sidebar, render("sidebar") %>
+
+<div id="channels"></div>
+
+<% content_for :end do %>
+  <%= render "nav" %>
+
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+      Kandan.init()
+    })
+  <%- end %>
+
+  <%- Kandan::Config.broadcaster.assets.each do |asset| %>
+    <%= javascript_include_tag asset %>
+  <%- end %>
+
+  <%= javascript_tag do %>
+    $(document).data("active-users", [])
+  <%- end %>
+
+  <ul class="audio_channels" style="display:none;">
+    <audio class="audio_private"></audio>
+    <audio class="audio_common"></audio>
+  </ul>
+<% end %>
+

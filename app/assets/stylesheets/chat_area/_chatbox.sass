@@ -1,0 +1,41 @@
+.chatbox
+  background: #e6edef
+  border-top: 1px solid #f5f8f9
+  padding: 10px 85px 10px 10px
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 600
+
+  textarea
+    border-width: 1px 0 1px 1px
+    border-style: solid
+    border-color: #aeb9bd
+    border-radius: 4px 0 0 4px
+    +box-sizing(border-box)
+    display: block
+    width: 100%
+    resize: none
+
+    &:focus
+      border-color: #9fdff4
+      +box-shadow(0 0 5px 0 #9fdff4)
+      outline: none
+
+  button
+    +background-image(linear-gradient(#c8ecf6, #9fdff4))
+    border: 1px solid #aeb9bd
+    border-radius: 0 4px 4px 0
+    color: #59808B
+    font-size: 16px
+    width: 75px
+    position: absolute
+    top: 10px
+    right: 10px
+    bottom: 10px
+
+  textarea, button
+    height: 40px
+    margin: 0
+    padding: 0

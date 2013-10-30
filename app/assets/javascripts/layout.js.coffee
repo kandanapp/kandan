@@ -1,8 +1,23 @@
 $(document).ready ->
-	$(".user_menu_link").click (e)->
-    e.preventDefault()
-    $(".user_menu").toggle()
+  $('.nav-toggle').click ->
+    $('body').removeClass('slide-left')
+    $('body').toggleClass('slide-right')
     false
 
-  $(".user_menu a").click (e)->
-    $(".user_menu").toggle()
+  $('.sidebar-toggle').click ->
+    $('body').removeClass('slide-right')
+    $('body').toggleClass('slide-left')
+    false
+
+  $('.user-menu-toggle').click ->
+    $('.user-header').toggleClass('open-menu')
+    false
+
+  $('.user-menu a').click ->
+    $('.user-header').removeClass('open-menu')
+
+  $('.search .query')
+    .on 'focus', ->
+      $(this).closest('.nav').addClass('search-focus')
+    .on 'blur', ->
+      $(this).closest('.nav').removeClass('search-focus')

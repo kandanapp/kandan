@@ -1,0 +1,28 @@
+.header
+  @extend %header
+  padding: 0 10px
+  text-align: center
+  z-index: 90001
+
+  @media (min-width: $medium)
+    text-align: left
+
+  .logo
+    display: inline-block
+    height: 100%
+    padding: 7px 0
+
+  .button
+    line-height: 34px
+
+.slide-right .nav-toggle,
+.slide-left .sidebar-toggle
+  @extend .active
+
+@media (min-width: $medium)
+  .nav-toggle
+    display: none !important
+
+@media (min-width: $large)
+  .sidebar-toggle
+    display: none !important

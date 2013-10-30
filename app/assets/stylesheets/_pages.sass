@@ -1,0 +1,58 @@
+.about
+  .aboutlogo
+    display: block
+    position: relative
+    top: 10px
+    left: 230px
+
+  p, h1, h3, ul, #contributors
+    margin-left: auto
+    margin-right: auto
+    max-width: 600px
+
+  ul
+    padding-left: 40px
+
+  #contributors
+    color: #aaa
+    font-size: 15px
+
+    ul
+      list-style: none
+      padding: 0
+      margin: 0 -10px -10px 0
+
+    li
+      float: left
+      padding: 0 10px 10px 0
+      width: 150px
+
+    li, a
+      display: block
+      text-decoration: none
+      overflow: auto
+
+    img
+      border-radius: 3px
+      float: left
+      margin-right: 10px
+
+.approval
+  max-width: 750px
+
+.suspended
+  max-width: 600px
+
+  img
+    margin-top: 20px
+    max-width: 100%
+    height: auto
+
+.approval,
+.suspended
+  @extend %content-block
+  font-size: 20px
+  margin: 30px auto 50px
+  padding: 20px
+  text-align: center
+

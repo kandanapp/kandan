@@ -1,14 +1,21 @@
 .user_list
-  padding-bottom: 10px
-  float: left
+  list-style: none
+  margin: 1px 1px 1px 0
+  padding: 0
+  max-height: 170px
+  overflow-y: auto
+  +has-scrollbar
+
   .user
-    float: left
-    display: block
-    margin-top: 10px
-    clear: left
-  .name
-    float: left
-    margin-top: 5px
-    font-weight: bold
+    @extend %user
     color: #585D5F
-    font-size: 12px
+    font-weight: bold
+    margin: 0
+    padding-right: 70px
+    position: relative
+
+    .badge
+      margin: 0
+      position: absolute
+      top: 9px
+      right: 10px

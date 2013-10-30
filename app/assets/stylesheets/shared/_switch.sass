@@ -1,0 +1,51 @@
+$white: #fff
+$green: #53d76a
+$grey: #d3d3d3
+
+input[type="checkbox"].switch
+  position: absolute
+  opacity: 0
+
+  & ~ span
+    background-color: darken($white, 2%)
+    +box-shadow(inset 0 0 0 1px $grey)
+    cursor: pointer
+    display: inline-block
+    float: right
+    height: $switch-height
+    width: $switch-width
+    position: relative
+    +transition(border .25s .15s, box-shadow .25s .3s, padding .25s)
+    vertical-align: top
+
+    &:after
+      background-color: $white
+      +box-shadow(inset 0 -3px 3px hsla(0,0%,0%,.025), 0 1px 4px hsla(0,0%,0%,.15), 0 4px 4px hsla(0,0%,0%,.1))
+      +box-sizing(border-box)
+      content: ''
+      display: block
+      height: $switch-height
+      width: $switch-height
+      position: absolute
+      top: -1px
+      right: $switch-width - $switch-height
+      left: 0
+      +transition(border .25s .15s, left .25s .1s, right .15s .175s)
+
+    &, &:after
+      border-width: 1px
+      border-style: solid
+      border-color: $grey
+      border-radius: 9999px
+
+  &:checked ~ span
+    +box-shadow(inset 0 0 0 13px $green)
+    +transition(border .25s, box-shadow .25s, padding .25s .15s)
+
+    &:after
+      right: 0
+      left: $switch-width - $switch-height
+      +transition(border .25s, left .15s .25s, right .25s .175s)
+
+    &, &:after
+      border-color: $green
