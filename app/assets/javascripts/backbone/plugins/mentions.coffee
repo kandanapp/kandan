@@ -4,7 +4,7 @@ class Kandan.Plugins.Mentions
   @options:
     regex: /(^|\s)@\S*/gm
 
-    template: _.template '''<span class="mention"><%= mention %></span>'''
+    template: _.template '''<span class="mention"><%= mention.trim() %></span>'''
 
   @init: ()->
     Kandan.Data.ActiveUsers.registerCallback "change", (data)=>
