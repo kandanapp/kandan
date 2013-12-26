@@ -1,10 +1,10 @@
-# The mentions plugin takes care of highlighting the @useranme and passing the users to the atwho plugin.
-# The show_activities addMessage method is the responsible of changing the look of a message body when a user is mentioned
+# The mentions plugin takes care of highlighting the @username and passing the users to the atwho plugin.
+# The show_activities addMessage method is responsible for changing the look of a message body when a user is mentioned
 class Kandan.Plugins.Mentions
   @options:
-    regex: /@\S*/g
+    regex: /(^|\s)@\S*/gm
 
-    template: _.template '''<span class="mention"><%= mention %></span>'''
+    template: _.template '''<span class="mention"><%= mention.trim() %></span>'''
 
   @init: ()->
     Kandan.Data.ActiveUsers.registerCallback "change", (data)=>
