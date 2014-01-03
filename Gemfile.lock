@@ -79,7 +79,7 @@ GEM
       term-ansicolor
       thor
     daemons (1.1.9)
-    database_cleaner (1.1.1)
+    database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     debugger (1.6.5)
       columnize (>= 0.3.1)
