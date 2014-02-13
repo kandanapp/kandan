@@ -10,7 +10,7 @@ gem 'pg'
 #gem 'mysql2'
 
 # Auth gems
-gem 'devise'
+gem 'devise', '3.1.0'
 gem 'cancan'
 
 # Server/transport gems
