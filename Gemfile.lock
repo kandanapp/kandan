@@ -136,6 +136,7 @@ GEM
       websocket-driver (>= 0.3.1)
     ffi (1.9.3)
     formatador (0.2.4)
+    gemoji (1.5.0)
     guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -319,6 +320,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   faye
+  gemoji
   guard
   guard-rspec
   jasmine
