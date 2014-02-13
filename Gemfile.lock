@@ -42,7 +42,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (2.3.0.1)
+    bootstrap-sass (3.1.0.2)
       sass (~> 3.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
@@ -136,7 +136,6 @@ GEM
       websocket-driver (>= 0.3.1)
     ffi (1.9.3)
     formatador (0.2.4)
-    gemoji (1.5.0)
     guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -305,7 +304,7 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 2.3.0.1)
+  bootstrap-sass
   bourbon
   cancan
   capybara
@@ -320,7 +319,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   faye
-  gemoji
   guard
   guard-rspec
   jasmine
