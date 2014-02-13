@@ -105,6 +105,25 @@
       background: #bcd3e8
       color: #6F7477
 
+  &.connect
+    background-color: #C4DF9B
+  &.disconnect
+    background-color: #FBAF5C
+
+  &.connect, &.disconnect
+    opacity: 0.5
+    min-height: 0
+    padding: 3px
+    padding-left: 10px
+    padding-right: 10px
+
+    .posted_at
+      line-height: normal
+    .avatar, .user
+      display: none
+    .user, .content
+      float: none
+
 .pagination
   font-size: 14px
   line-height: 2em

@@ -19,6 +19,9 @@ class Kandan.Views.ShowActivity extends Backbone.View
       else
         @compiledTemplate = JST['user_notification']({activity: activity})
 
+    if activity.action == 'connect' or activity.action == 'disconnect'
+      $(@el).addClass(activity.action)
+
     $(@el).data("activity-id", activity.id)
     if activity.action == "message"
 
@@ -27,6 +30,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
 
       if activity.user.id == Kandan.Helpers.Users.currentUser().id
         $(@el).addClass("current_user")
+
 
       # Only fire mentions if we are not loading old messages
       if !@options.silence_mentions && (user_mention_regex.test(@compiledTemplate) || all_mention_regex.test(@compiledTemplate))
