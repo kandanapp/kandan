@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   enumerize :registration_status, in: [:active, :suspended, :waiting_approval], :default => :waiting_approval
 
   has_many :activities
-  before_save :ensure_authentication_token
   before_save :ensure_gravatar_hash
   before_create :mark_registration_status_depending_on_app_settings
 

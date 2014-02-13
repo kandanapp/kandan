@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Core gems
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.16'
 
 # Database adapters
 gem 'pg'
@@ -10,7 +10,7 @@ gem 'pg'
 #gem 'mysql2'
 
 # Auth gems
-gem 'devise', '3.1.0'
+gem 'devise'
 gem 'cancan'
 
 # Server/transport gems
@@ -34,7 +34,7 @@ group :assets do
   gem 'execjs'
   gem 'eco'
   gem 'uglifier'
-  gem 'bootstrap-sass', '~> 2.3.0.1'
+  gem 'bootstrap-sass'
   gem 'gemoji'
 end
 
@@ -69,5 +69,5 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'database_cleaner'
-  gem 'jasmine', '~> 1.3.1'
+  gem 'jasmine'
 end
