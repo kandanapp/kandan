@@ -198,6 +198,8 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.3)
+    protected_attributes (1.0.5)
+      activemodel (>= 4.0.1, < 5.0)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -332,6 +334,7 @@ DEPENDENCIES
   paperclip
   pg
   poltergeist
+  protected_attributes
   pry-rails
   quiet_assets
   rails (~> 4.0.2)

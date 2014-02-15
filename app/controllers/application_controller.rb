@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :force_approved_account
   before_filter :redirect_suspended_account
 
@@ -24,6 +25,10 @@ class ApplicationController < ActionController::Base
   	redirect = user_signed_in? && current_user.registration_status.suspended?
   	
   	redirect_to suspended_path if redirect
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :email, :username, :password, :password_confirmation, :password_current]
   end
 
 end

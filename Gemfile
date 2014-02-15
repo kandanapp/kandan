@@ -6,6 +6,7 @@ gem "rails", "~> 4.0.2"
 # Core Ruby gems
 gem "rails-observers"
 gem "activerecord-session_store"
+gem "protected_attributes"
 
 # Database adapters
 gem 'pg'
