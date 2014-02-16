@@ -8,6 +8,9 @@ class Channel < ActiveRecord::Base
  
   before_create :ensure_app_max_rooms
 
+# Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :created_at, :updated_at, :user_id
+
   def ensure_app_max_rooms
     valid = Setting.my_settings.max_rooms > Channel.count
 
