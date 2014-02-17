@@ -1,7 +1,7 @@
 class Attachment < ActiveRecord::Base
   belongs_to :channel
   belongs_to :user
-  
+
   if ENV['S3_BUCKET']
     has_attached_file(:file, {
       :storage         => :s3,
@@ -14,6 +14,7 @@ class Attachment < ActiveRecord::Base
       :url    => "/:attachment/:id/:style/:basename.:extension",
       :path   => "#{ENV['S3_PREFIX']}/:attachment/:id/:style/:basename.:extension"
     })
+    validates_attachment_content_type :file, :content_type=>"*"  #This doesn't do anything but it is required by Paperclip 4+
   else
     has_attached_file :file
   end

@@ -26,7 +26,7 @@ class AttachmentsController < ApplicationController
     @attachment.file = params[:file]
 
     respond_to do |format|
-      if @attachment.save
+      if @attachment.save( validate: false )
         format.json { render json: @attachment, status: :created }
       else
         format.json { render json: @attachment.errors, status: :unprocessable_entity }
