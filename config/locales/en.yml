@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        attachment:
+          attributes:
+            file:
+              spoofed_media_type: "Media Type Spoofed"
