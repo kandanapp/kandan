@@ -20,6 +20,8 @@ GEM
     activerecord (3.2.16)
       activemodel (= 3.2.16)
       activesupport (= 3.2.16)
+      arel (~> 3.0.2)
+      tzinfo (~> 0.3.29)
     activeresource (3.2.16)
       activemodel (= 3.2.16)
       activesupport (= 3.2.16)
@@ -27,7 +29,7 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.3.5)
-    arel (4.0.2)
+    arel (3.0.3)
     atomic (1.1.14)
     awesome_print (1.2.0)
     aws-sdk (1.34.0)
@@ -284,8 +286,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (1.1.0)
-      thread_safe (~> 0.1)
+    tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -300,7 +301,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  arel
   awesome_print
   aws-sdk
   better_errors
@@ -342,5 +342,4 @@ DEPENDENCIES
   simplecov
   sqlite3
   thin
-  tzinfo
   uglifier
