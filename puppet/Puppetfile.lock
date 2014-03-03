@@ -1,0 +1,26 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    puppetlabs/apt (1.4.1)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/concat (1.1.0-rc1)
+      puppetlabs/stdlib (>= 3.0.0)
+    puppetlabs/firewall (1.0.0)
+    puppetlabs/postgresql (3.3.0)
+      puppetlabs/apt (< 2.0.0, >= 1.1.0)
+      puppetlabs/concat (< 2.0.0, >= 1.0.0)
+      puppetlabs/firewall (>= 0.0.4)
+      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs/stdlib (4.1.0)
+
+GIT
+  remote: git@github.com:cleblanc87/puppet-rbenv.git
+  ref: master
+  sha: 4193edb0e2832d4389bd24bbe9f52e8c4dc4d177
+  specs:
+    alup/rbenv (1.2.0)
+
+DEPENDENCIES
+  alup/rbenv (>= 0)
+  puppetlabs/postgresql (>= 0)
+
