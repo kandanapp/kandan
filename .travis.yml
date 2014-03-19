@@ -1,13 +1,13 @@
 language: ruby
 #script: 'bundle exec rake db:migrate'
-script: 'bundle exec rake db:migrate && bundle exec rspec spec/'
+script: 'bundle exec rake db:test:prepare && bundle exec rake db:migrate && bundle exec rspec spec/'
 rvm:
   - 2.0.0
 env:
 notifications:
-  email: 
+  email:
     team@kandanapp.com
-# whitelist    
+# whitelist
 branches:
   only:
     - master

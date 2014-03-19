@@ -88,7 +88,7 @@ describe User do
         subject.avatar_url = "http://saya.pianomidi.org/musica/lfals/a-asturias.mid"
         expect(subject.save).to be_false
         expect(subject).to_not be_valid
-        expect(subject.errors).to have_key(:avatar_url)        
+        expect(subject.errors).to have_key(:avatar_url)
       end
 
       it "should not validate nonexistent url as avatar" do
@@ -103,8 +103,8 @@ describe User do
         subject.avatar_url = "http://www.spacetelescope.org/static/archives/images/publicationjpg/heic1107a.jpg"
         expect(subject.save).to be_false
         expect(subject).to_not be_valid
-        expect(subject.errors).to have_key(:avatar_url)      
+        expect(subject.errors).to have_key(:avatar_url)
       end
     end
-  end 
+  end
 end
