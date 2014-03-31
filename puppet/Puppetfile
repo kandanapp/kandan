@@ -1,0 +1,5 @@
+forge "http://forge.puppetlabs.com"
+
+mod "alup/rbenv", :git => "git@github.com:cleblanc87/puppet-rbenv.git"
+
+mod "puppetlabs/postgresql"

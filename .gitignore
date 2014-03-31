@@ -33,3 +33,7 @@ DS_Store
 public/system/*
 
 vendor/bundle
+
+.vagrant
+puppet/modules
+puppet/.tmp
