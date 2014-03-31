@@ -113,7 +113,7 @@ class Kandan.Plugins.MusicPlayer
     Kandan.Store.get @pluginId, callbacks
 
   @localFileUrl: (fileName) ->
-    "http://#{ window.location.hostname }:#{ window.location.port }/sounds/#{ fileName }"
+    "//#{ window.location.hostname }:#{ window.location.port }/sounds/#{ fileName }"
 
   @localSounds: (name) ->
     sounds = {

@@ -7,7 +7,7 @@ class Kandan.Plugins.YouTubeEmbed
     template: _.template '''
       <div class="youtube-preview">
             <iframe width="560" height="315"
-                    src="http://www.youtube.com/embed/<%= videoId %>"
+                    src="//www.youtube.com/embed/<%= videoId %>"
                     frameborder="0" allowfullscreen>
             </iframe>
         <div class="name"><%= subtitle %></div>
