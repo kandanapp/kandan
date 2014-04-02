@@ -1,12 +1,18 @@
 <div class="devise">
   <h3 class="heading">Sign In</h3>
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <%= f.text_field :username,  :autofocus => true, :placeholder => 'Username' %>
-  <%= f.password_field :password,  :placeholder => 'Password' %>
-  <label class="checkbox">
-    <input type="checkbox" value="remember-me"> Remember me
-  </label>
-  <%= f.submit "Sign in",  :class => "btn  btn-primary" %>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :role => :form) do |f| %>
+    <div class="form-group">
+      <%= label_tag :username, "Username", :class => "control-label" %>
+      <%= f.text_field :username,  :autofocus => true, :placeholder => 'jsmith', :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :password, "Password", :class => "control-label" %>
+      <%= f.password_field :password, :class => "form-control"%>
+    </div>
+    <label class="checkbox">
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+    <%= f.submit "Sign in",  :class => "btn  btn-primary" %>
   <% end %>
   <%= render :partial => "devise/shared/links" %>
 </div>
