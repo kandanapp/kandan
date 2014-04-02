@@ -118,6 +118,25 @@ You'll need to have the [heroku CLI](https://github.com/heroku/heroku) installed
     heroku run rake db:migrate kandan:bootstrap && heroku open
     echo "Done, go forth and chat!"
     # Not too bad
+
+If you want emails to work (forgotten passwords, etc), you'll also need to add a Heroku email add-on to your app. For example, to add SendGrid:
+    
+    heroku addons:add sendgrid:starter
+
+After you add an email provider to your Heroku app, you'll also need to setup your production.rb file to look similar to this (using SendGrid again as an example):
+
+    config.action_mailer.default_url_options = { :host => "yourapp.herokuapp.com" } (Or whatever connected to your heroku app)
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = true
+
+    config.action_mailer.smtp_settings = {
+        address: "smtp.sendgrid.net",
+        port: 25,
+        domain: "example.com",
+        authentication: "plain",
+        user_name: ENV["SENDGRID_USERNAME"],
+        password: ENV["SENDGRID_PASSWORD"]
+    }
     
 ### Integrate Kandan on Heroku with your Amazon S3_BUCKET ( [Heroku article on AWS S3 to store static assets and file uploads](https://devcenter.heroku.com/articles/s3) ). Run the following line, replacing the the global variable values with your own:
 
