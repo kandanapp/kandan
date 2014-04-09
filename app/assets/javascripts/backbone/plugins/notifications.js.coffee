@@ -33,7 +33,7 @@ class Kandan.Plugins.Notifications
 
   @render: ($el)->
     $notifications = $("<ul class='notifications_list'></ul>")
-    $el.next().hide();
+    $el.next().hide()
 
     @initPopupsNotificationsButtons()
     @initFluidNotificationsButtons()
@@ -129,9 +129,18 @@ class Kandan.Plugins.Notifications
   # If you are wondering why the kandan icon is not displayed on OS X this is the reason:
   # If you try notifying users on MacOS Mountain Lion, using a custom notification icon, don't be surprised that the Web browser icon overrides the icon you defined.
   # Apple locked notification icons to the app icons (for instance Chrome icon).
+  @displayTimeout: ()->
+    3000
+
   @displayNotification: (sender, message)->
     if @popups_notifications_enabled && @webkitNotificationsEnabled()
-      notification = window.webkitNotifications.createNotification('/assets/kandanlogo.png', "#{sender} says:", message);
+      notification = window.webkitNotifications.createNotification('/assets/kandanlogo.png', "#{sender} says:", message)
+      notification.ondisplay = =>
+        setTimeout (->
+          notification.cancel()
+          console.log "cancel"
+        ), @displayTimeout()
+
       notification.onclick = ->
         window.focus()
         @cancel()
