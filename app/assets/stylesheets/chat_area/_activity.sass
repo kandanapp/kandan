@@ -27,6 +27,16 @@
       float: left
       color: #797D7F
       font-size: 14px
+      width: 100%
+      line-height: 16px
+      margin-bottom: 0
+      padding-top: 7px
+      padding-bottom: 7px
+
+      @media (min-width: $medium)
+        width: calc(100% - 85px)
+        border-left: solid 1px #C8D3C5
+        padding-left: 10px
 
       .image-preview, .youtube-preview
         background: #F3F8F9
@@ -106,9 +116,9 @@
       color: #6F7477
 
   &.connect
-    background-color: #C4DF9B
+    color: #5F9906
   &.disconnect
-    background-color: #FBAF5C
+    color: #AA0101
 
   &.connect, &.disconnect
     opacity: 0.5
