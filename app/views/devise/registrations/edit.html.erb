@@ -2,23 +2,48 @@
   <%= link_to content_tag(:i, nil, class: 'icon-angle-left'), root_path, class: 'button left' %>
 <% end %>
 
-<div class="devise">
-  <h3 class="heading">Edit <%= resource_name.to_s.humanize %></h3>
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put , :role => "form"}) do |f| %>
+  <div class="devise">
+    <h3 class="heading">Edit <%= resource_name.to_s.humanize %></h3>    
     <%= devise_error_messages! %>
-    <%= f.text_field :first_name %>
-    <%= f.text_field :last_name %>
-    <%= f.email_field :email %>
-    <div class="note"><i>(leave blank if you don't want to change it)</i>
-    <%= f.password_field :password ,  :placeholder => 'New Password' %>
-    <%= f.password_field :password_confirmation,  :placeholder => 'New Password Confirm'  %>
+    <div class="form-group">
+      <%= label_tag :first_name, "First Name", :class => "control-label" %>
+      <%= f.text_field :first_name, :class => "form-control", :placeholder => "John" %>
     </div>
-    <div class="note"><i>(Avatar URL replaces your gravatar image)</i>
-    <%= f.url_field :avatar_url,  :placeholder => 'Avatar URL' %>
+    <div class="form-group">
+      <%= label_tag :last_name, "Last Name", :class => "control-label" %>
+      <%= f.text_field :last_name, :class => "form-control", :placeholder => "Smith" %>
     </div>
-    <div class="note"><i>(Enter your current password to confirm your changes)</i>
-    <%= f.password_field :current_password,   :placeholder => 'Current  Password' %>
+    <div class="form-group">
+      <%= label_tag :email, "Email", :class => "control-label" %>
+      <%= f.email_field :email, :class => "form-control", :placeholder => "jsmith@example.com" %>
     </div>
-    <p><%= f.submit "Update" ,   :class => "btn  btn-primary"  %>&nbsp;<%= link_to "Cancel my account", registration_path(resource_name),   :class => "btn  btn-danger", :confirm => "Are you sure you want to delete your account?", :method => :delete %></p>
-  <% end %>
-</div>
+    <div class="form-group">
+        <%= label_tag :password, "Password", :class => "control-label" %>
+        <%= f.password_field :password ,  :placeholder => 'New Password', :class => "form-control" %>
+        <div class="note"><i>(leave blank if you don't want to change it)</i></div>
+    </div>
+    <div class="form-group">
+        <%= label_tag :password_confirmation, "Password Confirmation", :class => "control-label" %>
+        <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => 'New Password Confirmation'  %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :avatar_url, "Avatar URL", :class => "control-label" %>
+      <%= f.url_field :avatar_url, :class => "form-control", :placeholder => 'http://www.gravatar.com/avatar/XXXXXXXXX' %>
+      <div class="note"><i>(Avatar URL replaces your gravatar image)</i></div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :current_password, "Current Password", :class => "control-label" %>
+      <%= f.password_field :current_password, :class => "form-control", :placeholder => 'Current Password' %>
+      <div class="note"><i>(Enter your current password to confirm your changes)</i></div>
+    </div>
+    <p><%= link_to "Back", :back, :class => "btn  btn-info"  %>&nbsp;<%= f.submit "Update" ,   :class => "btn  btn-primary"  %></p>
+  </div>
+  <div class="devise">
+    <h3 class="heading">Cancel My Account.</h3>
+    <p>Unhappy with your service? We hate to see you go!<p>
+    <p><%= link_to "Cancel my account", registration_path(resource_name),   :class => "btn  btn-danger", :confirm => "Are you sure you want to delete your account?", :method => :delete %></p>
+<% end %>
+
+
+

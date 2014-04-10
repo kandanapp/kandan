@@ -2,12 +2,30 @@
   <h3 class="heading">Register an Account</h3>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
-    <%= f.text_field :first_name,  :placeholder => 'First Name' %>
-    <%= f.text_field :last_name,  :placeholder => 'Last Name' %>
-    <%= f.email_field :email,  :placeholder => 'Email Address' %>
-    <%= f.text_field :username,  :placeholder => 'Username' %>
-    <%= f.password_field :password,  :placeholder => 'Password' %>
-    <%= f.password_field :password_confirmation,  :placeholder => 'Password Confirmation' %>
+    <div class="form-group">
+      <%= label_tag :first_name, "First Name", :class => "control-label" %>
+      <%= f.text_field :first_name, :class => "form-control", :placeholder => 'John' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :last_name, "Last Name", :class => "control-label" %>
+      <%= f.text_field :last_name, :class => "form-control", :placeholder => 'Smith' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :email, "Email", :class => "control-label" %>
+      <%= f.email_field :email, :class => "form-control", :placeholder => 'jsmith@example.com' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :password, "Username", :class => "control-label" %>
+      <%= f.text_field :username, :class => "form-control", :placeholder => 'jsmith' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :password, "Password", :class => "control-label" %>
+      <%= f.password_field :password, :class => "form-control", :placeholder => 'Something Memorable!' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :password, "Password Confirmation", :class => "control-label" %>
+      <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => 'Something Memorable!' %>
+    </div>
     <p><%= f.submit "Register",   :class => "btn  btn-primary" %></p>
   <% end %>
   <p><%= render :partial => "devise/shared/links" %></p>

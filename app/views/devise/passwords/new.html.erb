@@ -2,8 +2,11 @@
   <h3 class="heading">Forgot Password?</h3>
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
     <%= devise_error_messages! %>
-    <%= f.email_field :email,  :placeholder => 'Email Address' %>
-	  <p><%= f.submit "Submit",   :class => "btn  btn-primary" %></p>
-	<% end %>
-	<p><%= render :partial => "devise/shared/links" %></p>
+    <div class="form-group">
+      <%= label_tag :email, "Email", :class => "control-label" %>
+      <%= f.text_field :email,  :autofocus => true, :placeholder => 'jsmith@example.com', :class => "form-control" %>
+    </div>
+    <p><%= f.submit "Submit",   :class => "btn  btn-primary" %></p>
+  <% end %>
+  <p><%= render :partial => "devise/shared/links" %></p>
 </div>
