@@ -138,8 +138,6 @@
     min-height: 0
     padding: 3px 0
 
-    @media (min-width: $medium)
-
     .posted_at
       line-height: normal
       margin-top: 0
@@ -147,7 +145,8 @@
       display: none
     .user, .content
       float: none
-      margin-left: 85px
+      @media (min-width: $medium)
+        margin-left: 85px
 
 .pagination
   font-size: 14px
