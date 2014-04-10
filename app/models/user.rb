@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :activities
   before_save :ensure_gravatar_hash
+  before_save :ensure_authentication_token
+
   before_create :mark_registration_status_depending_on_app_settings
 
   after_create :ensure_at_least_one_admin
@@ -39,6 +41,12 @@ class User < ActiveRecord::Base
 
   def ensure_gravatar_hash
     self.gravatar_hash = Digest::MD5.hexdigest self.email
+  end
+
+  def ensure_authentication_token
+    if self.authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
   end
 
   # We never want an app without an admin so let's ensure there is at least one user
@@ -119,5 +127,13 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  private
+    def generate_authentication_token
+      loop do
+        token = Devise.friendly_token
+        break token unless User.where(authentication_token: token).first
+      end
+    end
 
 end
