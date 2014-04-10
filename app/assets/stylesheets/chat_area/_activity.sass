@@ -4,7 +4,6 @@
 .activity
   background: #FFF
   +clearfix
-  min-height: 50px
   position: relative
 
   &:last-child
@@ -12,21 +11,33 @@
 
   .readable
     +clearfix
-    margin: 0 100px 0 30px
     padding: 0 10px
+    margin: 0 0 0 25px
+
+    @media (min-width: $medium)
+      margin: 0 90px 0 25px
 
     .user
-      color: #AEB9BD
-      font-weight: bold
+      color: #949C93
       float: left
-      width: 100%
+      margin-right: 10px
+      margin-top: 7px
       margin-bottom: 4px
-      font-size: 14px
+      font-size: 11px
+      line-height: 16px
+      display: block
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+
+      @media (min-width: $medium)
+        width: 75px
+        text-align: right
 
     .content
       float: left
       color: #797D7F
-      font-size: 14px
+      font-size: 12px
       width: 100%
       line-height: 16px
       margin-bottom: 0
@@ -75,6 +86,7 @@
         color: black
         padding: 2px 3px
         border-radius: 5px
+        margin-left: 3px
 
       .emoticon-embed
         vertical-align: bottom
@@ -95,6 +107,7 @@
     float: right
     text-align: right
     padding: 4px
+    margin-top: 3px
 
   .avatar
     display: block
@@ -123,16 +136,18 @@
   &.connect, &.disconnect
     opacity: 0.5
     min-height: 0
-    padding: 3px
-    padding-left: 10px
-    padding-right: 10px
+    padding: 3px 0
+
+    @media (min-width: $medium)
 
     .posted_at
       line-height: normal
+      margin-top: 0
     .avatar, .user
       display: none
     .user, .content
       float: none
+      margin-left: 85px
 
 .pagination
   font-size: 14px
@@ -147,4 +162,3 @@
 .activity,
 .pagination
   border-bottom: 1px solid #DEE6E8
-  padding: 10px
