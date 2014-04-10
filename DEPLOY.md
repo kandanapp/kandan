@@ -207,6 +207,10 @@ You still need kandan (from above)
 Lots of the gems require other libraries: 
 
     sudo apt-get install ruby1.9.1-dev ruby-bundler libxslt-dev libxml2-dev libpq-dev libsqlite3-dev
+    
+Some gems build native extensions:
+
+    sudo apt-get install gcc g++ make
 
 For development-mode
     
