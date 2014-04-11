@@ -12,9 +12,9 @@ class Kandan.Plugins.MusicPlayer
     attention: 'threetone-alert.wav'
   }
 
-  @playTemplate:   _.template('<i>play <a target="_blank" href="<%- soundUrl %>"><%- url %></a></i>')
-  @stopTemplate:   _.template('<i>stop the music.</i>')
-  @resumeTemplate: _.template('<i>resume the music.</i>')
+  @playTemplate:   _.template('<i>:sound: play <a target="_blank" href="<%- soundUrl %>"><%- url %></a></i>')
+  @stopTemplate:   _.template('<i>:mute: stop the music.</i>')
+  @resumeTemplate: _.template('<i>:sound: resume the music.</i>')
   @songTemplate:   _.template('<li><%= song.split("/").pop() %></li>')
 
 
