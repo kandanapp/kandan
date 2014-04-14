@@ -132,9 +132,9 @@ class Kandan.Plugins.Notifications
   @displayTimeout: ()->
     3000
 
-  @displayNotification: (sender, message)->
+  @displayNotification: (sender, message, title)->
     if @popups_notifications_enabled && @webkitNotificationsEnabled()
-      notification = window.webkitNotifications.createNotification('/assets/kandanlogo.png', "#{sender} says:", message)
+      notification = window.webkitNotifications.createNotification('/assets/kandanlogo.png', "#{sender} says in #{title}:", message)
       notification.ondisplay = =>
         setTimeout (->
           notification.cancel()
