@@ -70,6 +70,15 @@
       img.image-embed
         max-width: 100%
         height: auto
+        max-height: 300px
+        -moz-transition: 0.15s
+        -ms-transition: 0.15s
+        -o-transition: 0.15s
+        -webkit-transition: 0.15s
+        transition: 0.15s
+
+        &:hover
+          max-height: 999px
 
       .color-preview
         width: 15px
