@@ -1,0 +1,11 @@
+<% unless controller.controller_name == 'channels' || controller.controller_name == 'main' %>
+  <!-- Rails flash messages styled for Bootstrap -->
+  <% flash.each do |name, msg| %>
+    <% if msg.is_a?(String) %>
+      <div class="alert alert-<%=name == :notice ? "success" : "danger"%> fade in" >
+        <button class="close" data-dismiss="alert">&times;</button>
+        <%= msg %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
