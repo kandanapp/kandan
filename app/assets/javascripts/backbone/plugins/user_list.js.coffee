@@ -7,7 +7,7 @@ class Kandan.Plugins.UserList
   @template: _.template '''
     <li class="user" title="<%= name %>">
       <img class="avatar" src="<%= avatarUrl %>"/>
-      <%= name %><% if(admin){ %> <span class="badge badge-important">Admin</span><% } %>
+      <%- name %><% if(admin){ %> <span class="badge badge-important">Admin</span><% } %>
     </li>
   '''
 
