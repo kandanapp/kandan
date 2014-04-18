@@ -37,6 +37,7 @@ group :assets do
   gem 'eco'
   gem 'uglifier'
   gem 'bootstrap-sass'
+  gem 'sass', '3.2.13'
   gem 'gemoji'
 end
 
