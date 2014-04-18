@@ -15,8 +15,8 @@ describe "Login" do
 
   it "allows someone to log in and chat", js: true do
     visit root_path
-    fill_in "Username", :with => @user.username
-    fill_in "Password", :with => "mypassword"
+    fill_in 'user_username', :with => @user.username
+    fill_in "user_password", :with => "mypassword"
 
     click_button "Sign in"
 
