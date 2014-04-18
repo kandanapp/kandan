@@ -16,7 +16,7 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, {:timeout => 60})
+  Capybara::Poltergeist::Driver.new(app, {:timeout => 60, :js_errors => false})
 end
 
 Capybara.javascript_driver = :poltergeist
@@ -34,7 +34,10 @@ faye_server.bind(:unsubscribe) do |client_id|
   ActiveUsers.remove_by_client_id(client_id)
 end
 
-Thread.new {faye_server.listen(ENV['KANDAN_FAYE_PORT'].to_i)}
+Thread.new {
+  EM.run
+  faye_server.listen(ENV['KANDAN_FAYE_PORT'].to_i)
+}
 
 Capybara.app = Rack::URLMap.new({
   "/"        => Kandan::Application
