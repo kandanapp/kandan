@@ -23,6 +23,8 @@ DS_Store
 
 .bushido
 .rvmrc
+.ruby-version
+.ruby-gemset
 
 /public/assets
 

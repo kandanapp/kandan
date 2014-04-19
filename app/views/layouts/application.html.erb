@@ -11,7 +11,7 @@
   <%= yield :head %>
   <%- if user_signed_in? %>
     <%= javascript_tag do %>
-      $.data(document, "current-user", <%= sanitize(current_user_data.to_json.html_safe) %>);
+      $.data(document, "current-user", <%= json_escape(current_user_data.to_json.html_safe) %>);
     <% end %>
   <%- end %>
 </head>
