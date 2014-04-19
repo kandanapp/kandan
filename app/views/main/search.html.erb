@@ -5,7 +5,7 @@
 <%= javascript_tag do %>
   $(document).ready(function(){
     Kandan.Plugins.initAll()
-    activities = <%= @activities.to_json(:include => :user).html_safe %>;
+    activities = <%= json_escape(@activities.as_json(:include => { user: { :only => [:email, :first_name, :last_name, :username, :avatar_url, :gravatar_hash, :is_admin]} }).to_json.html_safe) %>;
 
     $.each(activities, function(index, activityAttributes) {
       activity = new Kandan.Models.Activity(activityAttributes);
