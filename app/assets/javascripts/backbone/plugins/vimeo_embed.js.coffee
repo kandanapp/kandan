@@ -26,7 +26,7 @@ class Kandan.Plugins.VimeoEmbed
       videoId = message.match(@options.regex)[2]
 
       subtitle = null
-      subtitle = "Vimeo: #{comment}" if comment? and comment.length > 0
+      subtitle = "#{comment}" if comment? and comment.length > 0
       subtitle ||= videoUrl
 
       message = @options.template({

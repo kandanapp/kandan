@@ -1,6 +1,6 @@
 class Kandan.Plugins.ImageEmbed
   @options:
-    regex: /http.*\.(jpg|jpeg|gif|png)/i
+    regex: /http[\S]*\.(jpg|jpeg|gif|png)/i
 
     template: _.template '''
       <div class="image-preview">
@@ -15,8 +15,10 @@ class Kandan.Plugins.ImageEmbed
   @init: ()->
     Kandan.Modifiers.register @options.regex, (message, activity) =>
       url        = message.match(@options.regex)[0]
+      startIndex = message.match(@options.regex).index
+      endIndex   = startIndex + url.length
       fileName   = url.split("/").pop()
-      comment    = $.trim(message.split(url).join(""))
+      comment    = $.trim(message.replace(message.substring(startIndex, endIndex),""))
       subtitle   = null
       subtitle   = comment if comment.length > 0
       subtitle ||= fileName
