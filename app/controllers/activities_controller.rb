@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  before_filter :authenticate_user_from_token!, :only => :create
   before_filter :authenticate_user!
 
   def index
