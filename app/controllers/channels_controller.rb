@@ -2,7 +2,6 @@ class ChannelsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_channel_by_name, :only => :show
   load_and_authorize_resource
-  before_filter :set_channel_owner, only: :create
 
   def index
     # NOTE Eager loading doesn't respect limit
@@ -27,6 +26,8 @@ class ChannelsController < ApplicationController
   end
 
   def create
+    @channel = Channel.new(params[:channel])
+    @channel.user_id = current_user.id
     respond_to do |format|
       if @channel.save
         format.json { render :json => @channel, :status => :created }
@@ -62,9 +63,5 @@ class ChannelsController < ApplicationController
   private
   def find_channel_by_name
     @channel = Channel.where("LOWER(name) = ?", params['id'].downcase).first
-  end
-
-  def set_channel_owner
-    @channel.user = current_user
   end
 end

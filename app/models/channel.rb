@@ -2,6 +2,7 @@ class Channel < ActiveRecord::Base
   has_many :activities, :dependent => :destroy
   has_many :attachments, :dependent => :destroy
   belongs_to :user
+  attr_accessible :name
 
   validates :name, :presence => { :message => "Room name cannot be blank"}, :uniqueness => { :message => "Room name is already taken" }
   validates :user, :presence => { :message => "Room must belong to a user"}
@@ -22,11 +23,17 @@ class Channel < ActiveRecord::Base
     end
 
     def user_connect(user)
-      activity = Channel.primary.activities.create!(:user_id => user.id, :action => "connect")
+      activity = Channel.primary.activities.new
+      activity.user_id = user.id
+      activity.action = "connect"
+      activity.save!
     end
 
     def user_disconnect(user)
-      activity = Channel.primary.activities.create!(:user_id => user.id, :action => "disconnect")
+      activity = Channel.primary.activities.new
+      activity.user_id = user.id
+      activity.action = "disconnect"
+      activity.save!
     end
   end
 end

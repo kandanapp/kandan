@@ -25,6 +25,7 @@ DS_Store
 .rvmrc
 .ruby-version
 .ruby-gemset
+.secret
 
 /public/assets
 
