@@ -1,8 +1,8 @@
-class Kandan.Plugins.Notifications
+class Kandan.Plugins.AdvancedNotifications
 
-  @widget_title: "Notifications"
+  @widget_title: "Notifications+"
   @widget_icon_url: "/assets/people_icon.png"
-  @pluginNamespace: "Kandan.Plugins.Notifications"
+  @pluginNamespace: "Kandan.Plugins.AdvancedNotifications"
 
   @popup_notifications_template: _.template '''
     <li class="notification popup-notifications">
