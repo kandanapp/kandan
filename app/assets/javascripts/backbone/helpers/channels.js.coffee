@@ -112,8 +112,8 @@ class Kandan.Helpers.Channels
      # 手元でテストするときは and Kandan.Helpers以下をコメントアウトすると便利
     if not local and activityAttributes.action == "message" and Kandan.Helpers.Utils.browserTabFocused != true
       Kandan.Helpers.Utils.notifyInTitle()
-      Kandan.Plugins.Notifications.playAudioNotification('channel')
-      Kandan.Plugins.Notifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
+      Kandan.Plugins.Notifications?.playAudioNotification('channel')
+      Kandan.Plugins.Notifications?.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
       Kandan.Plugins.AdvancedNotifications?.playAudioNotification('channel')
       Kandan.Plugins.AdvancedNotifications?.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
 
