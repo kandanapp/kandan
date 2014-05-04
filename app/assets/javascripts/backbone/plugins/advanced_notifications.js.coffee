@@ -5,7 +5,7 @@ class Kandan.Plugins.AdvancedNotifications
   @pluginNamespace: "Kandan.Plugins.AdvancedNotifications"
 
   @popup_notifications_template: _.template '''
-    <li class="notification popup-notifications">
+    <li class="notification advanced-popup-notifications">
       <label>
         <input type="checkbox"<% if(checked){ %> checked="checked"<% } %> class="switch"> Desktop notifications
         <span></span>
@@ -14,7 +14,7 @@ class Kandan.Plugins.AdvancedNotifications
   '''
 
   @sound_notifications_template: _.template '''
-    <li class="notification sound-notifications">
+    <li class="notification advanced-sound-notifications">
       <label>
         <input type="checkbox" checked="checked" class="switch"> Sounds
         <span></span>
@@ -23,7 +23,7 @@ class Kandan.Plugins.AdvancedNotifications
   '''
 
   @fluid_notifications_template: _.template '''
-    <li class="notification fluid-notifications">
+    <li class="notification advanced-fluid-notifications">
       <label>
         <input type="checkbox" checked="checked" class="switch"> Fluid notifications
         <span></span>
@@ -52,7 +52,7 @@ class Kandan.Plugins.AdvancedNotifications
 
   # HTML 5 Popups
   @initPopupsNotificationsButtons: ()->
-    $(document).on 'change', '.popup-notifications .switch', (e) =>
+    $(document).on 'change', '.advanced-popup-notifications .switch', (e) =>
       if e.target.checked
         @enablePopupNotifications()
       else
@@ -77,7 +77,7 @@ class Kandan.Plugins.AdvancedNotifications
         # If the notifications have been denied we need to let the user know because there is nothing else we can do
         alert("It looks like notifications are denied for this page.\n\nUse your browser settings to allow notifications for this page.")
       else
-        $('.popup-notifications .switch').prop 'checked', false
+        $('.advanced-popup-notifications .switch').prop 'checked', false
         window.webkitNotifications.requestPermission(=> @onPopupNotificationsEnabled())
 
     return
@@ -97,14 +97,14 @@ class Kandan.Plugins.AdvancedNotifications
   # Callback when notifiactions are enabled for the first time
   @onPopupNotificationsEnabled: ()->
     if @webkitNotificationsEnabled()
-      $('.popup-notifications .switch').prop 'checked', true
+      $('.advanced-popup-notifications .switch').prop 'checked', true
       @enablePopupNotifications()
 
     return
 
   # Fluid notifications -- http://fluidapp.com
   @initFluidNotificationsButtons: ()->
-    $(document).on 'change', '.fluid-notifications .switch', (e) =>
+    $(document).on 'change', '.advanced-fluid-notifications .switch', (e) =>
       if e.target.checked
         @enableFluidNotifications()
       else
@@ -175,7 +175,7 @@ class Kandan.Plugins.AdvancedNotifications
       @initSoundNotificationsButtons()
 
   @initSoundNotificationsButtons: ()->
-    $(document).on 'change', '.sound-notifications .switch', (e) =>
+    $(document).on 'change', '.advanced-sound-notifications .switch', (e) =>
       if e.target.checked
         @enableSoundNotifications()
       else
