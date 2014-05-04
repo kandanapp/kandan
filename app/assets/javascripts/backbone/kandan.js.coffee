@@ -27,6 +27,7 @@ window.Kandan =
       ,"Pastie"
       ,"Mentions"
       ,"Notifications"
+      ,"AdvancedNotifications"
       ,"MusicPlayer"
       ,"YouTubeEmbed"
       ,"VimeoEmbed"
