@@ -32,7 +32,7 @@ class Kandan.Plugins.AdvancedNotifications
   '''
 
   @render: ($el)->
-    $notifications = $("<ul class='notifications_list'></ul>")
+    $notifications = $("<ul class='advanced_notifications_list'></ul>")
     $el.next().hide()
 
     @initPopupsNotificationsButtons()
