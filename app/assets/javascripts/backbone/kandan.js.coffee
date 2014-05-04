@@ -26,7 +26,7 @@ window.Kandan =
       "UserList"
       ,"Pastie"
       ,"Mentions"
-      ,"Notifications"
+      # ,"Notifications"
       ,"AdvancedNotifications"
       ,"MusicPlayer"
       ,"YouTubeEmbed"
