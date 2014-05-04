@@ -54,6 +54,7 @@ window.Kandan =
       Kandan.Helpers.Utils.browserTabFocused = true
       Kandan.Helpers.Utils.resetUnreadActivities()
       Kandan.Plugins.Notifications?.resetUnreadActivities()
+      Kandan.Plugins.AdvancedNotifications?.resetUnreadActivities()
       $(document).attr('title', 'Kandan')
 
 

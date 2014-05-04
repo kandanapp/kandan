@@ -114,6 +114,9 @@ class Kandan.Helpers.Channels
       Kandan.Helpers.Utils.notifyInTitle()
       Kandan.Plugins.Notifications.playAudioNotification('channel')
       Kandan.Plugins.Notifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
+      Kandan.Plugins.AdvancedNotifications?.playAudioNotification('channel')
+      Kandan.Plugins.AdvancedNotifications?.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
+
 
       @setPaginationData(activityAttributes.channel_id)
 
