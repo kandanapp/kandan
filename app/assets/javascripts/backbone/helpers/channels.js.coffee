@@ -112,7 +112,6 @@ class Kandan.Helpers.Channels
     # 手元でテストするときは and Kandan.Helpers以下をコメントアウトすると便利
     if not local and activityAttributes.action == "message" and Kandan.Helpers.Utils.browserTabFocused != true
       @notify(activityAttributes)
-
       @setPaginationData(activityAttributes.channel_id)
 
   @notify: (activityAttributes) ->
