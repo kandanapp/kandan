@@ -45,9 +45,6 @@ class Kandan.Plugins.AdvancedNotifications
     @initSoundNotifications($notifications)
     @initTargetChannelList($notifications)
 
-    return
-
-
   @init: ()->
     Kandan.Widgets.register @pluginNamespace
 
@@ -58,8 +55,6 @@ class Kandan.Plugins.AdvancedNotifications
         @enablePopupNotifications()
       else
         @disablePopupNotifications()
-
-    return
 
   @initWebkitNotifications: (container)->
     if Modernizr.notification && not window.fluid
@@ -81,12 +76,8 @@ class Kandan.Plugins.AdvancedNotifications
         $('.advanced-popup-notifications .switch').prop 'checked', false
         window.webkitNotifications.requestPermission(=> @onPopupNotificationsEnabled())
 
-    return
-
   @disablePopupNotifications: ()->
     @popups_notifications_enabled = false
-
-    return
 
   # Returns true if notifications are enabled for this page.
   @webkitNotificationsEnabled: ()->
@@ -101,8 +92,6 @@ class Kandan.Plugins.AdvancedNotifications
       $('.advanced-popup-notifications .switch').prop 'checked', true
       @enablePopupNotifications()
 
-    return
-
   # Fluid notifications -- http://fluidapp.com
   @initFluidNotificationsButtons: ()->
     $(document).on 'change', '.advanced-fluid-notifications .switch', (e) =>
@@ -111,21 +100,16 @@ class Kandan.Plugins.AdvancedNotifications
       else
         @disableFluidNotifications()
 
-    return
-
   @initFluidNotifications: (container)->
     if window.fluid
       container.append(@fluid_notifications_template())
       @enableFluidNotifications()
-    return
 
   @enableFluidNotifications: ()->
     @fluid_notifications_enabled = true
-    return
 
   @disableFluidNotifications: ()->
     @fluid_notifications_enabled = false
-    return
 
   # If you are wondering why the kandan icon is not displayed on OS X this is the reason:
   # If you try notifying users on MacOS Mountain Lion, using a custom notification icon, don't be surprised that the Web browser icon overrides the icon you defined.
@@ -161,12 +145,10 @@ class Kandan.Plugins.AdvancedNotifications
       }
       window.fluid.dockBadge = Kandan.Helpers.Utils.unreadActivities
       window.fluid.requestUserAttention(false) # bounce once
-    return
 
   @resetUnreadActivities: ()->
     if @fluid_notifications_enabled
       window.fluid.dockBadge = null
-    return
 
   # HTML 5 sounds
   @initSoundNotifications: ($container)->
@@ -184,24 +166,17 @@ class Kandan.Plugins.AdvancedNotifications
 
       console.log e.target, e.target.checked
 
-    return
-
   @enableSoundNotifications: ()->
     @sound_notifications_enabled = true
 
-    return
-
   @disableSoundNotifications: ()->
     @sound_notifications_enabled = false
-
-    return
 
   @playAudioNotification: (type)->
     if @sound_notifications_enabled and not @isPlaying
       @isPlaying = true
       setTimeout (=> @isPlaying = false), 1000
       Kandan.Plugins.MusicPlayer.playAudioNotice(type)
-    return
 
   @initTargetChannelList: (container)->
     channels = Kandan.Helpers.Channels.getCollection()
