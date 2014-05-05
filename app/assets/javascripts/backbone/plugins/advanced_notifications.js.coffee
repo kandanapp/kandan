@@ -43,6 +43,7 @@ class Kandan.Plugins.AdvancedNotifications
     @initFluidNotifications($notifications)
     @initWebkitNotifications($notifications)
     @initSoundNotifications($notifications)
+    @initTargetChannelList($notifications)
 
     return
 
@@ -201,3 +202,14 @@ class Kandan.Plugins.AdvancedNotifications
       setTimeout (=> @isPlaying = false), 1000
       Kandan.Plugins.MusicPlayer.playAudioNotice(type)
     return
+
+  @initTargetChannelList: (container)->
+    channels = Kandan.Helpers.Channels.getCollection()
+    html = "<li><ul class='channel_list'><li class='caption'>Receive notifications from ...</li>"
+    for channel in channels.models
+      html += "<li class='channel'><label><input type='checkbox' id='notification_channel_" + channel.id + "'checked>" + channel.attributes.name + "</label></li>"
+    html += "</ul></li>"
+    container.append(html)
+
+  @channelNotificationEnabled: (channel_id)->
+    !!$("#notification_channel_#{channel_id}:checked").val()
