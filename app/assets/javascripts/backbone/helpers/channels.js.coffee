@@ -111,16 +111,20 @@ class Kandan.Helpers.Channels
 
     # 手元でテストするときは and Kandan.Helpers以下をコメントアウトすると便利
     if not local and activityAttributes.action == "message" and Kandan.Helpers.Utils.browserTabFocused != true
-      Kandan.Helpers.Utils.notifyInTitle()
-      Kandan.Plugins.Notifications?.playAudioNotification('channel')
-      Kandan.Plugins.Notifications?.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
-
-      if Kandan.Plugins.AdvancedNotifications?.channelNotificationEnabled(activityAttributes.channel_id)
-        Kandan.Plugins.AdvancedNotifications?.playAudioNotification('channel')
-        Kandan.Plugins.AdvancedNotifications?.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
+      @notify(activityAttributes)
 
       @setPaginationData(activityAttributes.channel_id)
 
+  @notify: (activityAttributes) ->
+    Kandan.Helpers.Utils.notifyInTitle()
+
+    if Kandan.Plugins.Notifications?
+      Kandan.Plugins.Notifications.playAudioNotification('channel')
+      Kandan.Plugins.Notifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
+
+    if Kandan.Plugins.AdvancedNotifications?.channelNotificationEnabled(activityAttributes.channel_id)
+      Kandan.Plugins.AdvancedNotifications.playAudioNotification('channel')
+      Kandan.Plugins.AdvancedNotifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
 
   @addNotification: (activityAttributes) ->
     $channelElements = $(".channel-activities")
