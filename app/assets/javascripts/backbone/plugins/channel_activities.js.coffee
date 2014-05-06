@@ -4,7 +4,7 @@ class Kandan.Plugins.ChannelActivities
   @pluginNamespace: "Kandan.Plugins.ChannelActivities"
 
   @channel_template: _.template '''
-    <li><%= name %></li>
+    <li><a><%= name %></a></li>
   '''
   @render: ($el)->
     $channels = $("<ul class='activity_channel_list'></ul>")
