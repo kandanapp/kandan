@@ -2,6 +2,8 @@ class Attachment < ActiveRecord::Base
   belongs_to :channel
   belongs_to :user
 
+  attr_accessible :file
+
   if ENV['S3_BUCKET']
     has_attached_file(:file, {
       :storage         => :s3,
@@ -19,8 +21,6 @@ class Attachment < ActiveRecord::Base
     has_attached_file :file
     do_not_validate_attachment_file_type :file
   end
-  
-  attr_accessible :file
 
   def url
     file.to_s
