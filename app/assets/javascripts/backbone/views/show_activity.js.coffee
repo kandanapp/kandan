@@ -36,6 +36,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
       if !@options.silence_mentions && (user_mention_regex.test(@compiledTemplate) || all_mention_regex.test(@compiledTemplate))
         $(@el).addClass("mentioned_user")
         Kandan.Plugins.Notifications?.playAudioNotification('attention')
+        Kandan.Plugins.AdvancedNotifications?.playAudioNotification('attention')
 
     if activity.id == undefined
       $(@el).attr("id", "activity-c#{activity.cid}")
