@@ -10,6 +10,7 @@ class Kandan.Plugins.ChannelActivities
     $channels = $("<ul class='activity_channel_list'></ul>")
     $el.html($channels)
     @initChannelList($channels)
+    $el.next().hide()
 
   @init: ->
     Kandan.Widgets.register @pluginNamespace
