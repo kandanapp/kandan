@@ -4,7 +4,7 @@ class Kandan.Plugins.ChannelActivities
   @pluginNamespace: "Kandan.Plugins.ChannelActivities"
 
   @channel_template: _.template '''
-    <li><a><%= name %></a></li>
+    <li><a href="#channels-<%= channel_id %>"><%= name %></a></li>
   '''
   @render: ($el)->
     $channels = $("<ul class='activity_channel_list'></ul>")
@@ -18,4 +18,4 @@ class Kandan.Plugins.ChannelActivities
   @initChannelList: ($container)->
     channels = Kandan.Helpers.Channels.getCollection()
     for channel in channels.models
-      $container.append(@channel_template(name: channel.get('name')))
+      $container.append(@channel_template(channel_id: channel.id, name: channel.get('name')))
