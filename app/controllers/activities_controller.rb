@@ -27,6 +27,8 @@ class ActivitiesController < ApplicationController
     # NOTE if the action is accessed then there's definitely activities, so skip check for #first to be nil
     more_activities = first_activity_id < (activities.last.try(:id).presence || 1)
 
+    activities.each { |a| a.user ||= User.deleted_user }
+
     respond_to do |format|
       format.json { render :text => {:activities => activities.reverse, :more_activities => more_activities }.to_json(:include => :user) }
     end
