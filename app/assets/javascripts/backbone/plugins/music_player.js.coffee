@@ -12,14 +12,14 @@ class Kandan.Plugins.MusicPlayer
     attention: 'threetone-alert.wav'
   }
 
-  @playTemplate:   _.template('<a class="playit" target="_blank" href="<%- soundUrl %>"><i>:sound: play <%- url %></i></a>')
+  @playTemplate:   _.template('<a class="audio-play" target="_blank" href="<%- soundUrl %>"><i>:sound: play <%- url %></i></a>')
   @stopTemplate:   _.template('<i>:mute: stop the music.</i>')
   @resumeTemplate: _.template('<i>:sound: resume the music.</i>')
   @songTemplate:   _.template('<li><%= song.split("/").pop() %></li>')
 
   @attachClicks: =>
     _this = this
-    $(document).delegate('.playit', 'click', (e) ->
+    $(document).delegate('.audio-play', 'click', (e) ->
       e.preventDefault()
       soundUrl = $(this).attr('href')
       channelId = _this.currentChannel()
