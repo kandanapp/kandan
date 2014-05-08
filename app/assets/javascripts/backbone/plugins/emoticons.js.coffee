@@ -902,7 +902,28 @@ class Kandan.Plugins.Emoticons
     ":small_orange_diamond:" : { src : "emojis/small_orange_diamond.png", css : "small", title : "small_orange_diamond"},
     ":small_red_triangle:" : { src : "emojis/small_red_triangle.png", css : "small", title : "small_red_triangle"},
     ":small_red_triangle_down:" : { src : "emojis/small_red_triangle_down.png", css : "small", title : "small_red_triangle_down"},
-    ":shipit:"      : { src : "emojis/shipit.png", css : "small", title : "shipit"}
+    ":shipit:"      : { src : "emojis/shipit.png", css : "small", title : "shipit"},
+    ":athletic_shoe:" : { src : "emojis/athletic_shoe.png", css : "small", title : "athletic_shoe"},
+    ":back:" : { src : "emojis/back.png", css : "small", title : "back"},
+    ":black_large_square:" : { src : "emojis/black_large_square.png", css : "small", title : "black_large_square"},
+    ":black_medium_small_square:" : { src : "emojis/black_medium_small_square.png", css : "small", title : "black_medium_small_square"},
+    ":black_medium_square:" : { src : "emojis/black_medium_square.png", css : "small", title : "black_medium_square"},
+    ":black_small_square:" : { src : "emojis/black_small_square.png", css : "small", title : "black_small_square"},
+    ":crescent_moon:" : { src : "emojis/crescent_moon.png", css : "small", title : "crescent_moon"},
+    ":envelope_with_arrow:" : { src : "emojis/envelope_with_arrow.png", css : "small", title : "envelope_with_arrow"},
+    ":flipper:" : { src : "emojis/flipper.png", css : "small", title : "flipper"},
+    ":footprints:"  : { src : "emojis/footprints.png", css : "small", title : "footprints"},
+    ":lantern:" : { src : "emojis/lantern.png", css : "small", title : "lantern"},
+    ":loud_sound:"  : { src : "emojis/loud_sound.png", css : "small", title : "loud_sound"},
+    ":night_with_stars:" : { src : "emojis/night_with_stars.png", css : "small", title : "night_with_stars"},
+    ":open_book:"   : { src : "emojis/open_book.png", css : "small", title : "open_book"},
+    ":package:" : { src : "emojis/package.png", css : "small", title : "package"},
+    ":raising_hand:" : { src : "emojis/raising_hand.png", css : "small", title : "raising_hand"},
+    ":sparkle:"     : { src : "emojis/sparkle.png", css : "small", title : "sparkle"},
+    ":white_large_square:" : { src : "emojis/white_large_square.png", css : "small", title : "white_large_square"},
+    ":white_medium_small_square:" : { src : "emojis/white_medium_small_square.png", css : "small", title : "white_medium_small_square"},
+    ":white_medium_square:" : { src : "emojis/white_medium_square.png", css : "small", title : "white_medium_square"},
+    ":white_small_square:" : { src : "emojis/white_small_square.png", css : "small", title : "white_small_square"}
     }
 
   @init: ()->
