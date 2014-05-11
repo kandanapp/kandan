@@ -31,3 +31,6 @@ class Kandan.Plugins.ChannelActivities
 
   @notify: (channel_id)->
     $("#activity_channel_#{channel_id}").addClass('unread')
+
+  @reset_notification: (channel_id)->
+    $("#activity_channel_#{channel_id}").removeClass('unread')
