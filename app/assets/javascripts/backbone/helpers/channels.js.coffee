@@ -126,7 +126,10 @@ class Kandan.Helpers.Channels
       Kandan.Plugins.AdvancedNotifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
 
     if Kandan.Plugins.ChannelActivities?
-      Kandan.Plugins.ChannelActivities.notify(activityAttributes.channel_id)
+      Kandan.Plugins.ChannelActivities.notify(activityAttributes.channel_id, @mentioned(activityAttributes.content))
+
+  @mentioned: (content)->
+    content.indexOf("@#{Kandan.Helpers.Users.currentUser().username}") != -1
 
   @addNotification: (activityAttributes) ->
     $channelElements = $(".channel-activities")

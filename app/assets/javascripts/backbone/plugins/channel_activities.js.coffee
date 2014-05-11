@@ -29,12 +29,21 @@ class Kandan.Plugins.ChannelActivities
     for channel in channels.models
       $container.append(@channel_template(channel_id: channel.id, name: channel.get('name')))
 
-  @notify: (channel_id)->
+  @notify: (channel_id, mentioned)->
     counter = $("#activity_channel_#{channel_id} .count")[0]
     if counter
       counter.innerHTML = (parseInt(counter.innerHTML) || 0) + 1
 
-    $("#activity_channel_#{channel_id}").addClass('unread')
+    indicator = $("#activity_channel_#{channel_id}")
+    return if indicator.hasClass('mentioned')
+
+    if mentioned
+      indicator.removeClass('unread')
+      indicator.addClass('mentioned')
+    else
+      indicator.addClass('unread')
 
   @reset_notification: (channel_id)->
-    $("#activity_channel_#{channel_id}").removeClass('unread')
+    indicator = $("#activity_channel_#{channel_id}")
+    indicator.removeClass('unread')
+    indicator.removeClass('mentioned')
