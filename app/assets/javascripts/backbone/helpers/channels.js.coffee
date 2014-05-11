@@ -125,6 +125,9 @@ class Kandan.Helpers.Channels
       Kandan.Plugins.AdvancedNotifications.playAudioNotification('channel')
       Kandan.Plugins.AdvancedNotifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content, activityAttributes.channel.name)
 
+    if Kandan.Plugins.ChannelActivities?
+      Kandan.Plugins.ChannelActivities.notify(activityAttributes.channel_id)
+
   @addNotification: (activityAttributes) ->
     $channelElements = $(".channel-activities")
     activityAttributes["created_at"] = new Date()
