@@ -4,7 +4,7 @@ class Kandan.Plugins.ChannelActivities
   @pluginNamespace: "Kandan.Plugins.ChannelActivities"
 
   @channel_template: _.template '''
-    <li><a href="#channels-<%= channel_id %>" class="show_channel" id="activity_channel_<%= channel_id %>"><%= name %></a></li>
+    <li><a href="#channels-<%= channel_id %>" class="show_channel" id="activity_channel_<%= channel_id %>"><%= name %><span class="count">0</span></a></li>
   '''
   @render: ($el)->
     $channels = $("<ul class='activity_channel_list'></ul>")
@@ -30,6 +30,10 @@ class Kandan.Plugins.ChannelActivities
       $container.append(@channel_template(channel_id: channel.id, name: channel.get('name')))
 
   @notify: (channel_id)->
+    counter = $("#activity_channel_#{channel_id} .count")[0]
+    if counter
+      counter.innerHTML = (parseInt(counter.innerHTML) || 0) + 1
+
     $("#activity_channel_#{channel_id}").addClass('unread')
 
   @reset_notification: (channel_id)->

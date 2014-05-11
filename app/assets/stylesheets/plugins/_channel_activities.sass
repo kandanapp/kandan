@@ -13,5 +13,18 @@
       text-decoration: none
       font-weight: bold
 
+      .count
+        font-weight: normal
+        display: none
+
+      .count:before
+        content: " ("
+
+      .count:after
+        content: ")"
+
     .unread
       background-color: #D2E9C6
+
+      .count
+        display: inline
