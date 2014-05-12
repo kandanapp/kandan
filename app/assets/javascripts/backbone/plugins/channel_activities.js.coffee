@@ -28,6 +28,7 @@ class Kandan.Plugins.ChannelActivities
     channels = Kandan.Helpers.Channels.getCollection()
     for channel in channels.models
       $container.append(@channel_template(channel_id: channel.id, name: channel.get('name')))
+    @activate($(document).data('active-channel-id'))
 
   @notify: (channel_id, mentioned)->
     counter = $("#activity_channel_#{channel_id} .count")[0]
@@ -35,7 +36,7 @@ class Kandan.Plugins.ChannelActivities
       counter.innerHTML = (parseInt(counter.innerHTML) || 0) + 1
 
     indicator = $("#activity_channel_#{channel_id}")
-    return if indicator.hasClass('mentioned')
+    return if indicator.hasClass('active') || indicator.hasClass('mentioned')
 
     if mentioned
       indicator.removeClass('unread')
@@ -43,7 +44,16 @@ class Kandan.Plugins.ChannelActivities
     else
       indicator.addClass('unread')
 
-  @reset_notification: (channel_id)->
+  @activate: (channel_id)->
+    @deactivate()
+
     indicator = $("#activity_channel_#{channel_id}")
     indicator.removeClass('unread')
     indicator.removeClass('mentioned')
+    indicator.addClass('active')
+
+  @deactivate: ->
+    counter = $(".activity_channel_list .active .count")[0]
+    counter.innerHTML = 0 if counter
+
+    $(".activity_channel_list .active").removeClass('active')

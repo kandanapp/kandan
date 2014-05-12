@@ -34,5 +34,5 @@ class Kandan.Views.ChannelNav extends Backbone.View
     Kandan.Data.Channels.runCallbacks('change') if event
 
     if Kandan.Plugins.ChannelActivities?
-      Kandan.Plugins.ChannelActivities.reset_notification(@options.channel.get('id'))
+      Kandan.Plugins.ChannelActivities.activate(@options.channel.get('id'))
     false
