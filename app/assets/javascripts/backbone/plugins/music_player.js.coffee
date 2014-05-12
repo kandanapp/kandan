@@ -12,11 +12,19 @@ class Kandan.Plugins.MusicPlayer
     attention: 'threetone-alert.wav'
   }
 
-  @playTemplate:   _.template('<strong><a class="audio-play">playing</a> <a target="_blank" href="<%- url %>"><%- url %></a></strong>')
-  @stopTemplate:   _.template('<strong><a class="audio-play">stopping</a> the music.')
-  @resumeTemplate: _.template('<strong><a class="audio-play">resuming</a> the music.')
+  @playTemplate:   _.template('<a class="audio-play" target="_blank" href="<%- soundUrl %>"><i>:sound: play <%- url %></i></a>')
+  @stopTemplate:   _.template('<i>:mute: stop the music.</i>')
+  @resumeTemplate: _.template('<i>:sound: resume the music.</i>')
   @songTemplate:   _.template('<li><%= song.split("/").pop() %></li>')
 
+  @attachClicks: =>
+    _this = this
+    $(document).delegate('.audio-play', 'click', (e) ->
+      e.preventDefault()
+      soundUrl = $(this).attr('href')
+      channelId = _this.currentChannel()
+      _this.playUrl(channelId, soundUrl)
+    )
 
   @setError: (errorMessage)->
     console.log "music player error", errorMessage
@@ -65,18 +73,18 @@ class Kandan.Plugins.MusicPlayer
   @registerPlayModifier: ()->
     Kandan.Modifiers.register @playRegex, (message, activity) =>
       url = $.trim(message.substr(message.indexOf(" ") + 1));
-      if true and Kandan.Data.Channels.activeChannelId()?
-        rawInput  = Kandan.Helpers.Utils.unescape(url)
-        soundUrl  = null
-        soundUrl  = @localSounds(rawInput)
-        soundUrl ?= rawInput
+      rawInput  = Kandan.Helpers.Utils.unescape(url)
+      soundUrl  = null
+      soundUrl  = @localSounds(rawInput)
+      soundUrl ?= rawInput
 
+      if true and Kandan.Data.Channels.activeChannelId()?
         @playUrl(activity.channel_id, soundUrl)
       else
         console.log "Not playing stale song"
 
-      message.content = @playTemplate({url: url})
-      return Kandan.Helpers.Activities.buildFromBaseTemplate message
+      message = @playTemplate({url: url, soundUrl: soundUrl})
+      return message #Kandan.Helpers.Activities.buildFromBaseTemplate message
 
   @registerStopModifier: ()->
     Kandan.Modifiers.register @stopRegex, (message, activity) =>
