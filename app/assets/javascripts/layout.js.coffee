@@ -21,3 +21,6 @@ $(document).ready ->
       $(this).closest('.nav').addClass('search-focus')
     .on 'blur', ->
       $(this).closest('.nav').removeClass('search-focus')
+
+  $.fn.hasScrollBar = ->
+    (if @get(0) then @get(0).scrollHeight > @innerHeight() else false)
