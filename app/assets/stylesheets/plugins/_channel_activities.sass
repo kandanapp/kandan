@@ -1,0 +1,43 @@
+.activity_channel_list
+  list-style: none
+  padding: 0
+  margin: 0
+
+  li
+    border-top: 1px solid #D2D8D8
+
+    a
+      display: block
+      padding: 3px 10px
+      color: #585d5f
+      text-decoration: none
+      font-weight: bold
+
+      .count
+        font-weight: normal
+        display: none
+
+      .count:before
+        content: " ("
+
+      .count:after
+        content: ")"
+
+    .active
+      background-color: #B94A48
+      color: #FFFFFF
+
+      .count
+        display: inline
+
+    .unread
+      background-color: #D2E9C6
+
+      .count
+        display: inline
+
+    .mentioned
+      background-color: #FBE7E4
+
+      .count
+        display: inline
