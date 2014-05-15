@@ -8,6 +8,10 @@ class Kandan.Views.ChannelPane extends Backbone.View
     # Flag to avoid pulling new messages when we already requested new messages from the server
     @loading_new_messages = false
 
+    if !$container.hasScrollBar()
+      @loading_new_messages = true;
+      @loadMoreActivities($container)
+
     $container.bind 'scroll', =>
       if $container.scrollTop() <= 100 && !@loading_new_messages
         @loading_new_messages = true
