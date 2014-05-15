@@ -32,4 +32,7 @@ class Kandan.Views.ChannelNav extends Backbone.View
     delay = (ms, func) -> setTimeout func, ms
     delay 1, => Kandan.Helpers.Channels.scrollToLatestMessage(@options.channel.get('id'))
     Kandan.Data.Channels.runCallbacks('change') if event
+
+    if Kandan.Plugins.ChannelActivities?
+      Kandan.Plugins.ChannelActivities.activate(@options.channel.get('id'))
     false

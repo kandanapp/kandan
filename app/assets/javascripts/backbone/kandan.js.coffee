@@ -26,7 +26,9 @@ window.Kandan =
       "UserList"
       ,"Pastie"
       ,"Mentions"
-      ,"Notifications"
+      ,"ChannelActivities"
+      # ,"Notifications"
+      ,"AdvancedNotifications"
       ,"MusicPlayer"
       ,"YouTubeEmbed"
       ,"VimeoEmbed"
@@ -53,6 +55,7 @@ window.Kandan =
       Kandan.Helpers.Utils.browserTabFocused = true
       Kandan.Helpers.Utils.resetUnreadActivities()
       Kandan.Plugins.Notifications?.resetUnreadActivities()
+      Kandan.Plugins.AdvancedNotifications?.resetUnreadActivities()
       $(document).attr('title', 'Kandan')
 
 

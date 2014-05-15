@@ -1,11 +1,11 @@
-class Kandan.Plugins.Notifications
+class Kandan.Plugins.AdvancedNotifications
 
-  @widget_title: "Notifications"
+  @widget_title: "Notifications+"
   @widget_icon_url: "/assets/people_icon.png"
-  @pluginNamespace: "Kandan.Plugins.Notifications"
+  @pluginNamespace: "Kandan.Plugins.AdvancedNotifications"
 
   @popup_notifications_template: _.template '''
-    <li class="notification popup-notifications">
+    <li class="notification advanced-popup-notifications">
       <label>
         <input type="checkbox"<% if(checked){ %> checked="checked"<% } %> class="switch"> Desktop notifications
         <span></span>
@@ -14,7 +14,7 @@ class Kandan.Plugins.Notifications
   '''
 
   @sound_notifications_template: _.template '''
-    <li class="notification sound-notifications">
+    <li class="notification advanced-sound-notifications">
       <label>
         <input type="checkbox" checked="checked" class="switch"> Sounds
         <span></span>
@@ -23,7 +23,7 @@ class Kandan.Plugins.Notifications
   '''
 
   @fluid_notifications_template: _.template '''
-    <li class="notification fluid-notifications">
+    <li class="notification advanced-fluid-notifications">
       <label>
         <input type="checkbox" checked="checked" class="switch"> Fluid notifications
         <span></span>
@@ -32,7 +32,7 @@ class Kandan.Plugins.Notifications
   '''
 
   @render: ($el)->
-    $notifications = $("<ul class='notifications_list'></ul>")
+    $notifications = $("<ul class='advanced_notifications_list'></ul>")
     $el.next().hide()
 
     @initPopupsNotificationsButtons()
@@ -43,22 +43,18 @@ class Kandan.Plugins.Notifications
     @initFluidNotifications($notifications)
     @initWebkitNotifications($notifications)
     @initSoundNotifications($notifications)
+    @initTargetChannelList($notifications)
 
-    return
-
-
-  @init: ()->
+  @init: ->
     Kandan.Widgets.register @pluginNamespace
 
   # HTML 5 Popups
-  @initPopupsNotificationsButtons: ()->
-    $(document).on 'change', '.popup-notifications .switch', (e) =>
+  @initPopupsNotificationsButtons: ->
+    $(document).on 'change', '.advanced-popup-notifications .switch', (e) =>
       if e.target.checked
         @enablePopupNotifications()
       else
         @disablePopupNotifications()
-
-    return
 
   @initWebkitNotifications: (container)->
     if Modernizr.notification && not window.fluid
@@ -69,7 +65,7 @@ class Kandan.Plugins.Notifications
       else
         @disablePopupNotifications()
 
-  @enablePopupNotifications: ()->
+  @enablePopupNotifications: ->
     if @webkitNotificationsEnabled()
       @popups_notifications_enabled = true
     else
@@ -77,59 +73,48 @@ class Kandan.Plugins.Notifications
         # If the notifications have been denied we need to let the user know because there is nothing else we can do
         alert("It looks like notifications are denied for this page.\n\nUse your browser settings to allow notifications for this page.")
       else
-        $('.popup-notifications .switch').prop 'checked', false
+        $('.advanced-popup-notifications .switch').prop 'checked', false
         window.webkitNotifications.requestPermission(=> @onPopupNotificationsEnabled())
 
-    return
-
-  @disablePopupNotifications: ()->
+  @disablePopupNotifications: ->
     @popups_notifications_enabled = false
 
-    return
-
   # Returns true if notifications are enabled for this page.
-  @webkitNotificationsEnabled: ()->
+  @webkitNotificationsEnabled: ->
     window.webkitNotifications.checkPermission() == 0
 
-  @webkitNotificationsDenied: ()->
+  @webkitNotificationsDenied: ->
     window.webkitNotifications.checkPermission() == 2
 
   # Callback when notifiactions are enabled for the first time
-  @onPopupNotificationsEnabled: ()->
+  @onPopupNotificationsEnabled: ->
     if @webkitNotificationsEnabled()
-      $('.popup-notifications .switch').prop 'checked', true
+      $('.advanced-popup-notifications .switch').prop 'checked', true
       @enablePopupNotifications()
 
-    return
-
   # Fluid notifications -- http://fluidapp.com
-  @initFluidNotificationsButtons: ()->
-    $(document).on 'change', '.fluid-notifications .switch', (e) =>
+  @initFluidNotificationsButtons: ->
+    $(document).on 'change', '.advanced-fluid-notifications .switch', (e) =>
       if e.target.checked
         @enableFluidNotifications()
       else
         @disableFluidNotifications()
 
-    return
-
   @initFluidNotifications: (container)->
     if window.fluid
       container.append(@fluid_notifications_template())
       @enableFluidNotifications()
-    return
 
-  @enableFluidNotifications: ()->
+  @enableFluidNotifications: ->
     @fluid_notifications_enabled = true
-    return
 
-  @disableFluidNotifications: ()->
+  @disableFluidNotifications: ->
     @fluid_notifications_enabled = false
-    return
 
   # If you are wondering why the kandan icon is not displayed on OS X this is the reason:
   # If you try notifying users on MacOS Mountain Lion, using a custom notification icon, don't be surprised that the Web browser icon overrides the icon you defined.
   # Apple locked notification icons to the app icons (for instance Chrome icon).
-  @displayTimeout: ()->
+  @displayTimeout: ->
     3000
 
   @displayNotification: (sender, message, title)->
@@ -160,12 +145,10 @@ class Kandan.Plugins.Notifications
       }
       window.fluid.dockBadge = Kandan.Helpers.Utils.unreadActivities
       window.fluid.requestUserAttention(false) # bounce once
-    return
 
-  @resetUnreadActivities: ()->
+  @resetUnreadActivities: ->
     if @fluid_notifications_enabled
       window.fluid.dockBadge = null
-    return
 
   # HTML 5 sounds
   @initSoundNotifications: ($container)->
@@ -174,8 +157,8 @@ class Kandan.Plugins.Notifications
       @enableSoundNotifications()
       @initSoundNotificationsButtons()
 
-  @initSoundNotificationsButtons: ()->
-    $(document).on 'change', '.sound-notifications .switch', (e) =>
+  @initSoundNotificationsButtons: ->
+    $(document).on 'change', '.advanced-sound-notifications .switch', (e) =>
       if e.target.checked
         @enableSoundNotifications()
       else
@@ -183,21 +166,25 @@ class Kandan.Plugins.Notifications
 
       console.log e.target, e.target.checked
 
-    return
-
-  @enableSoundNotifications: ()->
+  @enableSoundNotifications: ->
     @sound_notifications_enabled = true
 
-    return
-
-  @disableSoundNotifications: ()->
+  @disableSoundNotifications: ->
     @sound_notifications_enabled = false
-
-    return
 
   @playAudioNotification: (type)->
     if @sound_notifications_enabled and not @isPlaying
       @isPlaying = true
       setTimeout (=> @isPlaying = false), 1000
       Kandan.Plugins.MusicPlayer.playAudioNotice(type)
-    return
+
+  @initTargetChannelList: (container)->
+    channels = Kandan.Helpers.Channels.getCollection()
+    html = "<li><ul class='channel_list'><li class='caption'>Receive notifications from ...</li>"
+    for channel in channels.models
+      html += "<li class='channel'><label><input type='checkbox' id='notification_channel_" + channel.id + "'checked>" + channel.attributes.name + "</label></li>"
+    html += "</ul></li>"
+    container.append(html)
+
+  @channelNotificationEnabled: (channel_id)->
+    !!$("#notification_channel_#{channel_id}:checked").val()

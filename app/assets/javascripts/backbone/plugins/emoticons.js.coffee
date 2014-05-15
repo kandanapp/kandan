@@ -30,6 +30,8 @@ class Kandan.Plugins.Emoticons
     "(truestory)"   : { src : "truestory.png", css : "big", title : "truestory"},
     "(youdontsay)"  : { src : "youdontsay.png", css : "big", title : "youdontsay"},
     "(yuno)"        : { src : "yuno.jpg", css : "big", title : "yuno"},
+    "(owl)"         : { src : "owl.png", css : "small", title : "owl" },
+    "(blackcat)"   : { src : "blackcat.png", css : "big", title : "blackcat" },
     ":("            : { src : "sad.png", css : "small", title : "sad"},
     "=("            : { src : "sad.png", css : "small", title : "sad"},
     ":)"            : { src : "happy.png", css : "small", title : "happy"},
