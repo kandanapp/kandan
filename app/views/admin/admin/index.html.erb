@@ -13,6 +13,12 @@
       <%= f.label :max_rooms do %>
         Max number of rooms <%= f.number_field :max_rooms, :class => "input-mini pull-right" %>
       <% end %>
+
+      <%= f.label :disable_conn_disconn_activity do %>
+        <%= f.check_box :disable_conn_disconn_activity, :class => "switch" %> disable connect/disconnect activity
+        <span></span>
+      <% end %>
+
       <%= f.label :public_site do %>
         <%= f.check_box :public_site, :class => "switch" %> Public site
         <span></span>

@@ -6,7 +6,7 @@ class Channel < ActiveRecord::Base
 
   validates :name, :presence => { :message => "Room name cannot be blank"}, :uniqueness => { :message => "Room name is already taken" }
   validates :user, :presence => { :message => "Room must belong to a user"}
- 
+
   before_create :ensure_app_max_rooms
 
   def ensure_app_max_rooms
@@ -26,14 +26,18 @@ class Channel < ActiveRecord::Base
       activity = Channel.primary.activities.new
       activity.user_id = user.id
       activity.action = "connect"
-      activity.save!
+      unless Setting.my_settings.disable_conn_disconn_activity
+       activity.save!
+      end
     end
 
     def user_disconnect(user)
       activity = Channel.primary.activities.new
       activity.user_id = user.id
       activity.action = "disconnect"
-      activity.save!
+      unless Setting.my_settings.disable_conn_disconn_activity
+       activity.save!
+      end
     end
   end
 end
