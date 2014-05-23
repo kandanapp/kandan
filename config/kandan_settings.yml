@@ -12,6 +12,8 @@
 
 :max_rooms: 99
 
+disable_conn_disconn_activity: true
+
 :public_site: true
 
 :avatar_url: https://secure.gravatar.com/avatar/%{hash}?s=%{size}&d=%{fallback}

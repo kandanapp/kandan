@@ -12,6 +12,10 @@ class Setting < ActiveRecord::Base
   	self.values[:max_rooms]
   end
 
+  def disable_conn_disconn_activity
+    self.values[:disable_conn_disconn_activity]
+  end
+
   def public_site?
   	self.values[:public_site]
   end
@@ -36,8 +40,13 @@ class Setting < ActiveRecord::Base
   	!!self.values[:public_site] == self.values[:public_site] unless self.new_record?
   end
 
+  # make sure disable connect/disconnect a boolean
+  def validate_conn_disconn
+    !!self.values[:disable_conn_disconn_activity] == self.values[:disable_conn_disconn_activity] unless self.new_record?
+  end
+
   def self.default_values
-  	{:max_rooms => Kandan::Config.options[:max_rooms], :public_site => Kandan::Config.options[:public_site]}
+  	{:max_rooms => Kandan::Config.options[:max_rooms], :public_site => Kandan::Config.options[:public_site], :disable_conn_disconn_activity => Kandan::Config.options[:disable_conn_disconn_activity]}
   end
 
   # Helper methods to be used while we don't need to deal with multi-tenancy
