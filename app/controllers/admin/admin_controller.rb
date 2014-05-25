@@ -15,9 +15,10 @@ module Admin
   	def update
 
   		max_rooms = params[:setting][:max_rooms].to_i
-  		public_site = params[:setting][:public_site] == "1"
+      public_site = params[:setting][:public_site] == "1"
+  		disable_conn_disconn_activity = params[:setting][:disable_conn_disconn_activity] == "1"
 
-  		Setting.set_values(:max_rooms => max_rooms, :public_site => public_site)
+  		Setting.set_values(:max_rooms => max_rooms, :public_site => public_site, :disable_conn_disconn_activity => disable_conn_disconn_activity)
 
   		redirect_to :admin_root
   	end
@@ -47,8 +48,8 @@ module Admin
 
   		user.save!
 
-  		render :json => user, :status => 200  		
+  		render :json => user, :status => 200
   	end
-    
+
   end
 end
