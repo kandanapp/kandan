@@ -49,8 +49,11 @@
       +transition(height .25s ease-in)
 
       li
-        background: #3f494b
+        background: darken($brand-dark-blue, 5%)
         line-height: 20px
+
+        &:hover
+          background: darken($brand-dark-blue, 10%)
 
         a
           padding: 10px
