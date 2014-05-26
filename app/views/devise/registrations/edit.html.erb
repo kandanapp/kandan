@@ -1,10 +1,10 @@
 <% content_for :header do %>
-  <%= link_to content_tag(:i, nil, class: 'icon-angle-left'), root_path, class: 'button left' %>
+  <%= link_to content_tag(:i, nil, class: 'fa fa-chevron-left'), root_path, class: 'button left' %>
 <% end %>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put , :role => "form"}) do |f| %>
   <div class="devise">
-    <h3 class="heading">Edit <%= resource_name.to_s.humanize %></h3>    
+    <h3 class="heading">Edit <%= resource_name.to_s.humanize %></h3>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= label_tag :first_name, "First Name", :class => "control-label" %>
