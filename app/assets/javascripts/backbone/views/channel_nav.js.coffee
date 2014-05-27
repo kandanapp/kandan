@@ -10,7 +10,7 @@ class Kandan.Views.ChannelNav extends Backbone.View
     @$el.html @template(channel: @options.channel)
     if @options.channel.isDestroyable()
       @$el.addClass 'destroyable'
-      @$el.append ' <i class="icon-remove close_channel" title="Close channel"></i>'
+      @$el.append ' <i class="fa fa-times close_channel"></i>'
     else
       @$el.addClass 'protected'
     @

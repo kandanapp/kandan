@@ -30,7 +30,7 @@
 
 
     input.query
-      border-radius: 20px
+      border-radius: 2px
       background: $search-bg
       +box-sizing(border-box)
       border: 2px solid darken($search-bg, 10%)
@@ -84,6 +84,8 @@
     li
       position: relative
       float: left
+      padding: 0 10px
+      border-radius: 4px 4px 0 0
 
       a
         text-decoration: none
@@ -122,32 +124,16 @@
           border-bottom: none
 
         &.active
-          background-color: #F5F5F5
+          background: darken($white, 10%)
 
         i[class*="icon-"]
           line-height: 20px
 
       @media (min-width: $medium)
-        background: image-url('tabs/tab-inactive-middle.png') bottom repeat-x
         color: #585d5f
         line-height: 30px
-        margin: 0 30px
-
-        &:before
-          background: image-url('tabs/tab-inactive-left.png') right bottom no-repeat
-          right: 100%
-
-        &:after
-          background: image-url('tabs/tab-inactive-right.png') left bottom no-repeat
-          left: 100%
-
-        &:before,
-        &:after
-          content: ''
-          width: 30px
-          position: absolute
-          bottom: 0
-
+        margin: 0 5px
+        background: darken($white, 25%)
         &,
         &:before,
         &:after
@@ -155,13 +141,7 @@
           display: inline-block
 
         &.active
-          background-image: image-url('tabs/tab-active-middle.png')
-
-          &:before
-            background-image: image-url('tabs/tab-active-left.png')
-
-          &:after
-            background-image: image-url('tabs/tab-active-right.png')
+          background: $neutral-color
 
         .close_channel
           width: auto

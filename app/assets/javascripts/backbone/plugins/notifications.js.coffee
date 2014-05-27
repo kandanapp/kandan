@@ -131,7 +131,7 @@ class Kandan.Plugins.Notifications
   # Apple locked notification icons to the app icons (for instance Chrome icon).
   @displayNotification: (sender, message)->
     if @popups_notifications_enabled && @webkitNotificationsEnabled()
-      notification = window.webkitNotifications.createNotification('/assets/kandanlogo.png', "#{sender} says:", message);
+      notification = window.webkitNotifications.createNotification('/assets/images/code_for_boston_logo.png', "#{sender} says:", message);
       notification.onclick = ->
         window.focus()
         @cancel()

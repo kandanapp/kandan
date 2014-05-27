@@ -24,16 +24,19 @@
       outline: none
 
   button
-    +background-image(linear-gradient(#c8ecf6, #9fdff4))
-    border: 1px solid #aeb9bd
+    background: $brand-blue
+    border: 1px solid darken($brand-blue, 10%)
     border-radius: 0 4px 4px 0
-    color: #59808B
+    color: $white
     font-size: 16px
     width: 75px
     position: absolute
     top: 10px
     right: 10px
     bottom: 10px
+
+    &:hover
+      background: darken($brand-blue, 5%)
 
   textarea, button
     height: 40px

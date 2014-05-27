@@ -39,6 +39,7 @@ group :assets do
   gem 'bootstrap-sass'
   gem 'sass', '3.2.13'
   gem 'gemoji'
+  gem 'font-awesome-sass'
 end
 
 group :production do
