@@ -37,12 +37,10 @@ RUN ( echo 'production:' && \
 RUN sed -i -e"s/config.serve_static_assets = false/config.serve_static_assets = true/" config/environments/production.rb
 RUN echo "gem: --no-rdoc --no-ri" > ~/.gemrc
 
-#provision
-RUN gem install execjs &&\
-    bundle install
-
-RUN /etc/init.d/postgresql start &&\
-    bundle exec assets:precompile db:create db:migrate kandan:bootstrap &&\
+#Bootstrap application
+RUN bundle install &&\
+    /etc/init.d/postgresql start &&\
+    bundle exec rake assets:precompile db:create db:migrate kandan:bootstrap &&\
     /etc/init.d/postgresql stop
 
 # Install runner
