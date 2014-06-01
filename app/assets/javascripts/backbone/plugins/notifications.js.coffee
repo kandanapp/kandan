@@ -41,7 +41,7 @@ class Kandan.Plugins.Notifications
     $el.html($notifications)
 
     @initFluidNotifications($notifications)
-    @initWebkitNotifications($notifications)
+    @initPopupNotifications($notifications)
     @initSoundNotifications($notifications)
 
     return
@@ -60,25 +60,25 @@ class Kandan.Plugins.Notifications
 
     return
 
-  @initWebkitNotifications: (container)->
+  @initPopupNotifications: (container)->
     if Modernizr.notification && not window.fluid
-      container.append @popup_notifications_template(checked: @webkitNotificationsEnabled())
+      container.append @popup_notifications_template(checked: @popupNotificationsEnabled())
 
-      if @webkitNotificationsEnabled()
+      if @popupNotificationsEnabled()
         @enablePopupNotifications()
       else
         @disablePopupNotifications()
 
   @enablePopupNotifications: ()->
-    if @webkitNotificationsEnabled()
+    if @popupNotificationsEnabled()
       @popups_notifications_enabled = true
     else
-      if @webkitNotificationsDenied()
+      if @popupNotificationsDenied()
         # If the notifications have been denied we need to let the user know because there is nothing else we can do
         alert("It looks like notifications are denied for this page.\n\nUse your browser settings to allow notifications for this page.")
       else
         $('.popup-notifications .switch').prop 'checked', false
-        window.webkitNotifications.requestPermission(=> @onPopupNotificationsEnabled())
+        window.Notification.requestPermission(=> @onPopupNotificationsEnabled())
 
     return
 
@@ -88,15 +88,15 @@ class Kandan.Plugins.Notifications
     return
 
   # Returns true if notifications are enabled for this page.
-  @webkitNotificationsEnabled: ()->
-    window.webkitNotifications.checkPermission() == 0
+  @popupNotificationsEnabled: ()->
+    window.Notification.permission == "granted"
 
-  @webkitNotificationsDenied: ()->
-    window.webkitNotifications.checkPermission() == 2
+  @popupNotificationsDenied: ()->
+    window.Notification.permission == "denied"
 
   # Callback when notifiactions are enabled for the first time
   @onPopupNotificationsEnabled: ()->
-    if @webkitNotificationsEnabled()
+    if @popupNotificationsEnabled()
       $('.popup-notifications .switch').prop 'checked', true
       @enablePopupNotifications()
 
@@ -130,14 +130,16 @@ class Kandan.Plugins.Notifications
   # If you try notifying users on MacOS Mountain Lion, using a custom notification icon, don't be surprised that the Web browser icon overrides the icon you defined.
   # Apple locked notification icons to the app icons (for instance Chrome icon).
   @displayNotification: (sender, message)->
-    if @popups_notifications_enabled && @webkitNotificationsEnabled()
-      notification = window.webkitNotifications.createNotification('/assets/kandanlogo.png', "#{sender} says:", message);
+    if @popups_notifications_enabled && @popupNotificationsEnabled()
+      notification = new window.Notification("#{sender} says:", {
+        type: "basic",
+        body: message,
+        icon: '/assets/kandanlogo.png'
+      })
       notification.onclick = ->
         window.focus()
-        @cancel()
+        @close()
         return
-
-      notification.show()
 
     if @fluid_notifications_enabled
       window.fluid.showGrowlNotification {
