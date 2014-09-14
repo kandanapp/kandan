@@ -60,7 +60,8 @@ class Kandan.Plugins.Attachments
     return "/assets/video_icon.png" if fileExtension.match(/(mov|mpg|mpeg|mp4)/i)
     return "/assets/file_icon.png"
 
-
+  @enableDragAndDrop: ->
+    window.FileReader && Modernizr.draganddrop && !Modernizr.touch
 
   # TODO this part is very bad for APIs! Shouldn't be exposing a backbone collection in a plugin.
   @render: ($widgetEl)->
@@ -74,7 +75,7 @@ class Kandan.Plugins.Attachments
     $widgetEl.next().html($uploadForm)
     $widgetEl.next(".action_block").html($uploadForm)
 
-    if window.FileReader && Modernizr.draganddrop
+    if @enableDragAndDrop()
       $("#file-button").hide()
     else
       $("#dropzone").hide()
