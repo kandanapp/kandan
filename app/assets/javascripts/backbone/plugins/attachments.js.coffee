@@ -18,13 +18,16 @@ class Kandan.Plugins.Attachments
     '''
 
     dropzone: _.template '''
-      <form accept-charset="UTF-8" action="/channels/<%= channelId %>/attachments.json" data-remote="true" html="{:multipart=&gt;true}" id="file_upload" method="post">
+      <form accept-charset="UTF-8" action="/channels/<%= channelId %>/attachments.json" data-remote="true" data-type="json" enctype="multipart/form-data" id="file_upload" method="post">
           <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓">
             <input name="<%=csrfParam %>" type="hidden" value="<%= csrfToken %>"/>
           </div>
           <input id="channel_id_<%= channelId %>" name="channel_id[<%= channelId %>]" type="hidden"/>
-          <input id="file" name="file" type="file"/>
-          <div class="dropzone"><%= dropzoneText %></div>
+          <div id="file-button" class="file-upload-button btn btn-primary small">
+            <span>Click to Upload</span>
+            <input id="file" class="file-upload-input" name="file" type="file" />
+          </div>
+          <div id="dropzone"><%= dropzoneText %></div>
       </form>
     '''
 
@@ -71,6 +74,11 @@ class Kandan.Plugins.Attachments
     $widgetEl.next().html($uploadForm)
     $widgetEl.next(".action_block").html($uploadForm)
 
+    if Modernizr.draganddrop
+      $("#file-button").hide()
+    else
+      $("#dropzone").hide()
+
     populate = (collection)=>
       if collection.models.length > 0
         $fileList = $("<ul class='file_list'></ul>")
@@ -89,7 +97,20 @@ class Kandan.Plugins.Attachments
 
 
   @initDropzone: ->
-    $(".dropzone").filedrop({
+    $(document)
+      .on "change", "#file", ->
+        console.log("Uploading file")
+        $(this).closest("form").submit()
+
+      .on "ajax:error", "#file_upload", ->
+        console.log("Error uploading file")
+        $("#file-button span").text("Error uploading file")
+
+      .on "ajax:success", "#file_upload", ->
+        console.log("Upload finished!")
+        Kandan.Widgets.render "Kandan.Plugins.Attachments"
+
+    $("#dropzone").filedrop({
       fallback_id: "file"
       paramname  : "file"
       maxfilesize: 1000
@@ -99,35 +120,34 @@ class Kandan.Plugins.Attachments
         "/channels/#{ Kandan.Data.Channels.activeChannelId() }/attachments.json"
 
       uploadStarted: ->
-        $(".dropzone").text("Uploading...")
+        $("#dropzone").text("Uploading...")
 
       uploadFinished: (i, file, response, time)->
         console.log "Upload finished!"
 
       error: (err, file)->
         if err == "BrowserNotSupported"
-          $(".dropzone").text("Browser not supported")
+          $("#dropzone").text("Browser not supported")
         else if err == "FileTooLarge"
-          $(".dropzone").text("File too large")
+          $("#dropzone").text("File too large")
         else
-          $(".dropzone").text("Sorry bud! couldn't upload")
+          $("#dropzone").text("Sorry bud! couldn't upload")
 
 
       progressUpdated: (i, file, progress)->
-        $(".dropzone").text("#{progress}% Uploaded")
+        $("#dropzone").text("#{progress}% Uploaded")
         if progress == 100
-          $(".dropzone").text("#{progress}% Uploaded")
+          $("#dropzone").text("#{progress}% Uploaded")
           Kandan.Widgets.render "Kandan.Plugins.Attachments"
 
       dragOver: ->
         console.log "reached dropzone!"
-        $(".dropzone").text("UPLOAD!")
+        $("#dropzone").text("UPLOAD!")
 
       dragLeave: ->
         console.log "left dropzone!"
-        $(".dropzone").text("Drop file here to upload")
+        $("#dropzone").text("Drop file here to upload")
     })
-
 
   @init: ()->
     @initDropzone()
