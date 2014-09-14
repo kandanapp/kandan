@@ -74,7 +74,7 @@ class Kandan.Plugins.Attachments
     $widgetEl.next().html($uploadForm)
     $widgetEl.next(".action_block").html($uploadForm)
 
-    if Modernizr.draganddrop
+    if window.FileReader && Modernizr.draganddrop
       $("#file-button").hide()
     else
       $("#dropzone").hide()
