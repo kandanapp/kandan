@@ -16,6 +16,7 @@ class Kandan.Plugins.MusicPlayer
   @stopTemplate:   _.template('<i>:mute: stop the music.</i>')
   @resumeTemplate: _.template('<i>:sound: resume the music.</i>')
   @songTemplate:   _.template('<li><%= song.split("/").pop() %></li>')
+  @atWhoTemplate: '''<li data-value="${insert}"><img class="emoticon-embed small" height="20" width="20" src="/assets/emoticons/emojis/sound.png" /> ${name}</li>'''
 
   @attachClicks: =>
     _this = this
@@ -62,6 +63,11 @@ class Kandan.Plugins.MusicPlayer
     @registerPlayModifier()
     @registerStopModifier()
     @registerResumeModifier()
+    @soundNames = $.map @soundFiles, (f, s) ->
+      {
+        name: s
+        insert: " #{s}"
+      }
     # Disabled for now
     #@registerWidget()
 
@@ -123,13 +129,13 @@ class Kandan.Plugins.MusicPlayer
   @localFileUrl: (fileName) ->
     "//#{ window.location.hostname }:#{ window.location.port }/sounds/#{ fileName }"
 
-  @localSounds: (name) ->
-    sounds = {
-      'threetone-alert'  : @localFileUrl('threetone-alert.wav')
-      'ding'             : @localFileUrl('ding.wav')
-      }
+  @soundFiles: {
+    'threetone-alert'  : @localFileUrl('threetone-alert.wav')
+    'ding'             : @localFileUrl('ding.wav')
+  }
 
-    sounds[name]
+  @localSounds: (name) ->
+    @soundFiles[name]
 
   @audioChannels: ->
     Kandan.Helpers.Audio.audioChannels()
@@ -186,5 +192,11 @@ class Kandan.Plugins.MusicPlayer
     player = $('.audio_private')[0]
     player.setAttribute('src', url)
     player.play()
+
+  @attachToChatbox: ->
+    $(".chat-input").atwho '\/play\\s?',
+      data: @soundNames
+      tpl: @atWhoTemplate
+      limit: 10
 
 # Kandan.Plugins.register "Kandan.Plugins.MusicPlayer"
