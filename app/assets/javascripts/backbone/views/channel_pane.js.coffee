@@ -61,7 +61,7 @@ class Kandan.Views.ChannelPane extends Backbone.View
       data: { oldest: oldest },
       success: (collection) =>
         for activity in collection.models.reverse()
-          activityView = new Kandan.Views.ShowActivity(activity: activity, silence_mentions: true)
+          activityView = new Kandan.Views.ShowActivity(activity: activity, silence_mentions: true, silence_music: true)
           $container.find(".channel-activities").prepend(activityView.render().el)
 
         if $current_top_element.length != 0

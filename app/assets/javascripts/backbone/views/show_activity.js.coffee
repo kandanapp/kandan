@@ -10,7 +10,7 @@ class Kandan.Views.ShowActivity extends Backbone.View
 
     switch activity.action
       when "message"
-        activity.content =  Kandan.Modifiers.process(activity)
+        activity.content =  Kandan.Modifiers.process(activity, @options)
         @compiledTemplate = Kandan.Helpers.Activities.buildFromMessageTemplate activity
       when "upload"
         file_path = _.unescape(activity.content).split('?')[0].split('/')

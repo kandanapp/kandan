@@ -7,10 +7,10 @@ class Kandan.Modifiers
   @all: ()->
     @modifiers
 
-  @process: (activity)->
+  @process: (activity, options)->
     message = activity.content
     for modifier in @modifiers
       if message.match(modifier.regex) != null
-        message = modifier.callback(message, activity)
+        message = modifier.callback(message, activity, options)
     
     return message
