@@ -26,7 +26,7 @@ class Kandan.Helpers.Channels
       $('.channels-pane').scrollTop($('.channels-pane').prop('scrollHeight'))
 
   @currentScrollPosition: (channelId) ->
-    $('channels-pane').scrollTop()
+    $('.channels-pane').scrollTop()
 
   @channelPane: (channelId) ->
     $("#channels-#{channelId}")
