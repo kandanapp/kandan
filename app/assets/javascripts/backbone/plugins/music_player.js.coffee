@@ -71,14 +71,14 @@ class Kandan.Plugins.MusicPlayer
 
 
   @registerPlayModifier: ()->
-    Kandan.Modifiers.register @playRegex, (message, activity) =>
+    Kandan.Modifiers.register @playRegex, (message, activity, options) =>
       url = $.trim(message.substr(message.indexOf(" ") + 1));
       rawInput  = Kandan.Helpers.Utils.unescape(url)
       soundUrl  = null
       soundUrl  = @localSounds(rawInput)
       soundUrl ?= rawInput
 
-      if true and Kandan.Data.Channels.activeChannelId()?
+      if !options.silence_music and Kandan.Data.Channels.activeChannelId()?
         @playUrl(activity.channel_id, soundUrl)
       else
         console.log "Not playing stale song"

@@ -14,6 +14,13 @@
       $.data(document, "current-user", <%= json_escape(current_user_data.to_json.html_safe) %>);
     <% end %>
   <%- end %>
+  <!-- Android web app tags //-->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="/kandan-icon-192x192.png">
+  <!-- Apple web app tags //-->
+  <link rel="apple-touch-icon" sizes="192x192" href="/kandan-icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body id="kandan" data-kandan-config="<%= Kandan::Config.to_json %>">
   <% if content_for? :sidebar %>

@@ -78,7 +78,7 @@ class Kandan.Plugins.Notifications
         alert("It looks like notifications are denied for this page.\n\nUse your browser settings to allow notifications for this page.")
       else
         $('.popup-notifications .switch').prop 'checked', false
-        window.webkitNotifications.requestPermission(=> @onPopupNotificationsEnabled())
+        Notification.requestPermission(=> @onPopupNotificationsEnabled())
 
     return
 
@@ -89,10 +89,10 @@ class Kandan.Plugins.Notifications
 
   # Returns true if notifications are enabled for this page.
   @webkitNotificationsEnabled: ()->
-    window.webkitNotifications.checkPermission() == 0
+    Notification.permission == "granted"
 
   @webkitNotificationsDenied: ()->
-    window.webkitNotifications.checkPermission() == 2
+    Notification.permission == "denied"
 
   # Callback when notifiactions are enabled for the first time
   @onPopupNotificationsEnabled: ()->
@@ -131,13 +131,10 @@ class Kandan.Plugins.Notifications
   # Apple locked notification icons to the app icons (for instance Chrome icon).
   @displayNotification: (sender, message)->
     if @popups_notifications_enabled && @webkitNotificationsEnabled()
-      notification = window.webkitNotifications.createNotification('/assets/kandanlogo.png', "#{sender} says:", message);
-      notification.onclick = ->
-        window.focus()
-        @cancel()
-        return
-
-      notification.show()
+      notification = new Notification( "Kandan Message",
+        icon: '/assets/kandanlogo.png'
+        body: "#{sender} says: #{message}"
+      )
 
     if @fluid_notifications_enabled
       window.fluid.showGrowlNotification {
