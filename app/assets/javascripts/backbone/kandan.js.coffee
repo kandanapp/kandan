@@ -107,6 +107,7 @@ window.Kandan =
       Kandan.Plugins.Mentions.initUsersMentions(Kandan.Helpers.ActiveUsers.all())
       Kandan.Plugins.Emojis.attachToChatbox()
       Kandan.Plugins.MusicPlayer.attachClicks()
+      Kandan.Plugins.MusicPlayer.attachToChatbox()
 
     # Call the asynchronous initializers, passing the synchronous
     # initializer in as the callback to execute after all asynchrnous
