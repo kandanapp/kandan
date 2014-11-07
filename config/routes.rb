@@ -4,20 +4,22 @@ Kandan::Application.routes.draw do
     :sessions => "sessions"
   }
   devise_scope :user do
+
+    # these are allow to access with auth_token
+    get "/active_users" => "apis#active_users"
+    get "/me" => "apis#me"
+
+    resources :channels do
+      resources :activities
+      resources :attachments
+    end
+
     authenticated :user do
       root :to => "main#index"
 
       get '/search' => "main#search"
 
-      resources :channels do
-        resources :activities
-        resources :attachments
-      end
-
       resources :users, :only => [:index, :show]
-
-      get "/active_users" => "apis#active_users"
-      get "/me" => "apis#me"
 
       get "/users/edit" =>"main#users_edit"
 
