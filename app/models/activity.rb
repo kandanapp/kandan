@@ -1,7 +1,7 @@
 class Activity < ActiveRecord::Base
   belongs_to :user
   belongs_to :channel
-  attr_accessible :content, :action
+  attr_accessible :content, :action, :channel_id
 
   paginates_per Kandan::Config.options[:per_page]
 
