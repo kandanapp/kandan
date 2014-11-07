@@ -52,7 +52,11 @@ group :development do
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'debugger'
+  if RUBY_VERSION >= '2.0.0'
+    gem 'byebug'
+  else
+    gem 'debugger'
+  end
 end
 
 group :test do
