@@ -103,13 +103,13 @@ class Kandan.Helpers.Channels
     local = local || false
     console.log !local, !belongsToCurrentUser, !activityExists
 
-    if local || (!local && !belongsToCurrentUser && !activityExists)
+    if !activityExists
       @channelActivitiesEl(activityAttributes.channel_id)
         .append(@newActivityView(activityAttributes).render().el)
 
     @flushActivities(activityAttributes.channel_id)
 
-    if not local and @getActiveChannelId() == activityAttributes.channel_id and activityAttributes.action == "message" and Kandan.Helpers.Utils.browserTabFocused != true
+    if not local and !belongsToCurrentUser and (@getActiveChannelId() == activityAttributes.channel_id) and activityAttributes.action == "message" and Kandan.Helpers.Utils.browserTabFocused != true
       Kandan.Helpers.Utils.notifyInTitle()
       Kandan.Plugins.Notifications.playAudioNotification('channel')
       Kandan.Plugins.Notifications.displayNotification(activityAttributes.user.username || activityAttributes.user.email, activityAttributes.content)
