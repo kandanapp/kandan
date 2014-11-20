@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  skip_before_filter :verify_authenticity_token,     if: -> {request.format.json?}
+  skip_before_filter :verify_authenticity_token, if: -> {request.format.json?}
   before_filter :force_approved_account
   before_filter :redirect_suspended_account
 
