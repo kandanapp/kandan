@@ -1,7 +1,7 @@
 class Kandan.Plugins.LinkEmbed
 
   @options:
-    regex: /(^| )(http?[^\s<>]*)/g
+    regex: /(^| )(http?[^\s<>]*)/gm
 
   @init: ()->
     Kandan.Modifiers.register @options.regex, (message, activity)=>
