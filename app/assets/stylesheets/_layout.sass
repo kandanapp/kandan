@@ -10,6 +10,11 @@ body
   background-repeat: repeat
   min-width: 320px
   +transform(translate3d(0,0,0))
+  .sidebar
+    .widgets
+      display: none
+      @media (min-width: $large)
+        display: block
 
   &.slide-right
     .main-area,
@@ -26,6 +31,9 @@ body
 
       @media (min-width: $large)
         +transform(none)
+    .sidebar
+      .widgets
+        display: block
 
   &.slide-right,
   &.slide-left
