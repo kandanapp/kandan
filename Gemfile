@@ -36,7 +36,7 @@ group :assets do
   gem 'execjs'
   gem 'eco'
   gem 'uglifier'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '3.1.1.0'
   gem 'sass', '3.2.13'
   gem 'gemoji'
 end

@@ -36,3 +36,6 @@ DS_Store
 public/system/*
 
 vendor/bundle
+
+# RubyMine config files
+.idea/
