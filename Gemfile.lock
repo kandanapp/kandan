@@ -59,6 +59,8 @@ GEM
     celluloid-io (0.15.0)
       celluloid (>= 0.15.0)
       nio4r (>= 0.5.0)
+    childprocess (0.5.5)
+      ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cliver (0.3.2)
@@ -145,6 +147,10 @@ GEM
     guard-rspec (4.2.8)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    guard-spork (1.5.1)
+      childprocess (>= 0.2.3)
+      guard (>= 1.1)
+      spork (>= 0.8.4)
     hike (1.2.3)
     http_parser.rb (0.6.0)
     i18n (0.6.9)
@@ -264,6 +270,7 @@ GEM
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
     slop (3.5.0)
+    spork (0.9.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -322,6 +329,7 @@ DEPENDENCIES
   gemoji
   guard
   guard-rspec
+  guard-spork
   jasmine
   jquery-rails
   kaminari
