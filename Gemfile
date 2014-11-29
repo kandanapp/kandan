@@ -38,7 +38,7 @@ group :assets do
   gem 'uglifier'
   gem 'bootstrap-sass', '3.1.1.0'
   gem 'sass', '3.2.13'
-  gem 'gemoji'
+  gem 'gemoji', '~> 1.5.0'
 end
 
 group :production do
