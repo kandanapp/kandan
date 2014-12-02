@@ -1,12 +1,11 @@
 module Admin
   class BaseController < ApplicationController
-   before_filter :authenticate_admin!
+    before_filter :authenticate_admin!
 
-   private
+    private
 
-   def authenticate_admin!
-   	redirect_to root_url unless current_user.try(:is_admin?)
-   end
-
+    def authenticate_admin!
+      redirect_to root_url unless current_user.try(:is_admin?)
+    end
   end
 end

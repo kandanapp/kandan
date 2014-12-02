@@ -56,7 +56,7 @@ git for-each-ref --sort='*authordate' --format='%(tag)' refs/tags |gtac |grep -v
     if [ $NEXT ];then
         echo "#### [$NEXT]"
     else
-    	echo "#### [Current]"
+      echo "#### [Current]"
     fi
     GIT_PAGER=cat git log --pretty=format:" * [%h]($repo_url%h) %s __(%an)__" $TAG..$NEXT
     NEXT=$TAG
