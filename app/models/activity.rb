@@ -6,6 +6,6 @@ class Activity < ActiveRecord::Base
   paginates_per Kandan::Config.options[:per_page]
 
   def user_or_deleted_user
-  	self.user || User.deleted_user
+    self.user || User.deleted_user
   end
 end

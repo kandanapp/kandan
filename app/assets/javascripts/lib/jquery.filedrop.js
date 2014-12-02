@@ -345,13 +345,13 @@
         upload.startData = 0;
         upload.addEventListener("progress", progress, false);
 
-		// Allow url to be a method
-		if (jQuery.isFunction(opts.url)) {
-	        xhr.open("POST", opts.url(), true);
-	    } else {
-	    	xhr.open("POST", opts.url, true);
-	    }
-	    
+        // Allow url to be a method
+        if (jQuery.isFunction(opts.url)) {
+          xhr.open("POST", opts.url(), true);
+        } else {
+          xhr.open("POST", opts.url, true);
+        }
+      
         xhr.setRequestHeader('content-type', 'multipart/form-data; boundary=' + boundary);
 
         // Add headers
