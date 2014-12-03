@@ -11,7 +11,7 @@ gem 'pg'
 
 # Auth gems
 gem 'devise'
-gem 'cancan'
+gem 'cancancan', '~> 1.9'
 
 # Server/transport gems
 gem 'thin'
@@ -61,7 +61,7 @@ end
 
 group :test do
   gem 'faker'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false
