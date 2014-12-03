@@ -61,7 +61,7 @@ end
 
 group :test do
   gem 'faker'
-  gem 'rspec-rails', '~> 2'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false
