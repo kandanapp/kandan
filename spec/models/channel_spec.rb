@@ -8,13 +8,13 @@ describe Channel do
 
   describe "user_connect" do
     it "should create an activity on every channel" do
-      pending
+      skip
     end
   end
 
   describe "user_disconnect" do
     it "should create an activity on every channel" do
-      pending
+      skip
     end
   end
 end

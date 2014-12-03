@@ -10,7 +10,6 @@ describe "Login" do
     visit root_path
 
     page.should have_content("Sign In")
-
   end
 
   it "allows someone to log in and chat", js: true do
@@ -41,6 +40,5 @@ describe "Login" do
     within("#channel-activities-1") do
       page.should have_content("Hi again")
     end
-
   end
 end

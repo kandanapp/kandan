@@ -79,21 +79,21 @@ describe User do
 
       it "should accept small image url with allowed extension" do
         subject.avatar_url = "https://github.global.ssl.fastly.net/images/icons/emoji/+1.png"
-        expect(subject.save).to be_true
+        expect(subject.save).to be true
         expect(subject).to be_valid
       end
 
       it "should not accept url with extension that is not allowed in config" do
         # a 35KB midi sound
         subject.avatar_url = "http://saya.pianomidi.org/musica/lfals/a-asturias.mid"
-        expect(subject.save).to be_false
+        expect(subject.save).to be false
         expect(subject).to_not be_valid
         expect(subject.errors).to have_key(:avatar_url)
       end
 
       it "should not validate nonexistent url as avatar" do
         subject.avatar_url = "unknownProtocol://some-url-that-does-not/realy/exist.png"
-        expect(subject.save).to be_false
+        expect(subject.save).to be false
         expect(subject).to_not be_valid
         expect(subject.errors).to have_key(:avatar_url)
       end
@@ -101,7 +101,7 @@ describe User do
       it "should not validate big images as avatar" do
         # a really big Hubble image of a pair of interacting galaxies
         subject.avatar_url = "http://www.spacetelescope.org/static/archives/images/publicationjpg/heic1107a.jpg"
-        expect(subject.save).to be_false
+        expect(subject.save).to be false
         expect(subject).to_not be_valid
         expect(subject.errors).to have_key(:avatar_url)
       end

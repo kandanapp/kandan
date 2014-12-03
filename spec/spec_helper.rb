@@ -8,7 +8,6 @@ Coveralls.wear! 'rails'
 ENV["RAILS_ENV"] = 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require "#{Rails.root}/lib/active_users.rb"
 
 require 'capybara/rails'
@@ -61,6 +60,10 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+
+  # rspec-rails 3 will no longer automatically infer an example group's spec type
+  # from the file location.
+  config.infer_spec_type_from_file_location!
 
   # Database cleaner
   config.before(:suite) do
