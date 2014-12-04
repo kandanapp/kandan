@@ -1,4 +1,4 @@
-describe "Login" do
+RSpec.describe "Login" do
   before do
     @user = FactoryGirl.create(:user, :password => "mypassword")
     @channel = FactoryGirl.create(:channel, :name => "Cool")

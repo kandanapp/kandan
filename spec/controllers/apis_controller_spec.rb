@@ -1,6 +1,4 @@
-require "spec_helper"
-
-describe ApisController do
+RSpec.describe ApisController do
   include Devise::TestHelpers
   
   describe "#active_users" do

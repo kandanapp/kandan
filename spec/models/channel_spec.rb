@@ -1,4 +1,4 @@
-describe Channel do
+RSpec.describe Channel do
   describe "associations" do
     it { should have_many(:activities) }
     it { should have_many(:attachments) }

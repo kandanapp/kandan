@@ -1,6 +1,6 @@
 require 'cancan/matchers'
 
-describe User do
+RSpec.describe User do
   describe "associations" do
     it { should have_many(:activities) }
   end

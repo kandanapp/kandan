@@ -1,6 +1,4 @@
-require "spec_helper"
-
-describe AttachmentObserver do
+RSpec.describe AttachmentObserver do
   it "should create an activity on save" do
 
     expect_any_instance_of(Activity).to receive(:save)
