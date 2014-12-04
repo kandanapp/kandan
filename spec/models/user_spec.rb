@@ -2,7 +2,7 @@ require 'cancan/matchers'
 
 RSpec.describe User do
   describe "associations" do
-    it { should have_many(:activities) }
+    specify { should have_many(:activities) }
   end
 
   describe "abilities" do
@@ -69,7 +69,7 @@ RSpec.describe User do
 
   describe "external avatar" do
     it "should have no avatar url on creation" do
-      subject { User.new() }
+      subject { User.new }
       expect(subject.avatar_url).to be_nil
     end
 

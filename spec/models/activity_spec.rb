@@ -1,6 +1,6 @@
 RSpec.describe Activity do
   describe "associations" do
-    it { should belong_to(:user) }
-    it { should belong_to(:channel) }
+    specify { should belong_to(:user) }
+    specify { should belong_to(:channel) }
   end
 end

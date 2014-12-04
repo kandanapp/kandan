@@ -1,7 +1,7 @@
 RSpec.describe Attachment do
   describe "associations" do
-    it { should belong_to(:channel) }
-    it { should belong_to(:user) }
+    specify { should belong_to(:channel) }
+    specify { should belong_to(:user) }
   end
   
   describe "#url" do
