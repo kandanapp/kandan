@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Channel do
   describe "associations" do
     it { should have_many(:activities) }
