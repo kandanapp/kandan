@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Core gems
-gem 'rails', '3.2.17'
+gem 'rails', '~> 3.2.21'
 
 # Database adapters
 gem 'pg'
@@ -61,7 +61,7 @@ end
 
 group :test do
   gem 'faker'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.1'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false

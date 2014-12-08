@@ -1,6 +1,4 @@
-require "spec_helper"
-
-describe ChannelsController do
+RSpec.describe ChannelsController do
   include Devise::TestHelpers
   
   before(:all) do

@@ -1,20 +1,18 @@
-require 'spec_helper'
-
-describe Channel do
+RSpec.describe Channel do
   describe "associations" do
-    it { should have_many(:activities) }
-    it { should have_many(:attachments) }
+    specify { should have_many(:activities) }
+    specify { should have_many(:attachments) }
   end
 
   describe "user_connect" do
     it "should create an activity on every channel" do
-      pending
+      skip
     end
   end
 
   describe "user_disconnect" do
     it "should create an activity on every channel" do
-      pending
+      skip
     end
   end
 end

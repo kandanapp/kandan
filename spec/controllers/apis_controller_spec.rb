@@ -1,6 +1,4 @@
-require "spec_helper"
-
-describe ApisController do
+RSpec.describe ApisController do
   include Devise::TestHelpers
   
   describe "#active_users" do
@@ -15,7 +13,7 @@ describe ApisController do
       end
 
       it "should return json" do
-        ActiveUsers.stub!(:all).and_return([])
+        allow(ActiveUsers).to receive(:all).and_return([])
         expect(JSON(response.body)).to be_kind_of(Array)
       end
     end
