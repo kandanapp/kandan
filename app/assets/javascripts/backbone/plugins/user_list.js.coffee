@@ -15,7 +15,9 @@ class Kandan.Plugins.UserList
     $users = $("<ul class='user_list'></ul>")
     $el.next().hide();
 
-    for user in Kandan.Data.ActiveUsers.all()
+    users = _(Kandan.Data.ActiveUsers.all()).chain().sortBy("username").reverse().sortBy("is_admin").reverse().value();
+
+    for user in users
       displayName   = null
       displayName   = user.username # Defaults to username
       displayName ||= user.email # Revert to user email address if that's all we have
