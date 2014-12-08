@@ -141,6 +141,9 @@ class Kandan.Plugins.Notifications
           return
         ), 5000
         return
+      notification.onclick = (event) ->
+          window.focus()
+          event.currentTarget.close()
 
     if @fluid_notifications_enabled
       window.fluid.showGrowlNotification {
