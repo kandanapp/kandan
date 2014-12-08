@@ -36,7 +36,6 @@ GEM
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     bcrypt (3.1.7)
-    bcrypt (3.1.7-x86-mingw32)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -112,7 +111,6 @@ GEM
       activesupport (>= 3.2)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    eventmachine (1.0.3-x86-mingw32)
     execjs (2.0.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -133,7 +131,6 @@ GEM
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.3.1)
     ffi (1.9.6)
-    ffi (1.9.6-x86-mingw32)
     formatador (0.2.5)
     gemoji (1.5.0)
     guard (2.10.1)
@@ -185,8 +182,6 @@ GEM
     multi_json (1.10.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
-    nokogiri (1.6.5-x86-mingw32)
-      mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
@@ -194,7 +189,6 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
-    pg (0.17.1-x86-mingw32)
     phantomjs (1.9.7.0)
     poltergeist (1.5.0)
       capybara (~> 2.1)
@@ -206,11 +200,6 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pry (0.9.12.6-x86-mingw32)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
-      slop (~> 3.4)
-      win32console (~> 1.3)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     quiet_assets (1.0.2)
@@ -286,7 +275,6 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.9)
-    sqlite3 (1.3.9-x86-mingw32)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
     thin (1.6.2)
@@ -310,13 +298,11 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket-driver (0.3.2)
-    win32console (1.3.2-x86-mingw32)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   arel
