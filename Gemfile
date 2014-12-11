@@ -11,7 +11,7 @@ gem 'pg'
 
 # Auth gems
 gem 'devise'
-gem 'cancan'
+gem 'cancancan', '~> 1.9'
 
 # Server/transport gems
 gem 'thin'
