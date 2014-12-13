@@ -20,13 +20,13 @@ class Kandan.Helpers.Channels
 
   @scrollToLatestMessage: (channelId) ->
     if channelId
-      theScrollArea = @channelPane(channelId)
+      theScrollArea = @channelPane(channelId).find(".paginated-activities")
       theScrollArea.scrollTop(theScrollArea.prop('scrollHeight'))
     else
-      $('.channels-pane').scrollTop($('.channels-pane').prop('scrollHeight'))
+      $('.paginated-activities').scrollTop($('.paginated-activities').prop('scrollHeight'))
 
   @currentScrollPosition: (channelId) ->
-    $('.channels-pane').scrollTop()
+    $('.paginated-activities').scrollTop()
 
   @channelPane: (channelId) ->
     $("#channels-#{channelId}")
