@@ -1,6 +1,7 @@
-<span class="posted_at">
-  <%= new Date(@activity.created_at).toRelativeTime(Kandan.options().now_threshold) %>
-</span>
+<% date = new Date(@activity.created_at) %>
+<time class="posted_at" datetime="<%= date.toISOString() %>" title="<%= date.toLocaleString() %>">
+  <%= date.toRelativeTime(Kandan.options().now_threshold) %>
+</time>
 <img class="avatar" src="<%= @activity.avatarUrl %>"/>
 
 <div class="readable">
