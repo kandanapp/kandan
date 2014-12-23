@@ -61,18 +61,19 @@ class Kandan.Views.ChannelPane extends Backbone.View
     activities.fetch
       data: { oldest: oldest },
       success: (collection) =>
-        for activity in collection.models.reverse()
-          activityView = new Kandan.Views.ShowActivity(activity: activity, silence_mentions: true, silence_music: true)
-          $container.find(".channel-activities").prepend(activityView.render().el)
-
-        if $current_top_element.length != 0
-          $container.scrollTop($current_top_element.offset().top)
-
-        Kandan.Helpers.Channels.setPaginationState(
-          collection.channelId,
-          collection.moreActivities,
-          _.last(collection.models),
-          $container
-        )
-
-        @loading_new_messages = false
+        if collection.length > 0
+          for activity in collection.models.reverse()
+            activityView = new Kandan.Views.ShowActivity(activity: activity, silence_mentions: true, silence_music: true)
+            $container.find(".channel-activities").prepend(activityView.render().el)
+  
+          if $current_top_element.length != 0
+            $container.scrollTop($current_top_element.offset().top)
+  
+          Kandan.Helpers.Channels.setPaginationState(
+            collection.channelId,
+            collection.moreActivities,
+            _.last(collection.models),
+            $container
+          )
+  
+          @loading_new_messages = false
