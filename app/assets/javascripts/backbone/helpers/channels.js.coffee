@@ -129,16 +129,14 @@ class Kandan.Helpers.Channels
   @setPaginationState: (channelId, moreActivities, oldest) ->
     console.log "pagination element", moreActivities, @channelPaginationEl(channelId)
     if moreActivities == true
-      # Only set pagination data if there are more activities. Otherwise is useless
-      @channelPaginationEl(channelId).data("oldest", oldest.get("id"))
-
       @channelPaginationEl(channelId).show()
     else
       @channelPaginationEl(channelId).hide()
 
       # If there are no more messages we will unbind the scroll event
       @channelPane(channelId).unbind("scroll")
-
+    # Only set pagination data if there are more activities. Otherwise is useless
+    @channelPaginationEl(channelId).data("oldest", oldest.get("id"))
   @setPaginationData: (channelId) ->
     $oldestActivity = @channelActivitiesEl(channelId).find(".activity").first()
     if $oldestActivity.length != 0
