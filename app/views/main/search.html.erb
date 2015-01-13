@@ -7,12 +7,21 @@
     Kandan.Plugins.initAll()
     activities = <%= json_escape(@activities.as_json(:include => { user: { :only => [:email, :first_name, :last_name, :username, :avatar_url, :gravatar_hash, :is_admin]} }).to_json.html_safe) %>;
 
-    $.each(activities, function(index, activityAttributes) {
-      activity = new Kandan.Models.Activity(activityAttributes);
-      activityView = new Kandan.Views.ShowActivity({activity: activity});
-      $(".activities").append(activityView.render().el);
-    })
+    if(activities.length){
+      $.each(activities, function(index, activityAttributes) {
+        activity = new Kandan.Models.Activity(activityAttributes);
+        activityView = new Kandan.Views.ShowActivity({activity: activity});
+        $(".activities").append(activityView.render().el);
+      })
+    }else{
+      $(".activities").append("<div class='no-results'><h2>No search results for '<%= params[:query] %>'</h2></div>");
+    }
+
   })
 <%- end %>
 
 <div class="activities"></div>
+
+<% content_for :end do %>
+  <%= render "nav" %>
+<% end %>

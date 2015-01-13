@@ -10,7 +10,7 @@ class MainController < ApplicationController
     minimum_query_length = 3
 
     if params[:query] and params[:query].length >= minimum_query_length
-      @activities = Activity.includes(:user).where("content LIKE ?", "%#{params[:query]}%").limit(params[:limit] || 100).all
+      @activities = Activity.includes(:user).where("LOWER(content) LIKE ?", "%#{params[:query]}%").limit(params[:limit] || 100).all
     end
 
     respond_to do |format|
