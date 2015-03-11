@@ -1,0 +1,168 @@
+#!/usr/bin/env ruby
+#
+# yaml2po, for converting RoR translation YAML to the standard gettext for
+#          eventual use with a translation site such as Transifex or a CAT tool
+#
+# Developed from scripts found in http://git.openstreetmap.org/rails.git/tree/HEAD:/script/locale
+#
+# Usage:
+#  - To create a 'master' .pot
+#    yaml2po -P en.yml > translations.pot
+#
+#  - To create a language's .po
+#    yaml2po -l de -t en.yml de.yml > de.po
+#
+#
+# Copyright (C) 2012 Leandro Regueiro <leandro.regueiro AT gmail DOT com>
+# Copyright (C) 2009 Thomas Wood
+# Copyright (C) 2009 Tom Hughes
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+require "yaml"
+require "optparse"
+require "time"
+
+
+def process_msgid_msgstr(string)
+    # Escape the " characters and correctly output multiline strings both in msgid and msgstr
+    if string.is_a? Hash
+        new_string = ''
+    else
+        new_string = string.gsub("\"", "\\\"")
+        new_string = new_string.gsub("\n", "\"\n\"")
+    end
+    return new_string
+end
+
+
+def iterate(hash, fhash={}, path='', outfile=$stdout)
+    postr = ''
+    hash.each {|key, val|
+        fhash[key] = {} unless fhash.has_key? key
+        if val.is_a? Hash
+            fhash[key] = {} unless fhash[key].is_a? Hash
+            iterate(val, fhash[key], path+key+':', outfile)
+        elsif val.nil?
+            puts("Empty key:   #{path}#{key}")
+        else
+            outfile.puts("")
+            outfile.puts("msgctxt \"#{path}#{key}\"")
+            new_source = process_msgid_msgstr(val)
+            outfile.puts("msgid \"#{new_source}\"")
+            new_translation = process_msgid_msgstr(fhash[key])
+            outfile.puts("msgstr \"#{new_translation}\"")
+        end
+    }
+end
+
+
+def print_header(lang='LANGUAGE', outfile=$stdout)
+    outfile.puts('# SOME DESCRIPTIVE TITLE.')
+    outfile.puts('# Copyright (C) YEAR THE PACKAGE\'S COPYRIGHT HOLDER')
+    outfile.puts('# This file is distributed under the same license as the PACKAGE package.')
+    outfile.puts('# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.')
+    outfile.puts('#')
+    if lang == 'LANGUAGE'
+        outfile.puts('#, fuzzy')
+    end
+    outfile.puts('msgid ""')
+    outfile.puts('msgstr ""')
+    outfile.puts('"Project-Id-Version: PACKAGE VERSION\n"')
+    outfile.puts('"Report-Msgid-Bugs-To: \n"')
+    current_time = Time.now.strftime("%Y-%m-%-d %H:%M%z")
+    outfile.puts("\"POT-Creation-Date: #{current_time}\\n\"")
+    if lang == 'LANGUAGE'
+        outfile.puts('"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"')
+    else
+        outfile.puts("\"PO-Revision-Date: #{current_time}\\n\"")
+    end
+    outfile.puts('"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"')
+    if lang == 'LANGUAGE'
+        outfile.puts("\"Language-Team: #{lang} <LL@li.org>\\n\"")
+    else
+        outfile.puts("\"Language-Team: #{lang} <#{lang}@li.org>\\n\"")
+    end
+    outfile.puts('"MIME-Version: 1.0\n"')
+    outfile.puts('"Content-Type: text/plain; charset=UTF-8\n"')
+    outfile.puts('"Content-Transfer-Encoding: 8bit\n"')
+    # TODO if it is no POT file, put the corresponding plural string for the given language code
+    outfile.puts('"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"')
+end
+
+
+def generate_pot(engfilename, outfilename)
+    if File.exists? engfilename
+        engfile = YAML::load_file(engfilename)
+        outfile = File.new(outfilename, "w")
+        print_header('LANGUAGE', outfile)
+        iterate(engfile['en'], {}, '', outfile)
+        outfile.close()
+    else
+        $stderr.puts("\nError: Specified YAML file \"#{engfilename}\" does not exist.\n\n")
+    end
+end
+
+
+def lang2po(lang, engfilename, langfilename, outfilename)
+    if File.exists? engfilename
+        if File.exists? langfilename
+            # Generate the PO file only once checked that both files exist
+            engfile = YAML::load_file(engfilename)
+            langfile = YAML::load_file(langfilename)
+            outfile = File.new(outfilename, "w")
+            print_header(lang, outfile)
+            iterate(engfile['en'], langfile[lang], '', outfile)
+            outfile.close()
+        else
+            $stderr.puts("\nError: Specified YAML file \"#{langfilename}\" does not exist.\n\n")
+        end
+    else
+        $stderr.puts("\nError: Specified YAML file \"#{engfilename}\" does not exist.\n\n")
+    end
+end
+
+
+def print_usage()
+    puts("\nUsage:\n")
+    puts("  - To create a 'master' .pot\n")
+    puts("    yaml2po -P en.yml file.pot\n")
+    puts("\n")
+    puts("  - To create a language's .po\n")
+    puts("    yaml2po -l de -t en.yml de.yml de.po\n\n")
+end
+
+
+
+opt = ARGV[0]
+
+if opt == '-P'
+    # Goes this way when generating a POT file
+    if (ARGV.size == 3)
+        generate_pot(ARGV[1], ARGV[2])
+        exit
+    end
+elsif opt == '-l'
+    # Goes this way when generating a PO file with the translation for a given language
+    if (ARGV.size == 6)
+        lang2po(ARGV[1], ARGV[3], ARGV[4], ARGV[5])
+        exit
+    end
+end
+
+print_usage()
+
+
+
