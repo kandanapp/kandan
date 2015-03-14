@@ -79,7 +79,7 @@
       +box-shadow(none)
       min-height: 100%
       overflow-x: auto
-      padding-top: 5px
+      padding-top: 10px
       white-space: nowrap
       +hide-scrollbar
 
@@ -99,6 +99,8 @@
           color: #585d5f
           font-weight: bold
 
+      &.destroyable a
+        margin-right: 18px
       .close_channel
         color: #AEB9BD
 
@@ -132,7 +134,7 @@
       @media (min-width: $medium)
         background: image-url('tabs/tab-inactive-middle.png') bottom repeat-x
         color: #585d5f
-        line-height: 30px
+        line-height: 25px
         margin: 0 30px
 
         &:before
@@ -153,7 +155,7 @@
         &,
         &:before,
         &:after
-          height: 30px
+          height: 25px
           display: inline-block
 
         &.active
@@ -167,6 +169,7 @@
 
         .close_channel
           width: auto
-          position: relative
-          right: -5px
+          position: absolute
+          right: 0px
+          top: 6px
           z-index: 100
