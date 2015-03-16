@@ -5,7 +5,7 @@
 # Kandan's code and assets are dual-licensed. Kandan is available
 # generally under the AGPL, and also under a custom license via
 # special agreement. See LICENSE for the AGPL terms, and contact us
-# at <admin@kandanapp.com> if you're interested in development of
+# at <admin@getkandan.com> if you're interested in development of
 # Kandan under a custom license.
 #==============================================================================
 class Ability

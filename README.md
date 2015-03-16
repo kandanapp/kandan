@@ -1,4 +1,4 @@
-Kandan - [Modern Open Source Chat](http://www.kandanapp.com)
+Kandan - [Modern Open Source Chat](http://www.getkandan.com)
 ================================
 [![Build Status](https://travis-ci.org/kandanapp/kandan.png?branch=master)](https://travis-ci.org/kandanapp/kandan)
 [![Coverage Status](https://coveralls.io/repos/kandanapp/kandan/badge.png?branch=master)](https://coveralls.io/r/kandanapp/kandan)
@@ -41,9 +41,9 @@ That's not a question, it's an order! Or more of a friendly offer, really. Kanda
 
 * GitHub [issues tracker](https://github.com/kandanapp/kandan/issues)
 * Twitter [@kandanapp](https://twitter.com/kandanapp)
-* [Kandan Demo](http://kandan-demo.kandanapp.com) (Yes we eat our own DogFood)
+* [Kandan Demo](http://demo.getkandan.com) (Yes we eat our own DogFood)
 
-You can also email us at [admin@kandanapp.com](mailto:admin@kandanap.com)
+You can also email us at [admin@getkandan.com](mailto:admin@getkandan.com)
 
 
 Credits
@@ -56,4 +56,4 @@ Credits
 
 LICENSE
 =======
-Kandan's code and assets are dual-licensed. Kandan is available generally under the AGPL, and also under a custom license via special agreement. See LICENSE for the AGPL terms, and contact us at [admin@kandanapp.com](mailto:admin@kandanapp.com) if you're interested in development of Kandan under a custom license.
+Kandan's code and assets are dual-licensed. Kandan is available generally under the AGPL, and also under a custom license via special agreement. See LICENSE for the AGPL terms, and contact us at [admin@getkandan.com](mailto:admin@getkandan.com) if you're interested in development of Kandan under a custom license.
