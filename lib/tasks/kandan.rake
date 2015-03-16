@@ -10,7 +10,7 @@ namespace :kandan do
     if user.nil?
       puts "Creating default user..."
       user = User.new
-      user.email      = "admin@kandanapp.com"
+      user.email      = "admin@getkandan.com"
       user.username  = "admin"
       user.first_name = "Admin"
       user.last_name  = "OfKandan"
@@ -47,17 +47,17 @@ namespace :kandan do
       puts "Creating default channel..."
       channel = Channel.create! name: 'Lobby', user: user
 
-      ["Welcome to Kandan, the slickest chat app out there. Brought to you by the good people of KandanApp (http://kandanapp.com) and friends",
+      ["Welcome to Kandan, the slickest chat app out there. Brought to you by the good people of KandanApp (http://getkandan.com) and friends",
        "We think you'll really like Kandan, but if there's anything you would like to see, Kandan is fully open source, so you can dive into it or make suggestions.",
        "To get started, you can embed images or youtube clips, use the /me command (/me is in proper love with Kandan, innit!), upload files, or of course, just chat with your teammates.",
-       "Just paste in an image url and type a subtitle http://kandanapp.com/images/kandanlogo.png",
+       "Just paste in an image url and type a subtitle http://getkandan.com/images/kandanlogo.png",
        "http://www.youtube.com/watch?v=MvzyWk4lMc8 Same with youtube videos",
        "To mention other folks just use @ and their username or use @all",
        "Checkout all emoticons available at http://www.emoji-cheat-sheet.com/",
        ":+1:",
        "/me is in proper love with Kandan, innit!",
        "If you're the type of person who enjoys hacking on projects, the source to Kandan is at https://github.com/kandanapp/kandan",
-       "Well, that's about it. If you have any questions, concerns, or ideas, just shoot us an email admin@kandanapp.com! Have fun!",
+       "Well, that's about it. If you have any questions, concerns, or ideas, just shoot us an email admin@getkandan.com! Have fun!",
       ].each do |message|
         a = Activity.new
         a.content    = message
@@ -71,7 +71,7 @@ namespace :kandan do
 
   desc "Creates the default hubot account."
   task :boot_hubot => :environment do
-    user = User.find_by_email("hubot@kandanapp.com")
+    user = User.find_by_email("hubot@getkandan.com")
 
     if user.nil?
       puts "Creating hubot user..."
@@ -80,7 +80,7 @@ namespace :kandan do
       128.times { password << (('a'..'z').to_a + ('A'..'Z').to_a + ['!','@','#','$','%','^','&','*','(',')'].to_a).sample }
 
       hubot = User.new
-      hubot.email      = "hubot@kandanapp.com"
+      hubot.email      = "hubot@getkandan.com"
       hubot.username   = "hubot"
       hubot.first_name = "Hubot"
       hubot.last_name  = "vonGithubben"
@@ -92,7 +92,7 @@ namespace :kandan do
 
   desc "Output the hubot access key"
   task :hubot_access_key => :environment do
-    if authentication_token = User.find_by_email("hubot@kandanapp.com").try(:authentication_token)
+    if authentication_token = User.find_by_email("hubot@getkandan.com").try(:authentication_token)
       puts "Your hubot access key is #{ authentication_token }"
     else
       puts "There's not hubot account. Run rake kandan:boot_hubot to create a bot account."

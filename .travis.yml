@@ -6,7 +6,7 @@ rvm:
 env:
 notifications:
   email:
-    team@kandanapp.com
+    team@getkandan.com
 # whitelist
 branches:
   only:
