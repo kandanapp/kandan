@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :set_locale
   before_filter :force_approved_account
   before_filter :redirect_suspended_account
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def force_approved_account
     # We will redirect to the approval page if a user is signed in, is not an admin and is marked as waiting for approval
