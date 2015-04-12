@@ -1,20 +1,20 @@
 <div class="devise">
 
-<h2>Change your password</h2>
+<h2><%= t('devise.passwords.edit.head')</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="form-group">
-    <%= f.label :password, "New password", :class => "control-label" %>
+    <%= f.label :password, t('devise.passwords.edit.new'), :class => "control-label" %>
     <%= f.password_field :password, :class => "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :password_confirmation, "Confirm new password", :class => "control-label" %>
+    <%= f.label :password_confirmation, t('devise.passwords.edit.confirm'), :class => "control-label" %>
     <%= f.password_field :password_confirmation, :class => "form-control" %>
   </div>
-  <p><%= f.submit "Change my password", :class => "btn btn-primary" %></p>
+  <p><%= f.submit t('devise.passwords.edit.submit'), :class => "btn btn-primary" %></p>
 <% end %>
 
 <p><%= render :partial => "devise/shared/links" %></p>
