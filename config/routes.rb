@@ -4,6 +4,10 @@ Kandan::Application.routes.draw do
     :sessions => "sessions"
   }
   devise_scope :user do
+
+    get "/active_users" => "apis#active_users"
+    get "/me" => "apis#me"
+
     authenticated :user do
       root :to => "main#index"
 
@@ -15,9 +19,6 @@ Kandan::Application.routes.draw do
       end
 
       resources :users, :only => [:index, :show]
-
-      get "/active_users" => "apis#active_users"
-      get "/me" => "apis#me"
 
       get "/users/edit" =>"main#users_edit"
 
