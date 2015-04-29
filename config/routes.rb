@@ -19,6 +19,7 @@ Kandan::Application.routes.draw do
 
     resources :channels do
       resources :activities
+      resource :attachments
     end
 
     authenticated_or_have_token :user do
@@ -33,10 +34,6 @@ Kandan::Application.routes.draw do
 
       get '/search' => "main#search"
       get "/users/edit" =>"main#users_edit"
-
-      resource :channels do
-        resource :attachments
-      end
 
       namespace :admin do
         root :to => "admin#index"
