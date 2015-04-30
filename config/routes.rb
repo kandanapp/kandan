@@ -1,15 +1,3 @@
-def authenticated_or_have_token (scope=nil, block=nil)
-  constraint = lambda do |request|
-    (request.env["warden"].authenticate?(:scope => scope) ||
-     request.query_parameters['auth_token'].present?) &&
-         (block.nil? || block.call(request.env["warden"].user(scope)))
-  end
-
-  constraints(constraint) do
-    yield
-  end
-end
-
 Kandan::Application.routes.draw do
 
   devise_for :users, :controllers => {
@@ -17,26 +5,23 @@ Kandan::Application.routes.draw do
   }
   devise_scope :user do
 
+    # these are allow to access with auth_token
+    get "/active_users" => "apis#active_users"
+    get "/me" => "apis#me"
+
     resources :channels do
       resources :activities
-    end
-
-    authenticated_or_have_token :user do
-      get "/active_users" => "apis#active_users"
-      get "/me" => "apis#me"
-
-      resources :users, :only => [:index, :show]
+      resources :attachments
     end
 
     authenticated :user do
       root :to => "main#index"
 
       get '/search' => "main#search"
-      get "/users/edit" =>"main#users_edit"
 
-      resource :channels do
-        resource :attachments
-      end
+      resources :users, :only => [:index, :show]
+
+      get "/users/edit" =>"main#users_edit"
 
       namespace :admin do
         root :to => "admin#index"
