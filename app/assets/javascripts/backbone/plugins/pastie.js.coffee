@@ -6,10 +6,7 @@ class Kandan.Plugins.Pastie
     regex: /\n.*\n/i
 
     template: _.template '''
-      <pre class="pastie">
-        <a target="_blank" class="pastie-link" href="<%= messageLink %>">View pastie</a>
-        <br/>
-        <%= preview %>
+      <pre class="pastie"><%= preview %><a target="_blank" class="pastie-link" href="<%= messageLink %>">read more</a>
       </pre>
     '''
 
