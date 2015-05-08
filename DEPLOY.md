@@ -8,6 +8,7 @@
 * [Heroku](#heroku)
 * [dotCloud](#dotcloud)
 * [AppFog](#appfog)
+* [Docker](#docker) 
 * [Stand Alone Server](#standalone-server) 
 
 <hr>
@@ -194,6 +195,22 @@ If you get the invalid app description, open manifest.yml in a text editor and r
     af update <your_app_name>
 
 And you should also restart the app on AppFog (in the console). Then, Kandan should be available on your AppFox backend now! With your browser, visit the domain name assigned to you by AppFog (or create a CNAME record at your DNS provider to use an alternate).
+
+
+<hr>
+# <a name="docker"></a>Docker
+Running Kandan with Docker is super simple.
+
+First you need to build container with
+
+    docker build -t kandan/kandan github.com/kandanapp/kandan
+
+Then run (replacing 8080 with port you wish to run on)
+
+    docker run kandan/kandan -p 8080:5000
+
+Your app should be up and running now. The default admin user is `Admin` with password `kandanappadmin`, or you can sign up as another user.
+
 
 <hr>
 # <a name="standalone-server"></a>Stand Alone Server
