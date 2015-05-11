@@ -1,0 +1,7 @@
+ja:
+  sessions:
+    title: "ログイン"
+    username: "ユーザ名"
+    password: "パスワード"
+    rememberme: "ログインを覚えておく"
+    submit: "ログイン"

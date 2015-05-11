@@ -25,15 +25,42 @@ en:
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
     passwords:
+      new:
+        head: "Forgot Password?"
+        email: "Email"
+        submit: "Submit"
+      edit:
+        head: "Change your password"
+        new: "New password"
+        confirm: "Confirm new password"
+        submit: "Change my password"
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
       updated_not_active: 'Your password was changed successfully.'
       send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
     confirmations:
+      resend_confirm:
+        head: "Resend confirmation instructions"
+        button: "Resend confirmation instructions"
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
+      register_account: "Register an Account"
+      first_name: "First Name"
+      last_name: "Last Name"
+      email: "Email"
+      username: "Username"
+      password: "Password"
+      password_confirmation: "Password Confirmation"
+      register: "Register"
+      edit: "Edit"
+      avatar_url: "Avatar URL"
+      current_password: "Current Password"
+      cancel_account:
+        head: "Cancel My Account."
+        html: "<p>Unhappy with your service? We hate to see you go!<p>"
+        link: "Cancel my account"
       signed_up: 'Welcome! You have signed up successfully.'
       updated: 'You updated your account successfully.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
@@ -50,7 +77,21 @@ en:
     mailer:
       confirmation_instructions:
         subject: 'Confirmation instructions'
+        message:
+          html: "<p>You can confirm your account through the link below:</p>"
+          link: "Confirm my account"
       reset_password_instructions:
         subject: 'Reset password instructions'
+        message:
+          html: "<p>Someone has requested a link to change your password, and you can do this through the link below.</p>"
+        note:
+          html: "<p>If you didn't request this, please ignore this email.</p>
+<p>Your password won't change until you access the link above and create a new one.</p>"
+          link: "Change my password"
       unlock_instructions:
         subject: 'Unlock Instructions'
+        message:
+          html: "<p>Your account has been locked due to an excessive amount of unsuccessful sign in attempts.</p>
+
+<p>Click the link below to unlock your account:</p>"
+          link: "Unlock my account"

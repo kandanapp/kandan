@@ -1,0 +1,97 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+ja:
+  errors:
+    messages:
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      already_confirmed: "was already confirmed, please try signing in"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
+
+  devise:
+    failure:
+      already_authenticated: 'ログイン済みです。'
+      unauthenticated: '続けるには、ログインするか、ユーザ登録が必要です。'
+      unconfirmed: '続けるには、アカウントのメール確認が必要です。'
+      locked: 'アカウントはロックされています。'
+      invalid: '電子メールかパスワードが違います。'
+      invalid_token: '認証トークンが不正です。'
+      timeout: 'セッションはタイムアウトしました。再度ログインが必要です。'
+      inactive: 'アカウントは、まだ有効化されていません。'
+    sessions:
+      signed_in: 'ログインしました。'
+      signed_out: 'ログアウトしました。'
+    passwords:
+      new:
+        head: "パスワードを忘れましたか?"
+        email: "Email"
+        submit: "送信"
+      edit:
+        head: "パスワード変更"
+        new: "新規パスワード"
+        confirm: "パスワード(確認)"
+        submit: "パスワード更新"
+      send_instructions: 'パスワードリセット方法のかかれた電子メールをお送りします。数分で届くでしょう。'
+      updated: 'パスワードは変更されました。ログインできます。'
+      updated_not_active: 'パスワードは変更されました。'
+      send_paranoid_instructions: "指定の電子メールアドレスが登録されていれば、電子メールでパスワードリセットのリンクが届きます。"
+    confirmations:
+      resend_confirm:
+        head: "アカウント確認方法を再送付"
+        button: "アカウント確認方法を再送付"
+      send_instructions: 'アカウントの確認をするための電子メールをお送りします。数分で届くでしょう。'
+      send_paranoid_instructions: '指定の電子メールアドレスが登録されていれば、アカウント確認のための電子メールをお送りします。数分で届くでしょう。'
+      confirmed: 'アカウントの確認が完了しました。ログインできます。'
+    registrations:
+      register_account: "アカウント登録"
+      first_name: "名前(名)"
+      last_name: "名前(姓)"
+      email: "電子メール"
+      username: "ユーザ名"
+      password: "パスワード"
+      password_confirmation: "Password Confirmation"
+      register: "登録"
+      edit: "編集"
+      avatar_url: "Avatar URL"
+      current_password: "現在のパスワード"
+      cancel_account:
+        head: "アカウントのキャンセル"
+        html: "<p>サービスに不満がありましたか？やめられるのは残念です。<p>"
+        link: "アカウントをキャンセルする"
+      signed_up: 'ようこそ！ユーザ登録が完了しました。'
+      updated: 'アカウントを更新しました。'
+      destroyed: 'アカウントを削除しました。ありがとうございました。'
+      signed_up_but_unconfirmed: 'アカウント確認リンクの入ったメッセージが、電子メールで届けられます。アカウントを利用可能にするには、そのリンクを開いてください。'
+      signed_up_but_inactive: '登録が完了しました。ログインに進むには、電子メールの確認をおこなってください。'
+      signed_up_but_locked: '登録が完了しましたが、アカウントがロックされているため、ログインすることはできません。'
+    unlocks:
+      send_instructions: 'アカウントのロック解除方法の書かれた電子メールを送信します。'
+      unlocked: 'アカウントのロック解除が出来ました。ログインできます。'
+      send_paranoid_instructions: '指定のアカウントが存在していれば、電子メールでアカウントのロック解除方法の書かれた電子メールを送信します。'
+    omniauth_callbacks:
+      success: 'Successfully authorized from %{kind} account.'
+      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'アドレス確認のおねがい'
+        message:
+          html: "<p>以下のリンクをクリックすることで、アカウントの確認ができます:</p>"
+          link: "アカウントを確認する"
+      reset_password_instructions:
+        subject: 'パスワードリセット方法'
+        message:
+          html: "<p>パスワードを変更しようとした方があり、このメールを送っています。以下のリンクを通じて、パスワードを変更できます</p>"
+        note:
+          html: "<p>もし、身に覚えがない場合は、無視してください。</p>
+<p>パスワードは、リンクをアクセスして、新しいパスワードを設定しない限り変わることはありません。</p>"
+          link: "パスワードの変更"
+      unlock_instructions:
+        subject: 'アカウントのロック解除方法'
+        message:
+          html: "<p>アカウントは、多数のログイン失敗があったため、ロックされています。</p>
+
+<p>次のリンクをクリックして、ロックを解除してください:</p>"
+          link: "ロック解除する"

@@ -1,0 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-11 15:07+0900\n"
+"PO-Revision-Date: 2015-03-11 15:07+0900\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ja <ja@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgctxt "admin:warn_no_user"
+msgid "There are no users needing approval right now. Invite others to join Kandan!"
+msgstr "現在、承認を待っているユーザはいません。Kandanに招待しましょう!"
+
+msgctxt "admin:disable_connect"
+msgid "disable connect/disconnect activity"
+msgstr "disable connect/disconnect activity"
+
+msgctxt "admin:warn_no_approved_user"
+msgid "There are no users. Invite others to join Kandan!"
+msgstr "ユーザがいません。Kandanに招待しましょう!"
+
+msgctxt "admin:public_site"
+msgid "Public site"
+msgstr "公開サイト"
+
+msgctxt "admin:max_number_of_rooms"
+msgid "Max number of rooms"
+msgstr "最大ルーム数"
+
+msgctxt "admin:users_waiting_approval"
+msgid "Users waiting for approval"
+msgstr "承認待ちユーザ"
+
+msgctxt "admin:site_settings"
+msgid "Site settings"
+msgstr "サイト設定"

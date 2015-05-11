@@ -1,0 +1,9 @@
+ja:
+  admin:
+    site_settings: "サイト設定"
+    max_number_of_rooms: "最大ルーム数"
+    public_site: "公開サイト"
+    disable_connect: "disable connect/disconnect activity"
+    users_waiting_approval: "承認待ちユーザ"
+    warn_no_user: "現在、承認を待っているユーザはいません。Kandanに招待しましょう!"
+    warn_no_approved_user: "ユーザがいません。Kandanに招待しましょう!"

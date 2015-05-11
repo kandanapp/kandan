@@ -1,0 +1,103 @@
+#!/usr/bin/env ruby
+#
+# po2yaml, for converting gettext .po to the RoR translation YAML
+#
+# Developed from scripts found in http://git.openstreetmap.org/rails.git/tree/HEAD:/script/locale
+#
+# Usage:
+#  - To create a language's yaml from a given po file
+#    po2yaml de.po de.yml
+#
+#
+# Copyright (C) 2012 Leandro Regueiro <leandro.regueiro AT gmail DOT com>
+# Copyright (C) 2009 Thomas Wood
+# Copyright (C) 2009 Tom Hughes
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+require "yaml"
+
+
+def add_translation(hash, keys, value)
+    key = keys.shift
+    if keys.empty?
+        hash[key] = value
+    else
+        unless hash.has_key? key
+            hash[key] = {}
+        end
+        add_translation(hash[key], keys, value)
+    end
+    hash
+end
+
+
+def po2hash(f)
+    trs = {}
+    path = []
+    msgstr = ''
+    f.each_line { |line|
+        line.strip!
+        if line[0..8] == 'msgctxt "'
+            path = line[9..-2].split(':')
+        elsif line[0..7] == 'msgstr "'
+            # TODO convert escaped characters
+            msgstr = line[8..-2]
+        end
+
+        if !path.empty? and !msgstr.empty?
+            add_translation(trs, path, msgstr)
+            path = []
+            msgstr = ''
+        end
+    }
+    trs
+end
+
+
+def generate_yaml(filename, outfilename)
+    if File.exists? filename
+        pofile = File.open(filename, "r")
+        # The following line expects the files to be named like "de.po" and therefore the language code can be recovered by substracting the '.po' suffix
+        # TODO refactor in order to extract the language code when the file is not just named like "LANG.po", but like "SOMETHING.LANG.po"
+        # TODO refactor in order to request the language code in case it can't be extracted from the filename
+        langcode = File.basename(filename, '.po')
+        tr = {langcode => po2hash(pofile)}
+        outfile = File.new(outfilename, "w")
+        outfile.puts(tr.to_yaml)
+        outfile.close()
+    else
+        $stderr.puts("\nError: Specified PO file \"#{filename}\" does not exist.\n\n")
+    end
+end
+
+
+def print_usage()
+    puts("\nUsage:\n")
+    puts("  - To create a language's yaml from a given po file\n")
+    puts("    po2yaml de.po de.yml\n\n")
+end
+
+
+
+if ARGV.size == 2
+    generate_yaml(ARGV[0], ARGV[1])
+    exit
+end
+
+print_usage()
+
+
+

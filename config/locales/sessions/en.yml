@@ -1,0 +1,7 @@
+en:
+  sessions:
+    title: "Sign In"
+    username: "Username"
+    password: "Password"
+    rememberme: "Remember me"
+    submit: "Sign in"
