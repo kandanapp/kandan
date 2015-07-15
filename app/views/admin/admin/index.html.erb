@@ -8,19 +8,19 @@
 
 <div class="admin">
   <div class="site-settings">
-    <h3>Site settings</h3>
+    <h3><%= t('admin.site_settings') %></h3>
     <%= form_for @settings, :url => admin_update_path, :method => :post do |f| %>
       <%= f.label :max_rooms do %>
-        Max number of rooms <%= f.number_field :max_rooms, :class => "input-mini pull-right" %>
+        <%= t('admin.max_number_of_rooms') %><%= f.number_field :max_rooms, :class => "input-mini pull-right" %>
       <% end %>
 
       <%= f.label :disable_conn_disconn_activity do %>
-        <%= f.check_box :disable_conn_disconn_activity, :class => "switch" %> disable connect/disconnect activity
+        <%= f.check_box :disable_conn_disconn_activity, :class => "switch" %><%= t('admin.disable_connect') %>
         <span></span>
       <% end %>
 
       <%= f.label :public_site do %>
-        <%= f.check_box :public_site, :class => "switch" %> Public site
+        <%= f.check_box :public_site, :class => "switch" %> <%= t('admin.public_site') %>
         <span></span>
       <% end %>
       <p>
@@ -29,17 +29,17 @@
     <% end %>
   </div>
   <div class="waiting-for-approval-users">
-    <h3>Users waiting for approval</h3>
+    <h3><%= t('admin.users_waiting_approval')  %></h3>
     <ul class="users">
       <%= render(:collection => @waiting_for_approval_users, :as => :user, :partial => "user") ||\
-        content_tag(:li, "There are no users needing approval right now. Invite others to join Kandan!", class: 'no-users') %>
+        content_tag(:li, t('admin.warn_no_user'), class: 'no-users') %>
     </ul>
   </div>
   <div class="approved-users">
     <h3>All users</h3>
     <ul class="users">
       <%= render(:collection => @approved_users, :as => :user, :partial => "user") ||\
-        content_tag(:li, "There are no users. Invite others to join Kandan!", class: 'no-users') %>
+        content_tag(:li, t('admin.warn_no_approved_user'), class: 'no-users') %>
     </ul>
   </div>
 </div>

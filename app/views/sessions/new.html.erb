@@ -1,18 +1,18 @@
 <div class="devise">
-  <h3 class="heading">Sign In</h3>
+  <h3 class="heading"><%= t('sessions.title') %></h3>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :role => :form) do |f| %>
     <div class="form-group">
-      <%= label_tag :username, "Username", :class => "control-label" %>
+      <%= label_tag :username, t('sessions.username'), :class => "control-label" %>
       <%= f.text_field :username,  :autofocus => true, :placeholder => 'jsmith', :class => "form-control" %>
     </div>
     <div class="form-group">
-      <%= label_tag :password, "Password", :class => "control-label" %>
+      <%= label_tag :password, t('sessions.password'), :class => "control-label" %>
       <%= f.password_field :password, :class => "form-control"%>
     </div>
     <label class="checkbox">
-      <input type="checkbox" value="remember-me"> Remember me
+      <input type="checkbox" value="remember-me"><%= t('sessions.rememberme') %>
     </label>
-    <%= f.submit "Sign in",  :class => "btn  btn-primary" %>
+    <%= f.submit t('sessions.submit'),  :class => "btn  btn-primary" %>
   <% end %>
   <%= render :partial => "devise/shared/links" %>
 </div>

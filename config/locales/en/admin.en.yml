@@ -1,0 +1,9 @@
+en:
+  admin:
+    site_settings: "Site settings"
+    max_number_of_rooms: "Max number of rooms"
+    public_site: "Public site"
+    disable_connect: "disable connect/disconnect activity"
+    users_waiting_approval: "Users waiting for approval"
+    warn_no_user: "There are no users needing approval right now. Invite others to join Kandan!"
+    warn_no_approved_user: "There are no users. Invite others to join Kandan!"
