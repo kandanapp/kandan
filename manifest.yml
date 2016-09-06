@@ -1,0 +1,6 @@
+applications:
+- name: kandan
+  memory: 128M
+  services:
+    ${name}-db:
+      type: postgresql
