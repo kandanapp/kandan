@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   before_create :mark_registration_status_depending_on_app_settings
 
-  after_create :ensure_at_least_one_admin
+  after_create :ensure_at_least_one_admin, :create_initial_channel
   after_destroy :ensure_at_least_one_admin
   
   validates :username, :presence => true, :uniqueness => true
@@ -57,6 +57,14 @@ class User < ActiveRecord::Base
       u.save!
     end
   end
+  # Creates a new channel to avoid the 'no Channel id = 1' error
+  def create_initial_channel
+    if User.count == 1 && Channel.count == 0
+      c = Channel.create!(name: 'Example', user: User.first)
+      c.save!
+    end
+  end
+
 
   def active_for_authentication?
     super && active?
